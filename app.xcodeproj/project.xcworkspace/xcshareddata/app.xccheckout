@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>D3F842D8-7A3A-4AB6-95F9-DA45A9E2821A</string>
+	<key>IDESourceControlProjectName</key>
+	<string>app</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>BFCB4DBDF9B5B308CE336149FF36D8FDDF8DBA79</key>
+		<string>https://github.com/hsavit1/secret_proj.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>app.xcodeproj</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>BFCB4DBDF9B5B308CE336149FF36D8FDDF8DBA79</key>
+		<string>../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>https://github.com/hsavit1/secret_proj.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>111</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>BFCB4DBDF9B5B308CE336149FF36D8FDDF8DBA79</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>BFCB4DBDF9B5B308CE336149FF36D8FDDF8DBA79</string>
+			<key>IDESourceControlWCCName</key>
+			<string>ParseChat-master%202</string>
+		</dict>
+	</array>
+</dict>
+</plist>

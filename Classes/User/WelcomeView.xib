@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6250" systemVersion="14B25" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6244"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="WelcomeView">
+            <connections>
+                <outlet property="view" destination="1" id="3"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="1">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oy6-uy-RRG">
+                    <rect key="frame" x="20" y="372" width="280" height="50"/>
+                    <color key="backgroundColor" red="0.23137254901960785" green="0.34901960784313724" blue="0.59607843137254901" alpha="1" colorSpace="calibratedRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="50" id="OAM-RX-md7"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="18"/>
+                    <state key="normal" title="Login with Facebook">
+                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="titleShadowColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    </state>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                            <integer key="value" value="5"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
+                    <connections>
+                        <action selector="actionFacebook:" destination="-1" eventType="touchUpInside" id="eoM-Iz-u9X"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Rka-Wf-v14">
+                    <rect key="frame" x="20" y="436" width="280" height="50"/>
+                    <color key="backgroundColor" red="0.086274509799999996" green="0.62745098040000002" blue="0.52156862749999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="50" id="bC4-54-zzq"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="18"/>
+                    <state key="normal" title="Register">
+                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="titleShadowColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    </state>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                            <integer key="value" value="5"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
+                    <connections>
+                        <action selector="actionRegister:" destination="-1" eventType="touchUpInside" id="60O-Xg-COz"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7Wf-8f-ELf">
+                    <rect key="frame" x="20" y="500" width="280" height="50"/>
+                    <color key="backgroundColor" red="0.41840563322368424" green="0.12386924342105263" blue="0.38240131578947251" alpha="1" colorSpace="calibratedRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="50" id="dFM-Lk-vbP"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="18"/>
+                    <state key="normal" title="Login">
+                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="titleShadowColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    </state>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                            <integer key="value" value="5"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
+                    <connections>
+                        <action selector="actionLogin:" destination="-1" eventType="touchUpInside" id="DaA-Zf-XSa"/>
+                    </connections>
+                </button>
+            </subviews>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstItem="Rka-Wf-v14" firstAttribute="height" secondItem="7Wf-8f-ELf" secondAttribute="height" id="Azb-Ed-HeU"/>
+                <constraint firstAttribute="bottom" secondItem="7Wf-8f-ELf" secondAttribute="bottom" constant="18" id="E0g-n3-5YG"/>
+                <constraint firstItem="Rka-Wf-v14" firstAttribute="height" secondItem="oy6-uy-RRG" secondAttribute="height" id="Gss-RR-5OG"/>
+                <constraint firstItem="7Wf-8f-ELf" firstAttribute="top" secondItem="Rka-Wf-v14" secondAttribute="bottom" constant="14" id="LQ9-8s-REe"/>
+                <constraint firstItem="oy6-uy-RRG" firstAttribute="width" secondItem="Rka-Wf-v14" secondAttribute="width" id="LYN-YT-teY"/>
+                <constraint firstItem="Rka-Wf-v14" firstAttribute="leading" secondItem="1" secondAttribute="leading" constant="20" id="QuD-Es-7dV"/>
+                <constraint firstItem="Rka-Wf-v14" firstAttribute="height" secondItem="oy6-uy-RRG" secondAttribute="height" id="RfI-Y6-1eJ"/>
+                <constraint firstAttribute="trailing" secondItem="Rka-Wf-v14" secondAttribute="trailing" constant="20" id="SuS-3J-R6l"/>
+                <constraint firstItem="oy6-uy-RRG" firstAttribute="width" secondItem="7Wf-8f-ELf" secondAttribute="width" id="UmB-6h-aNB"/>
+                <constraint firstItem="oy6-uy-RRG" firstAttribute="leading" secondItem="1" secondAttribute="leading" constant="20" id="WMT-Jv-Wjl"/>
+                <constraint firstItem="oy6-uy-RRG" firstAttribute="height" secondItem="7Wf-8f-ELf" secondAttribute="height" id="dUN-Na-QO3"/>
+                <constraint firstItem="7Wf-8f-ELf" firstAttribute="leading" secondItem="1" secondAttribute="leading" constant="20" id="hDn-Be-AVY"/>
+                <constraint firstAttribute="trailing" secondItem="7Wf-8f-ELf" secondAttribute="trailing" constant="20" id="r5S-rQ-l43"/>
+                <constraint firstItem="Rka-Wf-v14" firstAttribute="top" secondItem="oy6-uy-RRG" secondAttribute="bottom" constant="14" id="sui-pi-uLI"/>
+                <constraint firstAttribute="trailing" secondItem="oy6-uy-RRG" secondAttribute="trailing" constant="20" id="tSe-gb-hbe"/>
+                <constraint firstItem="Rka-Wf-v14" firstAttribute="height" secondItem="7Wf-8f-ELf" secondAttribute="height" id="z2g-MN-95l"/>
+            </constraints>
+        </view>
+    </objects>
+    <simulatedMetricsContainer key="defaultSimulatedMetrics">
+        <simulatedStatusBarMetrics key="statusBar"/>
+        <simulatedOrientationMetrics key="orientation"/>
+        <simulatedScreenMetrics key="destination" type="retina4"/>
+    </simulatedMetricsContainer>
+</document>

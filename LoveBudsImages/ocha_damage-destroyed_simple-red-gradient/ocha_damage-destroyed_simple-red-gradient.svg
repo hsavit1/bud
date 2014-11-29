@@ -1,0 +1,11 @@
+<?xml version="1.0" ?>
+<!-- Find more at icons.mysitemyway.com -->
+<svg height="100" width="100" viewBox="0 0 100 100" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg" version="1.1">
+<defs>
+<linearGradient id="red-gradient" x1="0%" y1="0%" x2="0%" y2="100%">
+<stop offset="0%" stop-color="#F95400" />
+<stop offset="100%" stop-color="#b50700" />
+</linearGradient>
+</defs>
+<path d="M50,1C22.942,1,1,22.936,1,50c0,27.053,21.942,49,49,49c27.064,0,49-21.947,49-49C99,22.936,77.064,1,50,1z M68.483,77.716L50,59.239L31.522,77.716l-9.238-9.238l18.477-18.483L22.284,31.517l9.238-9.238L50,40.755l18.477-18.471 l9.238,9.239L59.238,49.994l18.483,18.483L68.483,77.716z" fill="url(#red-gradient)" />
+</svg>
