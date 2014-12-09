@@ -30,7 +30,7 @@
     [self.navigationController.navigationBar setTintColor:[UIColor colorWithRed:0.086 green:0.627 blue:0.522 alpha:1] /*#16a085*/];
     [self.navigationController.navigationBar setTranslucent:YES];
     
-    self.ageSlider.minimumValue = 17;
+    self.ageSlider.minimumValue = 18;
     self.ageSlider.maximumValue = 68;
     float minValue = [[PFUser currentUser][@"minAge"] floatValue];
     self.ageSlider.value = minValue;
@@ -38,10 +38,11 @@
         int myMin = [[NSNumber numberWithFloat:self.ageSlider.value] intValue];
         self.ageLabel.text = [@"Minimum Age: " stringByAppendingString:[NSString stringWithFormat:@"%i", myMin]];
     }
-    else
-        self.ageLabel.text = [@"Minimum Age: " stringByAppendingString:[NSString stringWithFormat:@"%i", 17]];
-    
-    self.maxAgeSlider.minimumValue = 17;
+    else{
+        self.ageLabel.text = [@"Minimum Age: " stringByAppendingString:[NSString stringWithFormat:@"%i", 18]];
+        self.ageSlider.value = 18;
+    }
+    self.maxAgeSlider.minimumValue = 18;
     self.maxAgeSlider.maximumValue = 70;
     float maxValue = [[PFUser currentUser][@"maxAge"] floatValue];
     self.maxAgeSlider.value = maxValue;
@@ -49,9 +50,11 @@
         int myMax = [[NSNumber numberWithFloat:self.maxAgeSlider.value] intValue];
         self.maxAgeLabel.text = [@"Maximum Age: " stringByAppendingString:[NSString stringWithFormat:@"%i", myMax]];
     }
-    else
-        self.maxAgeLabel.text = [@"Maximum Age: " stringByAppendingString:[NSString stringWithFormat:@"%i", 65]];
-
+    else{
+        self.maxAgeLabel.text = [@"Maximum Age: " stringByAppendingString:[NSString stringWithFormat:@"%i", 24]];
+        self.maxAgeSlider.value = 24;
+    }
+        
     self.distanceSlider.minimumValue = 1;
     self.distanceSlider.maximumValue = 300;
     self.distanceSlider.value = [[PFUser currentUser][@"maxRadius"] floatValue];
