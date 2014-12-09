@@ -258,6 +258,19 @@
     {
         if (selectedTitles.count && [[selectedTitles firstObject] isKindOfClass:[NSDate class]])
         {
+            
+//            NSString *str = [selectedTitles firstObject];
+//            NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
+//            [dateFormat setDateFormat:@"YYYY-MM-dd\'T\'HH:mm:ssZZZZZ"];
+//            
+//            
+//            NSDate *dte = [dateFormat dateFromString:str];
+//            
+//            [dateFormat setDateFormat:@"dd/MM/yyyy HH:mm"];
+//            //cell.timeStampLabel.text = [NSString stringWithFormat:@"%@",[dateFormat stringFromDate:dte]];
+//            
+//            [self setDate:dte];
+            
             [self setDate:[selectedTitles firstObject]];
         }
     }
@@ -300,7 +313,11 @@
 -(void)setDate:(NSDate *)date animated:(BOOL)animated
 {
     _date = date;
-    if (_date != nil)   [_datePicker setDate:_date animated:animated];
+    if (_date != nil){
+       
+        
+        [_datePicker setDate:_date animated:animated];
+    }
 }
 
 -(void)setMinimumDate:(NSDate *)minimumDate

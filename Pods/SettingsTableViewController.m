@@ -59,7 +59,7 @@
     self.distanceLabel.text = [@"Maximum Search Radius: " stringByAppendingString:[NSString stringWithFormat:@"%i", (int)myInt]];
     
     
-    self.usernameLabel.text = [@"Current Username: " stringByAppendingString:[PFUser currentUser][@"firstName"] ];
+    self.usernameLabel.text = [@"Current Username: " stringByAppendingString:[PFUser currentUser][PF_USER_FULLNAME] ];
     self.changeUsernameTextField.delegate = self;
     UIColor *textColor = [UIColor whiteColor];
     if ([ self.changeUsernameTextField respondsToSelector:@selector(setAttributedPlaceholder:)]) {
