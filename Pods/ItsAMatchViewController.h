@@ -14,6 +14,7 @@
 @property (nonatomic, weak) PFFile *personImageFile;
 @property (nonatomic, weak) NSString *name;
 
+@property (weak, nonatomic) IBOutlet UILabel *likedPersonNameLabel;
 @property (weak, nonatomic) IBOutlet PFImageView *likedPersonImage;
 @property (weak, nonatomic) IBOutlet PFImageView *myImage;
 @end

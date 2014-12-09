@@ -36,18 +36,8 @@
 @property (nonatomic, assign) NSUInteger strainOfChoice;
 
 
-//not needed
-//@property (nonatomic, assign) NSUInteger numberOfSharedInterests;
-//@property (nonatomic, assign) NSUInteger numberOfPhotos;
-//- (instancetype)initWithName:(NSString *)name
-//                    objectId:(NSString *)objid
-//                       image:(UIImage *)image
-//                         age:(NSUInteger)age
-//       numberOfSharedFriends:(NSUInteger)numberOfSharedFriends
-//     numberOfSharedInterests:(NSUInteger)numberOfSharedInterests
-//              numberOfPhotos:(NSUInteger)numberOfPhotos;
 
-
+//not used
 - (instancetype)initWithName:(NSString *)name
                     objectId:(NSString *)objid
                        image:(PFFile *)image
@@ -55,6 +45,8 @@
        numberOfSharedFriends:(NSUInteger)numberOfSharedFriends
               strainOfChoice:(NSUInteger)strainOfChoice;
 
+
+//used
 -(instancetype) initFromPFObject:(PFObject *)obj;
 
 @end

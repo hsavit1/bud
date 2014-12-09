@@ -13,6 +13,9 @@
 
 @property (weak, nonatomic) IBOutlet UIView *headerView;
 @property (weak, nonatomic) PFUser *user;
+@property (weak, nonatomic) NSString* userID;
+
+
 
 /*!
  * The "liked" view, which fades in when the like button is pressed
@@ -23,6 +26,8 @@
  * The "nope" view, which fades in when the nope button is pressed
  */
 @property (nonatomic, strong) UIView *nopeView;
+
+
 
 @property (nonatomic, strong) UIColor *likeColor;
 @property (nonatomic, strong) UIColor *nopeColor;

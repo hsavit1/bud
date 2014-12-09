@@ -58,6 +58,7 @@ static CGFloat const MDCSwipeToChooseViewLabelWidth = 95.f;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
     self.view.backgroundColor = [UIColor colorWithRed:0.698 green:0.847 blue:0.698 alpha:1] /*#b2d8b2*/;
     UIBarButtonItem *btn = [[UIBarButtonItem alloc] initWithTitle:@"Back"
                                      style:UIBarButtonItemStyleBordered
@@ -91,21 +92,46 @@ static CGFloat const MDCSwipeToChooseViewLabelWidth = 95.f;
     
     [self.tableView addSubview:self.pagingScrollView];
     
-    profilePics = [[NSMutableArray alloc]init];
-    for (int i = 0; i < 6; i++) {
-        NSString *save = [@"image" stringByAppendingString:[NSString stringWithFormat:@"%d", i]];
-        if(self.user[save]){
-            PFFile *file = self.user[save];
-            [profilePics addObject:file];
-        }
-    }
+
     
     if([self.navigationController.viewControllers[0] class] == [self class]){
         UIBarButtonItem *edit = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemEdit target:self action:@selector(editButtonPressed:)];
         self.navigationItem.rightBarButtonItem = edit;
         self.user = [PFUser currentUser];
+        profilePics = [[NSMutableArray alloc]init];
+        for (int i = 0; i < 6; i++) {
+            NSString *save = [@"image" stringByAppendingString:[NSString stringWithFormat:@"%d", i]];
+            if(self.user[save]){
+                PFFile *file = self.user[save];
+                [profilePics addObject:file];
+            }
+        }
     }
     else{
+        PFQuery *query = [PFUser query];
+        [query whereKey:@"objectId" equalTo:self.userID];
+        [query getFirstObjectInBackgroundWithBlock:^(PFObject *object, NSError *error) {
+            if (!object) {
+                NSLog(@"The getFirstObject request failed.");
+            }
+            else {
+                // The find succeeded.
+                NSLog(@"Successfully retrieved the object.");
+                self.user = (PFUser*)object;
+                NSLog(@"hi");
+                profilePics = [[NSMutableArray alloc]init];
+                for (int i = 0; i < 6; i++) {
+                    NSString *save = [@"image" stringByAppendingString:[NSString stringWithFormat:@"%d", i]];
+                    if(self.user[save]){
+                        PFFile *file = self.user[save];
+                        [profilePics addObject:file];
+                    }
+                }
+            }
+            
+        }];
+        
+        
         UIImage * imageNormal = [UIImage imageNamed:@"noSmoking"];
         UIImage * imageNormal2 = [UIImage imageNamed:@"yesSmoking"];
         UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
@@ -128,6 +154,7 @@ static CGFloat const MDCSwipeToChooseViewLabelWidth = 95.f;
         [self constructNopeImageView];
         
     }
+    
 }
 
 -(void)viewWillAppear:(BOOL)animated{
@@ -139,6 +166,10 @@ static CGFloat const MDCSwipeToChooseViewLabelWidth = 95.f;
     [super viewWillDisappear:animated];
     self.pageControl.alpha = 0;
 }
+
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
 
 - (void)tableView:(UITableView *)tableView willDisplayHeaderView:(UIView *)view forSection:(NSInteger)section
 {
@@ -306,6 +337,9 @@ static CGFloat const MDCSwipeToChooseViewLabelWidth = 95.f;
     return 30;
 }
 
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
 - (IBAction)flagButtonPressed:(id)sender {
     
     //now what do you want to flag this person for?
@@ -321,11 +355,7 @@ static CGFloat const MDCSwipeToChooseViewLabelWidth = 95.f;
 }
 
 
-
-
-
-
-
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
 - (void)constructLikedView {
@@ -356,6 +386,9 @@ static CGFloat const MDCSwipeToChooseViewLabelWidth = 95.f;
     self.nopeView.alpha = 0.f;
     [self.pagingScrollView addSubview:self.nopeView];
 }
+
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 //if like
 -(void)menuButtonPressed:(id)sender{

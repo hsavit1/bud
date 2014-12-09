@@ -414,14 +414,23 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="we love angry emails" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IA8-EO-Xsm">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="we love angry emails" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IA8-EO-Xsm">
                                 <rect key="frame" x="78" y="242" width="165" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="21" id="H72-UI-JNS"/>
+                                    <constraint firstAttribute="width" constant="165" id="yoC-S3-AMz"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailingMargin" secondItem="IA8-EO-Xsm" secondAttribute="trailing" constant="61" id="492-Ji-XG5"/>
+                            <constraint firstItem="IA8-EO-Xsm" firstAttribute="leading" secondItem="Ms4-bJ-AuN" secondAttribute="leadingMargin" constant="62" id="DZ0-Rl-8pf"/>
+                            <constraint firstItem="IA8-EO-Xsm" firstAttribute="top" secondItem="OmL-At-0xS" secondAttribute="bottom" constant="178" id="Tdc-SC-ZBd"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="tae-0q-cZM"/>
                 </viewController>

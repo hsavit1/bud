@@ -29,27 +29,6 @@
 
 #pragma mark - Object Lifecycle
 
-//- (instancetype)initWithName:(NSString *)name
-//                    objectId:(NSString *)objid
-//                       image:(UIImage *)image
-//                         age:(NSUInteger)age
-//       numberOfSharedFriends:(NSUInteger)numberOfSharedFriends
-//     numberOfSharedInterests:(NSUInteger)numberOfSharedInterests //do i want to keep this?
-//              numberOfPhotos:(NSUInteger)numberOfPhotos { //definitely cant keep this!
-//    self = [super init];
-//    if (self) {
-//        _name = name;
-//        _objectId = objid;
-//        _image = image;
-//        _age = age;
-//        _numberOfSharedFriends = numberOfSharedFriends;
-//        _numberOfSharedInterests = numberOfSharedInterests;
-//        _numberOfPhotos = numberOfPhotos;
-//    }
-//    return self;
-//}
-
-
 - (instancetype)initWithName:(NSString *)name
                     objectId:(NSString *)objid
                        image:(PFFile *)image

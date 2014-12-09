@@ -120,11 +120,14 @@ static const CGFloat ChoosePersonButtonVerticalPadding = -10;
 
 // This is called then a user swipes the view fully left or right.
 - (void)view:(UIView *)view wasChosenWithDirection:(MDCSwipeDirection)direction {
+    
+    //issue!! the person getting liked is not the person
     if (direction == MDCSwipeDirectionLeft) {
         NSLog(@"You noped %@.", self.currentPerson.name);
     } else {
         NSLog(@"You liked %@.", self.currentPerson.name);
     }
+    
     
     [PFCloud callFunctionInBackground:@"match"
                       withParameters:@{
@@ -132,21 +135,23 @@ static const CGFloat ChoosePersonButtonVerticalPadding = -10;
                                        @"match" : @(direction == MDCSwipeDirectionRight)
                                        }
                                 block: ^(id obj, NSError* err){
-                                    //swiped.
-                                    
                                     //if swipes match, call match screen
                                     if(![obj isKindOfClass:[NSNull class]]){
                                         UIStoryboard *matchSB = [UIStoryboard storyboardWithName:@"MatchView" bundle:nil];
                                         ItsAMatchViewController *matchView = [matchSB instantiateViewControllerWithIdentifier:@"mv"];
                                         matchView.personImageFile = self.currentPerson.image;
-                                        matchView.name = self.currentPerson.name;
+                                        //matchView.name = self.currentPerson.name;
+                                        matchView.likedPersonNameLabel.text = self.currentPerson.name;
                                         [self presentViewController:matchView animated:YES completion:nil];
                                     }
                                     //if no match, do nothing
                                     
                                 }];
+    
+    
     self.frontCardView = self.backCardView;
     [self reloadCards];
+
     
 }
 
@@ -324,6 +329,7 @@ static const CGFloat ChoosePersonButtonVerticalPadding = -10;
 -(void)pushProfile{
     UIStoryboard *psb = [UIStoryboard storyboardWithName:@"ProfileDetail" bundle:nil];
     ProfileDetailTVC *e = [psb instantiateViewControllerWithIdentifier:@"p"];//    [self presentViewController:profile animated:YES completion:nil];
+    e.userID = self.currentPerson.objectId;
     e.edgesForExtendedLayout = UIRectEdgeNone;
     [e.navigationController.navigationBar setTranslucent:NO];
     [self.navigationController pushViewController:e animated:YES];
