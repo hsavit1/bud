@@ -29,7 +29,7 @@ static CGFloat const MDCSwipeToChooseViewHorizontalPadding = 10.f + 15;
 static CGFloat const MDCSwipeToChooseViewTopPadding = 20.f + 50;
 static CGFloat const MDCSwipeToChooseViewLabelWidth = 95.f;
 
-@interface ProfileDetailTVC ()<GMCPagingScrollViewDataSource,GMCPagingScrollViewDelegate, ASFSharedViewTransitionDataSource>{
+@interface ProfileDetailTVC ()<GMCPagingScrollViewDataSource,GMCPagingScrollViewDelegate, ASFSharedViewTransitionDataSource, UIActionSheetDelegate>{
     NSMutableArray *profilePics;
 }
 
@@ -305,6 +305,28 @@ static CGFloat const MDCSwipeToChooseViewLabelWidth = 95.f;
     }
     return 30;
 }
+
+- (IBAction)flagButtonPressed:(id)sender {
+    
+    //now what do you want to flag this person for?
+    
+    UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:@"What is inappropriate about this person's profile?"
+                                                             delegate:self
+                                                    cancelButtonTitle:@"Cancel"
+                                               destructiveButtonTitle:nil
+                                                    otherButtonTitles:@"Inappropriate Language", @"Inappropriate Photos", @"Spam", nil];
+    
+    
+     [actionSheet showInView:self.view];
+}
+
+
+
+
+
+
+
+
 
 - (void)constructLikedView {
     CGRect frame = CGRectMake(MDCSwipeToChooseViewHorizontalPadding ,

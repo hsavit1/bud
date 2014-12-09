@@ -55,9 +55,6 @@ static const CGFloat ChoosePersonButtonVerticalPadding = -10;
 
 
 
-
-
-
 #pragma mark - Object Lifecycle
 
 - (instancetype)init {

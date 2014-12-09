@@ -285,6 +285,9 @@
                                                         <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                     </state>
+                                                    <connections>
+                                                        <action selector="flagButtonPressed:" destination="J3E-6H-341" eventType="touchUpInside" id="h5U-IN-c8f"/>
+                                                    </connections>
                                                 </button>
                                             </subviews>
                                             <color key="backgroundColor" red="1" green="0.5" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -306,10 +309,6 @@
                     </tableView>
                     <extendedEdge key="edgesForExtendedLayout" bottom="YES"/>
                     <navigationItem key="navigationItem" id="2Zx-16-YF7"/>
-                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
-                    <refreshControl key="refreshControl" opaque="NO" multipleTouchEnabled="YES" contentMode="center" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" id="ga9-LB-rEk">
-                        <autoresizingMask key="autoresizingMask"/>
-                    </refreshControl>
                     <connections>
                         <outlet property="distanceLabel" destination="V0g-4e-xZK" id="Ik6-a5-1wb"/>
                         <outlet property="educationLabel" destination="dKR-uJ-INx" id="1X9-bA-1K8"/>
@@ -400,7 +399,7 @@
                                         <constraints>
                                             <constraint firstAttribute="width" constant="288" id="Uik-bG-XHY"/>
                                         </constraints>
-                                        <string key="text">Say one day you died and went to heaven. At the opening gates are 6 people who want to get down to smoke some pot. If any of these 6 people could be anyone who has ever lived, who would they be?</string>
+                                        <string key="text">Let's say one day you died and went to heaven. At the opening gates are 6 people who want to get down with you to smoke some pot. If these 6 people could be anyone who has ever lived, who would they be?</string>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                         <nil key="highlightedColor"/>
@@ -486,7 +485,7 @@
                             <rect key="frame" x="0.0" y="64" width="320" height="59"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <subviews>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tip: Post a few pics and share some information about yourself here" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7MW-sa-ouB">
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Post a few pics and share some information about yourself" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7MW-sa-ouB">
                                     <rect key="frame" x="18" y="8" width="277" height="43"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="43" id="G36-wb-27Z"/>
