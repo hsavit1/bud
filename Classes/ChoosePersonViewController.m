@@ -138,6 +138,8 @@ static const CGFloat ChoosePersonButtonVerticalPadding = -10;
                                     if(![obj isKindOfClass:[NSNull class]]){
                                         UIStoryboard *matchSB = [UIStoryboard storyboardWithName:@"MatchView" bundle:nil];
                                         ItsAMatchViewController *matchView = [matchSB instantiateViewControllerWithIdentifier:@"mv"];
+                                        matchView.personImageFile = self.currentPerson.image;
+                                        matchView.name = self.currentPerson.name;
                                         [self presentViewController:matchView animated:YES completion:nil];
                                     }
                                     //if no match, do nothing

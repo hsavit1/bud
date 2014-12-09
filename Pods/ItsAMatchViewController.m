@@ -14,4 +14,9 @@
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
+-(void)viewDidLoad{
+    self.likedPersonImage.file = self.personImageFile;
+    [self.likedPersonImage loadInBackground];
+}
+
 @end
