@@ -134,7 +134,7 @@
             
             PFUser *user = [PFUser currentUser];
             if (![self.changeUsernameTextField.text isEqualToString:@""]){
-                user[@"firstName"] = self.changeUsernameTextField.text;
+                user[PF_USER_FULLNAME] = self.changeUsernameTextField.text;
                 //user[PF_USER_FULLNAME_LOWER] = [self.changeUsernameTextField.text lowercaseString];
             }
         NSLog(@"%f", self.maxAgeSlider.value);
