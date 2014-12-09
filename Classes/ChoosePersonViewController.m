@@ -29,6 +29,7 @@
 #import "ASFSharedViewTransition.h"
 #import "ProgressHUD.h"
 #import "RTSpinKitView.h"
+#import "ItsAMatchViewController.h"
 
 #import "utilities.h"
 #import <Parse/Parse.h>
@@ -127,11 +128,20 @@ static const CGFloat ChoosePersonButtonVerticalPadding = -10;
     
     [PFCloud callFunctionInBackground:@"match"
                       withParameters:@{
-                                       @"touser":self.currentPerson.objectId == nil ? @"":self.currentPerson.objectId,
-                                       @"match":@(direction == MDCSwipeDirectionRight)
+                                       @"touser" : self.currentPerson.objectId == nil ? @"":self.currentPerson.objectId,
+                                       @"match" : @(direction == MDCSwipeDirectionRight)
                                        }
-                                block: ^(id obj,NSError* err){
+                                block: ^(id obj, NSError* err){
                                     //swiped.
+                                    
+                                    //if swipes match, call match screen
+                                    if(![obj isKindOfClass:[NSNull class]]){
+                                        UIStoryboard *matchSB = [UIStoryboard storyboardWithName:@"MatchView" bundle:nil];
+                                        ItsAMatchViewController *matchView = [matchSB instantiateViewControllerWithIdentifier:@"mv"];
+                                        [self presentViewController:matchView animated:YES completion:nil];
+                                    }
+                                    //if no match, do nothing
+                                    
                                 }];
     self.frontCardView = self.backCardView;
     [self reloadCards];

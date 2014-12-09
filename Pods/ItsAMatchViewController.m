@@ -10,4 +10,8 @@
 
 @implementation ItsAMatchViewController
 
+- (IBAction)swipeMore:(id)sender {
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
+
 @end
