@@ -57,17 +57,8 @@ static CGFloat const MDCSwipeToChooseViewLabelWidth = 95.f;
         [self fillInUserInfo];
     }
     else{
-//        PFQuery *query = [PFUser query];
-//        [query whereKey:@"objectId" equalTo:self.userID];
-//        [query getFirstObjectInBackgroundWithBlock:^(PFObject *object, NSError *error) {
-//            if (!object) {
-//                NSLog(@"The getUser request failed.");
-//            }
-//            else {
-//                self.user = (PFUser*)object;
-                [self findPhotos];
-//            }
-//        }];
+        [self findPhotos];
+        [self fillInUserInfo];
         UIImage * imageNormal = [UIImage imageNamed:@"noSmoking"];
         UIImage * imageNormal2 = [UIImage imageNamed:@"yesSmoking"];
         UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];

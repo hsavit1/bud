@@ -140,7 +140,6 @@ static const CGFloat ChoosePersonButtonVerticalPadding = -10;
                                         UIStoryboard *matchSB = [UIStoryboard storyboardWithName:@"MatchView" bundle:nil];
                                         ItsAMatchViewController *matchView = [matchSB instantiateViewControllerWithIdentifier:@"mv"];
                                         matchView.personImageFile = self.currentPerson.image;
-                                        //matchView.name = self.currentPerson.name;
                                         matchView.likedPersonNameLabel.text = self.currentPerson.name;
                                         [self presentViewController:matchView animated:YES completion:nil];
                                     }
@@ -148,10 +147,8 @@ static const CGFloat ChoosePersonButtonVerticalPadding = -10;
                                     
                                 }];
     
-    
     self.frontCardView = self.backCardView;
     [self reloadCards];
-
     
 }
 
@@ -328,30 +325,10 @@ static const CGFloat ChoosePersonButtonVerticalPadding = -10;
 
 -(void)pushProfile{
     UIStoryboard *psb = [UIStoryboard storyboardWithName:@"ProfileDetail" bundle:nil];
-    ProfileDetailTVC *e = [psb instantiateViewControllerWithIdentifier:@"p"];//    [self presentViewController:profile animated:YES completion:nil];
-    
+    ProfileDetailTVC *e = [psb instantiateViewControllerWithIdentifier:@"p"];
     PFQuery *query = [PFUser query];
-    NSString *objID = self.currentPerson.objectId;
-    //[query whereKey:@"objectId" equalTo:objID];
-    [query getObjectInBackgroundWithId:objID block:^(PFObject *object, NSError *error) {
-        if(error){
-            NSLog(@"hi");
-        }
-        
-        if (!object) {
-            NSLog(@"The getUser request failed.");
-        }
-        else {
-            e.user = (PFUser*)object;
-            e.firstNameLabel.text = ((PFUser*)object)[@"username"];
-            e.distanceLabel.text = @"20 miles";
-            e.numMutualFriendsLabel.text = @"50";
-            e.lastActiveLabel.text = @"30 minutes ago";
-            e.personalBioLabel.text = ((PFUser*)object)[@"bioDescription"];
-        }
-    }];
-    
-    
+    PFUser *userAgain = (PFUser *)[query getObjectWithId:self.currentPerson.objectId];
+    e.user = userAgain;
     e.edgesForExtendedLayout = UIRectEdgeNone;
     [e.navigationController.navigationBar setTranslucent:NO];
     [self.navigationController pushViewController:e animated:YES];
