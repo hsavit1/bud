@@ -55,15 +55,16 @@
 //6 stoners
 @property (weak, nonatomic) IBOutlet UILabel *sixStonersInHeaven;
 
-@property (weak, nonatomic) IBOutlet UIButton *medi1;
-@property (weak, nonatomic) IBOutlet UIButton *medi2;
-@property (weak, nonatomic) IBOutlet UIButton *medi3;
-@property (weak, nonatomic) IBOutlet UIButton *medi4;
-@property (weak, nonatomic) IBOutlet UIButton *medi5;
-@property (weak, nonatomic) IBOutlet UIButton *medi6;
-@property (weak, nonatomic) IBOutlet UIButton *medi7;
-@property (weak, nonatomic) IBOutlet UIButton *medi8;
-@property (weak, nonatomic) IBOutlet UIButton *medi9;
+//@property (weak, nonatomic) IBOutlet UIButton *medi1;
+//@property (weak, nonatomic) IBOutlet UIButton *medi2;
+//@property (weak, nonatomic) IBOutlet UIButton *medi3;
+//@property (weak, nonatomic) IBOutlet UIButton *medi4;
+//@property (weak, nonatomic) IBOutlet UIButton *medi5;
+//@property (weak, nonatomic) IBOutlet UIButton *medi6;
+//@property (weak, nonatomic) IBOutlet UIButton *medi7;
+//@property (weak, nonatomic) IBOutlet UIButton *medi8;
+//@property (weak, nonatomic) IBOutlet UIButton *medi9;
+//@property (weak, nonatomic) IBOutlet UIButton *allMediButtons;
 
 @property (weak, nonatomic) IBOutlet UIImageView *favoriteStrainImage;
 @end

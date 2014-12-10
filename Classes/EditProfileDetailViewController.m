@@ -23,6 +23,7 @@
 @interface EditProfileDetailViewController ()<UITextViewDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate>{
     NSArray *profilePicsArray;
     NSArray *removeButtons;
+    NSArray *favoriteTools;
 
 }
 
@@ -45,6 +46,12 @@
      [NSDictionary dictionaryWithObjectsAndKeys:
       [UIFont fontWithName:@"SnellRoundhand-Black" size:36],
       NSFontAttributeName, nil]];
+//    
+//    for (int i = 1; i < 10; i++) {
+//        NSString *buttonName = [@"medi" stringByAppendingString:[@(i) stringValue]];
+//        
+//    }
+//    self.medi1 addTarget:self action:<#(SEL)#> forControlEvents:<#(UIControlEvents)#>
     
     self.addImage0.layer.cornerRadius = 8;
     self.addImage0.layer.masksToBounds = YES;
@@ -504,6 +511,77 @@
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
+- (IBAction)buttonTapped:(UIButton*)sender {
+    if(sender.alpha == .5){
+        sender.alpha = 1;
+        switch (sender.tag) {
+            case 1:
+                [self.view viewWithTag:11].alpha = 1;
+                break;
+            case 2:
+                [self.view viewWithTag:22].alpha = 1;
+                break;
+            case 3:
+                [self.view viewWithTag:33].alpha = 1;
+                break;
+            case 4:
+                [self.view viewWithTag:44].alpha = 1;
+                break;
+            case 5:
+                [self.view viewWithTag:55].alpha = 1;
+                break;
+            case 6:
+                [self.view viewWithTag:66].alpha = 1;
+                break;
+            case 7:
+                [self.view viewWithTag:77].alpha = 1;
+                break;
+            case 8:
+                [self.view viewWithTag:88].alpha = 1;
+                break;
+            case 9:
+                [self.view viewWithTag:99].alpha = 1;
+                break;
+            default:
+                break;
+        }
+    }
+    else{
+        sender.alpha = .5;
+        switch (sender.tag) {
+            case 1:
+                [self.view viewWithTag:11].alpha = .5;
+                break;
+            case 2:
+                [self.view viewWithTag:22].alpha = .5;
+                break;
+            case 3:
+                [self.view viewWithTag:33].alpha = .5;
+                break;
+            case 4:
+                [self.view viewWithTag:44].alpha = .5;
+                break;
+            case 5:
+                [self.view viewWithTag:55].alpha = .5;
+                break;
+            case 6:
+                [self.view viewWithTag:66].alpha = .5;
+                break;
+            case 7:
+                [self.view viewWithTag:77].alpha = .5;
+                break;
+            case 8:
+                [self.view viewWithTag:88].alpha = .5;
+                break;
+            case 9:
+                [self.view viewWithTag:99].alpha = .5;
+                break;
+            default:
+                break;
+        }
+    }
+}
+
 -(void)addImage:(UIButton*)tappedView{
     
     DoActionSheet *vActionSheet = [[DoActionSheet alloc] init];
@@ -566,22 +644,27 @@
                          NSLog(@"---------------> result : %d", nResult);
                          
                          switch (nResult) {
+                                 //save a number when done to the db (0 -> 3, indicating your choice)
                              case 0:
                                  self.favoriteStrainImage.image = [UIImage imageNamed:@"indica_burned.png"];
                                  self.favoriteTypeLabel.text = @"Indica";
                                  self.favoriteTypeLabel.text = @"Indica: You're someone who likes to chill. The full body effects of the indica are relaxing for you after a full day's worth of work.";
+                                 [self saveFavoriteStrain:0];
                                  break;
                              case 1:
                                  self.favoriteStrainImage.image = [UIImage imageNamed:@"rsz_1rsz_1sativa.png"];
                                  self.favoriteTypeLabel.text = @"Sativa: You're someone who likes to be active and in the moment. You embrace the uplifing elements of the strain and you like to feel the creative juices flow.";
+                                 [self saveFavoriteStrain:1];
                                  break;
                              case 2:
                                  self.favoriteStrainImage.image = [UIImage imageNamed:@"hybrid_burned.png"];
                                  self.favoriteTypeLabel.text = @"Hybrid";
                                  self.favoriteTypeLabel.text = @"Hybrid: You're someone in between.";
+                                 [self saveFavoriteStrain:2];
                                  break;
                              case 3:
                                  self.favoriteTypeLabel.text = @"Whatever my friends have: You'll fill your bowl with anything you can find. Any weed is good weed for you";
+                                 [self saveFavoriteStrain:3];
                                  break;
                              default:
                                  break;
@@ -591,6 +674,30 @@
     }
 }
 
+-(void)saveFavoriteWaysToGetHigh:(NSArray*)waysToGetHigh{
+    
+    PFQuery *userQuery = [PFQuery queryWithClassName:@"UserProfile"];
+    [userQuery whereKey:@"user" equalTo:[PFUser currentUser]];
+    userQuery.limit = 1;
+    [userQuery findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+        if(objects.count != 0){
+            //            objects[0][@"favortieTools"] = @(waysToGetHigh);
+        }
+    }];
+}
+
+
+-(void)saveFavoriteStrain:(int)strainOfChoice{
+ 
+    PFQuery *userQuery = [PFQuery queryWithClassName:@"UserProfile"];
+    [userQuery whereKey:@"user" equalTo:[PFUser currentUser]];
+    userQuery.limit = 1;
+    [userQuery findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+        if(objects.count != 0){
+            objects[0][@"favoriteProduct"] = @(strainOfChoice); //[NSNumber numberWithInt:strainOfChoice];
+        }
+    }];
+}
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue
                  sender:(id)sender {
