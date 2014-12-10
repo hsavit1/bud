@@ -29,7 +29,7 @@ static CGFloat const MDCSwipeToChooseViewHorizontalPadding = 10.f + 15;
 static CGFloat const MDCSwipeToChooseViewTopPadding = 20.f + 50;
 static CGFloat const MDCSwipeToChooseViewLabelWidth = 95.f;
 
-@interface ProfileDetailTVC ()<GMCPagingScrollViewDataSource,GMCPagingScrollViewDelegate, ASFSharedViewTransitionDataSource, UIActionSheetDelegate>{
+@interface ProfileDetailTVC ()<GMCPagingScrollViewDataSource, GMCPagingScrollViewDelegate, ASFSharedViewTransitionDataSource, UIActionSheetDelegate>{
     NSMutableArray *profilePics;
 }
 
@@ -59,79 +59,28 @@ static CGFloat const MDCSwipeToChooseViewLabelWidth = 95.f;
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    self.view.backgroundColor = [UIColor colorWithRed:0.698 green:0.847 blue:0.698 alpha:1] /*#b2d8b2*/;
-    UIBarButtonItem *btn = [[UIBarButtonItem alloc] initWithTitle:@"Back"
-                                     style:UIBarButtonItemStyleBordered
-                                    target:nil
-                                    action:nil];
-    [[self navigationItem] setBackBarButtonItem:btn];
-    
-    float width = self.view.bounds.size.width;
-    self.headerView.frame = CGRectMake(0, 0, width, width);
-    CGRect backgroundRect = CGRectMake(0, 0, width, width);
-    self.pagingScrollView = [[GMCPagingScrollView alloc] initWithFrame:backgroundRect];
-    self.pagingScrollView.dataSource = self;
-    self.pagingScrollView.delegate = self;
-    self.pagingScrollView.infiniteScroll = YES;
-    self.pagingScrollView.interpageSpacing = 0;
-    [self.pagingScrollView registerClass:[UIView class] forReuseIdentifier:@"blah"];
-    [self.pagingScrollView reloadData];
-    self.pagingScrollView.userInteractionEnabled = YES;
-    self.automaticallyAdjustsScrollViewInsets = NO;
-    
-    CGSize navBarSize = self.navigationController.navigationBar.bounds.size;
-    CGPoint origin = CGPointMake( navBarSize.width/2, navBarSize.height/2 );
-    self.pageControl = [[UIPageControl alloc] initWithFrame:CGRectMake(origin.x, origin.y,
-                                                                       0, 0)];//    self.pageControl = [[UIPageControl alloc]initWithFrame:CGRectMake(5, 10, 100, 20)];
-    self.pageControl.numberOfPages = 6;
-    [self.pageControl setCurrentPage:0];
-    self.pageControl.pageIndicatorTintColor = [UIColor darkGrayColor];
-    self.pageControl.currentPageIndicatorTintColor = [UIColor colorWithRed:0.086 green:0.627 blue:0.522 alpha:1] /*#16a085*/;
-    [self.navigationController.navigationBar addSubview:self.pageControl];
-    self.pageControl.alpha = 1;
-    
-    [self.tableView addSubview:self.pagingScrollView];
-    
-
+    profilePics = [[NSMutableArray alloc]init];
     
     if([self.navigationController.viewControllers[0] class] == [self class]){
         UIBarButtonItem *edit = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemEdit target:self action:@selector(editButtonPressed:)];
         self.navigationItem.rightBarButtonItem = edit;
         self.user = [PFUser currentUser];
-        profilePics = [[NSMutableArray alloc]init];
-        for (int i = 0; i < 6; i++) {
-            NSString *save = [@"image" stringByAppendingString:[NSString stringWithFormat:@"%d", i]];
-            if(self.user[save]){
-                PFFile *file = self.user[save];
-                [profilePics addObject:file];
-            }
-        }
+        [self findPhotos];
+        [self fillInUserInfo];
     }
     else{
         PFQuery *query = [PFUser query];
         [query whereKey:@"objectId" equalTo:self.userID];
         [query getFirstObjectInBackgroundWithBlock:^(PFObject *object, NSError *error) {
             if (!object) {
-                NSLog(@"The getFirstObject request failed.");
+                NSLog(@"The getUser request failed.");
             }
             else {
-                // The find succeeded.
-                NSLog(@"Successfully retrieved the object.");
                 self.user = (PFUser*)object;
-                NSLog(@"hi");
-                profilePics = [[NSMutableArray alloc]init];
-                for (int i = 0; i < 6; i++) {
-                    NSString *save = [@"image" stringByAppendingString:[NSString stringWithFormat:@"%d", i]];
-                    if(self.user[save]){
-                        PFFile *file = self.user[save];
-                        [profilePics addObject:file];
-                    }
-                }
+                [self findPhotos];
+                [self fillInUserInfo];
             }
-            
         }];
-        
-        
         UIImage * imageNormal = [UIImage imageNamed:@"noSmoking"];
         UIImage * imageNormal2 = [UIImage imageNamed:@"yesSmoking"];
         UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
@@ -145,15 +94,44 @@ static CGFloat const MDCSwipeToChooseViewLabelWidth = 95.f;
         UIBarButtonItem * barButtonItem = [[UIBarButtonItem alloc] initWithCustomView:button];
         UIBarButtonItem * barButtonItem2 = [[UIBarButtonItem alloc] initWithCustomView:button2];
         [self.navigationItem setRightBarButtonItems:@[barButtonItem2, barButtonItem]];
-
+        
         _likeColor = [UIColor colorWith8BitRed:29.f green:245.f blue:106.f alpha:1.f];
         _nopeColor = [UIColor colorWith8BitRed:247.f green:91.f blue:37.f alpha:1.f];
         _likedRotationAngle = -10.f;
         _nopeRotationAngle = 10.f;
         [self constructLikedView];
         [self constructNopeImageView];
-        
     }
+    
+        self.view.backgroundColor = [UIColor colorWithRed:0.698 green:0.847 blue:0.698 alpha:1] /*#b2d8b2*/;
+        UIBarButtonItem *btn = [[UIBarButtonItem alloc] initWithTitle:@"Back"
+                                                                style:UIBarButtonItemStyleBordered
+                                                               target:nil
+                                                               action:nil];
+        [[self navigationItem] setBackBarButtonItem:btn];
+        
+        float width = self.view.bounds.size.width;
+        self.headerView.frame = CGRectMake(0, 0, width, width);
+        CGRect backgroundRect = CGRectMake(0, 0, width, width);
+        self.pagingScrollView = [[GMCPagingScrollView alloc] initWithFrame:backgroundRect];
+        self.pagingScrollView.dataSource = self;
+        self.pagingScrollView.delegate = self;
+        self.pagingScrollView.infiniteScroll = YES;
+        self.pagingScrollView.interpageSpacing = 0;
+        [self.pagingScrollView registerClass:[UIView class] forReuseIdentifier:@"blah"];
+        [self.pagingScrollView reloadData];
+        self.pagingScrollView.userInteractionEnabled = YES;
+        self.automaticallyAdjustsScrollViewInsets = NO;
+        [self.tableView addSubview:self.pagingScrollView];
+
+        CGSize navBarSize = self.navigationController.navigationBar.bounds.size;
+        CGPoint origin = CGPointMake( navBarSize.width/2, navBarSize.height/2 );
+        self.pageControl = [[UIPageControl alloc] initWithFrame:CGRectMake(origin.x, origin.y, 0, 0)];
+        [self.pageControl setCurrentPage:0];
+        self.pageControl.pageIndicatorTintColor = [UIColor darkGrayColor];
+        self.pageControl.currentPageIndicatorTintColor = [UIColor colorWithRed:0.086 green:0.627 blue:0.522 alpha:1] /*#16a085*/;
+        [self.navigationController.navigationBar addSubview:self.pageControl];
+        self.pageControl.alpha = 1;
     
 }
 
@@ -169,7 +147,27 @@ static CGFloat const MDCSwipeToChooseViewLabelWidth = 95.f;
 
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+-(void)findPhotos{
+    PFQuery *imageQuery = [PFQuery queryWithClassName:@"Photo"];
+    [imageQuery whereKey:@"user" equalTo:self.user];
+    [imageQuery findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *err){
+        if (objects.count != 0) {
+            for (int i = 0; i < objects.count; i++) {
+                PFFile *file = objects[i];
+                [profilePics addObject:file];
+            }
+        }
+    }];
+}
 
+-(void)fillInUserInfo{
+    self.firstNameLabel.text = self.user[@"username"];
+    self.distanceLabel.text = @"20 miles";
+    self.numMutualFriendsLabel.text = @"50";
+    self.lastActiveLabel.text = @"30 minutes ago";
+//    self.personalBioLabel.text = self.user[@"bioDescription"];
+
+}
 
 - (void)tableView:(UITableView *)tableView willDisplayHeaderView:(UIView *)view forSection:(NSInteger)section
 {
@@ -178,6 +176,7 @@ static CGFloat const MDCSwipeToChooseViewLabelWidth = 95.f;
 }
 
 - (NSUInteger)numberOfPagesInPagingScrollView:(GMCPagingScrollView *)pagingScrollView {
+    self.pageControl.numberOfPages = profilePics.count;
     return profilePics.count;
 }
 
@@ -202,12 +201,6 @@ static CGFloat const MDCSwipeToChooseViewLabelWidth = 95.f;
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     switch (indexPath.section) {
         case 0:{
-            
-            self.firstNameLabel.text = self.user[@"username"];
-            self.distanceLabel.text = @"20 miles";
-            self.numMutualFriendsLabel.text = @"50";
-            self.lastActiveLabel.text = @"30 minutes ago";
-            
             return 70;
             break;
         }
