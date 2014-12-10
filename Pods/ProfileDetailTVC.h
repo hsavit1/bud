@@ -16,6 +16,15 @@
 @property (weak, nonatomic) NSString* userID;
 
 
+@property (weak, nonatomic) IBOutlet UILabel *firstNameLabel;
+@property (weak, nonatomic) IBOutlet UILabel *distanceLabel;
+@property (weak, nonatomic) IBOutlet UILabel *numMutualFriendsLabel;
+@property (weak, nonatomic) IBOutlet UILabel *lastActiveLabel;
+@property (weak, nonatomic) IBOutlet UILabel *personalBioLabel;
+@property (weak, nonatomic) IBOutlet UILabel *favoriteStrains;
+@property (weak, nonatomic) IBOutlet UILabel *toolsIUseLabel;
+@property (weak, nonatomic) IBOutlet UILabel *educationLabel;
+@property (weak, nonatomic) IBOutlet UILabel *userLocationLabel;
 
 /*!
  * The "liked" view, which fades in when the like button is pressed

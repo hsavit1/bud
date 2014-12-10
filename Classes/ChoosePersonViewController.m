@@ -329,7 +329,28 @@ static const CGFloat ChoosePersonButtonVerticalPadding = -10;
 -(void)pushProfile{
     UIStoryboard *psb = [UIStoryboard storyboardWithName:@"ProfileDetail" bundle:nil];
     ProfileDetailTVC *e = [psb instantiateViewControllerWithIdentifier:@"p"];//    [self presentViewController:profile animated:YES completion:nil];
-    e.userID = self.currentPerson.objectId;
+    
+    PFQuery *query = [PFUser query];
+    [query whereKey:@"objectId" equalTo:self.currentPerson.objectId];
+    [query getFirstObjectInBackgroundWithBlock:^(PFObject *object, NSError *error) {
+        if(error){
+            NSLog(@"hi");
+        }
+        
+        if (!object) {
+            NSLog(@"The getUser request failed.");
+        }
+        else {
+            e.user = (PFUser*)object;
+            e.firstNameLabel.text = ((PFUser*)object)[@"username"];
+            e.distanceLabel.text = @"20 miles";
+            e.numMutualFriendsLabel.text = @"50";
+            e.lastActiveLabel.text = @"30 minutes ago";
+            e.personalBioLabel.text = ((PFUser*)object)[@"bioDescription"];
+        }
+    }];
+    
+    
     e.edgesForExtendedLayout = UIRectEdgeNone;
     [e.navigationController.navigationBar setTranslucent:NO];
     [self.navigationController pushViewController:e animated:YES];
