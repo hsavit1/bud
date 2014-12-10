@@ -92,7 +92,7 @@ static CGFloat const MDCSwipeToChooseViewLabelWidth = 95.f;
         CGRect backgroundRect = CGRectMake(0, 0, width, width);
         self.pagingScrollView = [[GMCPagingScrollView alloc] initWithFrame:backgroundRect];
         self.pagingScrollView.dataSource = self;
-        self.pagingScrollView.delegate = self;
+    //self.pagingScrollView.delegate = self;
         self.pagingScrollView.infiniteScroll = YES;
         self.pagingScrollView.interpageSpacing = 0;
         [self.pagingScrollView registerClass:[UIView class] forReuseIdentifier:@"blah"];
@@ -182,6 +182,7 @@ static CGFloat const MDCSwipeToChooseViewLabelWidth = 95.f;
             backgroundImageView.file = profilePics[i];
             [backgroundImageView loadInBackground];
             page = backgroundImageView;
+            
             [self.pageControl setCurrentPage:i];
         }
     }
@@ -202,6 +203,8 @@ static CGFloat const MDCSwipeToChooseViewLabelWidth = 95.f;
             self.personalBioLabel.textAlignment = NSTextAlignmentLeft;
             self.personalBioLabel.lineBreakMode = NSLineBreakByWordWrapping;
             //self.personalBioLabel.text = self.user[@"bioDescription"];
+            
+            self.personalBioLabel.text = self.personalBioLabelString;
             if (IS_IPHONE_5) {
                 [self.personalBioLabel setPreferredMaxLayoutWidth:248];
                 CGSize expectedSize = [self.personalBioLabel.text boundingRectWithSize:CGSizeMake(248, 10000)
@@ -234,13 +237,13 @@ static CGFloat const MDCSwipeToChooseViewLabelWidth = 95.f;
             }
         }
         case 2:{
-            NSString *string = self.user[@"favoriteProducts"];
+            //NSString *string = self.user[@"favoriteProducts"];
 
             return 60;
         }
             break;
         case 3:{
-            NSString *string = self.user[@"favoriteTools"];
+            //NSString *string = self.user[@"favoriteTools"];
 
             return 60;
             
@@ -248,6 +251,8 @@ static CGFloat const MDCSwipeToChooseViewLabelWidth = 95.f;
         case 4:{
             //NSString *string = self.user[@"education"];
             //self.educationLabel.text = string;
+            
+            self.educationLabel.text = self.educationLabelString;
             if (IS_IPHONE_5) {
                 [self.educationLabel setPreferredMaxLayoutWidth:248];
                 CGSize expectedSize = [self.educationLabel.text boundingRectWithSize:CGSizeMake(248, 10000)
@@ -283,6 +288,8 @@ static CGFloat const MDCSwipeToChooseViewLabelWidth = 95.f;
         case 5:{
 //            NSString *string = self.user[@"location"];
 //            self.userLocationLabel.text = string;
+            
+            self.userLocationLabel.text = self.userLocationLabelString;
             if (IS_IPHONE_5) {
                 [self.userLocationLabel setPreferredMaxLayoutWidth:248];
                 CGSize expectedSize = [self.userLocationLabel.text boundingRectWithSize:CGSizeMake(248, 10000)

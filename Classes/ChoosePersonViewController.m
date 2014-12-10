@@ -332,9 +332,9 @@ static const CGFloat ChoosePersonButtonVerticalPadding = -10;
     userQuery.limit = 1;
     [userQuery findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
         if(objects.count != 0){
-            e.personalBioLabel.text = objects[0][@"bio"];
-            e.educationLabel.text = objects[0][@"education"];
-            e.userLocationLabel.text = objects[0][@"location"];
+            e.personalBioLabelString = objects[0][@"bio"];
+            e.educationLabelString = objects[0][@"education"];
+            e.userLocationLabelString = objects[0][@"location"];
         }
     }];
     

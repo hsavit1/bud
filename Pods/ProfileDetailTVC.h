@@ -13,13 +13,18 @@
 
 @property (weak, nonatomic) IBOutlet UIView *headerView;
 @property (weak, nonatomic) PFUser *user;
-@property (weak, nonatomic) NSString* userID;
 
-
+//in the "about me" cell
 @property (weak, nonatomic) IBOutlet UILabel *firstNameLabel;
 @property (weak, nonatomic) IBOutlet UILabel *distanceLabel;
 @property (weak, nonatomic) IBOutlet UILabel *numMutualFriendsLabel;
 @property (weak, nonatomic) IBOutlet UILabel *lastActiveLabel;
+
+@property (weak, nonatomic) NSString *personalBioLabelString;
+@property (weak, nonatomic) NSNumber *favoriteStrainsNumber;
+@property (weak, nonatomic) NSString *educationLabelString;
+@property (weak, nonatomic) NSString *userLocationLabelString;
+
 @property (weak, nonatomic) IBOutlet UILabel *personalBioLabel;
 @property (weak, nonatomic) IBOutlet UILabel *favoriteStrains;
 @property (weak, nonatomic) IBOutlet UILabel *toolsIUseLabel;

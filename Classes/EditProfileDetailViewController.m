@@ -567,6 +567,7 @@
                          
                          switch (nResult) {
                              case 0:
+                                 self.favoriteStrainImage.image = [UIImage imageNamed:@"indica_burned.png"];
                                  self.favoriteTypeLabel.text = @"Indica";
                                  self.favoriteTypeLabel.text = @"Indica: You're someone who likes to chill. The full body effects of the indica are relaxing for you after a full day's worth of work.";
                                  break;
@@ -575,6 +576,7 @@
                                  self.favoriteTypeLabel.text = @"Sativa: You're someone who likes to be active and in the moment. You embrace the uplifing elements of the strain and you like to feel the creative juices flow.";
                                  break;
                              case 2:
+                                 self.favoriteStrainImage.image = [UIImage imageNamed:@"hybrid_burned.png"];
                                  self.favoriteTypeLabel.text = @"Hybrid";
                                  self.favoriteTypeLabel.text = @"Hybrid: You're someone in between.";
                                  break;
@@ -595,29 +597,11 @@
     if ([segue.identifier isEqualToString:@"one"]) {
         ((ComposeContentViewController *)segue.destinationViewController).senderCellNumber = [NSNumber numberWithInt:1];
     }
-    else if ([segue.identifier isEqualToString:@"two"]) {
-        ((ComposeContentViewController *)segue.destinationViewController).senderCellNumber = [NSNumber numberWithInt:2];
-    }
-    else if ([segue.identifier isEqualToString:@"three"]) {
-        ((ComposeContentViewController *)segue.destinationViewController).senderCellNumber = [NSNumber numberWithInt:3];
-    }
-    else if ([segue.identifier isEqualToString:@"four"]) {
-        ((ComposeContentViewController *)segue.destinationViewController).senderCellNumber = [NSNumber numberWithInt:4];
-    }
     else if ([segue.identifier isEqualToString:@"education"]) {
         ((ComposeContentViewController *)segue.destinationViewController).senderCellNumber = [NSNumber numberWithInt:5];
     }
     else if ([segue.identifier isEqualToString:@"location"]) {
         ((ComposeContentViewController *)segue.destinationViewController).senderCellNumber = [NSNumber numberWithInt:6];
-    }
-    else if ([segue.identifier isEqualToString:@"movies"]) {
-        ((ComposeContentViewController *)segue.destinationViewController).senderCellNumber = [NSNumber numberWithInt:7];
-    }
-    else if ([segue.identifier isEqualToString:@"music"]) {
-        ((ComposeContentViewController *)segue.destinationViewController).senderCellNumber = [NSNumber numberWithInt:8];
-    }
-    else if ([segue.identifier isEqualToString:@"books"]) {
-        ((ComposeContentViewController *)segue.destinationViewController).senderCellNumber = [NSNumber numberWithInt:9];
     }
 
 }
