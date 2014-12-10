@@ -331,8 +331,9 @@ static const CGFloat ChoosePersonButtonVerticalPadding = -10;
     ProfileDetailTVC *e = [psb instantiateViewControllerWithIdentifier:@"p"];//    [self presentViewController:profile animated:YES completion:nil];
     
     PFQuery *query = [PFUser query];
-    [query whereKey:@"objectId" equalTo:self.currentPerson.objectId];
-    [query getFirstObjectInBackgroundWithBlock:^(PFObject *object, NSError *error) {
+    NSString *objID = self.currentPerson.objectId;
+    //[query whereKey:@"objectId" equalTo:objID];
+    [query getObjectInBackgroundWithId:objID block:^(PFObject *object, NSError *error) {
         if(error){
             NSLog(@"hi");
         }
