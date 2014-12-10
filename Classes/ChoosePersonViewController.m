@@ -245,11 +245,7 @@ static const CGFloat ChoosePersonButtonVerticalPadding = -10;
                                         for (PFObject *obj in objs) {
                                             [_people addObject:[[Person alloc] initFromPFObject:obj]];
                                         }
-   
-                                        
                                         [self reloadCards];
-                                    
-   
                                     }
                                 }];
 }
@@ -329,6 +325,19 @@ static const CGFloat ChoosePersonButtonVerticalPadding = -10;
     PFQuery *query = [PFUser query];
     PFUser *userAgain = (PFUser *)[query getObjectWithId:self.currentPerson.objectId];
     e.user = userAgain;
+    
+    PFQuery *userQuery = [PFQuery queryWithClassName:@"UserProfile"];
+    //PFUser *userProfile = (PFUser *)[userQuery getObjectWithId:userAgain.objectId];
+    [userQuery whereKey:@"user" equalTo:userAgain];
+    userQuery.limit = 1;
+    [userQuery findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+        if(objects.count != 0){
+            e.personalBioLabel.text = objects[0][@"bio"];
+            e.educationLabel.text = objects[0][@"education"];
+            e.userLocationLabel.text = objects[0][@"location"];
+        }
+    }];
+    
     e.edgesForExtendedLayout = UIRectEdgeNone;
     [e.navigationController.navigationBar setTranslucent:NO];
     [self.navigationController pushViewController:e animated:YES];

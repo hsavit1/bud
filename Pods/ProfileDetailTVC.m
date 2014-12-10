@@ -29,13 +29,12 @@ static CGFloat const MDCSwipeToChooseViewHorizontalPadding = 10.f + 15;
 static CGFloat const MDCSwipeToChooseViewTopPadding = 20.f + 50;
 static CGFloat const MDCSwipeToChooseViewLabelWidth = 95.f;
 
-@interface ProfileDetailTVC ()<GMCPagingScrollViewDataSource, GMCPagingScrollViewDelegate, ASFSharedViewTransitionDataSource, UIActionSheetDelegate>{
+@interface ProfileDetailTVC ()<GMCPagingScrollViewDataSource, ASFSharedViewTransitionDataSource, UIActionSheetDelegate>{
     NSMutableArray *profilePics;
 }
 
 @property (nonatomic, strong) GMCPagingScrollView *pagingScrollView;
 @property (nonatomic, strong) UIPageControl *pageControl;
-
 
 @property (nonatomic, strong) MDCSwipeToChooseViewOptions *options;
 
@@ -128,22 +127,36 @@ static CGFloat const MDCSwipeToChooseViewLabelWidth = 95.f;
 -(void)findPhotos{
     PFQuery *imageQuery = [PFQuery queryWithClassName:@"Photo"];
     [imageQuery whereKey:@"user" equalTo:self.user];
+    imageQuery.limit = 6;
     [imageQuery findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *err){
         if (objects.count != 0) {
             for (int i = 0; i < objects.count; i++) {
-                PFFile *file = objects[i];
+                PFFile *file = objects[i][@"photo"];
                 [profilePics addObject:file];
             }
         }
     }];
 }
 
+//-(void)findUserInfo{
+//    PFQuery *userQuery = [PFQuery queryWithClassName:@"UserProfile"];
+//    PFUser *userAgain = (PFUser *)[userQuery getObjectWithId:self.user.objectId];
+//    //    [userQuery whereKey:@"user" equalTo:self.user];
+//    userQuery.limit = 1;
+//    [userQuery findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+//        if(objects.count != 0){
+//            self.personalBioLabel.text = objects[0][@"bio"];
+//            self.educationLabel.text = objects[0][@"education"];
+//            self.userLocationLabel.text = objects[0][@"location"];
+//        }
+//    }];
+//}
+
 -(void)fillInUserInfo{
-    self.firstNameLabel.text = self.user[@"username"];
+    self.firstNameLabel.text = self.user[@"fullname"];
     self.distanceLabel.text = @"20 miles";
     self.numMutualFriendsLabel.text = @"50";
     self.lastActiveLabel.text = @"30 minutes ago";
-//    self.personalBioLabel.text = self.user[@"bioDescription"];
 
 }
 
@@ -177,6 +190,9 @@ static CGFloat const MDCSwipeToChooseViewLabelWidth = 95.f;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+    //[self findUserInfo];
+    
     switch (indexPath.section) {
         case 0:{
             return 70;
@@ -185,7 +201,7 @@ static CGFloat const MDCSwipeToChooseViewLabelWidth = 95.f;
         case 1:{
             self.personalBioLabel.textAlignment = NSTextAlignmentLeft;
             self.personalBioLabel.lineBreakMode = NSLineBreakByWordWrapping;
-            self.personalBioLabel.text = self.user[@"bioDescription"];
+            //self.personalBioLabel.text = self.user[@"bioDescription"];
             if (IS_IPHONE_5) {
                 [self.personalBioLabel setPreferredMaxLayoutWidth:248];
                 CGSize expectedSize = [self.personalBioLabel.text boundingRectWithSize:CGSizeMake(248, 10000)
@@ -230,8 +246,8 @@ static CGFloat const MDCSwipeToChooseViewLabelWidth = 95.f;
             
         }
         case 4:{
-            NSString *string = self.user[@"education"];
-            self.educationLabel.text = string;
+            //NSString *string = self.user[@"education"];
+            //self.educationLabel.text = string;
             if (IS_IPHONE_5) {
                 [self.educationLabel setPreferredMaxLayoutWidth:248];
                 CGSize expectedSize = [self.educationLabel.text boundingRectWithSize:CGSizeMake(248, 10000)
@@ -265,8 +281,8 @@ static CGFloat const MDCSwipeToChooseViewLabelWidth = 95.f;
             return 60;
         }
         case 5:{
-            NSString *string = self.user[@"location"];
-            self.userLocationLabel.text = string;
+//            NSString *string = self.user[@"location"];
+//            self.userLocationLabel.text = string;
             if (IS_IPHONE_5) {
                 [self.userLocationLabel setPreferredMaxLayoutWidth:248];
                 CGSize expectedSize = [self.userLocationLabel.text boundingRectWithSize:CGSizeMake(248, 10000)
