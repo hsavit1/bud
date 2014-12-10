@@ -46,12 +46,6 @@
      [NSDictionary dictionaryWithObjectsAndKeys:
       [UIFont fontWithName:@"SnellRoundhand-Black" size:36],
       NSFontAttributeName, nil]];
-//    
-//    for (int i = 1; i < 10; i++) {
-//        NSString *buttonName = [@"medi" stringByAppendingString:[@(i) stringValue]];
-//        
-//    }
-//    self.medi1 addTarget:self action:<#(SEL)#> forControlEvents:<#(UIControlEvents)#>
     
     self.addImage0.layer.cornerRadius = 8;
     self.addImage0.layer.masksToBounds = YES;
@@ -82,7 +76,6 @@
     self.addImage5.layer.masksToBounds = YES;
     self.addImage5.layer.borderColor = [UIColor colorWithRed:0.086 green:0.627 blue:0.522 alpha:1].CGColor; /*#16a085*/
     self.addImage5.layer.borderWidth = 3;
-
     
     self.removeImage0.layer.cornerRadius = self.removeImage0.frame.size.width / 2;
     self.removeImage1.layer.cornerRadius = self.removeImage0.frame.size.width / 2;
@@ -96,20 +89,12 @@
     self.removeImage3.layer.masksToBounds = YES;
     self.removeImage4.layer.masksToBounds = YES;
     self.removeImage5.layer.masksToBounds = YES;
-
-    
-    
-    
-    
     
     if(! IS_IPHONE_5){
         
         self.addImage4.frame = CGRectMake(self.headerView.bounds.size.width/2 - 70, self.addImage4.frame.origin.y, self.addImage4.frame.size.width, self.addImage4.frame.size.height);
         self.removeImage4.frame = CGRectMake(self.headerView.bounds.size.width/2 - 60, self.addImage4.frame.origin.y, self.addImage4.frame.size.width, self.addImage4.frame.size.height);
-        
-        
-        
-        
+
 //        self.addImage6 = [[PFImageView alloc] initWithFrame:CGRectMake((self.addImage5.frame.origin.x - 15), self.addImage5.frame.origin.y, 60, 60)];
 //        self.addImage6.layer.cornerRadius = 8;
 //        self.addImage6.layer.masksToBounds = YES;
@@ -128,35 +113,49 @@
     }
     
     PFUser *user = [PFUser currentUser];
-    self.addImage0.file = user[@"image0"];
-    if(self.addImage0.file == nil)
-       self.removeImage0.hidden = YES;
-    [self.addImage0 loadInBackground];
-    
-    self.addImage1.file = user[@"image2"];
-    [self.addImage1 loadInBackground];
-    if(self.addImage1.file == nil)
-        self.removeImage1.hidden = YES;
-    
-    self.addImage2.file = user[@"image2"];
-    [self.addImage2 loadInBackground];
-    if(self.addImage2.file == nil)
-        self.removeImage2.hidden = YES;
-    
-    self.addImage3.file = user[@"image3"];
-    [self.addImage3 loadInBackground];
-    if(self.addImage3.file == nil)
-        self.removeImage3.hidden = YES;
-    
-    self.addImage4.file = user[@"image4"];
-    [self.addImage4 loadInBackground];
-    if(self.addImage4.file == nil)
-        self.removeImage4.hidden = YES;
-    
-    self.addImage5.file = user[@"image5"];
-    [self.addImage5 loadInBackground];
-    if(self.addImage5.file == nil)
-        self.removeImage5.hidden = YES;
+        PFQuery *imageQuery = [PFQuery queryWithClassName:@"Photo"];
+        [imageQuery whereKey:@"user" equalTo:user];
+        imageQuery.limit = 6;
+        [imageQuery findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *err){
+            if (objects.count != 0) {
+//                for (int i = 0; i < objects.count; i++) {
+//                    //NSString *addImageString = [@"addImage" stringByAppendingString:[NSString stringWithFormat:@"%d", i]];
+//                    self.[[@"addImage" stringByAppendingString:[NSString stringWithFormat:@"%d", i]].file = objects[i][@"photo"];
+//                    //PFFile *file = objects[i][@"photo"];
+//                          //[profilePics addObject:file];
+//                }
+                self.addImage0.file = objects[0][@"photo"];
+                if(self.addImage0.file == nil)
+                    self.removeImage0.hidden = YES;
+                [self.addImage0 loadInBackground];
+                
+                self.addImage1.file = objects[1][@"photo"];
+                [self.addImage1 loadInBackground];
+                if(self.addImage1.file == nil)
+                    self.removeImage1.hidden = YES;
+                
+                self.addImage2.file = objects[2][@"photo"];
+                [self.addImage2 loadInBackground];
+                if(self.addImage2.file == nil)
+                    self.removeImage2.hidden = YES;
+                
+                self.addImage3.file = objects[3][@"photo"];
+                [self.addImage3 loadInBackground];
+                if(self.addImage3.file == nil)
+                    self.removeImage3.hidden = YES;
+                
+                self.addImage4.file = objects[4][@"photo"];
+                [self.addImage4 loadInBackground];
+                if(self.addImage4.file == nil)
+                    self.removeImage4.hidden = YES;
+                
+                self.addImage5.file = objects[5][@"photo"];
+                [self.addImage5 loadInBackground];
+                if(self.addImage5.file == nil)
+                    self.removeImage5.hidden = YES;
+                
+            }
+        }];
     
     profilePicsArray = @[self.addImage0, self.addImage1, self.addImage2, self.addImage3, self.addImage4, self.addImage5];
     removeButtons = @[self.removeImage0, self.removeImage1, self.removeImage2, self.removeImage3, self.removeImage4, self.removeImage5];
