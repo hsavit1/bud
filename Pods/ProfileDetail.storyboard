@@ -546,7 +546,6 @@
                                                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                     </state>
                                                     <connections>
-                                                        <action selector="image1Pressed:" destination="x8h-ed-W9R" eventType="touchUpInside" id="amb-5b-4Ly"/>
                                                         <action selector="image4Pressed:" destination="x8h-ed-W9R" eventType="touchUpInside" id="iGT-Wq-ZgB"/>
                                                     </connections>
                                                 </button>
@@ -559,7 +558,6 @@
                                                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                     </state>
                                                     <connections>
-                                                        <action selector="image1Pressed:" destination="x8h-ed-W9R" eventType="touchUpInside" id="SeW-L1-bcY"/>
                                                         <action selector="image5Pressed:" destination="x8h-ed-W9R" eventType="touchUpInside" id="rSE-GA-QIk"/>
                                                     </connections>
                                                 </button>
@@ -580,7 +578,6 @@
                                                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                     </state>
                                                     <connections>
-                                                        <action selector="image1Pressed:" destination="x8h-ed-W9R" eventType="touchUpInside" id="Vqv-Jo-R2l"/>
                                                         <action selector="image6Pressed:" destination="x8h-ed-W9R" eventType="touchUpInside" id="BoE-Xa-rhA"/>
                                                     </connections>
                                                 </button>
@@ -617,7 +614,6 @@
                                                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                     </state>
                                                     <connections>
-                                                        <action selector="image1Pressed:" destination="x8h-ed-W9R" eventType="touchUpInside" id="7I8-qo-lEr"/>
                                                         <action selector="image2Pressed:" destination="x8h-ed-W9R" eventType="touchUpInside" id="AYs-ZA-MVf"/>
                                                     </connections>
                                                 </button>
@@ -695,7 +691,6 @@
                                                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                     </state>
                                                     <connections>
-                                                        <action selector="image1Pressed:" destination="x8h-ed-W9R" eventType="touchUpInside" id="oZ8-VX-77L"/>
                                                         <action selector="image3Pressed:" destination="x8h-ed-W9R" eventType="touchUpInside" id="ZEv-YA-mFd"/>
                                                     </connections>
                                                 </button>

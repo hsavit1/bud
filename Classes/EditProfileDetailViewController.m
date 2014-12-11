@@ -20,7 +20,7 @@
 #define IS_IPHONE_6_PLUS (IS_IPHONE && [[UIScreen mainScreen] bounds].size.height == 736.0)
 #define IS_RETINA ([[UIScreen mainScreen] scale] == 2.0)
 
-@interface EditProfileDetailViewController ()<UITextViewDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate>{
+@interface EditProfileDetailViewController ()<UITextViewDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate>{//, UIActionSheetDelegate>{
     NSArray *profilePicsArray;
     NSArray *removeButtons;
     NSMutableArray *favoriteTools;
@@ -211,18 +211,18 @@
             
             //fav strain
         case 5:{
-            NSString *field0 = [NSString stringWithFormat:@"1. %@", [PFUser currentUser][@"SixPeople"][@"person0"]];
-            NSString *field1 = [NSString stringWithFormat:@"2. %@", [PFUser currentUser][@"SixPeople"][@"person1"]];
-            NSString *field2 = [NSString stringWithFormat:@"3. %@", [PFUser currentUser][@"SixPeople"][@"person2"]];
-            NSString *field3 = [NSString stringWithFormat:@"4. %@", [PFUser currentUser][@"SixPeople"][@"person3"]];
-            NSString *field4 = [NSString stringWithFormat:@"5. %@", [PFUser currentUser][@"SixPeople"][@"person4"]];
-            NSString *field5 = [NSString stringWithFormat:@"6. %@", [PFUser currentUser][@"SixPeople"][@"person5"]];
-            
-            
-            NSArray *stringsArray = [[NSArray alloc] initWithObjects:field0, field1, field2, field3, field4, field5, nil];
-            NSString *joinedString = [stringsArray componentsJoinedByString:@" \r\n"];
-
-            self.sixStonersInHeaven.text = joinedString;
+//            NSString *field0 = [NSString stringWithFormat:@"1. %@", [PFUser currentUser][@"SixPeople"][@"person0"]];
+//            NSString *field1 = [NSString stringWithFormat:@"2. %@", [PFUser currentUser][@"SixPeople"][@"person1"]];
+//            NSString *field2 = [NSString stringWithFormat:@"3. %@", [PFUser currentUser][@"SixPeople"][@"person2"]];
+//            NSString *field3 = [NSString stringWithFormat:@"4. %@", [PFUser currentUser][@"SixPeople"][@"person3"]];
+//            NSString *field4 = [NSString stringWithFormat:@"5. %@", [PFUser currentUser][@"SixPeople"][@"person4"]];
+//            NSString *field5 = [NSString stringWithFormat:@"6. %@", [PFUser currentUser][@"SixPeople"][@"person5"]];
+//            
+//            
+//            NSArray *stringsArray = [[NSArray alloc] initWithObjects:field0, field1, field2, field3, field4, field5, nil];
+//            NSString *joinedString = [stringsArray componentsJoinedByString:@" \r\n"];
+//
+//            self.sixStonersInHeaven.text = joinedString;
             [self.sixStonersInHeaven setPreferredMaxLayoutWidth:230];
         if(IS_IPHONE_5){
             CGSize expectedSize = [self.sixStonersInHeaven.text boundingRectWithSize:CGSizeMake(230, 10000)
@@ -417,6 +417,7 @@
     
 }
 
+
 - (IBAction)image1Pressed:(UIButton*)sender {
     [self addImage:sender];
     self.pickedImage = [NSNumber numberWithInt:0];
@@ -444,6 +445,7 @@
 -(void)image7Pressed:(id)sender{
     
 }
+
 
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info
 {
@@ -643,8 +645,39 @@
                      }
                  }];
     
-    //    return;
+    
+//    UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:@"Choose Your Photo Source to use the Photo Editor"
+//                                                             delegate:self
+//                                                    cancelButtonTitle:@"Cancel"
+//                                               destructiveButtonTitle:nil
+//                                                    otherButtonTitles:@"Take Photo", @"Choose from Photo Library", nil];
+//    
+//    
+//    [actionSheet showInView:self.view];
+    
 }
+
+//-(void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex{
+//    switch (buttonIndex) {
+//        case 0:
+//            self.imagePick = [[UIImagePickerController alloc]init];
+//            self.imagePick.sourceType =  UIImagePickerControllerSourceTypeCamera;
+//            self.imagePick.cameraCaptureMode = UIImagePickerControllerCameraCaptureModePhoto;
+//            self.imagePick.allowsEditing = YES;
+//            self.imagePick.delegate = self;
+//            [self presentViewController:self.imagePick animated:YES completion:nil];
+//            break;
+//            
+//        case 1:
+//            self.imagePick.sourceType =  UIImagePickerControllerSourceTypeCamera;
+//            self.imagePick = [[UIImagePickerController alloc]init];
+//            self.imagePick.allowsEditing = YES;
+//            self.imagePick.delegate = self;
+//            [self presentViewController:self.imagePick animated:YES completion:nil];
+//        default:
+//            break;
+//    }    
+//}
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     if(indexPath.section == 3){
