@@ -126,7 +126,7 @@ static const CGFloat ChoosePersonViewImageLabelWidth = 42.f;
     }
     else if(_person.strainOfChoice == 3){//dont care
         image = [UIImage imageNamed:@"lighter2.png"];
-        CGSize newSize = CGSizeMake(15.0f, 35.0f);
+        CGSize newSize = CGSizeMake(25.0f, 35.0f);
         UIGraphicsBeginImageContext(newSize);
         [image drawInRect:CGRectMake(5,0,newSize.width,newSize.height)];
         UIImage* newImage = UIGraphicsGetImageFromCurrentImageContext();
