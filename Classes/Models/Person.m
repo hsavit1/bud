@@ -55,10 +55,11 @@
         _name = obj[@"fullname"];
         _objectId = obj.objectId;
         _image = obj[@"picture"];
-        _age =  (NSUInteger) obj[@"age"];
-        _numberOfSharedFriends = (NSUInteger) obj[@"shared"];
-        _strainOfChoice = (NSUInteger) obj[@"strain"];
+        _age = [obj[@"age"] intValue];
+        _numberOfSharedFriends = [obj[@"shared"] intValue];
+        _strainOfChoice = [obj[@"strainOfChoice"] intValue];
     }
+    NSLog(@"hihi");
     return self;
 }
 
