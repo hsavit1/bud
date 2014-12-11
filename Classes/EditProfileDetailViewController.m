@@ -123,42 +123,48 @@
         imageQuery.limit = 6;
         [imageQuery findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *err){
             if (objects.count != 0) {
-//                for (int i = 0; i < objects.count; i++) {
-//                    //NSString *addImageString = [@"addImage" stringByAppendingString:[NSString stringWithFormat:@"%d", i]];
-//                    self.[[@"addImage" stringByAppendingString:[NSString stringWithFormat:@"%d", i]].file = objects[i][@"photo"];
-//                    //PFFile *file = objects[i][@"photo"];
-//                          //[profilePics addObject:file];
-//                }
-                self.addImage0.file = objects[0][@"photo"];
-                if(self.addImage0.file == nil)
+                if(objects[0][@"photo"]){
+                    self.addImage0.file = objects[0][@"photo"];
+                    [self.addImage0 loadInBackground];
+                }
+                else
                     self.removeImage0.hidden = YES;
-                [self.addImage0 loadInBackground];
                 
-                self.addImage1.file = objects[1][@"photo"];
-                [self.addImage1 loadInBackground];
-                if(self.addImage1.file == nil)
+                if(objects.count >= 2){
+                    self.addImage1.file = objects[1][@"photo"];
+                    [self.addImage1 loadInBackground];
+                }
+                else
                     self.removeImage1.hidden = YES;
                 
-                self.addImage2.file = objects[2][@"photo"];
-                [self.addImage2 loadInBackground];
-                if(self.addImage2.file == nil)
+                if(objects.count >= 3){
+                    self.addImage2.file = objects[2][@"photo"];
+                    [self.addImage2 loadInBackground];
+                }
+                else
                     self.removeImage2.hidden = YES;
                 
-                self.addImage3.file = objects[3][@"photo"];
-                [self.addImage3 loadInBackground];
-                if(self.addImage3.file == nil)
+                if(objects.count >= 4){
+                    self.addImage3.file = objects[3][@"photo"];
+                    [self.addImage3 loadInBackground];
+                }
+                else
                     self.removeImage3.hidden = YES;
                 
-                self.addImage4.file = objects[4][@"photo"];
-                [self.addImage4 loadInBackground];
-                if(self.addImage4.file == nil)
+                if(objects.count >= 5){
+                    self.addImage4.file = objects[4][@"photo"];
+                    [self.addImage4 loadInBackground];
+                }
+                else
                     self.removeImage4.hidden = YES;
                 
-                self.addImage5.file = objects[5][@"photo"];
-                [self.addImage5 loadInBackground];
-                if(self.addImage5.file == nil)
+                if(objects.count >= 6){
+                    self.addImage5.file = objects[5][@"photo"];
+                    [self.addImage5 loadInBackground];
+                }
+                else
                     self.removeImage5.hidden = YES;
-                
+
             }
         }];
     
