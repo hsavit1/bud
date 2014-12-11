@@ -439,6 +439,13 @@ static CGFloat const MDCSwipeToChooseViewLabelWidth = 95.f;
 -(void)editButtonPressed:(id)sender{
     UIStoryboard *edit = [UIStoryboard storyboardWithName:@"ProfileDetail" bundle:nil];
     EditProfileDetailViewController *e = [edit instantiateViewControllerWithIdentifier:@"e"];
+    
+    
+    //pass other information along
+    
+    //
+    
+    
     [self.navigationController pushViewController:e animated:YES];
 }
 

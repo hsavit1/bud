@@ -97,9 +97,9 @@
     //I want the spacing to be better done in the bigger iPhones. The problem is that this might screw with the autolayout that is already set up. might have to just leave it alone for now
     if(! IS_IPHONE_5){
         
-        self.addImage4.frame = CGRectMake(self.headerView.bounds.size.width/2 - 70, self.addImage4.frame.origin.y, self.addImage4.frame.size.width, self.addImage4.frame.size.height);
-        self.removeImage4.frame = CGRectMake(self.headerView.bounds.size.width/2 - 60, self.addImage4.frame.origin.y, self.addImage4.frame.size.width, self.addImage4.frame.size.height);
-
+//        self.addImage4.frame = CGRectMake(self.headerView.bounds.size.width/2 - 70, self.addImage4.frame.origin.y, self.addImage4.frame.size.width, self.addImage4.frame.size.height);
+//        self.removeImage4.frame = CGRectMake(self.headerView.bounds.size.width/2 - 60, self.addImage4.frame.origin.y, self.addImage4.frame.size.width, self.addImage4.frame.size.height);
+//
 //        self.addImage6 = [[PFImageView alloc] initWithFrame:CGRectMake((self.addImage5.frame.origin.x - 15), self.addImage5.frame.origin.y, 60, 60)];
 //        self.addImage6.layer.cornerRadius = 8;
 //        self.addImage6.layer.masksToBounds = YES;
@@ -113,14 +113,12 @@
 //        [self.headerView addSubview:self.addImage6Buttom];
         
     }
-    else if (IS_IPHONE_6_PLUS){
-       
-    }
     
     PFUser *user = [PFUser currentUser];
         PFQuery *imageQuery = [PFQuery queryWithClassName:@"Photo"];
         [imageQuery whereKey:@"user" equalTo:user];
         imageQuery.limit = 6;
+        [imageQuery orderByAscending:@"rank"];
         [imageQuery findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *err){
             if (objects.count != 0) {
                 if(objects[0][@"photo"]){
@@ -651,39 +649,8 @@
                      }
                  }];
     
-    
-//    UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:@"Choose Your Photo Source to use the Photo Editor"
-//                                                             delegate:self
-//                                                    cancelButtonTitle:@"Cancel"
-//                                               destructiveButtonTitle:nil
-//                                                    otherButtonTitles:@"Take Photo", @"Choose from Photo Library", nil];
-//    
-//    
-//    [actionSheet showInView:self.view];
-    
 }
 
-//-(void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex{
-//    switch (buttonIndex) {
-//        case 0:
-//            self.imagePick = [[UIImagePickerController alloc]init];
-//            self.imagePick.sourceType =  UIImagePickerControllerSourceTypeCamera;
-//            self.imagePick.cameraCaptureMode = UIImagePickerControllerCameraCaptureModePhoto;
-//            self.imagePick.allowsEditing = YES;
-//            self.imagePick.delegate = self;
-//            [self presentViewController:self.imagePick animated:YES completion:nil];
-//            break;
-//            
-//        case 1:
-//            self.imagePick.sourceType =  UIImagePickerControllerSourceTypeCamera;
-//            self.imagePick = [[UIImagePickerController alloc]init];
-//            self.imagePick.allowsEditing = YES;
-//            self.imagePick.delegate = self;
-//            [self presentViewController:self.imagePick animated:YES completion:nil];
-//        default:
-//            break;
-//    }    
-//}
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     if(indexPath.section == 3){
