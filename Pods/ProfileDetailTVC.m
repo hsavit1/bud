@@ -37,6 +37,7 @@ static CGFloat const MDCSwipeToChooseViewLabelWidth = 95.f;
 @property (nonatomic, strong) UIPageControl *pageControl;
 
 @property (nonatomic, strong) MDCSwipeToChooseViewOptions *options;
+@property (weak, nonatomic) IBOutlet PFImageView *strainOfChoice;
 
 
 @end
@@ -109,7 +110,6 @@ static CGFloat const MDCSwipeToChooseViewLabelWidth = 95.f;
         self.pageControl.currentPageIndicatorTintColor = [UIColor colorWithRed:0.086 green:0.627 blue:0.522 alpha:1] /*#16a085*/;
         [self.navigationController.navigationBar addSubview:self.pageControl];
         self.pageControl.alpha = 1;
-    
 }
 
 -(void)viewWillAppear:(BOOL)animated{
@@ -237,14 +237,13 @@ static CGFloat const MDCSwipeToChooseViewLabelWidth = 95.f;
             }
         }
         case 2:{
-            //NSString *string = self.user[@"favoriteProducts"];
-
+            
             return 60;
         }
             break;
         case 3:{
             //NSString *string = self.user[@"favoriteTools"];
-
+            [self constructInterestsImageLabelView];
             return 60;
             
         }
@@ -331,6 +330,44 @@ static CGFloat const MDCSwipeToChooseViewLabelWidth = 95.f;
     return 30;
 }
 
+
+- (void)constructInterestsImageLabelView {
+    //CGFloat rightPadding = 60.f;
+    
+    UIImage *image;
+    if([self.user[@"strainOfChoice"] intValue] == 0){//hybrid
+        image = [UIImage imageNamed:@"hybrid_burned.png"];
+        CGSize newSize = CGSizeMake(45.0f, 35.0f);
+        UIGraphicsBeginImageContext(newSize);
+        [image drawInRect:CGRectMake(0,0,newSize.width,newSize.height)];
+        UIImage* newImage = UIGraphicsGetImageFromCurrentImageContext();
+        UIGraphicsEndImageContext();
+        image = newImage;
+    }
+    else if ([self.user[@"strainOfChoice"] intValue] == 1){//indica
+        image = [UIImage imageNamed:@"indica_burned.png"];
+        CGSize newSize = CGSizeMake(45.0f, 35.0f);
+        UIGraphicsBeginImageContext(newSize);
+        [image drawInRect:CGRectMake(0,0,newSize.width,newSize.height)];
+        UIImage* newImage = UIGraphicsGetImageFromCurrentImageContext();
+        UIGraphicsEndImageContext();
+        image = newImage;
+    }
+    else if ([self.user[@"strainOfChoice"] intValue] == 2){//sativa
+        image = [UIImage imageNamed:@"rsz_1rsz_1sativa.png"];
+    }
+    else if([self.user[@"strainOfChoice"] intValue] == 3){//dont care
+        image = [UIImage imageNamed:@"lighter2.png"];
+        CGSize newSize = CGSizeMake(15.0f, 35.0f);
+        UIGraphicsBeginImageContext(newSize);
+        [image drawInRect:CGRectMake(5,0,newSize.width,newSize.height)];
+        UIImage* newImage = UIGraphicsGetImageFromCurrentImageContext();
+        UIGraphicsEndImageContext();
+        image = newImage;
+    }
+    self.strainOfChoice.image = image;
+    [self.view bringSubviewToFront:self.strainOfChoice];
+}
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 

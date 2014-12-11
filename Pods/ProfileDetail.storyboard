@@ -18,6 +18,11 @@
                         <view key="tableHeaderView" contentMode="scaleToFill" id="m9N-Ud-Umu">
                             <rect key="frame" x="0.0" y="0.0" width="320" height="320"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <subviews>
+                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="w2W-ay-e6p" customClass="PFImageView">
+                                    <rect key="frame" x="267" y="267" width="45" height="45"/>
+                                </imageView>
+                            </subviews>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         </view>
                         <sections>
@@ -318,6 +323,7 @@
                         <outlet property="lastActiveLabel" destination="vHq-fd-EBF" id="EWG-P4-CuH"/>
                         <outlet property="numMutualFriendsLabel" destination="ndF-0L-9Oz" id="zNF-ub-Dxb"/>
                         <outlet property="personalBioLabel" destination="xOG-8c-mfl" id="Fpd-qc-XsA"/>
+                        <outlet property="strainOfChoice" destination="w2W-ay-e6p" id="nhO-HG-vMw"/>
                         <outlet property="toolsIUseLabel" destination="xhb-DI-5eg" id="7BC-Pi-tEM"/>
                         <outlet property="userLocationLabel" destination="1eK-lX-dEQ" id="q1m-Ve-seG"/>
                     </connections>
