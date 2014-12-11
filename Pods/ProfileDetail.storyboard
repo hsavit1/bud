@@ -1122,16 +1122,20 @@
                             <outlet property="delegate" destination="x8h-ed-W9R" id="gOJ-sl-Mae"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" id="1Qv-wZ-Ocn"/>
+                    <navigationItem key="navigationItem" id="1Qv-wZ-Ocn">
+                        <barButtonItem key="leftBarButtonItem" systemItem="done" id="3T7-oA-gzi">
+                            <connections>
+                                <action selector="saveEverything:" destination="x8h-ed-W9R" id="fRz-zC-D0A"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                     <connections>
                         <outlet property="addImage0" destination="F2v-GK-LBY" id="G5W-ff-6o6"/>
                         <outlet property="addImage1" destination="mMq-Bs-ehW" id="hco-12-mRM"/>
                         <outlet property="addImage2" destination="yLz-qO-Wui" id="ez5-U7-KF9"/>
                         <outlet property="addImage3" destination="BEn-xt-TqQ" id="uV7-mY-i4i"/>
-                        <outlet property="addImage3Button" destination="pMg-kI-Kxt" id="Qhq-9f-erk"/>
                         <outlet property="addImage4" destination="ppk-Zz-joO" id="sp0-Am-rIO"/>
-                        <outlet property="addImage4Button" destination="L4X-ij-xzH" id="4Ve-iZ-BxN"/>
                         <outlet property="addImage5" destination="qHw-Pe-dez" id="uTv-fP-YAl"/>
                         <outlet property="educationLabel" destination="Gna-N9-26G" id="zlX-Xa-DRw"/>
                         <outlet property="favoriteStrainImage" destination="Ph0-tn-fLm" id="GBR-Bg-BsD"/>
@@ -1150,7 +1154,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="LwC-4Y-0HI" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1460" y="152"/>
+            <point key="canvasLocation" x="1669" y="128"/>
         </scene>
         <!--Compose Content View Controller-->
         <scene sceneID="BEY-n2-9vm">

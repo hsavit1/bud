@@ -20,7 +20,7 @@
 #define IS_IPHONE_6_PLUS (IS_IPHONE && [[UIScreen mainScreen] bounds].size.height == 736.0)
 #define IS_RETINA ([[UIScreen mainScreen] scale] == 2.0)
 
-@interface EditProfileDetailViewController ()<UITextViewDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate>{//, UIActionSheetDelegate>{
+@interface EditProfileDetailViewController ()<UITextViewDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate>{
     NSArray *profilePicsArray;
     NSArray *removeButtons;
     NSMutableArray *favoriteTools;
@@ -46,6 +46,7 @@
      [NSDictionary dictionaryWithObjectsAndKeys:
       [UIFont fontWithName:@"SnellRoundhand-Black" size:36],
       NSFontAttributeName, nil]];
+    self.navigationController.navigationItem.hidesBackButton = YES;
     
     favoriteTools = [[NSMutableArray alloc]initWithObjects:@NO, @NO, @NO, @NO, @NO, @NO, @NO, @NO, @NO, nil];
     
@@ -417,10 +418,6 @@
     ((PFImageView*)profilePicsArray[5]).file = nil;
     ((UIButton*)removeButtons[5]).hidden = YES;
 }
--(void)removeImage6:(id)sender{
-    
-}
-
 
 - (IBAction)image1Pressed:(UIButton*)sender {
     [self addImage:sender];
@@ -445,9 +442,6 @@
 - (IBAction)image6Pressed:(UIButton*)sender {
     [self addImage:sender];
     self.pickedImage = [NSNumber numberWithInt:5];
-}
--(void)image7Pressed:(id)sender{
-    
 }
 
 
@@ -614,8 +608,6 @@
     
     DoActionSheet *vActionSheet = [[DoActionSheet alloc] init];
     vActionSheet.nAnimationType = 2;
-    //vActionSheet.dButtonRound = 0;
-    //   vActionSheet.nContentMode = 2;
     vActionSheet.doBackColor = [UIColor whiteColor];
     vActionSheet.doButtonColor = [UIColor colorWithRed:0.086 green:0.627 blue:0.522 alpha:1];
     
@@ -648,9 +640,7 @@
                              break;
                      }
                  }];
-    
 }
-
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     if(indexPath.section == 3){
@@ -726,6 +716,15 @@
         }
     }];
 }
+
+- (IBAction)saveEverything:(id)sender {
+    
+    
+    
+    
+    [self.navigationController popViewControllerAnimated:YES];
+}
+
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue
                  sender:(id)sender {
