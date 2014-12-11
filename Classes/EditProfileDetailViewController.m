@@ -23,7 +23,7 @@
 @interface EditProfileDetailViewController ()<UITextViewDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate>{
     NSArray *profilePicsArray;
     NSArray *removeButtons;
-    NSArray *favoriteTools;
+    NSMutableArray *favoriteTools;
 
 }
 
@@ -46,6 +46,8 @@
      [NSDictionary dictionaryWithObjectsAndKeys:
       [UIFont fontWithName:@"SnellRoundhand-Black" size:36],
       NSFontAttributeName, nil]];
+    
+    favoriteTools = [[NSMutableArray alloc]initWithObjects:@NO, @NO, @NO, @NO, @NO, @NO, @NO, @NO, @NO, nil];
     
     self.addImage0.layer.cornerRadius = 8;
     self.addImage0.layer.masksToBounds = YES;
@@ -90,6 +92,9 @@
     self.removeImage4.layer.masksToBounds = YES;
     self.removeImage5.layer.masksToBounds = YES;
     
+    
+    
+    //I want the spacing to be better done in the bigger iPhones. The problem is that this might screw with the autolayout that is already set up. might have to just leave it alone for now
     if(! IS_IPHONE_5){
         
         self.addImage4.frame = CGRectMake(self.headerView.bounds.size.width/2 - 70, self.addImage4.frame.origin.y, self.addImage4.frame.size.width, self.addImage4.frame.size.height);
@@ -516,30 +521,39 @@
         switch (sender.tag) {
             case 1:
                 [self.view viewWithTag:11].alpha = 1;
+                [favoriteTools replaceObjectAtIndex:0 withObject:@YES];
                 break;
             case 2:
                 [self.view viewWithTag:22].alpha = 1;
+                [favoriteTools replaceObjectAtIndex:1 withObject:@YES];
                 break;
             case 3:
                 [self.view viewWithTag:33].alpha = 1;
+                [favoriteTools replaceObjectAtIndex:2 withObject:@YES];
                 break;
             case 4:
                 [self.view viewWithTag:44].alpha = 1;
+                [favoriteTools replaceObjectAtIndex:3 withObject:@YES];
                 break;
             case 5:
                 [self.view viewWithTag:55].alpha = 1;
+                [favoriteTools replaceObjectAtIndex:4 withObject:@YES];
                 break;
             case 6:
                 [self.view viewWithTag:66].alpha = 1;
+                [favoriteTools replaceObjectAtIndex:5 withObject:@YES];
                 break;
             case 7:
                 [self.view viewWithTag:77].alpha = 1;
+                [favoriteTools replaceObjectAtIndex:6 withObject:@YES];
                 break;
             case 8:
                 [self.view viewWithTag:88].alpha = 1;
+                [favoriteTools replaceObjectAtIndex:7 withObject:@YES];
                 break;
             case 9:
                 [self.view viewWithTag:99].alpha = 1;
+                [favoriteTools replaceObjectAtIndex:8 withObject:@YES];
                 break;
             default:
                 break;
@@ -550,30 +564,39 @@
         switch (sender.tag) {
             case 1:
                 [self.view viewWithTag:11].alpha = .5;
+                [favoriteTools replaceObjectAtIndex:0 withObject:@NO];
                 break;
             case 2:
                 [self.view viewWithTag:22].alpha = .5;
+                [favoriteTools replaceObjectAtIndex:1 withObject:@NO];
                 break;
             case 3:
                 [self.view viewWithTag:33].alpha = .5;
+                [favoriteTools replaceObjectAtIndex:2 withObject:@NO];
                 break;
             case 4:
                 [self.view viewWithTag:44].alpha = .5;
+                [favoriteTools replaceObjectAtIndex:3 withObject:@NO];
                 break;
             case 5:
                 [self.view viewWithTag:55].alpha = .5;
+                [favoriteTools replaceObjectAtIndex:4 withObject:@NO];
                 break;
             case 6:
                 [self.view viewWithTag:66].alpha = .5;
+                [favoriteTools replaceObjectAtIndex:5 withObject:@NO];
                 break;
             case 7:
                 [self.view viewWithTag:77].alpha = .5;
+                [favoriteTools replaceObjectAtIndex:6 withObject:@NO];
                 break;
             case 8:
                 [self.view viewWithTag:88].alpha = .5;
+                [favoriteTools replaceObjectAtIndex:7 withObject:@NO];
                 break;
             case 9:
                 [self.view viewWithTag:99].alpha = .5;
+                [favoriteTools replaceObjectAtIndex:8 withObject:@NO];
                 break;
             default:
                 break;

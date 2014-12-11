@@ -138,26 +138,11 @@ static CGFloat const MDCSwipeToChooseViewLabelWidth = 95.f;
     }];
 }
 
-//-(void)findUserInfo{
-//    PFQuery *userQuery = [PFQuery queryWithClassName:@"UserProfile"];
-//    PFUser *userAgain = (PFUser *)[userQuery getObjectWithId:self.user.objectId];
-//    //    [userQuery whereKey:@"user" equalTo:self.user];
-//    userQuery.limit = 1;
-//    [userQuery findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
-//        if(objects.count != 0){
-//            self.personalBioLabel.text = objects[0][@"bio"];
-//            self.educationLabel.text = objects[0][@"education"];
-//            self.userLocationLabel.text = objects[0][@"location"];
-//        }
-//    }];
-//}
-
 -(void)fillInUserInfo{
     self.firstNameLabel.text = self.user[@"fullname"];
     self.distanceLabel.text = @"20 miles";
     self.numMutualFriendsLabel.text = @"50";
     self.lastActiveLabel.text = @"30 minutes ago";
-
 }
 
 - (void)tableView:(UITableView *)tableView willDisplayHeaderView:(UIView *)view forSection:(NSInteger)section
@@ -167,8 +152,9 @@ static CGFloat const MDCSwipeToChooseViewLabelWidth = 95.f;
 }
 
 - (NSUInteger)numberOfPagesInPagingScrollView:(GMCPagingScrollView *)pagingScrollView {
-    self.pageControl.numberOfPages = profilePics.count;
-    return profilePics.count;
+    //self.pageControl.numberOfPages = profilePics.count;
+    //return profilePics.count;
+    return 5;
 }
 
 - (UIView *)pagingScrollView:(GMCPagingScrollView *)pagingScrollView pageForIndex:(NSUInteger)index {
