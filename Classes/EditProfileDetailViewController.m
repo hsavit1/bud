@@ -452,7 +452,7 @@
         sender.alpha = .5;
         for (int i = 1; i < 10; i++) {
             if(sender.tag == i){
-                [self.view viewWithTag:(i*11)].alpha = 1;
+                [self.view viewWithTag:(i*11)].alpha = .5;
                 [favoriteTools replaceObjectAtIndex:0 withObject:@NO];
             }
         }
@@ -494,7 +494,7 @@
                              case 2:
                                  self.favoriteStrainImage.image = [UIImage imageNamed:@"hybrid_burned.png"];
                                  self.favoriteTypeLabel.text = @"Hybrid";
-                                 self.favoriteTypeLabel.text = @"Hybrid: You're someone in between.";
+                                 self.favoriteTypeLabel.text = @"Hybrid: You're a bit of a scientist. You experiement with different strains until you're satisfied with a perfect balance of indica and sativa.";
                                  [self saveFavoriteStrain:2];
                                  break;
                              case 3:
@@ -554,11 +554,14 @@
 //done button pressed
 - (IBAction)saveEverything:(id)sender {
     if(isPageEdited){
-        //ask to save, then pop
+        //save favWaysToGetHigh
+        //save favoriteStrain
+        //save photos
+        //you dont have to worry about saving all of the descriptions. those will be saved when the user clicks on the "Save" button on each of those pages, respectively
         [self.navigationController popViewControllerAnimated:YES];
     }
     else{
-        //if page isnt edited
+        //if page isnt edited, just pop
         [self.navigationController popViewControllerAnimated:YES];
     }
 }
