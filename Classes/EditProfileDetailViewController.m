@@ -358,6 +358,13 @@
 }
 
 
+-(IBAction)removeImages:(id)sender{
+    for (int i = 100; i < 106; i++) {
+        
+    }
+}
+
+
 
 - (IBAction)removeImage0:(id)sender {
     [PFUser currentUser][@"image0"] = [NSNull null];
@@ -395,6 +402,10 @@
     ((PFImageView*)profilePicsArray[5]).file = nil;
     ((UIButton*)removeButtons[5]).hidden = YES;
 }
+
+
+
+
 
 - (IBAction)image1Pressed:(UIButton*)sender {
     [self addImage:sender];
@@ -535,88 +546,20 @@
 - (IBAction)buttonTapped:(UIButton*)sender {
     if(sender.alpha == .5){
         sender.alpha = 1;
-        switch (sender.tag) {
-            case 1:
-                [self.view viewWithTag:11].alpha = 1;
+        for (int i = 1; i < 10; i++) {
+            if(sender.tag == i){
+                [self.view viewWithTag:(i*11)].alpha = 1;
                 [favoriteTools replaceObjectAtIndex:0 withObject:@YES];
-                break;
-            case 2:
-                [self.view viewWithTag:22].alpha = 1;
-                [favoriteTools replaceObjectAtIndex:1 withObject:@YES];
-                break;
-            case 3:
-                [self.view viewWithTag:33].alpha = 1;
-                [favoriteTools replaceObjectAtIndex:2 withObject:@YES];
-                break;
-            case 4:
-                [self.view viewWithTag:44].alpha = 1;
-                [favoriteTools replaceObjectAtIndex:3 withObject:@YES];
-                break;
-            case 5:
-                [self.view viewWithTag:55].alpha = 1;
-                [favoriteTools replaceObjectAtIndex:4 withObject:@YES];
-                break;
-            case 6:
-                [self.view viewWithTag:66].alpha = 1;
-                [favoriteTools replaceObjectAtIndex:5 withObject:@YES];
-                break;
-            case 7:
-                [self.view viewWithTag:77].alpha = 1;
-                [favoriteTools replaceObjectAtIndex:6 withObject:@YES];
-                break;
-            case 8:
-                [self.view viewWithTag:88].alpha = 1;
-                [favoriteTools replaceObjectAtIndex:7 withObject:@YES];
-                break;
-            case 9:
-                [self.view viewWithTag:99].alpha = 1;
-                [favoriteTools replaceObjectAtIndex:8 withObject:@YES];
-                break;
-            default:
-                break;
+            }
         }
     }
     else{
         sender.alpha = .5;
-        switch (sender.tag) {
-            case 1:
-                [self.view viewWithTag:11].alpha = .5;
+        for (int i = 1; i < 10; i++) {
+            if(sender.tag == i){
+                [self.view viewWithTag:(i*11)].alpha = 1;
                 [favoriteTools replaceObjectAtIndex:0 withObject:@NO];
-                break;
-            case 2:
-                [self.view viewWithTag:22].alpha = .5;
-                [favoriteTools replaceObjectAtIndex:1 withObject:@NO];
-                break;
-            case 3:
-                [self.view viewWithTag:33].alpha = .5;
-                [favoriteTools replaceObjectAtIndex:2 withObject:@NO];
-                break;
-            case 4:
-                [self.view viewWithTag:44].alpha = .5;
-                [favoriteTools replaceObjectAtIndex:3 withObject:@NO];
-                break;
-            case 5:
-                [self.view viewWithTag:55].alpha = .5;
-                [favoriteTools replaceObjectAtIndex:4 withObject:@NO];
-                break;
-            case 6:
-                [self.view viewWithTag:66].alpha = .5;
-                [favoriteTools replaceObjectAtIndex:5 withObject:@NO];
-                break;
-            case 7:
-                [self.view viewWithTag:77].alpha = .5;
-                [favoriteTools replaceObjectAtIndex:6 withObject:@NO];
-                break;
-            case 8:
-                [self.view viewWithTag:88].alpha = .5;
-                [favoriteTools replaceObjectAtIndex:7 withObject:@NO];
-                break;
-            case 9:
-                [self.view viewWithTag:99].alpha = .5;
-                [favoriteTools replaceObjectAtIndex:8 withObject:@NO];
-                break;
-            default:
-                break;
+            }
         }
     }
 }
