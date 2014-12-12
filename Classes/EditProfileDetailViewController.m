@@ -308,11 +308,18 @@
 -(IBAction)removeImage:(UIButton*)sender{
     isPageEdited = YES;
     
-    long i = sender.tag - 1000; //getting the wrong int value
-    //[PFUser currentUser][@"image0"] = [NSNull null];
+    long i = sender.tag - 1000;
+    //now we want to left shift all of the images (if there are any after the one we jsut removed) by 1
+    for(i; i < 6; i++){
+        if (((PFImageView*)[self.photoCellContentView viewWithTag:(i + 1000)]).file != nil) {
+            
+        }
+    }
+    
     [profilePicsArray[i] setImage:[UIImage imageNamed:@"bfa_plus-square_simple-green_128x128.png"]];
     ((PFImageView*)profilePicsArray[i]).file = nil;
     ((UIButton*)removeButtons[i]).hidden = YES;
+
 }
 
 -(IBAction)addImagePressed:(UIButton*)sender{
@@ -337,33 +344,32 @@
             PFFile* imageFile = [PFFile fileWithName:@"profilePic" data:UIImagePNGRepresentation(imageToSave)];
             [imageFile saveInBackground];
             
-            PFUser* usr = [PFUser currentUser];
-            for(int i = 0; i < profilePicsArray.count; i++){
-                
-                if( ((PFImageView*)profilePicsArray[i]).file == nil ){
-                    [profilePicsArray[i] setImage:imageToSave];//[self addImage:sender];
-                    [profilePicsArray[i] setFile:imageFile];
-                    NSString *save = [@"image" stringByAppendingString:[NSString stringWithFormat:@"%d", i]];
-                    usr[save] = imageFile;
-                    [usr saveInBackgroundWithBlock:^(BOOL succeeded, NSError* err){
-                        if(!succeeded){
-                            [ProgressHUD showError:@"Network Error"];
-                            [self.imagePick popToRootViewControllerAnimated:NO];
-                            [self.imagePick dismissViewControllerAnimated:NO completion:nil];
-                        }
-                        else{
-                            ((UIButton*)removeButtons[i]).hidden = NO;
-                            [ProgressHUD showSuccess:@"Saved."];
-                            [self.imagePick popToRootViewControllerAnimated:NO];
-                            [self.imagePick dismissViewControllerAnimated:NO completion:nil];
-                        }
-                    }];
-                    break;
-                }
-    
-            }
             
-            
+//            PFUser* usr = [PFUser currentUser];
+//            for(int i = 0; i < profilePicsArray.count; i++){
+//                
+//                if( ((PFImageView*)profilePicsArray[i]).file == nil ){
+//                    [profilePicsArray[i] setImage:imageToSave];//[self addImage:sender];
+//                    [profilePicsArray[i] setFile:imageFile];
+//                    NSString *save = [@"image" stringByAppendingString:[NSString stringWithFormat:@"%d", i]];
+//                    usr[save] = imageFile;
+//                    [usr saveInBackgroundWithBlock:^(BOOL succeeded, NSError* err){
+//                        if(!succeeded){
+//                            [ProgressHUD showError:@"Network Error"];
+//                            [self.imagePick popToRootViewControllerAnimated:NO];
+//                            [self.imagePick dismissViewControllerAnimated:NO completion:nil];
+//                        }
+//                        else{
+//                            ((UIButton*)removeButtons[i]).hidden = NO;
+//                            [ProgressHUD showSuccess:@"Saved."];
+//                            [self.imagePick popToRootViewControllerAnimated:NO];
+//                            [self.imagePick dismissViewControllerAnimated:NO completion:nil];
+//                        }
+//                    }];
+//                    break;
+//                }
+//    
+//            }
             
 //            [profilePicsArray[[self.pickedImage integerValue]] setImage:imageToSave];//[self addImage:sender];
 //            [profilePicsArray[[self.pickedImage integerValue]] setFile:imageFile];
