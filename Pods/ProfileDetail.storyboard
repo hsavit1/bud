@@ -519,25 +519,25 @@
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="uMu-cm-D5I" id="FOj-1d-rFk">
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bfa_plus-square_simple-green_128x128.png" translatesAutoresizingMaskIntoConstraints="NO" id="F2v-GK-LBY" customClass="PFImageView">
+                                                <imageView userInteractionEnabled="NO" tag="111" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bfa_plus-square_simple-green_128x128.png" translatesAutoresizingMaskIntoConstraints="NO" id="F2v-GK-LBY" customClass="PFImageView">
                                                     <rect key="frame" x="8" y="10" width="85" height="85"/>
                                                     <gestureRecognizers/>
                                                 </imageView>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bfa_plus-square_simple-green_128x128.png" translatesAutoresizingMaskIntoConstraints="NO" id="mMq-Bs-ehW" customClass="PFImageView">
+                                                <imageView userInteractionEnabled="NO" tag="112" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bfa_plus-square_simple-green_128x128.png" translatesAutoresizingMaskIntoConstraints="NO" id="mMq-Bs-ehW" customClass="PFImageView">
                                                     <rect key="frame" x="252" y="22" width="60" height="61"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="61" id="94J-7K-dVA"/>
                                                         <constraint firstAttribute="width" constant="60" id="DJR-3n-07z"/>
                                                     </constraints>
                                                 </imageView>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bfa_plus-square_simple-green_128x128.png" translatesAutoresizingMaskIntoConstraints="NO" id="yLz-qO-Wui" customClass="PFImageView">
+                                                <imageView userInteractionEnabled="NO" tag="113" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bfa_plus-square_simple-green_128x128.png" translatesAutoresizingMaskIntoConstraints="NO" id="yLz-qO-Wui" customClass="PFImageView">
                                                     <rect key="frame" x="8" y="115" width="60" height="60"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="60" id="4xO-K9-ldo"/>
                                                         <constraint firstAttribute="width" constant="60" id="iSC-vp-RsP"/>
                                                     </constraints>
                                                 </imageView>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="bfa_plus-square_simple-green_128x128.png" translatesAutoresizingMaskIntoConstraints="NO" id="BEn-xt-TqQ" customClass="PFImageView">
+                                                <imageView userInteractionEnabled="NO" tag="114" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="bfa_plus-square_simple-green_128x128.png" translatesAutoresizingMaskIntoConstraints="NO" id="BEn-xt-TqQ" customClass="PFImageView">
                                                     <rect key="frame" x="87" y="115" width="60" height="60"/>
                                                 </imageView>
                                                 <button opaque="NO" tag="103" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pMg-kI-Kxt">
@@ -549,7 +549,7 @@
                                                         <action selector="image4Pressed:" destination="x8h-ed-W9R" eventType="touchUpInside" id="iGT-Wq-ZgB"/>
                                                     </connections>
                                                 </button>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="bfa_plus-square_simple-green_128x128.png" translatesAutoresizingMaskIntoConstraints="NO" id="ppk-Zz-joO" customClass="PFImageView">
+                                                <imageView userInteractionEnabled="NO" tag="115" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="bfa_plus-square_simple-green_128x128.png" translatesAutoresizingMaskIntoConstraints="NO" id="ppk-Zz-joO" customClass="PFImageView">
                                                     <rect key="frame" x="169" y="115" width="60" height="60"/>
                                                 </imageView>
                                                 <button opaque="NO" tag="104" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="L4X-ij-xzH">
@@ -561,7 +561,7 @@
                                                         <action selector="image5Pressed:" destination="x8h-ed-W9R" eventType="touchUpInside" id="rSE-GA-QIk"/>
                                                     </connections>
                                                 </button>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bfa_plus-square_simple-green_128x128.png" translatesAutoresizingMaskIntoConstraints="NO" id="qHw-Pe-dez" customClass="PFImageView">
+                                                <imageView userInteractionEnabled="NO" tag="115" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bfa_plus-square_simple-green_128x128.png" translatesAutoresizingMaskIntoConstraints="NO" id="qHw-Pe-dez" customClass="PFImageView">
                                                     <rect key="frame" x="252" y="115" width="60" height="60"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="60" id="HwJ-3c-wMC"/>
@@ -602,6 +602,19 @@
                                                     </state>
                                                     <connections>
                                                         <action selector="image1Pressed:" destination="x8h-ed-W9R" eventType="touchUpInside" id="J4T-R0-ktE"/>
+                                                    </connections>
+                                                </button>
+                                                <button opaque="NO" tag="102" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Y2z-N9-T6n">
+                                                    <rect key="frame" x="8" y="115" width="60" height="60"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="60" id="8Kv-T8-bT2"/>
+                                                        <constraint firstAttribute="width" constant="60" id="XMi-Z0-ld2"/>
+                                                    </constraints>
+                                                    <state key="normal">
+                                                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                                    </state>
+                                                    <connections>
+                                                        <action selector="image3Pressed:" destination="x8h-ed-W9R" eventType="touchUpInside" id="ZEv-YA-mFd"/>
                                                     </connections>
                                                 </button>
                                                 <button opaque="NO" tag="101" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="O4f-zP-J34">
@@ -679,19 +692,6 @@
                                                     </state>
                                                     <connections>
                                                         <action selector="removeImage1:" destination="x8h-ed-W9R" eventType="touchUpInside" id="0T7-wg-lIb"/>
-                                                    </connections>
-                                                </button>
-                                                <button opaque="NO" tag="102" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Y2z-N9-T6n">
-                                                    <rect key="frame" x="8" y="115" width="60" height="60"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="height" constant="60" id="8Kv-T8-bT2"/>
-                                                        <constraint firstAttribute="width" constant="60" id="XMi-Z0-ld2"/>
-                                                    </constraints>
-                                                    <state key="normal">
-                                                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                                    </state>
-                                                    <connections>
-                                                        <action selector="image3Pressed:" destination="x8h-ed-W9R" eventType="touchUpInside" id="ZEv-YA-mFd"/>
                                                     </connections>
                                                 </button>
                                             </subviews>

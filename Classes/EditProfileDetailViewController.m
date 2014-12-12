@@ -21,7 +21,7 @@
 #define IS_RETINA ([[UIScreen mainScreen] scale] == 2.0)
 
 @interface EditProfileDetailViewController ()<UITextViewDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate>{
-    NSArray *profilePicsArray;
+    NSMutableArray *profilePicsArray;
     NSArray *removeButtons;
     NSMutableArray *favoriteTools;
 
@@ -64,28 +64,6 @@
         [self.photoCellContentView viewWithTag:i].layer.masksToBounds = YES;
     }
     
-    
-    
-    //I want the spacing to be better done in the bigger iPhones. The problem is that this might screw with the autolayout that is already set up. might have to just leave it alone for now
-    if(! IS_IPHONE_5){
-        
-//        self.addImage4.frame = CGRectMake(self.headerView.bounds.size.width/2 - 70, self.addImage4.frame.origin.y, self.addImage4.frame.size.width, self.addImage4.frame.size.height);
-//        self.removeImage4.frame = CGRectMake(self.headerView.bounds.size.width/2 - 60, self.addImage4.frame.origin.y, self.addImage4.frame.size.width, self.addImage4.frame.size.height);
-//
-//        self.addImage6 = [[PFImageView alloc] initWithFrame:CGRectMake((self.addImage5.frame.origin.x - 15), self.addImage5.frame.origin.y, 60, 60)];
-//        self.addImage6.layer.cornerRadius = 8;
-//        self.addImage6.layer.masksToBounds = YES;
-//        self.addImage6.layer.borderColor = [UIColor colorWithRed:0.086 green:0.627 blue:0.522 alpha:1].CGColor; /*#16a085*/
-//        self.addImage6.layer.borderWidth = 3;
-//        
-//        self.addImage6Buttom = [[UIButton alloc]initWithFrame:self.addImage6.frame];
-//        [self.addImage6Buttom addTarget:self action:@selector(image7Pressed:) forControlEvents:UIControlEventTouchUpInside];
-//        
-//        [self.headerView addSubview:self.addImage6];
-//        [self.headerView addSubview:self.addImage6Buttom];
-        
-    }
-    
     PFUser *user = [PFUser currentUser];
         PFQuery *imageQuery = [PFQuery queryWithClassName:@"Photo"];
         [imageQuery whereKey:@"user" equalTo:user];
@@ -93,59 +71,24 @@
         [imageQuery orderByAscending:@"rank"];
         [imageQuery findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *err){
             if (objects.count != 0) {
-                if(objects[0][@"photo"]){
-                    self.addImage0.file = objects[0][@"photo"];
-                    [self.addImage0 loadInBackground];
-                    self.lastPickedImage = [NSNumber numberWithInt:1];
-                }
-                else
-                    self.removeImage0.hidden = YES;
                 
-                if(objects.count >= 2){
-                    self.addImage1.file = objects[1][@"photo"];
-                    [self.addImage1 loadInBackground];
-                    self.lastPickedImage = [NSNumber numberWithInt:2];
+                for (int i = 0; i < objects.count; i++) {
+                    if(objects[i][@"photo"]){
+                        ((PFImageView*)[self.photoCellContentView viewWithTag:(i+111)]).layer.cornerRadius = 9;
+                        ((PFImageView*)[self.photoCellContentView viewWithTag:(i+111)]).layer.masksToBounds = YES;
+                        ((PFImageView*)[self.photoCellContentView viewWithTag:(i+111)]).file = objects[i][@"photo"];
+                        [((PFImageView*)[self.photoCellContentView viewWithTag:(i+111)]) loadInBackground];
+                        [profilePicsArray addObject:((PFImageView*)[self.photoCellContentView viewWithTag:(i+111)])];
+                    }
+                    else{
+                        [self.photoCellContentView viewWithTag:(i + 1000)].hidden = YES;
+                    }
                 }
-                else
-                    self.removeImage1.hidden = YES;
-                
-                if(objects.count >= 3){
-                    self.addImage2.file = objects[2][@"photo"];
-                    [self.addImage2 loadInBackground];
-                    self.lastPickedImage = [NSNumber numberWithInt:3];
-                }
-                else
-                    self.removeImage2.hidden = YES;
-                
-                if(objects.count >= 4){
-                    self.addImage3.file = objects[3][@"photo"];
-                    [self.addImage3 loadInBackground];
-                    self.lastPickedImage = [NSNumber numberWithInt:4];
-                }
-                else
-                    self.removeImage3.hidden = YES;
-                
-                if(objects.count >= 5){
-                    self.addImage4.file = objects[4][@"photo"];
-                    [self.addImage4 loadInBackground];
-                    self.lastPickedImage = [NSNumber numberWithInt:5];
-                }
-                else
-                    self.removeImage4.hidden = YES;
-                
-                if(objects.count >= 6){
-                    self.addImage5.file = objects[5][@"photo"];
-                    [self.addImage5 loadInBackground];
-                    self.lastPickedImage = [NSNumber numberWithInt:6];
-                }
-                else
-                    self.removeImage5.hidden = YES;
-
             }
         }];
     
-    profilePicsArray = @[self.addImage0, self.addImage1, self.addImage2, self.addImage3, self.addImage4, self.addImage5];
-    removeButtons = @[self.removeImage0, self.removeImage1, self.removeImage2, self.removeImage3, self.removeImage4, self.removeImage5];
+    //profilePicsArray = @[self.addImage0, self.addImage1, self.addImage2, self.addImage3, self.addImage4, self.addImage5];
+    //removeButtons = @[self.removeImage0, self.removeImage1, self.removeImage2, self.removeImage3, self.removeImage4, self.removeImage5];
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -357,47 +300,47 @@
     return 60;
 }
 
-
--(IBAction)removeImages:(id)sender{
-    for (int i = 100; i < 106; i++) {
-        
-    }
-}
+//
+//-(IBAction)removeImages:(id)sender{
+//    for (int i = 0; i < 6; i++) {
+//        ((PFImageView*)[self.photoCellContentView viewWithTag:i])
+//    }
+//}
 
 
 
 - (IBAction)removeImage0:(id)sender {
-    [PFUser currentUser][@"image0"] = [NSNull null];
+    //[PFUser currentUser][@"image0"] = [NSNull null];
     [profilePicsArray[0] setImage:[UIImage imageNamed:@"bfa_plus-square_simple-green_128x128.png"]];
     ((PFImageView*)profilePicsArray[0]).file = nil;
     ((UIButton*)removeButtons[0]).hidden = YES;
 }
 - (IBAction)removeImage1:(id)sender {
-    [PFUser currentUser][@"image1"] = [NSNull null];
+    //[PFUser currentUser][@"image1"] = [NSNull null];
     [profilePicsArray[1] setImage:[UIImage imageNamed:@"bfa_plus-square_simple-green_128x128.png"]];
     ((PFImageView*)profilePicsArray[1]).file = nil;
     ((UIButton*)removeButtons[1]).hidden = YES;
 }
 - (IBAction)removeImage2:(id)sender {
-    [PFUser currentUser][@"image2"] = [NSNull null];
+    //[PFUser currentUser][@"image2"] = [NSNull null];
     [profilePicsArray[2] setImage:[UIImage imageNamed:@"bfa_plus-square_simple-green_128x128.png"]];
     ((PFImageView*)profilePicsArray[2]).file = nil;
     ((UIButton*)removeButtons[2]).hidden = YES;
 }
 - (IBAction)removeImage3:(id)sender {
-    [PFUser currentUser][@"image3"] = [NSNull null];
+    //[PFUser currentUser][@"image3"] = [NSNull null];
     [profilePicsArray[3] setImage:[UIImage imageNamed:@"bfa_plus-square_simple-green_128x128.png"]];
     ((PFImageView*)profilePicsArray[3]).file = nil;
     ((UIButton*)removeButtons[3]).hidden = YES;
 }
 - (IBAction)removeImage4:(id)sender {
-    [PFUser currentUser][@"image4"] = [NSNull null];
+    //[PFUser currentUser][@"image4"] = [NSNull null];
     [profilePicsArray[4] setImage:[UIImage imageNamed:@"bfa_plus-square_simple-green_128x128.png"]];
     ((PFImageView*)profilePicsArray[4]).file = nil;
     ((UIButton*)removeButtons[4]).hidden = YES;
 }
 - (IBAction)removeImage5:(id)sender {
-    [PFUser currentUser][@"image5"] = [NSNull null];
+    //[PFUser currentUser][@"image5"] = [NSNull null];
     [profilePicsArray[5] setImage:[UIImage imageNamed:@"bfa_plus-square_simple-green_128x128.png"]];
     ((PFImageView*)profilePicsArray[5]).file = nil;
     ((UIButton*)removeButtons[5]).hidden = YES;
