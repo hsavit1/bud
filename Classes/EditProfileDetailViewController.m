@@ -76,6 +76,7 @@
                     if(objects[i][@"photo"]){
                         ((PFImageView*)[self.photoCellContentView viewWithTag:(i+111)]).layer.cornerRadius = 9;
                         ((PFImageView*)[self.photoCellContentView viewWithTag:(i+111)]).layer.masksToBounds = YES;
+                        ((UIImageView *)[self.photoCellContentView viewWithTag:(i+111)]).contentMode = UIViewContentModeScaleAspectFill;
                         ((PFImageView*)[self.photoCellContentView viewWithTag:(i+111)]).file = objects[i][@"photo"];
                         [((PFImageView*)[self.photoCellContentView viewWithTag:(i+111)]) loadInBackground];
                         [profilePicsArray addObject:((PFImageView*)[self.photoCellContentView viewWithTag:(i+111)])];
