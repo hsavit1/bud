@@ -305,6 +305,8 @@
 
 
 -(IBAction)removeImage:(UIButton*)sender{
+    isPageEdited = YES;
+    
     long i = sender.tag - 1000; //getting the wrong int value
     //[PFUser currentUser][@"image0"] = [NSNull null];
     [profilePicsArray[i] setImage:[UIImage imageNamed:@"bfa_plus-square_simple-green_128x128.png"]];
@@ -313,6 +315,8 @@
 }
 
 -(IBAction)addImagePressed:(UIButton*)sender{
+    isPageEdited = YES;
+
     [self addImage:sender];
     //self.pickedImage = sender.tag - 100; //getting the wrong int value?
 }
@@ -433,6 +437,8 @@
 
 
 - (IBAction)favoriteWaysToMedicateButtonToggled:(UIButton*)sender {
+    isPageEdited = YES;
+
     if(sender.alpha == .5){
         sender.alpha = 1;
         for (int i = 1; i < 10; i++) {
@@ -547,9 +553,10 @@
 
 //done button pressed
 - (IBAction)saveEverything:(id)sender {
-    if(isPageEdited)
+    if(isPageEdited){
         //ask to save, then pop
         [self.navigationController popViewControllerAnimated:YES];
+    }
     else{
         //if page isnt edited
         [self.navigationController popViewControllerAnimated:YES];
