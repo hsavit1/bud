@@ -561,7 +561,7 @@
                                                         <action selector="addImagePressed:" destination="x8h-ed-W9R" eventType="touchUpInside" id="RWb-Rn-xub"/>
                                                     </connections>
                                                 </button>
-                                                <imageView userInteractionEnabled="NO" tag="115" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bfa_plus-square_simple-green_128x128.png" translatesAutoresizingMaskIntoConstraints="NO" id="qHw-Pe-dez" customClass="PFImageView">
+                                                <imageView userInteractionEnabled="NO" tag="116" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bfa_plus-square_simple-green_128x128.png" translatesAutoresizingMaskIntoConstraints="NO" id="qHw-Pe-dez" customClass="PFImageView">
                                                     <rect key="frame" x="252" y="115" width="60" height="60"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="60" id="HwJ-3c-wMC"/>

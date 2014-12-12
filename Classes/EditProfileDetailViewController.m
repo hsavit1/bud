@@ -344,6 +344,17 @@
             PFFile* imageFile = [PFFile fileWithName:@"profilePic" data:UIImagePNGRepresentation(imageToSave)];
             [imageFile saveInBackground];
             
+            //now cycle through all of your image tags and save the image to the first open tag
+            for(int i = 111; i < 117; i++){
+                if(((PFImageView*)[self.photoCellContentView viewWithTag:i]).file == nil){
+                    ((PFImageView*)[self.photoCellContentView viewWithTag:i]).file = imageFile;
+                    [((PFImageView*)[self.photoCellContentView viewWithTag:i]) loadInBackground];
+                    [ProgressHUD showSuccess:@"Saved."];
+                    [self.imagePick popToRootViewControllerAnimated:NO];
+                    [self.imagePick dismissViewControllerAnimated:NO completion:nil];
+                    break;
+                }
+            }
             
 //            PFUser* usr = [PFUser currentUser];
 //            for(int i = 0; i < profilePicsArray.count; i++){
@@ -406,6 +417,7 @@
 
 -(void)addImage:(UIButton*)tappedView{
     
+    //get rid of this DOActionSHeet BS-> it fucks up wayyy too often.
     DoActionSheet *vActionSheet = [[DoActionSheet alloc] init];
     vActionSheet.nAnimationType = 2;
     vActionSheet.doBackColor = [UIColor whiteColor];
