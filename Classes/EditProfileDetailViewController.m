@@ -300,6 +300,10 @@
     return 60;
 }
 
+//////////////////////////////////////////////////////////////////////////////////////////// STUFF WITH IMAGES ////////////////////////////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
 -(IBAction)removeImage:(UIButton*)sender{
     long i = sender.tag - 1000; //getting the wrong int value
     //[PFUser currentUser][@"image0"] = [NSNull null];
@@ -313,6 +317,8 @@
     //self.pickedImage = sender.tag - 100; //getting the wrong int value?
 }
 
+
+//we can delay the saving stuff until the DoneButtonPress
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info
 {
     [ProgressHUD show:@"Please wait..."];
@@ -497,6 +503,23 @@
     }
 }
 
+- (void)prepareForSegue:(UIStoryboardSegue *)segue
+                 sender:(id)sender {
+    if ([segue.identifier isEqualToString:@"one"]) {
+        ((ComposeContentViewController *)segue.destinationViewController).senderCellNumber = [NSNumber numberWithInt:1];
+    }
+    else if ([segue.identifier isEqualToString:@"education"]) {
+        ((ComposeContentViewController *)segue.destinationViewController).senderCellNumber = [NSNumber numberWithInt:5];
+    }
+    else if ([segue.identifier isEqualToString:@"location"]) {
+        ((ComposeContentViewController *)segue.destinationViewController).senderCellNumber = [NSNumber numberWithInt:6];
+    }
+    
+}
+
+///////////////////////////////////////////////////////////////////// STUFF WITH SAVING ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
 -(void)saveFavoriteWaysToGetHigh:(NSArray*)waysToGetHigh{
     
     PFQuery *userQuery = [PFQuery queryWithClassName:@"UserProfile"];
@@ -534,17 +557,4 @@
 }
 
 
-- (void)prepareForSegue:(UIStoryboardSegue *)segue
-                 sender:(id)sender {
-    if ([segue.identifier isEqualToString:@"one"]) {
-        ((ComposeContentViewController *)segue.destinationViewController).senderCellNumber = [NSNumber numberWithInt:1];
-    }
-    else if ([segue.identifier isEqualToString:@"education"]) {
-        ((ComposeContentViewController *)segue.destinationViewController).senderCellNumber = [NSNumber numberWithInt:5];
-    }
-    else if ([segue.identifier isEqualToString:@"location"]) {
-        ((ComposeContentViewController *)segue.destinationViewController).senderCellNumber = [NSNumber numberWithInt:6];
-    }
-
-}
 @end
