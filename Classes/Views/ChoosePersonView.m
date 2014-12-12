@@ -50,7 +50,7 @@ static const CGFloat ChoosePersonViewImageLabelWidth = 42.f;
         self.backgroundColor = [UIColor whiteColor];
         self.imageView.file = _person.image;
         [self.imageView loadInBackground];
-        
+        ((UIImageView *)self.imageView).contentMode = UIViewContentModeScaleAspectFill;
         self.autoresizingMask = UIViewAutoresizingFlexibleHeight |
                                 UIViewAutoresizingFlexibleWidth |
                                 UIViewAutoresizingFlexibleBottomMargin;
