@@ -29,6 +29,8 @@
 
 @property (strong, nonatomic) UIImagePickerController *imagePick;
 @property (weak, nonatomic) NSNumber *pickedImage;
+@property (weak, nonatomic) NSNumber *lastPickedImage;
+@property (weak, nonatomic) IBOutlet UIView *photoCellContentView;
 
 @property (strong, nonatomic) PFImageView *addImage6;
 @property (strong, nonatomic) UIButton *removeImage6;
@@ -50,48 +52,17 @@
     
     favoriteTools = [[NSMutableArray alloc]initWithObjects:@NO, @NO, @NO, @NO, @NO, @NO, @NO, @NO, @NO, nil];
     
-    self.addImage0.layer.cornerRadius = 8;
-    self.addImage0.layer.masksToBounds = YES;
-    self.addImage0.layer.borderColor = [UIColor colorWithRed:0.086 green:0.627 blue:0.522 alpha:1].CGColor; /*#16a085*/
-    self.addImage0.layer.borderWidth = 3;
+    for (int i = 100; i < 106; i++) {
+        [self.photoCellContentView viewWithTag:i].layer.cornerRadius = 8;
+        [self.photoCellContentView viewWithTag:i].layer.masksToBounds = YES;
+        [self.photoCellContentView viewWithTag:i].layer.borderColor = [UIColor colorWithRed:0.086 green:0.627 blue:0.522 alpha:1].CGColor; /*#16a085*/
+        [self.photoCellContentView viewWithTag:i].layer.borderWidth = 3;
+    }
     
-    self.addImage1.layer.cornerRadius = 8;
-    self.addImage1.layer.masksToBounds = YES;
-    self.addImage1.layer.borderColor = [UIColor colorWithRed:0.086 green:0.627 blue:0.522 alpha:1].CGColor; /*#16a085*/
-    self.addImage1.layer.borderWidth = 3;
-    
-    self.addImage2.layer.cornerRadius = 8;
-    self.addImage2.layer.masksToBounds = YES;
-    self.addImage2.layer.borderColor = [UIColor colorWithRed:0.086 green:0.627 blue:0.522 alpha:1].CGColor; /*#16a085*/
-    self.addImage2.layer.borderWidth = 3;
-    
-    self.addImage3.layer.cornerRadius = 8;
-    self.addImage3.layer.masksToBounds = YES;
-    self.addImage3.layer.borderColor = [UIColor colorWithRed:0.086 green:0.627 blue:0.522 alpha:1].CGColor; /*#16a085*/
-    self.addImage3.layer.borderWidth = 3;
-    
-    self.addImage4.layer.cornerRadius = 8;
-    self.addImage4.layer.masksToBounds = YES;
-    self.addImage4.layer.borderColor = [UIColor colorWithRed:0.086 green:0.627 blue:0.522 alpha:1].CGColor; /*#16a085*/
-    self.addImage4.layer.borderWidth = 3;
-    
-    self.addImage5.layer.cornerRadius = 8;
-    self.addImage5.layer.masksToBounds = YES;
-    self.addImage5.layer.borderColor = [UIColor colorWithRed:0.086 green:0.627 blue:0.522 alpha:1].CGColor; /*#16a085*/
-    self.addImage5.layer.borderWidth = 3;
-    
-    self.removeImage0.layer.cornerRadius = self.removeImage0.frame.size.width / 2;
-    self.removeImage1.layer.cornerRadius = self.removeImage0.frame.size.width / 2;
-    self.removeImage2.layer.cornerRadius = self.removeImage0.frame.size.width / 2;
-    self.removeImage3.layer.cornerRadius = self.removeImage0.frame.size.width / 2;
-    self.removeImage4.layer.cornerRadius = self.removeImage0.frame.size.width / 2;
-    self.removeImage5.layer.cornerRadius = self.removeImage0.frame.size.width / 2;
-    self.removeImage0.layer.masksToBounds = YES;
-    self.removeImage1.layer.masksToBounds = YES;
-    self.removeImage2.layer.masksToBounds = YES;
-    self.removeImage3.layer.masksToBounds = YES;
-    self.removeImage4.layer.masksToBounds = YES;
-    self.removeImage5.layer.masksToBounds = YES;
+    for (int i = 1000; i < 1006; i++) {
+        [self.photoCellContentView viewWithTag:i].layer.cornerRadius = [self.photoCellContentView viewWithTag:i].frame.size.width / 2;
+        [self.photoCellContentView viewWithTag:i].layer.masksToBounds = YES;
+    }
     
     
     
@@ -125,6 +96,7 @@
                 if(objects[0][@"photo"]){
                     self.addImage0.file = objects[0][@"photo"];
                     [self.addImage0 loadInBackground];
+                    self.lastPickedImage = [NSNumber numberWithInt:1];
                 }
                 else
                     self.removeImage0.hidden = YES;
@@ -132,6 +104,7 @@
                 if(objects.count >= 2){
                     self.addImage1.file = objects[1][@"photo"];
                     [self.addImage1 loadInBackground];
+                    self.lastPickedImage = [NSNumber numberWithInt:2];
                 }
                 else
                     self.removeImage1.hidden = YES;
@@ -139,6 +112,7 @@
                 if(objects.count >= 3){
                     self.addImage2.file = objects[2][@"photo"];
                     [self.addImage2 loadInBackground];
+                    self.lastPickedImage = [NSNumber numberWithInt:3];
                 }
                 else
                     self.removeImage2.hidden = YES;
@@ -146,6 +120,7 @@
                 if(objects.count >= 4){
                     self.addImage3.file = objects[3][@"photo"];
                     [self.addImage3 loadInBackground];
+                    self.lastPickedImage = [NSNumber numberWithInt:4];
                 }
                 else
                     self.removeImage3.hidden = YES;
@@ -153,6 +128,7 @@
                 if(objects.count >= 5){
                     self.addImage4.file = objects[4][@"photo"];
                     [self.addImage4 loadInBackground];
+                    self.lastPickedImage = [NSNumber numberWithInt:5];
                 }
                 else
                     self.removeImage4.hidden = YES;
@@ -160,6 +136,7 @@
                 if(objects.count >= 6){
                     self.addImage5.file = objects[5][@"photo"];
                     [self.addImage5 loadInBackground];
+                    self.lastPickedImage = [NSNumber numberWithInt:6];
                 }
                 else
                     self.removeImage5.hidden = YES;
@@ -515,6 +492,46 @@
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
+
+-(void)addImage:(UIButton*)tappedView{
+    
+    DoActionSheet *vActionSheet = [[DoActionSheet alloc] init];
+    vActionSheet.nAnimationType = 2;
+    vActionSheet.doBackColor = [UIColor whiteColor];
+    vActionSheet.doButtonColor = [UIColor colorWithRed:0.086 green:0.627 blue:0.522 alpha:1];
+    
+    [vActionSheet showC:@"Choose Your Photo Source to use the Photo Editor"
+                 cancel:@"Cancel"
+                buttons:@[@"Take Photo", @"Photo Library"]
+                 result:^(int nResult) {
+                     
+                     NSLog(@"---------------> result : %d", nResult);
+                     
+                     switch (nResult) {
+                         case 0:{
+                             self.imagePick = [[UIImagePickerController alloc]init];
+                             self.imagePick.sourceType =  UIImagePickerControllerSourceTypeCamera;
+                             self.imagePick.cameraCaptureMode = UIImagePickerControllerCameraCaptureModePhoto;
+                             self.imagePick.allowsEditing = YES;
+                             self.imagePick.delegate = self;
+                             [self presentViewController:self.imagePick animated:YES completion:nil];
+                             break;
+                         }
+                         case 1:{
+                             self.imagePick.sourceType =  UIImagePickerControllerSourceTypeCamera;
+                             self.imagePick = [[UIImagePickerController alloc]init];
+                             self.imagePick.allowsEditing = YES;
+                             self.imagePick.delegate = self;
+                             [self presentViewController:self.imagePick animated:YES completion:nil];
+                             break;
+                         }
+                        default:
+                             break;
+                     }
+                 }];
+}
+
+
 - (IBAction)buttonTapped:(UIButton*)sender {
     if(sender.alpha == .5){
         sender.alpha = 1;
@@ -602,44 +619,6 @@
                 break;
         }
     }
-}
-
--(void)addImage:(UIButton*)tappedView{
-    
-    DoActionSheet *vActionSheet = [[DoActionSheet alloc] init];
-    vActionSheet.nAnimationType = 2;
-    vActionSheet.doBackColor = [UIColor whiteColor];
-    vActionSheet.doButtonColor = [UIColor colorWithRed:0.086 green:0.627 blue:0.522 alpha:1];
-    
-    [vActionSheet showC:@"Choose Your Photo Source to use the Photo Editor"
-                 cancel:@"Cancel"
-                buttons:@[@"Take Photo", @"Photo Library"]
-                 result:^(int nResult) {
-                     
-                     NSLog(@"---------------> result : %d", nResult);
-                     
-                     switch (nResult) {
-                         case 0:{
-                             self.imagePick = [[UIImagePickerController alloc]init];
-                             self.imagePick.sourceType =  UIImagePickerControllerSourceTypeCamera;
-                             self.imagePick.cameraCaptureMode = UIImagePickerControllerCameraCaptureModePhoto;
-                             self.imagePick.allowsEditing = YES;
-                             self.imagePick.delegate = self;
-                             [self presentViewController:self.imagePick animated:YES completion:nil];
-                             break;
-                         }
-                         case 1:{
-                             self.imagePick.sourceType =  UIImagePickerControllerSourceTypeCamera;
-                             self.imagePick = [[UIImagePickerController alloc]init];
-                             self.imagePick.allowsEditing = YES;
-                             self.imagePick.delegate = self;
-                             [self presentViewController:self.imagePick animated:YES completion:nil];
-                             break;
-                         }
-                        default:
-                             break;
-                     }
-                 }];
 }
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{

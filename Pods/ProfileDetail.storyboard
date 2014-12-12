@@ -540,7 +540,7 @@
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="bfa_plus-square_simple-green_128x128.png" translatesAutoresizingMaskIntoConstraints="NO" id="BEn-xt-TqQ" customClass="PFImageView">
                                                     <rect key="frame" x="87" y="115" width="60" height="60"/>
                                                 </imageView>
-                                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pMg-kI-Kxt">
+                                                <button opaque="NO" tag="103" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pMg-kI-Kxt">
                                                     <rect key="frame" x="87" y="115" width="60" height="60"/>
                                                     <state key="normal">
                                                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -552,7 +552,7 @@
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="bfa_plus-square_simple-green_128x128.png" translatesAutoresizingMaskIntoConstraints="NO" id="ppk-Zz-joO" customClass="PFImageView">
                                                     <rect key="frame" x="169" y="115" width="60" height="60"/>
                                                 </imageView>
-                                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="L4X-ij-xzH">
+                                                <button opaque="NO" tag="104" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="L4X-ij-xzH">
                                                     <rect key="frame" x="169" y="115" width="60" height="60"/>
                                                     <state key="normal">
                                                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -568,7 +568,7 @@
                                                         <constraint firstAttribute="width" constant="60" id="wEw-Jl-udU"/>
                                                     </constraints>
                                                 </imageView>
-                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Vdo-x4-yw5">
+                                                <button opaque="NO" tag="105" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Vdo-x4-yw5">
                                                     <rect key="frame" x="252" y="115" width="60" height="60"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="60" id="Rpy-zQ-UVp"/>
@@ -591,7 +591,7 @@
                                                     <color key="textColor" red="0.33725490200000002" green="0.66666666669999997" blue="0.65098039220000004" alpha="1" colorSpace="deviceRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0Nj-3S-li2">
+                                                <button opaque="NO" tag="100" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0Nj-3S-li2">
                                                     <rect key="frame" x="8" y="9" width="85" height="85"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="85" id="n1y-cT-9FQ"/>
@@ -604,7 +604,7 @@
                                                         <action selector="image1Pressed:" destination="x8h-ed-W9R" eventType="touchUpInside" id="J4T-R0-ktE"/>
                                                     </connections>
                                                 </button>
-                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="O4f-zP-J34">
+                                                <button opaque="NO" tag="101" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="O4f-zP-J34">
                                                     <rect key="frame" x="252" y="22" width="60" height="60"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="60" id="hkl-qh-U0D"/>
@@ -617,7 +617,7 @@
                                                         <action selector="image2Pressed:" destination="x8h-ed-W9R" eventType="touchUpInside" id="AYs-ZA-MVf"/>
                                                     </connections>
                                                 </button>
-                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UTN-B5-D3e">
+                                                <button opaque="NO" tag="1000" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UTN-B5-D3e">
                                                     <rect key="frame" x="75" y="4" width="24" height="24"/>
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <constraints>
@@ -631,7 +631,7 @@
                                                         <action selector="removeImage0:" destination="x8h-ed-W9R" eventType="touchUpInside" id="s7m-oO-s2G"/>
                                                     </connections>
                                                 </button>
-                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BqO-Zb-99a">
+                                                <button opaque="NO" tag="1002" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BqO-Zb-99a">
                                                     <rect key="frame" x="52" y="107" width="24" height="24"/>
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <state key="normal" backgroundImage="ocha_damage-destroyed_simple-red-gradient_24x24.png">
@@ -641,7 +641,7 @@
                                                         <action selector="removeImage2:" destination="x8h-ed-W9R" eventType="touchUpInside" id="EQN-T6-W9d"/>
                                                     </connections>
                                                 </button>
-                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TUb-MP-QCO">
+                                                <button opaque="NO" tag="1004" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TUb-MP-QCO">
                                                     <rect key="frame" x="213" y="107" width="24" height="24"/>
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <state key="normal" backgroundImage="ocha_damage-destroyed_simple-red-gradient_24x24.png">
@@ -651,7 +651,7 @@
                                                         <action selector="removeImage4:" destination="x8h-ed-W9R" eventType="touchUpInside" id="mg5-EC-oyo"/>
                                                     </connections>
                                                 </button>
-                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wbY-gJ-cny">
+                                                <button opaque="NO" tag="1003" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wbY-gJ-cny">
                                                     <rect key="frame" x="131" y="107" width="24" height="24"/>
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <state key="normal" backgroundImage="ocha_damage-destroyed_simple-red-gradient_24x24.png">
@@ -661,7 +661,7 @@
                                                         <action selector="removeImage3:" destination="x8h-ed-W9R" eventType="touchUpInside" id="tbp-JT-18m"/>
                                                     </connections>
                                                 </button>
-                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KbX-mI-70p">
+                                                <button opaque="NO" tag="1005" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KbX-mI-70p">
                                                     <rect key="frame" x="295" y="107" width="24" height="24"/>
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <state key="normal" backgroundImage="ocha_damage-destroyed_simple-red-gradient_24x24.png">
@@ -671,7 +671,7 @@
                                                         <action selector="removeImage5:" destination="x8h-ed-W9R" eventType="touchUpInside" id="7jN-l9-hoB"/>
                                                     </connections>
                                                 </button>
-                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rQ3-9X-89T">
+                                                <button opaque="NO" tag="1001" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rQ3-9X-89T">
                                                     <rect key="frame" x="294" y="10" width="24" height="24"/>
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <state key="normal" backgroundImage="ocha_damage-destroyed_simple-red-gradient_24x24.png">
@@ -681,7 +681,7 @@
                                                         <action selector="removeImage1:" destination="x8h-ed-W9R" eventType="touchUpInside" id="0T7-wg-lIb"/>
                                                     </connections>
                                                 </button>
-                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Y2z-N9-T6n">
+                                                <button opaque="NO" tag="102" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Y2z-N9-T6n">
                                                     <rect key="frame" x="8" y="115" width="60" height="60"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="60" id="8Kv-T8-bT2"/>
@@ -1142,6 +1142,7 @@
                         <outlet property="favoriteTypeLabel" destination="2Qa-lZ-oVc" id="Scs-pK-gJp"/>
                         <outlet property="headerView" destination="FOj-1d-rFk" id="0Cu-V5-LLX"/>
                         <outlet property="personalBioLabel" destination="ukF-Ce-pB4" id="w1M-vy-0Ng"/>
+                        <outlet property="photoCellContentView" destination="FOj-1d-rFk" id="6xG-Vo-bFN"/>
                         <outlet property="removeImage0" destination="UTN-B5-D3e" id="B3A-68-9rn"/>
                         <outlet property="removeImage1" destination="rQ3-9X-89T" id="LBx-Uj-19t"/>
                         <outlet property="removeImage2" destination="BqO-Zb-99a" id="qbE-vh-u0q"/>
