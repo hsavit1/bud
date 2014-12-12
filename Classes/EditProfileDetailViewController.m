@@ -20,7 +20,7 @@
 #define IS_IPHONE_6_PLUS (IS_IPHONE && [[UIScreen mainScreen] bounds].size.height == 736.0)
 #define IS_RETINA ([[UIScreen mainScreen] scale] == 2.0)
 
-@interface EditProfileDetailViewController ()<UITextViewDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate>{
+@interface EditProfileDetailViewController ()<UITextViewDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UIActionSheetDelegate>{
     NSMutableArray *profilePicsArray;
     NSArray *removeButtons;
     NSMutableArray *favoriteTools;
@@ -416,44 +416,38 @@
 
 
 -(void)addImage:(UIButton*)tappedView{
+    UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:@"Choose Your Photo Source to use the Photo Editor"
+                                                             delegate:self
+                                                    cancelButtonTitle:@"Cancel"
+                                               destructiveButtonTitle:nil
+                                                    otherButtonTitles:@"Take Photo", @"Photo Library", nil];
     
-    //get rid of this DOActionSHeet BS-> it fucks up wayyy too often.
-    DoActionSheet *vActionSheet = [[DoActionSheet alloc] init];
-    vActionSheet.nAnimationType = 2;
-    vActionSheet.doBackColor = [UIColor whiteColor];
-    vActionSheet.doButtonColor = [UIColor colorWithRed:0.086 green:0.627 blue:0.522 alpha:1];
-    
-    [vActionSheet showC:@"Choose Your Photo Source to use the Photo Editor"
-                 cancel:@"Cancel"
-                buttons:@[@"Take Photo", @"Photo Library"]
-                 result:^(int nResult) {
-                     
-                     NSLog(@"---------------> result : %d", nResult); //getting a result of -100 occasionally. should lead to creashes. switch this to ActionSheet
-                     
-                     switch (nResult) {
-                         case 0:{
-                             self.imagePick = [[UIImagePickerController alloc]init];
-                             self.imagePick.sourceType =  UIImagePickerControllerSourceTypeCamera;
-                             self.imagePick.cameraCaptureMode = UIImagePickerControllerCameraCaptureModePhoto;
-                             self.imagePick.allowsEditing = YES;
-                             self.imagePick.delegate = self;
-                             [self presentViewController:self.imagePick animated:YES completion:nil];
-                             break;
-                         }
-                         case 1:{
-                             self.imagePick.sourceType =  UIImagePickerControllerSourceTypeCamera;
-                             self.imagePick = [[UIImagePickerController alloc]init];
-                             self.imagePick.allowsEditing = YES;
-                             self.imagePick.delegate = self;
-                             [self presentViewController:self.imagePick animated:YES completion:nil];
-                             break;
-                         }
-                        default:
-                             break;
-                     }
-                 }];
+    [actionSheet showInView:self.view];
 }
 
+-(void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex{
+    switch (buttonIndex) {
+        case 0:{
+            self.imagePick = [[UIImagePickerController alloc]init];
+            self.imagePick.sourceType =  UIImagePickerControllerSourceTypeCamera;
+            self.imagePick.cameraCaptureMode = UIImagePickerControllerCameraCaptureModePhoto;
+            self.imagePick.allowsEditing = YES;
+            self.imagePick.delegate = self;
+            [self presentViewController:self.imagePick animated:YES completion:nil];
+            break;
+        }
+        case 1:{
+            self.imagePick.sourceType =  UIImagePickerControllerSourceTypeCamera;
+            self.imagePick = [[UIImagePickerController alloc]init];
+            self.imagePick.allowsEditing = YES;
+            self.imagePick.delegate = self;
+            [self presentViewController:self.imagePick animated:YES completion:nil];
+            break;
+        }
+        default:
+            break;
+    }
+}
 
 - (IBAction)favoriteWaysToMedicateButtonToggled:(UIButton*)sender {
     isPageEdited = YES;
@@ -526,6 +520,7 @@
                          [self.tableView deselectRowAtIndexPath:indexPath animated:YES];
                      }];
     }
+    
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue
