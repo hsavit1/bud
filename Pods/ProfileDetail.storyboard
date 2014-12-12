@@ -546,7 +546,7 @@
                                                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                     </state>
                                                     <connections>
-                                                        <action selector="image4Pressed:" destination="x8h-ed-W9R" eventType="touchUpInside" id="iGT-Wq-ZgB"/>
+                                                        <action selector="addImagePressed:" destination="x8h-ed-W9R" eventType="touchUpInside" id="4f8-9h-sve"/>
                                                     </connections>
                                                 </button>
                                                 <imageView userInteractionEnabled="NO" tag="115" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="bfa_plus-square_simple-green_128x128.png" translatesAutoresizingMaskIntoConstraints="NO" id="ppk-Zz-joO" customClass="PFImageView">
@@ -558,7 +558,7 @@
                                                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                     </state>
                                                     <connections>
-                                                        <action selector="image5Pressed:" destination="x8h-ed-W9R" eventType="touchUpInside" id="rSE-GA-QIk"/>
+                                                        <action selector="addImagePressed:" destination="x8h-ed-W9R" eventType="touchUpInside" id="RWb-Rn-xub"/>
                                                     </connections>
                                                 </button>
                                                 <imageView userInteractionEnabled="NO" tag="115" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bfa_plus-square_simple-green_128x128.png" translatesAutoresizingMaskIntoConstraints="NO" id="qHw-Pe-dez" customClass="PFImageView">
@@ -578,7 +578,7 @@
                                                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                     </state>
                                                     <connections>
-                                                        <action selector="image6Pressed:" destination="x8h-ed-W9R" eventType="touchUpInside" id="BoE-Xa-rhA"/>
+                                                        <action selector="addImagePressed:" destination="x8h-ed-W9R" eventType="touchUpInside" id="Ujx-4F-J8f"/>
                                                     </connections>
                                                 </button>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Add A Few Photos To Your Profile" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="srm-R6-2iA">
@@ -601,7 +601,7 @@
                                                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                     </state>
                                                     <connections>
-                                                        <action selector="image1Pressed:" destination="x8h-ed-W9R" eventType="touchUpInside" id="J4T-R0-ktE"/>
+                                                        <action selector="addImagePressed:" destination="x8h-ed-W9R" eventType="touchUpInside" id="MmU-Yh-3Kb"/>
                                                     </connections>
                                                 </button>
                                                 <button opaque="NO" tag="102" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Y2z-N9-T6n">
@@ -614,7 +614,7 @@
                                                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                     </state>
                                                     <connections>
-                                                        <action selector="image3Pressed:" destination="x8h-ed-W9R" eventType="touchUpInside" id="ZEv-YA-mFd"/>
+                                                        <action selector="addImagePressed:" destination="x8h-ed-W9R" eventType="touchUpInside" id="taT-iG-zkz"/>
                                                     </connections>
                                                 </button>
                                                 <button opaque="NO" tag="101" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="O4f-zP-J34">
@@ -627,7 +627,7 @@
                                                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                     </state>
                                                     <connections>
-                                                        <action selector="image2Pressed:" destination="x8h-ed-W9R" eventType="touchUpInside" id="AYs-ZA-MVf"/>
+                                                        <action selector="addImagePressed:" destination="x8h-ed-W9R" eventType="touchUpInside" id="sR6-tF-Hy5"/>
                                                     </connections>
                                                 </button>
                                                 <button opaque="NO" tag="1000" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UTN-B5-D3e">
@@ -641,7 +641,7 @@
                                                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                     </state>
                                                     <connections>
-                                                        <action selector="removeImage0:" destination="x8h-ed-W9R" eventType="touchUpInside" id="s7m-oO-s2G"/>
+                                                        <action selector="removeImage:" destination="x8h-ed-W9R" eventType="touchUpInside" id="oeO-Qe-XY0"/>
                                                     </connections>
                                                 </button>
                                                 <button opaque="NO" tag="1002" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BqO-Zb-99a">
@@ -651,7 +651,7 @@
                                                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                     </state>
                                                     <connections>
-                                                        <action selector="removeImage2:" destination="x8h-ed-W9R" eventType="touchUpInside" id="EQN-T6-W9d"/>
+                                                        <action selector="removeImage:" destination="x8h-ed-W9R" eventType="touchUpInside" id="Czv-zZ-y3t"/>
                                                     </connections>
                                                 </button>
                                                 <button opaque="NO" tag="1004" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TUb-MP-QCO">
@@ -661,7 +661,7 @@
                                                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                     </state>
                                                     <connections>
-                                                        <action selector="removeImage4:" destination="x8h-ed-W9R" eventType="touchUpInside" id="mg5-EC-oyo"/>
+                                                        <action selector="removeImage:" destination="x8h-ed-W9R" eventType="touchUpInside" id="Xga-Og-VB1"/>
                                                     </connections>
                                                 </button>
                                                 <button opaque="NO" tag="1003" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wbY-gJ-cny">
@@ -671,7 +671,7 @@
                                                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                     </state>
                                                     <connections>
-                                                        <action selector="removeImage3:" destination="x8h-ed-W9R" eventType="touchUpInside" id="tbp-JT-18m"/>
+                                                        <action selector="removeImage:" destination="x8h-ed-W9R" eventType="touchUpInside" id="LPz-8P-P2u"/>
                                                     </connections>
                                                 </button>
                                                 <button opaque="NO" tag="1005" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KbX-mI-70p">
@@ -681,7 +681,7 @@
                                                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                     </state>
                                                     <connections>
-                                                        <action selector="removeImage5:" destination="x8h-ed-W9R" eventType="touchUpInside" id="7jN-l9-hoB"/>
+                                                        <action selector="removeImage:" destination="x8h-ed-W9R" eventType="touchUpInside" id="iGN-fS-dQa"/>
                                                     </connections>
                                                 </button>
                                                 <button opaque="NO" tag="1001" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rQ3-9X-89T">
@@ -691,7 +691,7 @@
                                                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                     </state>
                                                     <connections>
-                                                        <action selector="removeImage1:" destination="x8h-ed-W9R" eventType="touchUpInside" id="0T7-wg-lIb"/>
+                                                        <action selector="removeImage:" destination="x8h-ed-W9R" eventType="touchUpInside" id="Ybl-MQ-Xwf"/>
                                                     </connections>
                                                 </button>
                                             </subviews>
@@ -967,7 +967,7 @@
                                                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                     </state>
                                                     <connections>
-                                                        <action selector="buttonTapped:" destination="x8h-ed-W9R" eventType="touchUpInside" id="2d0-Le-jAx"/>
+                                                        <action selector="favoriteWaysToMedicateButtonToggled:" destination="x8h-ed-W9R" eventType="touchUpInside" id="fOF-Dy-4gq"/>
                                                     </connections>
                                                 </button>
                                                 <button opaque="NO" alpha="0.5" tag="2" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JZH-wa-8Dy" userLabel="Bongs">
@@ -977,7 +977,7 @@
                                                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                     </state>
                                                     <connections>
-                                                        <action selector="buttonTapped:" destination="x8h-ed-W9R" eventType="touchUpInside" id="nNP-b6-sgr"/>
+                                                        <action selector="favoriteWaysToMedicateButtonToggled:" destination="x8h-ed-W9R" eventType="touchUpInside" id="zsy-qt-gVj"/>
                                                     </connections>
                                                 </button>
                                                 <button opaque="NO" alpha="0.49999999999999961" tag="1" contentMode="scaleToFill" fixedFrame="YES" highlighted="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3OG-8Y-vPH" userLabel="Blunts">
@@ -987,7 +987,7 @@
                                                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                     </state>
                                                     <connections>
-                                                        <action selector="buttonTapped:" destination="x8h-ed-W9R" eventType="touchUpInside" id="gWZ-Vu-tVc"/>
+                                                        <action selector="favoriteWaysToMedicateButtonToggled:" destination="x8h-ed-W9R" eventType="touchUpInside" id="uMH-4A-TZR"/>
                                                     </connections>
                                                 </button>
                                                 <button opaque="NO" alpha="0.5" tag="4" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DdY-0q-Wc2" userLabel="Vaporizers">
@@ -997,7 +997,7 @@
                                                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                     </state>
                                                     <connections>
-                                                        <action selector="buttonTapped:" destination="x8h-ed-W9R" eventType="touchUpInside" id="QTa-kb-ga2"/>
+                                                        <action selector="favoriteWaysToMedicateButtonToggled:" destination="x8h-ed-W9R" eventType="touchUpInside" id="2Er-PA-QyE"/>
                                                     </connections>
                                                 </button>
                                                 <button opaque="NO" alpha="0.5" tag="7" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wRx-hN-gt6" userLabel="Edibles">
@@ -1007,7 +1007,7 @@
                                                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                     </state>
                                                     <connections>
-                                                        <action selector="buttonTapped:" destination="x8h-ed-W9R" eventType="touchUpInside" id="G1G-QL-PkR"/>
+                                                        <action selector="favoriteWaysToMedicateButtonToggled:" destination="x8h-ed-W9R" eventType="touchUpInside" id="9GS-dR-Agr"/>
                                                     </connections>
                                                 </button>
                                                 <button opaque="NO" alpha="0.5" tag="8" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Aay-I6-gJb" userLabel="Wax">
@@ -1017,7 +1017,7 @@
                                                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                     </state>
                                                     <connections>
-                                                        <action selector="buttonTapped:" destination="x8h-ed-W9R" eventType="touchUpInside" id="c0M-8a-eUB"/>
+                                                        <action selector="favoriteWaysToMedicateButtonToggled:" destination="x8h-ed-W9R" eventType="touchUpInside" id="A3a-2h-fXK"/>
                                                     </connections>
                                                 </button>
                                                 <button opaque="NO" alpha="0.49999999999999961" tag="5" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="99T-Yi-jnh" userLabel="Shatter">
@@ -1027,7 +1027,7 @@
                                                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                     </state>
                                                     <connections>
-                                                        <action selector="buttonTapped:" destination="x8h-ed-W9R" eventType="touchUpInside" id="xHI-iD-Gbt"/>
+                                                        <action selector="favoriteWaysToMedicateButtonToggled:" destination="x8h-ed-W9R" eventType="touchUpInside" id="IgE-Cc-RsL"/>
                                                     </connections>
                                                 </button>
                                                 <button opaque="NO" alpha="0.5" tag="9" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oWS-hq-prh" userLabel="Hash Oil">
@@ -1037,7 +1037,7 @@
                                                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                     </state>
                                                     <connections>
-                                                        <action selector="buttonTapped:" destination="x8h-ed-W9R" eventType="touchUpInside" id="eg1-sP-UAt"/>
+                                                        <action selector="favoriteWaysToMedicateButtonToggled:" destination="x8h-ed-W9R" eventType="touchUpInside" id="MhJ-At-MKO"/>
                                                     </connections>
                                                 </button>
                                                 <button opaque="NO" alpha="0.5" tag="6" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ouy-ZH-EkF" userLabel="Topical">
@@ -1047,7 +1047,7 @@
                                                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                     </state>
                                                     <connections>
-                                                        <action selector="buttonTapped:" destination="x8h-ed-W9R" eventType="touchUpInside" id="AO8-GD-Yv8"/>
+                                                        <action selector="favoriteWaysToMedicateButtonToggled:" destination="x8h-ed-W9R" eventType="touchUpInside" id="BHG-J3-twY"/>
                                                     </connections>
                                                 </button>
                                                 <label opaque="NO" userInteractionEnabled="NO" alpha="0.49999999999999961" tag="22" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Bongs" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fc4-eW-B51">

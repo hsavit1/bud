@@ -24,17 +24,17 @@
     NSMutableArray *profilePicsArray;
     NSArray *removeButtons;
     NSMutableArray *favoriteTools;
-
+    BOOL isPageEdited;
 }
 
 @property (strong, nonatomic) UIImagePickerController *imagePick;
 @property (weak, nonatomic) NSNumber *pickedImage;
 @property (weak, nonatomic) NSNumber *lastPickedImage;
 @property (weak, nonatomic) IBOutlet UIView *photoCellContentView;
-
-@property (strong, nonatomic) PFImageView *addImage6;
-@property (strong, nonatomic) UIButton *removeImage6;
-@property (strong, nonatomic) UIButton *addImage6Buttom;
+//
+//@property (strong, nonatomic) PFImageView *addImage6;
+//@property (strong, nonatomic) UIButton *removeImage6;
+//@property (strong, nonatomic) UIButton *addImage6Buttom;
 
 @end
 
@@ -300,81 +300,18 @@
     return 60;
 }
 
-//
-//-(IBAction)removeImages:(id)sender{
-//    for (int i = 0; i < 6; i++) {
-//        ((PFImageView*)[self.photoCellContentView viewWithTag:i])
-//    }
-//}
-
-
-
-- (IBAction)removeImage0:(id)sender {
+-(IBAction)removeImage:(UIButton*)sender{
+    long i = sender.tag - 1000; //getting the wrong int value
     //[PFUser currentUser][@"image0"] = [NSNull null];
-    [profilePicsArray[0] setImage:[UIImage imageNamed:@"bfa_plus-square_simple-green_128x128.png"]];
-    ((PFImageView*)profilePicsArray[0]).file = nil;
-    ((UIButton*)removeButtons[0]).hidden = YES;
-}
-- (IBAction)removeImage1:(id)sender {
-    //[PFUser currentUser][@"image1"] = [NSNull null];
-    [profilePicsArray[1] setImage:[UIImage imageNamed:@"bfa_plus-square_simple-green_128x128.png"]];
-    ((PFImageView*)profilePicsArray[1]).file = nil;
-    ((UIButton*)removeButtons[1]).hidden = YES;
-}
-- (IBAction)removeImage2:(id)sender {
-    //[PFUser currentUser][@"image2"] = [NSNull null];
-    [profilePicsArray[2] setImage:[UIImage imageNamed:@"bfa_plus-square_simple-green_128x128.png"]];
-    ((PFImageView*)profilePicsArray[2]).file = nil;
-    ((UIButton*)removeButtons[2]).hidden = YES;
-}
-- (IBAction)removeImage3:(id)sender {
-    //[PFUser currentUser][@"image3"] = [NSNull null];
-    [profilePicsArray[3] setImage:[UIImage imageNamed:@"bfa_plus-square_simple-green_128x128.png"]];
-    ((PFImageView*)profilePicsArray[3]).file = nil;
-    ((UIButton*)removeButtons[3]).hidden = YES;
-}
-- (IBAction)removeImage4:(id)sender {
-    //[PFUser currentUser][@"image4"] = [NSNull null];
-    [profilePicsArray[4] setImage:[UIImage imageNamed:@"bfa_plus-square_simple-green_128x128.png"]];
-    ((PFImageView*)profilePicsArray[4]).file = nil;
-    ((UIButton*)removeButtons[4]).hidden = YES;
-}
-- (IBAction)removeImage5:(id)sender {
-    //[PFUser currentUser][@"image5"] = [NSNull null];
-    [profilePicsArray[5] setImage:[UIImage imageNamed:@"bfa_plus-square_simple-green_128x128.png"]];
-    ((PFImageView*)profilePicsArray[5]).file = nil;
-    ((UIButton*)removeButtons[5]).hidden = YES;
+    [profilePicsArray[i] setImage:[UIImage imageNamed:@"bfa_plus-square_simple-green_128x128.png"]];
+    ((PFImageView*)profilePicsArray[i]).file = nil;
+    ((UIButton*)removeButtons[i]).hidden = YES;
 }
 
-
-
-
-
-- (IBAction)image1Pressed:(UIButton*)sender {
+-(IBAction)addImagePressed:(UIButton*)sender{
     [self addImage:sender];
-    self.pickedImage = [NSNumber numberWithInt:0];
+    //self.pickedImage = sender.tag - 100; //getting the wrong int value?
 }
-- (IBAction)image2Pressed:(UIButton*)sender {
-    [self addImage:sender];
-    self.pickedImage = [NSNumber numberWithInt:1];
-}
-- (IBAction)image3Pressed:(UIButton*)sender {
-    [self addImage:sender];
-    self.pickedImage = [NSNumber numberWithInt:2];
-}
-- (IBAction)image4Pressed:(UIButton*)sender {
-    [self addImage:sender];
-    self.pickedImage = [NSNumber numberWithInt:3];
-}
-- (IBAction)image5Pressed:(UIButton*)sender {
-    [self addImage:sender];
-    self.pickedImage = [NSNumber numberWithInt:4];
-}
-- (IBAction)image6Pressed:(UIButton*)sender {
-    [self addImage:sender];
-    self.pickedImage = [NSNumber numberWithInt:5];
-}
-
 
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info
 {
@@ -414,23 +351,26 @@
                 }
     
             }
-            [profilePicsArray[[self.pickedImage integerValue]] setImage:imageToSave];//[self addImage:sender];
-            [profilePicsArray[[self.pickedImage integerValue]] setFile:imageFile];
-            NSString *save = [@"image" stringByAppendingString:[NSString stringWithFormat:@"%ld", (long)[self.pickedImage integerValue]]];
-            usr[save] = imageFile;
-            [usr saveInBackgroundWithBlock:^(BOOL succeeded, NSError* err){
-                if(!succeeded){
-                    [ProgressHUD showError:@"Network Error"];
-                    [self.imagePick popToRootViewControllerAnimated:NO];
-                    [self.imagePick dismissViewControllerAnimated:NO completion:nil];
-                }
-                else{
-                    [ProgressHUD showSuccess:@"Saved."];
-                    ((UIButton*)removeButtons[[self.pickedImage integerValue]]).hidden = NO;
-                    [self.imagePick popToRootViewControllerAnimated:NO];
-                    [self.imagePick dismissViewControllerAnimated:NO completion:nil];
-                }
-            }];
+            
+            
+            
+//            [profilePicsArray[[self.pickedImage integerValue]] setImage:imageToSave];//[self addImage:sender];
+//            [profilePicsArray[[self.pickedImage integerValue]] setFile:imageFile];
+//            NSString *save = [@"image" stringByAppendingString:[NSString stringWithFormat:@"%ld", (long)[self.pickedImage integerValue]]];
+//            usr[save] = imageFile;
+//            [usr saveInBackgroundWithBlock:^(BOOL succeeded, NSError* err){
+//                if(!succeeded){
+//                    [ProgressHUD showError:@"Network Error"];
+//                    [self.imagePick popToRootViewControllerAnimated:NO];
+//                    [self.imagePick dismissViewControllerAnimated:NO completion:nil];
+//                }
+//                else{
+//                    [ProgressHUD showSuccess:@"Saved."];
+//                    ((UIButton*)removeButtons[[self.pickedImage integerValue]]).hidden = NO;
+//                    [self.imagePick popToRootViewControllerAnimated:NO];
+//                    [self.imagePick dismissViewControllerAnimated:NO completion:nil];
+//                }
+//            }];
 
         }
         else{
@@ -459,7 +399,7 @@
                 buttons:@[@"Take Photo", @"Photo Library"]
                  result:^(int nResult) {
                      
-                     NSLog(@"---------------> result : %d", nResult);
+                     NSLog(@"---------------> result : %d", nResult); //getting a result of -100 occasionally. should lead to creashes. switch this to ActionSheet
                      
                      switch (nResult) {
                          case 0:{
@@ -486,7 +426,7 @@
 }
 
 
-- (IBAction)buttonTapped:(UIButton*)sender {
+- (IBAction)favoriteWaysToMedicateButtonToggled:(UIButton*)sender {
     if(sender.alpha == .5){
         sender.alpha = 1;
         for (int i = 1; i < 10; i++) {
@@ -582,12 +522,15 @@
     }];
 }
 
+//done button pressed
 - (IBAction)saveEverything:(id)sender {
-    
-    
-    
-    
-    [self.navigationController popViewControllerAnimated:YES];
+    if(isPageEdited)
+        //ask to save, then pop
+        [self.navigationController popViewControllerAnimated:YES];
+    else{
+        //if page isnt edited
+        [self.navigationController popViewControllerAnimated:YES];
+    }
 }
 
 
