@@ -437,8 +437,8 @@
             break;
         }
         case 1:{
-            self.imagePick.sourceType =  UIImagePickerControllerSourceTypeCamera;
             self.imagePick = [[UIImagePickerController alloc]init];
+            self.imagePick.sourceType =  UIImagePickerControllerSourceTypePhotoLibrary;
             self.imagePick.allowsEditing = YES;
             self.imagePick.delegate = self;
             [self presentViewController:self.imagePick animated:YES completion:nil];
@@ -551,7 +551,6 @@
         }
     }];
 }
-
 
 -(void)saveFavoriteStrain:(int)strainOfChoice{
  
