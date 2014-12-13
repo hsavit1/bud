@@ -568,7 +568,17 @@
     [userQuery orderByAscending:@"rank"];
     [userQuery findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
         if(objects.count != 0){
-            
+            for (int i = 0; i < objects.count; i++) {
+                if(((PFImageView*)[self.photoCellContentView viewWithTag:(i+111)]).file != nil){
+                    //save image file to parse with the rank
+                    PFFile *imageFile = ((PFImageView*)[self.photoCellContentView viewWithTag:(i+111)]).file;
+                    objects[@"photo"][i] = imageFile;
+                }
+                else{
+                    //delete the object from parse
+                    //https://parse.com/questions/how-can-i-delete-a-file
+                }
+            }
         }
     }];
 }
