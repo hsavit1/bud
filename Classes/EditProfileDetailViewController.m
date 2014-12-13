@@ -472,7 +472,7 @@
 }
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-    if(indexPath.section == 3){
+    if(indexPath.section == 2){
         NSLog(@"cell selected");
         
         DoActionSheet *vActionSheet = [[DoActionSheet alloc] init];
@@ -540,14 +540,14 @@
 ///////////////////////////////////////////////////////////////////// STUFF WITH SAVING ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
--(void)saveFavoriteWaysToGetHigh:(NSArray*)waysToGetHigh{
+-(void)saveFavoriteWaysToGetHigh{
     
     PFQuery *userQuery = [PFQuery queryWithClassName:@"UserProfile"];
     [userQuery whereKey:@"user" equalTo:[PFUser currentUser]];
     userQuery.limit = 1;
     [userQuery findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
         if(objects.count != 0){
-            //            objects[0][@"favortieTools"] = @(waysToGetHigh);
+            [objects[0][@"favortieTools"] addUniqueObjectsFromArray:favoriteTools forKey:@"favoriteTools"];
         }
     }];
 }
@@ -589,6 +589,7 @@
 - (IBAction)saveEverything:(id)sender {
     if(isPageEdited){
         //save favWaysToGetHigh
+        [self saveFavoriteWaysToGetHigh];
         //save favoriteStrain
         //save photos
         [self savePhotos];
