@@ -314,18 +314,17 @@
     long i = sender.tag - 1000;
     //now we want to left shift all of the images (if there are any after the one we jsut removed) by 1
     for(int k = 0; k < 6; k++){
-        if (((PFImageView*)[self.photoCellContentView viewWithTag:(i + 1000)]).file != nil) {
+        if (((PFImageView*)[self.photoCellContentView viewWithTag:(i + 111)]).file != nil) {
             NSLog(@"empty image file");
             //((PFImageView*)[self.photoCellContentView viewWithTag:(i + 1000)]).file
-            
+            ((PFImageView*)[self.photoCellContentView viewWithTag:(i + 111)]).file = nil;
+            ((PFImageView*)[self.photoCellContentView viewWithTag:(i + 111)]).image = [UIImage imageNamed:@"bfa_plus-square_simple-green_128x128.png"];
+            sender.hidden = YES;
+        }
+        else{
             
         }
     }
-    
-    [profilePicsArray[i] setImage:[UIImage imageNamed:@"bfa_plus-square_simple-green_128x128.png"]];
-    ((PFImageView*)profilePicsArray[i]).file = nil;
-    ((UIButton*)removeButtons[i]).hidden = YES;
-
 }
 
 -(IBAction)addImagePressed:(UIButton*)sender{
@@ -361,51 +360,6 @@
                     break;
                 }
             }
-            
-//            PFUser* usr = [PFUser currentUser];
-//            for(int i = 0; i < profilePicsArray.count; i++){
-//                
-//                if( ((PFImageView*)profilePicsArray[i]).file == nil ){
-//                    [profilePicsArray[i] setImage:imageToSave];//[self addImage:sender];
-//                    [profilePicsArray[i] setFile:imageFile];
-//                    NSString *save = [@"image" stringByAppendingString:[NSString stringWithFormat:@"%d", i]];
-//                    usr[save] = imageFile;
-//                    [usr saveInBackgroundWithBlock:^(BOOL succeeded, NSError* err){
-//                        if(!succeeded){
-//                            [ProgressHUD showError:@"Network Error"];
-//                            [self.imagePick popToRootViewControllerAnimated:NO];
-//                            [self.imagePick dismissViewControllerAnimated:NO completion:nil];
-//                        }
-//                        else{
-//                            ((UIButton*)removeButtons[i]).hidden = NO;
-//                            [ProgressHUD showSuccess:@"Saved."];
-//                            [self.imagePick popToRootViewControllerAnimated:NO];
-//                            [self.imagePick dismissViewControllerAnimated:NO completion:nil];
-//                        }
-//                    }];
-//                    break;
-//                }
-//    
-//            }
-            
-//            [profilePicsArray[[self.pickedImage integerValue]] setImage:imageToSave];//[self addImage:sender];
-//            [profilePicsArray[[self.pickedImage integerValue]] setFile:imageFile];
-//            NSString *save = [@"image" stringByAppendingString:[NSString stringWithFormat:@"%ld", (long)[self.pickedImage integerValue]]];
-//            usr[save] = imageFile;
-//            [usr saveInBackgroundWithBlock:^(BOOL succeeded, NSError* err){
-//                if(!succeeded){
-//                    [ProgressHUD showError:@"Network Error"];
-//                    [self.imagePick popToRootViewControllerAnimated:NO];
-//                    [self.imagePick dismissViewControllerAnimated:NO completion:nil];
-//                }
-//                else{
-//                    [ProgressHUD showSuccess:@"Saved."];
-//                    ((UIButton*)removeButtons[[self.pickedImage integerValue]]).hidden = NO;
-//                    [self.imagePick popToRootViewControllerAnimated:NO];
-//                    [self.imagePick dismissViewControllerAnimated:NO completion:nil];
-//                }
-//            }];
-
         }
         else{
             [ProgressHUD showError:@"Could not save"];
@@ -600,7 +554,7 @@
                             PFUser *user = [PFUser currentUser];
                             [userPhoto setObject:user forKey:@"user"];
                             
-                            [userPhoto setObject:i forKey:@"rank"];
+                            //userPhoto[@"rank"] = i;
                             
                             [userPhoto saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
                                 if (!error) {
