@@ -21,7 +21,7 @@
 #define IS_IPHONE_6_PLUS (IS_IPHONE && [[UIScreen mainScreen] bounds].size.height == 736.0)
 #define IS_RETINA ([[UIScreen mainScreen] scale] == 2.0)
 
-@interface EditProfileDetailViewController ()<UITextViewDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UIActionSheetDelegate>{
+@interface EditProfileDetailViewController ()<UITextViewDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UIActionSheetDelegate, UIAlertViewDelegate>{
     NSMutableArray *profilePicsArray;
     NSArray *removeButtons;
     NSMutableArray *favoriteTools;
@@ -55,6 +55,7 @@
     
     favoriteTools = [[NSMutableArray alloc]initWithObjects:@NO, @NO, @NO, @NO, @NO, @NO, @NO, @NO, @NO, nil];
     
+    //these are the add image buttons
     for (int i = 100; i < 106; i++) {
         [self.photoCellContentView viewWithTag:i].layer.cornerRadius = 8;
         [self.photoCellContentView viewWithTag:i].layer.masksToBounds = YES;
@@ -62,6 +63,7 @@
         [self.photoCellContentView viewWithTag:i].layer.borderWidth = 3;
     }
     
+    //these are the remove image buttons
     for (int i = 1000; i < 1006; i++) {
         [self.photoCellContentView viewWithTag:i].layer.cornerRadius = [self.photoCellContentView viewWithTag:i].frame.size.width / 2;
         [self.photoCellContentView viewWithTag:i].layer.masksToBounds = YES;
@@ -311,14 +313,24 @@
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
+//
 -(IBAction)removeImage:(UIButton*)sender{
     isPageEdited = YES;
     
     long i = sender.tag - 1000;
+    
     //now we want to left shift all of the images (if there are any after the one we jsut removed) by 1
     for(int k = 0; k < 6; k++){
-        if (((PFImageView*)[self.photoCellContentView viewWithTag:(i + 111)]).file != nil) {
-            ((PFImageView*)[self.photoCellContentView viewWithTag:(i + 111)]).file = nil;
+        if (((PFImageView*)[self.photoCellContentView viewWithTag:(k + 111)]).file != nil) {
+            ((PFImageView*)[self.photoCellContentView viewWithTag:(k + 111)]).file = nil;
+//            
+//            for(int j = k+1; j < 6; j++){
+//                if (((PFImageView*)[self.photoCellContentView viewWithTag:(j + 111)]).file != nil) {
+//                
+//                }
+//            }
+            
+            
             ((PFImageView*)[self.photoCellContentView viewWithTag:(i + 111)]).image = [UIImage imageNamed:@"bfa_plus-square_simple-green_128x128.png"];
             sender.hidden = YES;
         }
@@ -599,7 +611,26 @@
 
 //done button pressed
 - (IBAction)saveEverything:(id)sender {
+    
     if(isPageEdited){
+    
+        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"You have some unsaved changed"
+                                                            message:@"Do you want to save them?"
+                                                           delegate:self
+                                                  cancelButtonTitle:@"No"
+                                                  otherButtonTitles:@"Yes", nil];
+        
+        [alertView show];
+        }
+    else{
+        //if page isnt edited, just pop
+        [self.navigationController popViewControllerAnimated:YES];
+    }
+}
+                                  
+-(void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex{
+    
+    if(buttonIndex == 0){
         //save favWaysToGetHigh
         [self saveFavoriteWaysToGetHigh];
         //save favoriteStrain
@@ -609,10 +640,8 @@
         [self.navigationController popViewControllerAnimated:YES];
     }
     else{
-        //if page isnt edited, just pop
         [self.navigationController popViewControllerAnimated:YES];
     }
 }
-
-
+                                  
 @end
