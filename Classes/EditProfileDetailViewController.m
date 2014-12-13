@@ -11,6 +11,7 @@
 #import "ProgressHUD.h"
 #import "ComposeContentViewController.h"
 #import "DoActionSheet.h"
+#import "MBProgressHUD.h"
 
 #define IS_IPAD (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad)
 #define IS_IPHONE (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone)
@@ -25,6 +26,8 @@
     NSArray *removeButtons;
     NSMutableArray *favoriteTools;
     BOOL isPageEdited;
+    MBProgressHUD *HUD;
+    MBProgressHUD *refreshHUD;
 }
 
 @property (strong, nonatomic) UIImagePickerController *imagePick;
@@ -310,8 +313,11 @@
     
     long i = sender.tag - 1000;
     //now we want to left shift all of the images (if there are any after the one we jsut removed) by 1
-    for(i; i < 6; i++){
+    for(int k = 0; k < 6; k++){
         if (((PFImageView*)[self.photoCellContentView viewWithTag:(i + 1000)]).file != nil) {
+            NSLog(@"empty image file");
+            //((PFImageView*)[self.photoCellContentView viewWithTag:(i + 1000)]).file
+            
             
         }
     }
@@ -574,11 +580,52 @@
                 if(((PFImageView*)[self.photoCellContentView viewWithTag:(i+111)]).file != nil){
                     //save image file to parse with the rank
                     PFFile *imageFile = ((PFImageView*)[self.photoCellContentView viewWithTag:(i+111)]).file;
-                    //objects[@"photo"][i] = imageFile;
+                    // Save PFFile
+                    [imageFile saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+                        if (!error) {
+                            // Hide old HUD, show completed HUD (see example for code)
+                            
+                            // Create a PFObject around a PFFile and associate it with the current user
+                            PFObject *userPhoto = [PFObject objectWithClassName:@"Photo"];
+                            [userPhoto setObject:imageFile forKey:@"photo"];
+                            
+                            PFUser *user = [PFUser currentUser];
+                            [userPhoto setObject:user forKey:@"user"];
+                            
+                            [userPhoto setObject:i forKey:@"rank"];
+                            
+                            [userPhoto saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+                                if (!error) {
+                                    //[self refresh:nil];
+                                }
+                                else{
+                                    // Log details of the failure
+                                    NSLog(@"Error: %@ %@", error, [error userInfo]);
+                                }
+                            }];
+                        }
+                        else{
+                            [HUD hide:YES];
+                            // Log details of the failure
+                            NSLog(@"Error: %@ %@", error, [error userInfo]);
+                        }
+                    }
+                    progressBlock:^(int percentDone) {
+                        // Update your progress spinner here. percentDone will be between 0 and 100.
+                        HUD.progress = (float)percentDone/100;
+                    }];
+                
+                
+                
+                
                 }
                 else{
                     //delete the object from parse
                     //https://parse.com/questions/how-can-i-delete-a-file
+//                    // After this, the photo field will be empty
+//                    [query removeObjectForKey:@"photo"];
+//                    // Saves the field deletion to the Parse Cloud
+//                    [query saveInBackground];
                 }
             }
         }
