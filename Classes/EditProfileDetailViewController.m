@@ -75,17 +75,18 @@
         [imageQuery findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *err){
             if (objects.count != 0) {
                 
-                for (int i = 0; i < objects.count; i++) {
-                    if(objects[i][@"photo"]){
+                for (int i = 0; i < 6; i++) {
+                    if(objects[i] && !objects[i][@"photo"]){
+                        [self.photoCellContentView viewWithTag:(i + 1000)].hidden = YES;
+                    }
+                    else{
                         ((PFImageView*)[self.photoCellContentView viewWithTag:(i+111)]).layer.cornerRadius = 9;
                         ((PFImageView*)[self.photoCellContentView viewWithTag:(i+111)]).layer.masksToBounds = YES;
                         ((UIImageView *)[self.photoCellContentView viewWithTag:(i+111)]).contentMode = UIViewContentModeScaleAspectFill;
                         ((PFImageView*)[self.photoCellContentView viewWithTag:(i+111)]).file = objects[i][@"photo"];
                         [((PFImageView*)[self.photoCellContentView viewWithTag:(i+111)]) loadInBackground];
-                        [profilePicsArray addObject:((PFImageView*)[self.photoCellContentView viewWithTag:(i+111)])];
-                    }
-                    else{
-                        [self.photoCellContentView viewWithTag:(i + 1000)].hidden = YES;
+                        //[profilePicsArray addObject:((PFImageView*)[self.photoCellContentView viewWithTag:(i+111)])];
+
                     }
                 }
             }
@@ -315,8 +316,6 @@
     //now we want to left shift all of the images (if there are any after the one we jsut removed) by 1
     for(int k = 0; k < 6; k++){
         if (((PFImageView*)[self.photoCellContentView viewWithTag:(i + 111)]).file != nil) {
-            NSLog(@"empty image file");
-            //((PFImageView*)[self.photoCellContentView viewWithTag:(i + 1000)]).file
             ((PFImageView*)[self.photoCellContentView viewWithTag:(i + 111)]).file = nil;
             ((PFImageView*)[self.photoCellContentView viewWithTag:(i + 111)]).image = [UIImage imageNamed:@"bfa_plus-square_simple-green_128x128.png"];
             sender.hidden = YES;
@@ -351,6 +350,8 @@
             
             //now cycle through all of your image tags and save the image to the first open tag
             for(int i = 111; i < 117; i++){
+                
+                //this should set the photo
                 if(((PFImageView*)[self.photoCellContentView viewWithTag:i]).file == nil){
                     ((PFImageView*)[self.photoCellContentView viewWithTag:i]).file = imageFile;
                     [((PFImageView*)[self.photoCellContentView viewWithTag:i]) loadInBackground];
