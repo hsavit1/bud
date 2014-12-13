@@ -403,7 +403,6 @@
         }
         else{
             [ProgressHUD showError:@"Could not save"];
-
             [self.imagePick popToRootViewControllerAnimated:NO];
             [self.imagePick dismissViewControllerAnimated:NO completion:nil];
         }
@@ -475,7 +474,6 @@
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     if(indexPath.section == 3){
         NSLog(@"cell selected");
-        
         
         DoActionSheet *vActionSheet = [[DoActionSheet alloc] init];
         vActionSheet.nAnimationType = 2;
@@ -564,12 +562,24 @@
     }];
 }
 
+-(void)savePhotos{
+    PFQuery *userQuery = [PFQuery queryWithClassName:@"Photo"];
+    [userQuery whereKey:@"user" equalTo:[PFUser currentUser]];
+    [userQuery orderByAscending:@"rank"];
+    [userQuery findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+        if(objects.count != 0){
+            
+        }
+    }];
+}
+
 //done button pressed
 - (IBAction)saveEverything:(id)sender {
     if(isPageEdited){
         //save favWaysToGetHigh
         //save favoriteStrain
         //save photos
+        [self savePhotos];
         //you dont have to worry about saving all of the descriptions. those will be saved when the user clicks on the "Save" button on each of those pages, respectively
         [self.navigationController popViewControllerAnimated:YES];
     }
