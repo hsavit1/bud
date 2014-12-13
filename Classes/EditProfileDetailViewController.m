@@ -65,6 +65,7 @@
     for (int i = 1000; i < 1006; i++) {
         [self.photoCellContentView viewWithTag:i].layer.cornerRadius = [self.photoCellContentView viewWithTag:i].frame.size.width / 2;
         [self.photoCellContentView viewWithTag:i].layer.masksToBounds = YES;
+        [self.photoCellContentView viewWithTag:i].hidden = YES;
     }
     
     PFUser *user = [PFUser currentUser];
@@ -76,8 +77,8 @@
             if (objects.count != 0) {
                 
                 for (int i = 0; i < 6; i++) {
-                    if(objects[i] && !objects[i][@"photo"]){
-                        [self.photoCellContentView viewWithTag:(i + 1000)].hidden = YES;
+                    if(!objects[i][@"photo"]){
+                        //[self.photoCellContentView viewWithTag:(i + 1000)].hidden = YES;
                     }
                     else{
                         ((PFImageView*)[self.photoCellContentView viewWithTag:(i+111)]).layer.cornerRadius = 9;
@@ -85,6 +86,7 @@
                         ((UIImageView *)[self.photoCellContentView viewWithTag:(i+111)]).contentMode = UIViewContentModeScaleAspectFill;
                         ((PFImageView*)[self.photoCellContentView viewWithTag:(i+111)]).file = objects[i][@"photo"];
                         [((PFImageView*)[self.photoCellContentView viewWithTag:(i+111)]) loadInBackground];
+                        [self.photoCellContentView viewWithTag:(i + 1000)].hidden = NO;
                         //[profilePicsArray addObject:((PFImageView*)[self.photoCellContentView viewWithTag:(i+111)])];
 
                     }
