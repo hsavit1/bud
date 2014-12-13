@@ -572,10 +572,10 @@
 //            
 //        }
 //    }];
-    
-    PFObject *gameScore = [PFObject objectWithClassName:@"UserProfile"];
-    gameScore[@"score"] = @1337;
-    [gameScore saveInBackground];
+//          //this is an example
+//    PFObject *gameScore = [PFObject objectWithClassName:@"UserProfile"];
+//    gameScore[@"score"] = @1337;
+//    [gameScore saveInBackground];
 }
 
 -(void)savePhotos{
