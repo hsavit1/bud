@@ -136,7 +136,7 @@
             break;
             
             //fav strain
-        case 5:{
+        case 4:{
 //            NSString *field0 = [NSString stringWithFormat:@"1. %@", [PFUser currentUser][@"SixPeople"][@"person0"]];
 //            NSString *field1 = [NSString stringWithFormat:@"2. %@", [PFUser currentUser][@"SixPeople"][@"person1"]];
 //            NSString *field2 = [NSString stringWithFormat:@"3. %@", [PFUser currentUser][@"SixPeople"][@"person2"]];
@@ -184,7 +184,7 @@
         }
             break;
     
-        case 3:{
+        case 2:{
             NSString *string = [PFUser currentUser][@"favoriteType"];
             self.favoriteTypeLabel.text = string;
             if (IS_IPHONE_5) {
@@ -218,7 +218,7 @@
             }
             return 80;
         }
-        case 4:{
+        case 3:{
             NSString *string = [PFUser currentUser][@"education"];
             self.educationLabel.text = string;
             if (IS_IPHONE_5) {
@@ -253,44 +253,44 @@
             }
             return 60;
         }
-        case 2:{
-            NSString *string = [PFUser currentUser][@"location"];
-            self.userLocationLabel.text = string;
-            if (IS_IPHONE_5) {
-                [self.userLocationLabel setPreferredMaxLayoutWidth:230];
-                CGSize expectedSize = [self.userLocationLabel.text boundingRectWithSize:CGSizeMake(230, 10000)
-                                                                             options:(NSStringDrawingUsesLineFragmentOrigin)
-                                                                          attributes:@{NSFontAttributeName:
-                                                                                           self.userLocationLabel.font}
-                                                                             context:nil].size;
-                return MAX(60, expectedSize.height + 20);
-                
-            }
-            else if (IS_IPHONE_6){
-                [self.userLocationLabel setPreferredMaxLayoutWidth:230 + 55];
-                CGSize expectedSize = [self.userLocationLabel.text boundingRectWithSize:CGSizeMake(230 + 45, 10000)
-                                                                             options:(NSStringDrawingUsesLineFragmentOrigin)
-                                                                          attributes:@{NSFontAttributeName:
-                                                                                           self.userLocationLabel.font}
-                                                                             context:nil].size;
-                return MAX(60, expectedSize.height + 20);
-                
-            }
-            else if (IS_IPHONE_6_PLUS){
-                [self.userLocationLabel setPreferredMaxLayoutWidth:230 + 95];
-                CGSize expectedSize = [self.userLocationLabel.text boundingRectWithSize:CGSizeMake(230 + 94, 10000)
-                                                                             options:(NSStringDrawingUsesLineFragmentOrigin)
-                                                                          attributes:@{NSFontAttributeName:
-                                                                                           self.userLocationLabel.font}
-                                                                             context:nil].size;
-                return MAX(60, expectedSize.height + 20);
-                
-            }
-            return 60;
-        }
-        break;
-         
-        case 6:{
+//        case 2:{
+//            NSString *string = [PFUser currentUser][@"location"];
+//            self.userLocationLabel.text = string;
+//            if (IS_IPHONE_5) {
+//                [self.userLocationLabel setPreferredMaxLayoutWidth:230];
+//                CGSize expectedSize = [self.userLocationLabel.text boundingRectWithSize:CGSizeMake(230, 10000)
+//                                                                             options:(NSStringDrawingUsesLineFragmentOrigin)
+//                                                                          attributes:@{NSFontAttributeName:
+//                                                                                           self.userLocationLabel.font}
+//                                                                             context:nil].size;
+//                return MAX(60, expectedSize.height + 20);
+//                
+//            }
+//            else if (IS_IPHONE_6){
+//                [self.userLocationLabel setPreferredMaxLayoutWidth:230 + 55];
+//                CGSize expectedSize = [self.userLocationLabel.text boundingRectWithSize:CGSizeMake(230 + 45, 10000)
+//                                                                             options:(NSStringDrawingUsesLineFragmentOrigin)
+//                                                                          attributes:@{NSFontAttributeName:
+//                                                                                           self.userLocationLabel.font}
+//                                                                             context:nil].size;
+//                return MAX(60, expectedSize.height + 20);
+//                
+//            }
+//            else if (IS_IPHONE_6_PLUS){
+//                [self.userLocationLabel setPreferredMaxLayoutWidth:230 + 95];
+//                CGSize expectedSize = [self.userLocationLabel.text boundingRectWithSize:CGSizeMake(230 + 94, 10000)
+//                                                                             options:(NSStringDrawingUsesLineFragmentOrigin)
+//                                                                          attributes:@{NSFontAttributeName:
+//                                                                                           self.userLocationLabel.font}
+//                                                                             context:nil].size;
+//                return MAX(60, expectedSize.height + 20);
+//                
+//            }
+//            return 60;
+//        }
+//        break;
+//         
+        case 5:{
             return 260;
         }
             
@@ -512,6 +512,8 @@
                                  self.favoriteTypeLabel.text = @"Whatever my friends have: You'll fill your bowl with anything you can find. Any weed is good weed for you";
                                  [self saveFavoriteStrain:3];
                                  break;
+                             case 4:
+                                 
                              default:
                                  break;
                          }
@@ -572,7 +574,7 @@
                 if(((PFImageView*)[self.photoCellContentView viewWithTag:(i+111)]).file != nil){
                     //save image file to parse with the rank
                     PFFile *imageFile = ((PFImageView*)[self.photoCellContentView viewWithTag:(i+111)]).file;
-                    objects[@"photo"][i] = imageFile;
+                    //objects[@"photo"][i] = imageFile;
                 }
                 else{
                     //delete the object from parse

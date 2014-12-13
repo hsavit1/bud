@@ -270,43 +270,43 @@ static CGFloat const MDCSwipeToChooseViewLabelWidth = 95.f;
             }
             return 60;
         }
-        case 5:{
-//            NSString *string = self.user[@"location"];
-//            self.userLocationLabel.text = string;
-            
-            self.userLocationLabel.text = self.userLocationLabelString;
-            if (IS_IPHONE_5) {
-                [self.userLocationLabel setPreferredMaxLayoutWidth:248];
-                CGSize expectedSize = [self.userLocationLabel.text boundingRectWithSize:CGSizeMake(248, 10000)
-                                                                                options:(NSStringDrawingUsesLineFragmentOrigin)
-                                                                             attributes:@{NSFontAttributeName:
-                                                                                              self.userLocationLabel.font}
-                                                                                context:nil].size;
-                return MAX(60, expectedSize.height + 10);
-                
-            }
-            else if (IS_IPHONE_6){
-                [self.userLocationLabel setPreferredMaxLayoutWidth:248 + 55];
-                CGSize expectedSize = [self.userLocationLabel.text boundingRectWithSize:CGSizeMake(248 + 45, 10000)
-                                                                                options:(NSStringDrawingUsesLineFragmentOrigin)
-                                                                             attributes:@{NSFontAttributeName:
-                                                                                              self.userLocationLabel.font}
-                                                                                context:nil].size;
-                return MAX(60, expectedSize.height + 10);
-                
-            }
-            else if (IS_IPHONE_6_PLUS){
-                [self.userLocationLabel setPreferredMaxLayoutWidth:248 + 95];
-                CGSize expectedSize = [self.userLocationLabel.text boundingRectWithSize:CGSizeMake(248 + 94, 10000)
-                                                                                options:(NSStringDrawingUsesLineFragmentOrigin)
-                                                                             attributes:@{NSFontAttributeName:
-                                                                                              self.userLocationLabel.font}
-                                                                                context:nil].size;
-                return MAX(60, expectedSize.height + 10);
-                
-            }
-            return 60;
-        }
+//        case 5:{
+////            NSString *string = self.user[@"location"];
+////            self.userLocationLabel.text = string;
+//            
+//            self.userLocationLabel.text = self.userLocationLabelString;
+//            if (IS_IPHONE_5) {
+//                [self.userLocationLabel setPreferredMaxLayoutWidth:248];
+//                CGSize expectedSize = [self.userLocationLabel.text boundingRectWithSize:CGSizeMake(248, 10000)
+//                                                                                options:(NSStringDrawingUsesLineFragmentOrigin)
+//                                                                             attributes:@{NSFontAttributeName:
+//                                                                                              self.userLocationLabel.font}
+//                                                                                context:nil].size;
+//                return MAX(60, expectedSize.height + 10);
+//                
+//            }
+//            else if (IS_IPHONE_6){
+//                [self.userLocationLabel setPreferredMaxLayoutWidth:248 + 55];
+//                CGSize expectedSize = [self.userLocationLabel.text boundingRectWithSize:CGSizeMake(248 + 45, 10000)
+//                                                                                options:(NSStringDrawingUsesLineFragmentOrigin)
+//                                                                             attributes:@{NSFontAttributeName:
+//                                                                                              self.userLocationLabel.font}
+//                                                                                context:nil].size;
+//                return MAX(60, expectedSize.height + 10);
+//                
+//            }
+//            else if (IS_IPHONE_6_PLUS){
+//                [self.userLocationLabel setPreferredMaxLayoutWidth:248 + 95];
+//                CGSize expectedSize = [self.userLocationLabel.text boundingRectWithSize:CGSizeMake(248 + 94, 10000)
+//                                                                                options:(NSStringDrawingUsesLineFragmentOrigin)
+//                                                                             attributes:@{NSFontAttributeName:
+//                                                                                              self.userLocationLabel.font}
+//                                                                                context:nil].size;
+//                return MAX(60, expectedSize.height + 10);
+//                
+//            }
+//            return 60;
+//        }
             
 
             
@@ -315,7 +315,6 @@ static CGFloat const MDCSwipeToChooseViewLabelWidth = 95.f;
     }
     return 30;
 }
-
 
 - (void)constructInterestsImageLabelView {
     //CGFloat rightPadding = 60.f;
