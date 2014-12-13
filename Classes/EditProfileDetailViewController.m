@@ -548,14 +548,14 @@
 
 -(void)saveFavoriteWaysToGetHigh{
     
-    PFQuery *userQuery = [PFQuery queryWithClassName:@"UserProfile"];
-    [userQuery whereKey:@"user" equalTo:[PFUser currentUser]];
-    userQuery.limit = 1;
-    [userQuery findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
-        if(objects.count != 0){
-            [objects[0][@"favortieTools"] addUniqueObjectsFromArray:favoriteTools forKey:@"favoriteTools"];
-        }
-    }];
+//    PFQuery *userQuery = [PFQuery queryWithClassName:@"UserProfile"];
+//    [userQuery whereKey:@"user" equalTo:[PFUser currentUser]];
+//    userQuery.limit = 1;
+//    [userQuery findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+//        if(objects.count != 0){
+//            [objects[0][@"favortieTools"] addUniqueObjectsFromArray:favoriteTools forKey:@"favoriteTools"];
+//        }
+//    }];
 }
 
 -(void)saveFavoriteStrain:(int)strainOfChoice{
@@ -563,11 +563,19 @@
     PFQuery *userQuery = [PFQuery queryWithClassName:@"UserProfile"];
     [userQuery whereKey:@"user" equalTo:[PFUser currentUser]];
     userQuery.limit = 1;
-    [userQuery findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
-        if(objects.count != 0){
-            objects[0][@"favoriteProduct"] = @(strainOfChoice); //[NSNumber numberWithInt:strainOfChoice];
-        }
-    }];
+
+    //this needs to be fixed. cant be getting an array
+//    [userQuery findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+//        if(objects.count != 0){
+//            PFObject *strainChoiceNumber = strainOfChoice;
+//            ((PFObject*)objects[0][@"favoriteProduct"]) = strainChoiceNumber;
+//            
+//        }
+//    }];
+    
+    PFObject *gameScore = [PFObject objectWithClassName:@"UserProfile"];
+    gameScore[@"score"] = @1337;
+    [gameScore saveInBackground];
 }
 
 -(void)savePhotos{
