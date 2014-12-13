@@ -21,6 +21,14 @@
 #define IS_IPHONE_6_PLUS (IS_IPHONE && [[UIScreen mainScreen] bounds].size.height == 736.0)
 #define IS_RETINA ([[UIScreen mainScreen] scale] == 2.0)
 
+/*
+  tags: 0 - 6
+        1000 - 1005 (x buttons)
+        100 - 105 (add buttons)
+        111 - 117 (PFImageView)
+        1 - 9 (radio buttons)
+*/
+
 @interface EditProfileDetailViewController ()<UITextViewDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UIActionSheetDelegate, UIAlertViewDelegate>{
     NSMutableArray *profilePicsArray;
     NSArray *removeButtons;
@@ -78,7 +86,7 @@
         [imageQuery findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *err){
             if (objects.count != 0) {
                 
-                for (int i = 0; i < 6; i++) {
+                for (int i = 0; i < objects.count; i++) {
                     if(!objects[i][@"photo"]){
                         //[self.photoCellContentView viewWithTag:(i + 1000)].hidden = YES;
                     }
@@ -318,24 +326,22 @@
     isPageEdited = YES;
     
     long i = sender.tag - 1000;
+    if (((PFImageView*)[self.photoCellContentView viewWithTag:(i + 111)]).file != nil) {
     
-    //now we want to left shift all of the images (if there are any after the one we jsut removed) by 1
-    for(int k = 0; k < 6; k++){
-        if (((PFImageView*)[self.photoCellContentView viewWithTag:(k + 111)]).file != nil) {
-            ((PFImageView*)[self.photoCellContentView viewWithTag:(k + 111)]).file = nil;
-//            
-//            for(int j = k+1; j < 6; j++){
-//                if (((PFImageView*)[self.photoCellContentView viewWithTag:(j + 111)]).file != nil) {
-//                
-//                }
-//            }
-            
-            
-            ((PFImageView*)[self.photoCellContentView viewWithTag:(i + 111)]).image = [UIImage imageNamed:@"bfa_plus-square_simple-green_128x128.png"];
-            sender.hidden = YES;
-        }
-        else{
-            
+        ((PFImageView*)[self.photoCellContentView viewWithTag:(i + 111)]).file = nil;
+        
+        //now we want to left shift all of the images (if there are any after the one we jsut removed) by 1
+        for(int k = i + 111; k < (117); k++){
+            if(((PFImageView*)[self.photoCellContentView viewWithTag:(i + 112)]).file != nil){
+                ((PFImageView*)[self.photoCellContentView viewWithTag:(i + 111)]).file = ((PFImageView*)[self.photoCellContentView viewWithTag:(i + 112)]).file;
+                ((PFImageView*)[self.photoCellContentView viewWithTag:(i + 112)]).file = nil;
+                ((PFImageView*)[self.photoCellContentView viewWithTag:(i + 112)]).image = [UIImage imageNamed:@"bfa_plus-square_simple-green_128x128.png"];
+                sender.hidden = YES;
+            }
+            else{
+                ((PFImageView*)[self.photoCellContentView viewWithTag:(i + 111)]).image = [UIImage imageNamed:@"bfa_plus-square_simple-green_128x128.png"];
+                sender.hidden = YES;
+            }
         }
     }
 }
