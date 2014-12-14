@@ -20,10 +20,10 @@
 @property (weak, nonatomic) IBOutlet UILabel *numMutualFriendsLabel;
 @property (weak, nonatomic) IBOutlet UILabel *lastActiveLabel;
 
-@property (weak, nonatomic) NSString *personalBioLabelString;
+//@property (weak, nonatomic) NSString *personalBioLabelString;
 @property (weak, nonatomic) NSNumber *favoriteStrainsNumber;
 @property (weak, nonatomic) NSString *educationLabelString;
-@property (weak, nonatomic) NSString *userLocationLabelString;
+//@property (weak, nonatomic) NSString *userLocationLabelString;
 
 @property (weak, nonatomic) IBOutlet UILabel *personalBioLabel;
 @property (weak, nonatomic) IBOutlet UILabel *favoriteStrains;

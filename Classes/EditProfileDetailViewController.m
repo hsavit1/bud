@@ -79,34 +79,56 @@
     }
     
     PFUser *user = [PFUser currentUser];
-        PFQuery *imageQuery = [PFQuery queryWithClassName:@"Photo"];
-        [imageQuery whereKey:@"user" equalTo:user];
-        imageQuery.limit = 6;
-        [imageQuery orderByAscending:@"rank"];
-        [imageQuery findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *err){
-            if (objects.count != 0) {
-                
-                for (int i = 0; i < objects.count; i++) {
-                    if(!objects[i][@"photo"]){
-                        //[self.photoCellContentView viewWithTag:(i + 1000)].hidden = YES;
-                    }
-                    else{
-                        ((PFImageView*)[self.photoCellContentView viewWithTag:(i+111)]).layer.cornerRadius = 9;
-                        ((PFImageView*)[self.photoCellContentView viewWithTag:(i+111)]).layer.masksToBounds = YES;
-                        ((UIImageView *)[self.photoCellContentView viewWithTag:(i+111)]).contentMode = UIViewContentModeScaleAspectFill;
-                        ((PFImageView*)[self.photoCellContentView viewWithTag:(i+111)]).file = objects[i][@"photo"];
-                        [((PFImageView*)[self.photoCellContentView viewWithTag:(i+111)]) loadInBackground];
-                        [self.photoCellContentView viewWithTag:(i + 1000)].hidden = NO;
-                        //[profilePicsArray addObject:((PFImageView*)[self.photoCellContentView viewWithTag:(i+111)])];
+    PFQuery *imageQuery = [PFQuery queryWithClassName:@"Photo"];
+    [imageQuery whereKey:@"user" equalTo:user];
+    imageQuery.limit = 6;
+    [imageQuery orderByAscending:@"rank"];
+    [imageQuery findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *err){
+        if (objects.count != 0) {
+            
+            for (int i = 0; i < objects.count; i++) {
+                if(!objects[i][@"photo"]){
+                    //[self.photoCellContentView viewWithTag:(i + 1000)].hidden = YES;
+                }
+                else{
+                    ((PFImageView*)[self.photoCellContentView viewWithTag:(i+111)]).layer.cornerRadius = 9;
+                    ((PFImageView*)[self.photoCellContentView viewWithTag:(i+111)]).layer.masksToBounds = YES;
+                    ((UIImageView *)[self.photoCellContentView viewWithTag:(i+111)]).contentMode = UIViewContentModeScaleAspectFill;
+                    ((PFImageView*)[self.photoCellContentView viewWithTag:(i+111)]).file = objects[i][@"photo"];
+                    [((PFImageView*)[self.photoCellContentView viewWithTag:(i+111)]) loadInBackground];
+                    [self.photoCellContentView viewWithTag:(i + 1000)].hidden = NO;
+                    //[profilePicsArray addObject:((PFImageView*)[self.photoCellContentView viewWithTag:(i+111)])];
 
-                    }
                 }
             }
-        }];
+            dispatch_async(dispatch_get_main_queue(), ^ {
+                [self.tableView reloadData];
+            });
+        }
+    }];
     
+
     //profilePicsArray = @[self.addImage0, self.addImage1, self.addImage2, self.addImage3, self.addImage4, self.addImage5];
     //removeButtons = @[self.removeImage0, self.removeImage1, self.removeImage2, self.removeImage3, self.removeImage4, self.removeImage5];
 }
+
+-(void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+    PFQuery *userQuery = [PFQuery queryWithClassName:@"UserProfile"];
+    [userQuery whereKey:@"user" equalTo:[PFUser currentUser]];
+    userQuery.limit = 1;
+    [userQuery findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *err){
+        if (objects.count != 0) {
+            //for (int i = 0; i < objects.count; i++) {
+            self.personalBioLabel.text = objects[0][@"bio"];
+            self.educationLabel.text = objects[0][@"education"];
+            dispatch_async(dispatch_get_main_queue(), ^ {
+                [self.tableView reloadData];
+            });
+        }
+    }];
+}
+
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     switch (indexPath.section) {
@@ -114,9 +136,6 @@
             return 189;
             break;
         case 1:{
-            NSString *string = [PFUser currentUser][@"bioDescription"];
-            self.personalBioLabel.text = string;
-            
             if (IS_IPHONE_5) {
                 [self.personalBioLabel setPreferredMaxLayoutWidth:230];
                 CGSize expectedSize = [self.personalBioLabel.text boundingRectWithSize:CGSizeMake(230, 10000)
@@ -235,8 +254,6 @@
             return 80;
         }
         case 3:{
-            NSString *string = [PFUser currentUser][@"education"];
-            self.educationLabel.text = string;
             if (IS_IPHONE_5) {
                 [self.educationLabel setPreferredMaxLayoutWidth:230];
                 CGSize expectedSize = [self.educationLabel.text boundingRectWithSize:CGSizeMake(230, 10000)
@@ -329,14 +346,16 @@
     if (((PFImageView*)[self.photoCellContentView viewWithTag:(i + 111)]).file != nil) {
     
         ((PFImageView*)[self.photoCellContentView viewWithTag:(i + 111)]).file = nil;
-        
         //now we want to left shift all of the images (if there are any after the one we jsut removed) by 1
-        for(int k = i + 111; k < (117); k++){
-            if(((PFImageView*)[self.photoCellContentView viewWithTag:(i + 112)]).file != nil){
-                ((PFImageView*)[self.photoCellContentView viewWithTag:(i + 111)]).file = ((PFImageView*)[self.photoCellContentView viewWithTag:(i + 112)]).file;
-                ((PFImageView*)[self.photoCellContentView viewWithTag:(i + 112)]).file = nil;
-                ((PFImageView*)[self.photoCellContentView viewWithTag:(i + 112)]).image = [UIImage imageNamed:@"bfa_plus-square_simple-green_128x128.png"];
-                sender.hidden = YES;
+        for(int j = (int)i + 111 ; j < 117; j++){
+            if(((PFImageView*)[self.photoCellContentView viewWithTag:(j)]).file != nil){
+                
+                ((PFImageView*)[self.photoCellContentView viewWithTag:(j)]).file = ((PFImageView*)[self.photoCellContentView viewWithTag:(j+1)]).file;
+                [((PFImageView*)[self.photoCellContentView viewWithTag:(j)]) loadInBackground];
+                ((PFImageView*)[self.photoCellContentView viewWithTag:(j+1)]).file = nil;
+                ((PFImageView*)[self.photoCellContentView viewWithTag:(j+1)]).image = [UIImage imageNamed:@"bfa_plus-square_simple-green_128x128.png"];
+                [self.photoCellContentView viewWithTag:(j - 111 + 1000)].hidden = NO;
+                
             }
             else{
                 ((PFImageView*)[self.photoCellContentView viewWithTag:(i + 111)]).image = [UIImage imageNamed:@"bfa_plus-square_simple-green_128x128.png"];
@@ -566,20 +585,15 @@
                     // Save PFFile
                     [imageFile saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
                         if (!error) {
-                            // Hide old HUD, show completed HUD (see example for code)
-                            
                             // Create a PFObject around a PFFile and associate it with the current user
                             PFObject *userPhoto = [PFObject objectWithClassName:@"Photo"];
                             [userPhoto setObject:imageFile forKey:@"photo"];
-                            
                             PFUser *user = [PFUser currentUser];
                             [userPhoto setObject:user forKey:@"user"];
-                            
                             //userPhoto[@"rank"] = i;
                             
                             [userPhoto saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
                                 if (!error) {
-                                    //[self refresh:nil];
                                 }
                                 else{
                                     // Log details of the failure
@@ -619,15 +633,13 @@
 - (IBAction)saveEverything:(id)sender {
     
     if(isPageEdited){
-    
         UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"You have some unsaved changed"
                                                             message:@"Do you want to save them?"
                                                            delegate:self
                                                   cancelButtonTitle:@"No"
                                                   otherButtonTitles:@"Yes", nil];
-        
         [alertView show];
-        }
+    }
     else{
         //if page isnt edited, just pop
         [self.navigationController popViewControllerAnimated:YES];
@@ -636,7 +648,7 @@
                                   
 -(void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex{
     
-    if(buttonIndex == 0){
+    if(buttonIndex == 1){
         //save favWaysToGetHigh
         [self saveFavoriteWaysToGetHigh];
         //save favoriteStrain

@@ -59,57 +59,10 @@
         else
             self.textArea.text = string;
     }
-    else if ([self.senderCellNumber integerValue] == 2){
-        NSString *string = user[@"favoriteProducts"];
-        if (string.length == 0)
-            self.textArea.placeholder = NSLocalizedString(@"What are you smoking on?", nil);
-        else
-            self.textArea.text = string;    }
-    else if ([self.senderCellNumber integerValue] == 3){
-        NSString *string = user[@"tokeTimes"];
-        if (string.length == 0)
-            self.textArea.placeholder = NSLocalizedString(@"How often do you toke up?", nil);
-        else
-            self.textArea.text = string;    }
-    else if ([self.senderCellNumber integerValue] == 4){
-        NSString *string = user[@"favoriteTools"];
-        if (string.length == 0)
-            self.textArea.placeholder = NSLocalizedString(@"Elaborate on your equipment / equipement of choice here", nil);
-        else
-            self.textArea.text = string;
-    }
     else if ([self.senderCellNumber integerValue] == 5){
         NSString *string = user[@"education"];
         if (string.length == 0)
-            self.textArea.placeholder = NSLocalizedString(@"Where did you go to school? What did you stdy?", nil);
-        else
-            self.textArea.text = string;
-    }
-    else if ([self.senderCellNumber integerValue] == 6){
-        NSString *string = user[@"location"];
-        if (string.length == 0)
-            self.textArea.placeholder = NSLocalizedString(@"Where do you live? Where are you living now?", nil);
-        else
-            self.textArea.text = string;
-    }
-    else if ([self.senderCellNumber integerValue] == 7){
-        NSString *string = user[@"movies"];
-        if (string.length == 0)
-            self.textArea.placeholder = NSLocalizedString(@"Have a favorite movie/show? Talk about it here", nil);
-        else
-            self.textArea.text = string;
-    }
-    else if ([self.senderCellNumber integerValue] == 8){
-        NSString *string = user[@"music"];
-        if (string.length == 0)
-            self.textArea.placeholder = NSLocalizedString(@"Write about you favorite music here", nil);
-        else
-            self.textArea.text = string;
-    }
-    else if ([self.senderCellNumber integerValue] == 9){
-        NSString *string = user[@"books"];
-        if (string.length == 0)
-            self.textArea.placeholder = NSLocalizedString(@"Write about your favorite books here", nil);
+            self.textArea.placeholder = NSLocalizedString(@"Where did you go to school? What did you study?", nil);
         else
             self.textArea.text = string;
     }
@@ -133,46 +86,40 @@
     
     [ProgressHUD show:@"Please wait..."];
     
-    PFUser *user = [PFUser currentUser];
-    //if (![self.textArea.text isEqualToString:@""]){ // && [self.maxCharLabel.text integerValue]<=200
-        
-        if ([self.senderCellNumber integerValue] == 1)
-            user[@"bioDescription"] = self.textArea.text;
-        else if ([self.senderCellNumber integerValue] == 2){
-            user[@"favoriteProducts"] = self.textArea.text;
+    PFQuery *userQuery = [PFQuery queryWithClassName:@"UserProfile"];
+    [userQuery whereKey:@"user" equalTo:[PFUser currentUser]];
+    userQuery.limit = 1;
+    [userQuery findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *err){
+        if (objects.count != 0) {
+            if ([self.senderCellNumber integerValue] == 1){
+                PFObject *userObj = objects[0];
+                userObj[@"bio"] = self.textArea.text;
+                [userObj saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+                    if (!error) {
+                        [ProgressHUD showSuccess:@"Saved."];
+                    }
+                    else{
+                        // Log details of the failure
+                        NSLog(@"Error: %@ %@", error, [error userInfo]);
+                    }
+                }];
+            }
+            else if ([self.senderCellNumber integerValue] == 5){
+                PFObject *userObj = objects[0];
+                userObj[@"education"] = self.textArea.text;
+                [userObj saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+                    if (!error) {
+                        [ProgressHUD showSuccess:@"Saved."];
+                    }
+                    else{
+                        NSLog(@"Error: %@ %@", error, [error userInfo]);
+                    }
+                }];
+            }
         }
-        else if ([self.senderCellNumber integerValue] == 3){
-            user[@"tokeTimes"] = self.textArea.text;
-        }
-        else if ([self.senderCellNumber integerValue] == 4){
-            user[@"favoriteTools"] = self.textArea.text;
-        }
-        else if ([self.senderCellNumber integerValue] == 5){
-            user[@"education"] = self.textArea.text;
-        }
-        else if ([self.senderCellNumber integerValue] == 6){
-            user[@"location"] = self.textArea.text;
-        }
-        else if ([self.senderCellNumber integerValue] == 7){
-            user[@"movies"] = self.textArea.text;
-        }
-        else if ([self.senderCellNumber integerValue] == 8){
-            user[@"music"] = self.textArea.text;
-        }
-        else if ([self.senderCellNumber integerValue] == 9){
-            user[@"books"] = self.textArea.text;
-        }
-    //}
-    
-    [user saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error)
-     {
-         if (error == nil)
-            [ProgressHUD showSuccess:@"Saved."];
-         else
-             [ProgressHUD showError:@"Network error."];
-     }];
+        [self.navigationController popViewControllerAnimated:YES];
+    }];
 
-    [self.navigationController popViewControllerAnimated:YES];
 }
 
 - (void)textViewDidChange:(UITextView *)textView

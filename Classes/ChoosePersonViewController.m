@@ -330,13 +330,13 @@ static const CGFloat ChoosePersonButtonVerticalPadding = -10;
     //PFUser *userProfile = (PFUser *)[userQuery getObjectWithId:userAgain.objectId];
     [userQuery whereKey:@"user" equalTo:userAgain];
     userQuery.limit = 1;
-    [userQuery findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
-        if(objects.count != 0){
-            e.personalBioLabelString = objects[0][@"bio"];
-            e.educationLabelString = objects[0][@"education"];
-            e.userLocationLabelString = objects[0][@"location"];
-        }
-    }];
+//    [userQuery findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+//        if(objects.count != 0){
+//            e.personalBioLabelString = objects[0][@"bio"];
+//            e.educationLabelString = objects[0][@"education"];
+//            e.userLocationLabelString = objects[0][@"location"];
+//        }
+//   }];
     
     e.edgesForExtendedLayout = UIRectEdgeNone;
     [e.navigationController.navigationBar setTranslucent:NO];

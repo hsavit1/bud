@@ -47,18 +47,16 @@ static CGFloat const MDCSwipeToChooseViewLabelWidth = 95.f;
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    profilePics = [[NSMutableArray alloc]init];
-
     if([self.navigationController.viewControllers[0] class] == [self class]){
         UIBarButtonItem *edit = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemEdit target:self action:@selector(editButtonPressed:)];
         self.navigationItem.rightBarButtonItem = edit;
         self.user = [PFUser currentUser];
-        [self findPhotos];
-        [self fillInUserInfo];
+//        [self findPhotos];
+//        [self fillInUserInfo];
     }
     else{
-        [self findPhotos];
-        [self fillInUserInfo];
+//        [self findPhotos];
+//        [self fillInUserInfo];
         UIImage * imageNormal = [UIImage imageNamed:@"noSmoking"];
         UIImage * imageNormal2 = [UIImage imageNamed:@"yesSmoking"];
         UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
@@ -115,6 +113,8 @@ static CGFloat const MDCSwipeToChooseViewLabelWidth = 95.f;
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
     self.pageControl.alpha = 1;
+    [self findPhotos];
+    [self fillInUserInfo];
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
@@ -134,15 +134,33 @@ static CGFloat const MDCSwipeToChooseViewLabelWidth = 95.f;
                 PFFile *file = objects[i][@"photo"];
                 [profilePics addObject:file];
             }
+            dispatch_async(dispatch_get_main_queue(), ^ {
+                [self.tableView reloadData];
+            });
         }
     }];
 }
 
 -(void)fillInUserInfo{
-    self.firstNameLabel.text = self.user[@"fullname"];
     self.distanceLabel.text = @"20 miles";
     self.numMutualFriendsLabel.text = @"50";
     self.lastActiveLabel.text = @"30 minutes ago";
+    
+    self.firstNameLabel.text = self.user[@"fullname"];
+    self.strainValue = [self.user[@"strainOfChoice"] intValue];
+
+    PFQuery *userQuery = [PFQuery queryWithClassName:@"UserProfile"];
+    [userQuery whereKey:@"user" equalTo:self.user];
+    userQuery.limit = 1;
+    [userQuery findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *err){
+        if (objects.count != 0) {
+            //for (int i = 0; i < objects.count; i++) {
+            self.personalBioLabel.text = objects[0][@"bio"];
+            dispatch_async(dispatch_get_main_queue(), ^ {
+                [self.tableView reloadData];
+            });
+        }
+    }];
 }
 
 - (void)tableView:(UITableView *)tableView willDisplayHeaderView:(UIView *)view forSection:(NSInteger)section
@@ -188,9 +206,6 @@ static CGFloat const MDCSwipeToChooseViewLabelWidth = 95.f;
         case 1:{
             self.personalBioLabel.textAlignment = NSTextAlignmentLeft;
             self.personalBioLabel.lineBreakMode = NSLineBreakByWordWrapping;
-            //self.personalBioLabel.text = self.user[@"bioDescription"];
-            
-            self.personalBioLabel.text = self.personalBioLabelString;
             if (IS_IPHONE_5) {
                 [self.personalBioLabel setPreferredMaxLayoutWidth:248];
                 CGSize expectedSize = [self.personalBioLabel.text boundingRectWithSize:CGSizeMake(248, 10000)
@@ -198,7 +213,7 @@ static CGFloat const MDCSwipeToChooseViewLabelWidth = 95.f;
                                                                             attributes:@{NSFontAttributeName:
                                                                                              self.personalBioLabel.font}
                                                                                context:nil].size;
-                return MAX(90, expectedSize.height + 10);
+                return MAX(60, expectedSize.height + 10);
                 
             }
             else if (IS_IPHONE_6){
@@ -228,7 +243,6 @@ static CGFloat const MDCSwipeToChooseViewLabelWidth = 95.f;
         }
             break;
         case 3:{
-            self.strainValue = [self.user[@"strainOfChoice"] intValue];
             [self constructInterestsImageLabelView];
             return 60;
             
