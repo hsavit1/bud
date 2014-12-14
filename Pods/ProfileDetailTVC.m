@@ -276,7 +276,7 @@ static CGFloat const MDCSwipeToChooseViewLabelWidth = 95.f;
             return 60;
         }
         case 5:{
-            return 260;
+            return 80;
         }
         default:
             break;
