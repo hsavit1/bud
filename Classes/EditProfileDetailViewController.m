@@ -104,6 +104,37 @@
             });
         }
     }];
+    
+    int strain = [[PFUser currentUser][@"favoriteStrain"] intValue];
+    switch (strain) {
+            //save a number when done to the db (0 -> 3, indicating your choice)
+        case 0:
+            self.favoriteStrainImage.image = [UIImage imageNamed:@"indica_burned.png"];
+            self.favoriteTypeLabel.text = @"Indica";
+            self.favoriteTypeLabel.text = @"Indica: You're someone who likes to chill. The full body effects of the indica are relaxing for you after a full day's worth of work.";
+            [self saveFavoriteStrain:0];
+            break;
+        case 1:
+            self.favoriteStrainImage.image = [UIImage imageNamed:@"rsz_1rsz_1sativa.png"];
+            self.favoriteTypeLabel.text = @"Sativa: You're someone who likes to be active and in the moment. You embrace the uplifing elements of the strain and you like to feel the creative juices flow.";
+            [self saveFavoriteStrain:1];
+            break;
+        case 2:
+            self.favoriteStrainImage.image = [UIImage imageNamed:@"hybrid_burned.png"];
+            self.favoriteTypeLabel.text = @"Hybrid";
+            self.favoriteTypeLabel.text = @"Hybrid: You're a bit of a scientist. You experiement with different strains until you're satisfied with a perfect balance of indica and sativa.";
+            [self saveFavoriteStrain:2];
+            break;
+        case 3:
+            self.favoriteTypeLabel.text = @"Whatever my friends have: You'll fill your bowl with anything you can find. Any weed is good weed for you";
+            [self saveFavoriteStrain:3];
+            break;
+        case 4:
+            
+        default:
+            break;
+    }
+
 }
 
 //get stuff
