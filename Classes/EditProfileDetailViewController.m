@@ -42,6 +42,7 @@
 @property (weak, nonatomic) NSNumber *pickedImage;
 @property (weak, nonatomic) NSNumber *lastPickedImage;
 @property (weak, nonatomic) IBOutlet UIView *photoCellContentView;
+@property (weak, nonatomic) IBOutlet UIView *toolsContentView;
 
 
 @end
@@ -128,8 +129,8 @@
 -(void)fillInFavoriteTools{
     for (int i = 1; i < 9; i++) {
         if([favoriteTools[i-1] intValue] == 1){
-            [self.view viewWithTag:i].alpha = 1;
-            [self.view viewWithTag:(i*11)].alpha = 1;
+            [self.toolsContentView viewWithTag:i].alpha = 1;
+            [self.toolsContentView viewWithTag:(i*11)].alpha = 1;
         }
     }
 }
@@ -390,7 +391,7 @@
         sender.alpha = 1;
         for (int i = 1; i < 9; i++) {
             if(sender.tag == i){
-                [self.view viewWithTag:(i*11)].alpha = 1;
+                [self.toolsContentView viewWithTag:(i*11)].alpha = 1;
                 [favoriteTools replaceObjectAtIndex:i withObject:@YES];
             }
         }
@@ -399,7 +400,7 @@
         sender.alpha = .5;
         for (int i = 1; i < 9; i++) {
             if(sender.tag == i){
-                [self.view viewWithTag:(i*11)].alpha = .5;
+                [self.toolsContentView viewWithTag:(i*11)].alpha = .5;
                 [favoriteTools replaceObjectAtIndex:i withObject:@NO];
             }
         }

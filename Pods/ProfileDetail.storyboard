@@ -1192,6 +1192,7 @@
                         <outlet property="removeImage4" destination="TUb-MP-QCO" id="KwO-7d-nIq"/>
                         <outlet property="removeImage5" destination="KbX-mI-70p" id="IHn-Uf-PHC"/>
                         <outlet property="sixStonersInHeaven" destination="M7N-Gx-T2H" id="0vh-hC-h4G"/>
+                        <outlet property="toolsContentView" destination="BQN-nS-OJU" id="s8j-tR-d1o"/>
                         <outlet property="userLocationLabel" destination="ssa-eU-vf4" id="3Yy-Z1-fg8"/>
                     </connections>
                 </tableViewController>
