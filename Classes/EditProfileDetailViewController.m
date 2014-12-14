@@ -42,10 +42,7 @@
 @property (weak, nonatomic) NSNumber *pickedImage;
 @property (weak, nonatomic) NSNumber *lastPickedImage;
 @property (weak, nonatomic) IBOutlet UIView *photoCellContentView;
-//
-//@property (strong, nonatomic) PFImageView *addImage6;
-//@property (strong, nonatomic) UIButton *removeImage6;
-//@property (strong, nonatomic) UIButton *addImage6Buttom;
+
 
 @end
 
@@ -106,12 +103,9 @@
             });
         }
     }];
-    
-
-    //profilePicsArray = @[self.addImage0, self.addImage1, self.addImage2, self.addImage3, self.addImage4, self.addImage5];
-    //removeButtons = @[self.removeImage0, self.removeImage1, self.removeImage2, self.removeImage3, self.removeImage4, self.removeImage5];
 }
 
+//get stuff
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
     PFQuery *userQuery = [PFQuery queryWithClassName:@"UserProfile"];
@@ -119,9 +113,10 @@
     userQuery.limit = 1;
     [userQuery findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *err){
         if (objects.count != 0) {
-            //for (int i = 0; i < objects.count; i++) {
             self.personalBioLabel.text = objects[0][@"bio"];
             self.educationLabel.text = objects[0][@"education"];
+            favoriteTools = objects[0][@"favoriteTools"];
+            [self fillInFavoriteTools];
             dispatch_async(dispatch_get_main_queue(), ^ {
                 [self.tableView reloadData];
             });
@@ -129,6 +124,15 @@
     }];
 }
 
+//fill in favoriteTools table
+-(void)fillInFavoriteTools{
+    for (int i = 1; i < 9; i++) {
+        if([favoriteTools[i-1] intValue] == 1){
+            [self.view viewWithTag:i].alpha = 1;
+            [self.view viewWithTag:(i*11)].alpha = 1;
+        }
+    }
+}
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     switch (indexPath.section) {
@@ -220,38 +224,7 @@
             break;
     
         case 2:{
-            NSString *string = [PFUser currentUser][@"favoriteType"];
-            self.favoriteTypeLabel.text = string;
-            if (IS_IPHONE_5) {
-                [self.favoriteTypeLabel setPreferredMaxLayoutWidth:230];
-                CGSize expectedSize = [self.favoriteTypeLabel.text boundingRectWithSize:CGSizeMake(230, 10000)
-                                                                             options:(NSStringDrawingUsesLineFragmentOrigin)
-                                                                          attributes:@{NSFontAttributeName:
-                                                                                           self.favoriteTypeLabel.font}
-                                                                             context:nil].size;
-                return MAX(100, expectedSize.height + 20);
-                
-            }
-            else if (IS_IPHONE_6){
-                [self.favoriteTypeLabel setPreferredMaxLayoutWidth:230 + 55];
-                CGSize expectedSize = [self.favoriteTypeLabel.text boundingRectWithSize:CGSizeMake(230 + 45, 10000)
-                                                                             options:(NSStringDrawingUsesLineFragmentOrigin)
-                                                                          attributes:@{NSFontAttributeName:
-                                                                                           self.favoriteTypeLabel.font}
-                                                                             context:nil].size;
-                return MAX(100, expectedSize.height + 20);
-                
-            }
-            else if (IS_IPHONE_6_PLUS){
-                [self.favoriteTypeLabel setPreferredMaxLayoutWidth:230 + 95];
-                CGSize expectedSize = [self.favoriteTypeLabel.text boundingRectWithSize:CGSizeMake(230 + 94, 10000)
-                                                                                options:(NSStringDrawingUsesLineFragmentOrigin)
-                                                                             attributes:@{NSFontAttributeName:
-                                                                                              self.favoriteTypeLabel.font}
-                                                                                context:nil].size;
-                return MAX(80, expectedSize.height + 20);
-            }
-            return 80;
+
         }
         case 3:{
             if (IS_IPHONE_5) {
@@ -286,47 +259,9 @@
             }
             return 60;
         }
-//        case 2:{
-//            NSString *string = [PFUser currentUser][@"location"];
-//            self.userLocationLabel.text = string;
-//            if (IS_IPHONE_5) {
-//                [self.userLocationLabel setPreferredMaxLayoutWidth:230];
-//                CGSize expectedSize = [self.userLocationLabel.text boundingRectWithSize:CGSizeMake(230, 10000)
-//                                                                             options:(NSStringDrawingUsesLineFragmentOrigin)
-//                                                                          attributes:@{NSFontAttributeName:
-//                                                                                           self.userLocationLabel.font}
-//                                                                             context:nil].size;
-//                return MAX(60, expectedSize.height + 20);
-//                
-//            }
-//            else if (IS_IPHONE_6){
-//                [self.userLocationLabel setPreferredMaxLayoutWidth:230 + 55];
-//                CGSize expectedSize = [self.userLocationLabel.text boundingRectWithSize:CGSizeMake(230 + 45, 10000)
-//                                                                             options:(NSStringDrawingUsesLineFragmentOrigin)
-//                                                                          attributes:@{NSFontAttributeName:
-//                                                                                           self.userLocationLabel.font}
-//                                                                             context:nil].size;
-//                return MAX(60, expectedSize.height + 20);
-//                
-//            }
-//            else if (IS_IPHONE_6_PLUS){
-//                [self.userLocationLabel setPreferredMaxLayoutWidth:230 + 95];
-//                CGSize expectedSize = [self.userLocationLabel.text boundingRectWithSize:CGSizeMake(230 + 94, 10000)
-//                                                                             options:(NSStringDrawingUsesLineFragmentOrigin)
-//                                                                          attributes:@{NSFontAttributeName:
-//                                                                                           self.userLocationLabel.font}
-//                                                                             context:nil].size;
-//                return MAX(60, expectedSize.height + 20);
-//                
-//            }
-//            return 60;
-//        }
-//        break;
-//         
         case 5:{
             return 260;
         }
-            
             
         default:
             return 60;
@@ -453,19 +388,19 @@
 
     if(sender.alpha == .5){
         sender.alpha = 1;
-        for (int i = 1; i < 10; i++) {
+        for (int i = 1; i < 9; i++) {
             if(sender.tag == i){
                 [self.view viewWithTag:(i*11)].alpha = 1;
-                [favoriteTools replaceObjectAtIndex:0 withObject:@YES];
+                [favoriteTools replaceObjectAtIndex:i withObject:@YES];
             }
         }
     }
     else{
         sender.alpha = .5;
-        for (int i = 1; i < 10; i++) {
+        for (int i = 1; i < 9; i++) {
             if(sender.tag == i){
                 [self.view viewWithTag:(i*11)].alpha = .5;
-                [favoriteTools replaceObjectAtIndex:0 withObject:@NO];
+                [favoriteTools replaceObjectAtIndex:i withObject:@NO];
             }
         }
     }
@@ -542,34 +477,31 @@
 
 -(void)saveFavoriteWaysToGetHigh{
     
-//    PFQuery *userQuery = [PFQuery queryWithClassName:@"UserProfile"];
-//    [userQuery whereKey:@"user" equalTo:[PFUser currentUser]];
-//    userQuery.limit = 1;
-//    [userQuery findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
-//        if(objects.count != 0){
-//            [objects[0][@"favortieTools"] addUniqueObjectsFromArray:favoriteTools forKey:@"favoriteTools"];
-//        }
-//    }];
-}
-
--(void)saveFavoriteStrain:(int)strainOfChoice{
- 
     PFQuery *userQuery = [PFQuery queryWithClassName:@"UserProfile"];
     [userQuery whereKey:@"user" equalTo:[PFUser currentUser]];
     userQuery.limit = 1;
+    [userQuery findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *err){
+        if (objects.count != 0) {
+                PFObject *userObj = objects[0];
+                userObj[@"favoriteTools"] = favoriteTools;
+                [userObj saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+                    if (!error) {
+                        [ProgressHUD showSuccess:@"Saved."];
+                    }
+                    else{
+                        // Log details of the failure
+                        NSLog(@"Error: %@ %@", error, [error userInfo]);
+                    }
+                }];
+            }
+        }];
 
-    //this needs to be fixed. cant be getting an array
-//    [userQuery findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
-//        if(objects.count != 0){
-//            PFObject *strainChoiceNumber = strainOfChoice;
-//            ((PFObject*)objects[0][@"favoriteProduct"]) = strainChoiceNumber;
-//            
-//        }
-//    }];
-//          //this is an example
-//    PFObject *gameScore = [PFObject objectWithClassName:@"UserProfile"];
-//    gameScore[@"score"] = @1337;
-//    [gameScore saveInBackground];
+}
+
+-(void)saveFavoriteStrain:(int)strainOfChoice{
+
+    [PFUser currentUser][@"favoriteStrain"] = @(strainOfChoice);
+    [[PFUser currentUser] saveInBackground];
 }
 
 -(void)savePhotos{
@@ -651,9 +583,12 @@
     if(buttonIndex == 1){
         //save favWaysToGetHigh
         [self saveFavoriteWaysToGetHigh];
+        
         //save favoriteStrain
+
         //save photos
         [self savePhotos];
+        
         //you dont have to worry about saving all of the descriptions. those will be saved when the user clicks on the "Save" button on each of those pages, respectively
         [self.navigationController popViewControllerAnimated:YES];
     }

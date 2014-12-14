@@ -51,12 +51,8 @@ static CGFloat const MDCSwipeToChooseViewLabelWidth = 95.f;
         UIBarButtonItem *edit = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemEdit target:self action:@selector(editButtonPressed:)];
         self.navigationItem.rightBarButtonItem = edit;
         self.user = [PFUser currentUser];
-//        [self findPhotos];
-//        [self fillInUserInfo];
     }
     else{
-//        [self findPhotos];
-//        [self fillInUserInfo];
         UIImage * imageNormal = [UIImage imageNamed:@"noSmoking"];
         UIImage * imageNormal2 = [UIImage imageNamed:@"yesSmoking"];
         UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
@@ -234,7 +230,6 @@ static CGFloat const MDCSwipeToChooseViewLabelWidth = 95.f;
                                                                                              self.personalBioLabel.font}
                                                                                context:nil].size;
                 return MAX(60, expectedSize.height + 10);
-                
             }
         }
         case 2:{
@@ -245,12 +240,8 @@ static CGFloat const MDCSwipeToChooseViewLabelWidth = 95.f;
         case 3:{
             [self constructInterestsImageLabelView];
             return 60;
-            
         }
         case 4:{
-            //NSString *string = self.user[@"education"];
-            //self.educationLabel.text = string;
-            
             self.educationLabel.text = self.educationLabelString;
             if (IS_IPHONE_5) {
                 [self.educationLabel setPreferredMaxLayoutWidth:248];
@@ -284,46 +275,6 @@ static CGFloat const MDCSwipeToChooseViewLabelWidth = 95.f;
             }
             return 60;
         }
-//        case 5:{
-////            NSString *string = self.user[@"location"];
-////            self.userLocationLabel.text = string;
-//            
-//            self.userLocationLabel.text = self.userLocationLabelString;
-//            if (IS_IPHONE_5) {
-//                [self.userLocationLabel setPreferredMaxLayoutWidth:248];
-//                CGSize expectedSize = [self.userLocationLabel.text boundingRectWithSize:CGSizeMake(248, 10000)
-//                                                                                options:(NSStringDrawingUsesLineFragmentOrigin)
-//                                                                             attributes:@{NSFontAttributeName:
-//                                                                                              self.userLocationLabel.font}
-//                                                                                context:nil].size;
-//                return MAX(60, expectedSize.height + 10);
-//                
-//            }
-//            else if (IS_IPHONE_6){
-//                [self.userLocationLabel setPreferredMaxLayoutWidth:248 + 55];
-//                CGSize expectedSize = [self.userLocationLabel.text boundingRectWithSize:CGSizeMake(248 + 45, 10000)
-//                                                                                options:(NSStringDrawingUsesLineFragmentOrigin)
-//                                                                             attributes:@{NSFontAttributeName:
-//                                                                                              self.userLocationLabel.font}
-//                                                                                context:nil].size;
-//                return MAX(60, expectedSize.height + 10);
-//                
-//            }
-//            else if (IS_IPHONE_6_PLUS){
-//                [self.userLocationLabel setPreferredMaxLayoutWidth:248 + 95];
-//                CGSize expectedSize = [self.userLocationLabel.text boundingRectWithSize:CGSizeMake(248 + 94, 10000)
-//                                                                                options:(NSStringDrawingUsesLineFragmentOrigin)
-//                                                                             attributes:@{NSFontAttributeName:
-//                                                                                              self.userLocationLabel.font}
-//                                                                                context:nil].size;
-//                return MAX(60, expectedSize.height + 10);
-//                
-//            }
-//            return 60;
-//        }
-            
-
-            
         default:
             break;
     }
@@ -331,8 +282,6 @@ static CGFloat const MDCSwipeToChooseViewLabelWidth = 95.f;
 }
 
 - (void)constructInterestsImageLabelView {
-    //CGFloat rightPadding = 60.f;
-    
     UIImage *image;
     if(self.strainValue == 0){//hybrid
         image = [UIImage imageNamed:@"hybrid_burned.png"];
@@ -380,8 +329,6 @@ static CGFloat const MDCSwipeToChooseViewLabelWidth = 95.f;
                                                     cancelButtonTitle:@"Cancel"
                                                destructiveButtonTitle:nil
                                                     otherButtonTitles:@"Inappropriate Language", @"Inappropriate Photos", @"Spam", nil];
-    
-    
      [actionSheet showInView:self.view];
 }
 
@@ -452,13 +399,6 @@ static CGFloat const MDCSwipeToChooseViewLabelWidth = 95.f;
 -(void)editButtonPressed:(id)sender{
     UIStoryboard *edit = [UIStoryboard storyboardWithName:@"ProfileDetail" bundle:nil];
     EditProfileDetailViewController *e = [edit instantiateViewControllerWithIdentifier:@"e"];
-    
-    
-    //pass other information along
-    
-    //
-    
-    
     [self.navigationController pushViewController:e animated:YES];
 }
 

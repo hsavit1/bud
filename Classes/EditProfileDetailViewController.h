@@ -42,8 +42,7 @@
 
 @property (weak, nonatomic) IBOutlet UILabel *personalBioLabel;
 @property (weak, nonatomic) IBOutlet UILabel *favoriteTypeLabel;
-//@property (weak, nonatomic) IBOutlet UILabel *tokeTimesLabel;
-@property (weak, nonatomic) IBOutlet UILabel *favoriteToolsLabel;
+//@property (weak, nonatomic) IBOutlet UILabel *favoriteToolsLabel;
 
 
 //education cell
