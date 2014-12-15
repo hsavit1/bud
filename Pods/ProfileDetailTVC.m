@@ -154,6 +154,7 @@ static CGFloat const MDCSwipeToChooseViewLabelWidth = 95.f;
             //for (int i = 0; i < objects.count; i++) {
             self.personalBioLabel.text = objects[0][@"bio"];
             favoriteTools = objects[0][@"favoriteTools"];
+            self.educationLabel.text = objects[0][@"education"];
             [self makeScrollView];
             dispatch_async(dispatch_get_main_queue(), ^ {
                 [self.tableView reloadData];
@@ -180,11 +181,12 @@ static CGFloat const MDCSwipeToChooseViewLabelWidth = 95.f;
     for(int i = 0; i < favoriteTools.count; i++){
         if ([favoriteTools[i] integerValue] == 1) {
             
-            UIImageView *imageView = [[UIImageView alloc]initWithFrame:CGRectMake(10 + position*100, 15, 50, 50)];
+            UIImageView *imageView = [[UIImageView alloc]initWithFrame:CGRectMake(8 + position*80, 12, 35, 35)];
             [myScroll addSubview:imageView];
+            //test_tube-48.png
             switch (i) {
                 case 0:
-                    imageView.image = [UIImage imageNamed:@"filled_flag-32.png"];
+                    imageView.image = [UIImage imageNamed:@"test_tube-48.png"];
                     break;
                 case 1:
                     imageView.image = [UIImage imageNamed:@"filled_flag-32.png"];
@@ -224,9 +226,6 @@ static CGFloat const MDCSwipeToChooseViewLabelWidth = 95.f;
     self.automaticallyAdjustsScrollViewInsets = NO;
     
     [self.favoriteToolsContentView addSubview:myScroll];
-//    [myScroll addSubview:self.rewardPhotoView];
-//    [myScroll addSubview:redeemRewardButton];
-//    [myScroll addSubview:rewardTextDescription];
 }
 
 - (void)tableView:(UITableView *)tableView willDisplayHeaderView:(UIView *)view forSection:(NSInteger)section
@@ -312,45 +311,49 @@ static CGFloat const MDCSwipeToChooseViewLabelWidth = 95.f;
             return 60;
         }
         case 4:{
-            self.educationLabel.text = self.educationLabelString;
-            if (IS_IPHONE_5) {
-                [self.educationLabel setPreferredMaxLayoutWidth:248];
-                CGSize expectedSize = [self.educationLabel.text boundingRectWithSize:CGSizeMake(248, 10000)
-                                                                             options:(NSStringDrawingUsesLineFragmentOrigin)
-                                                                          attributes:@{NSFontAttributeName:
-                                                                                           self.educationLabel.font}
-                                                                             context:nil].size;
-                return MAX(60, expectedSize.height + 10);
+            if (self.educationLabel.text.length != 0){
                 
+                if (IS_IPHONE_5) {
+                    [self.educationLabel setPreferredMaxLayoutWidth:248];
+                    CGSize expectedSize = [self.educationLabel.text boundingRectWithSize:CGSizeMake(248, 10000)
+                                                                                 options:(NSStringDrawingUsesLineFragmentOrigin)
+                                                                              attributes:@{NSFontAttributeName:
+                                                                                               self.educationLabel.font}
+                                                                                 context:nil].size;
+                    return MAX(60, expectedSize.height + 10);
+                    
+                }
+                else if (IS_IPHONE_6){
+                    [self.educationLabel setPreferredMaxLayoutWidth:248 + 55];
+                    CGSize expectedSize = [self.educationLabel.text boundingRectWithSize:CGSizeMake(248 + 45, 10000)
+                                                                                 options:(NSStringDrawingUsesLineFragmentOrigin)
+                                                                              attributes:@{NSFontAttributeName:
+                                                                                               self.educationLabel.font}
+                                                                                 context:nil].size;
+                    return MAX(60, expectedSize.height + 10);
+                    
+                }
+                else if (IS_IPHONE_6_PLUS){
+                    [self.educationLabel setPreferredMaxLayoutWidth:248 + 95];
+                    CGSize expectedSize = [self.educationLabel.text boundingRectWithSize:CGSizeMake(248 + 94, 10000)
+                                                                                    options:(NSStringDrawingUsesLineFragmentOrigin)
+                                                                                 attributes:@{NSFontAttributeName:
+                                                                                                  self.educationLabel.font}
+                                                                                    context:nil].size;
+                    return MAX(60, expectedSize.height + 10);
+                    
+                }
             }
-            else if (IS_IPHONE_6){
-                [self.educationLabel setPreferredMaxLayoutWidth:248 + 55];
-                CGSize expectedSize = [self.educationLabel.text boundingRectWithSize:CGSizeMake(248 + 45, 10000)
-                                                                             options:(NSStringDrawingUsesLineFragmentOrigin)
-                                                                          attributes:@{NSFontAttributeName:
-                                                                                           self.educationLabel.font}
-                                                                             context:nil].size;
-                return MAX(60, expectedSize.height + 10);
-                
+            else{
+                return 0;
             }
-            else if (IS_IPHONE_6_PLUS){
-                [self.educationLabel setPreferredMaxLayoutWidth:248 + 95];
-                CGSize expectedSize = [self.educationLabel.text boundingRectWithSize:CGSizeMake(248 + 94, 10000)
-                                                                                options:(NSStringDrawingUsesLineFragmentOrigin)
-                                                                             attributes:@{NSFontAttributeName:
-                                                                                              self.educationLabel.font}
-                                                                                context:nil].size;
-                return MAX(60, expectedSize.height + 10);
-                
-            }
-            return 60;
         }
         case 5:{
             if(favoriteTools.count == 0){
                 return 0;
             }
             else
-                return 80;
+                return 60;
         }
         default:
             break;
