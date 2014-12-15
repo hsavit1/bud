@@ -31,6 +31,7 @@ static CGFloat const MDCSwipeToChooseViewLabelWidth = 95.f;
 
 @interface ProfileDetailTVC ()<GMCPagingScrollViewDataSource, ASFSharedViewTransitionDataSource, UIActionSheetDelegate>{
     NSMutableArray *profilePics;
+    NSMutableArray *favoriteTools;
 }
 
 @property (nonatomic, strong) GMCPagingScrollView *pagingScrollView;
@@ -152,11 +153,80 @@ static CGFloat const MDCSwipeToChooseViewLabelWidth = 95.f;
         if (objects.count != 0) {
             //for (int i = 0; i < objects.count; i++) {
             self.personalBioLabel.text = objects[0][@"bio"];
+            favoriteTools = objects[0][@"favoriteTools"];
+            [self makeScrollView];
             dispatch_async(dispatch_get_main_queue(), ^ {
                 [self.tableView reloadData];
             });
         }
     }];
+}
+
+-(void)makeScrollView{
+    
+    UIScrollView *myScroll = [[UIScrollView alloc] init];
+    int trueVal = 0;
+    for(int i = 0; i < favoriteTools.count; i++){
+        if ([favoriteTools[i] integerValue] == 1) {
+            trueVal++;
+        }
+    }
+    myScroll.backgroundColor = [UIColor clearColor];
+    myScroll.frame = CGRectMake(0, 0, self.favoriteToolsContentView.frame.size.width, 80);
+    myScroll.contentSize = CGSizeMake(trueVal * 100, 80);
+    //now all you have to do is add the items to the scrollView
+    
+    int position = 0;
+    for(int i = 0; i < favoriteTools.count; i++){
+        if ([favoriteTools[i] integerValue] == 1) {
+            
+            UIImageView *imageView = [[UIImageView alloc]initWithFrame:CGRectMake(10 + position*100, 15, 50, 50)];
+            [myScroll addSubview:imageView];
+            switch (i) {
+                case 0:
+                    imageView.image = [UIImage imageNamed:@"filled_flag-32.png"];
+                    break;
+                case 1:
+                    imageView.image = [UIImage imageNamed:@"filled_flag-32.png"];
+                    break;
+                case 2:
+                    imageView.image = [UIImage imageNamed:@"filled_flag-32.png"];
+                    break;
+                case 3:
+                    imageView.image = [UIImage imageNamed:@"filled_flag-32.png"];
+                    break;
+                case 4:
+                    imageView.image = [UIImage imageNamed:@"filled_flag-32.png"];
+                    break;
+                case 5:
+                    imageView.image = [UIImage imageNamed:@"filled_flag-32.png"];
+                    break;
+                case 6:
+                    imageView.image = [UIImage imageNamed:@"filled_flag-32.png"];
+                    break;
+                case 7:
+                    imageView.image = [UIImage imageNamed:@"filled_flag-32.png"];
+                    break;
+                case 8:
+                    imageView.image = [UIImage imageNamed:@"filled_flag-32.png"];
+                    break;
+                default:
+                    break;
+            }
+            
+            position++;
+        }
+    }
+    
+    [myScroll setContentOffset:CGPointMake(0, 0)];
+    myScroll.showsHorizontalScrollIndicator = YES;
+    myScroll.scrollEnabled = YES;
+    self.automaticallyAdjustsScrollViewInsets = NO;
+    
+    [self.favoriteToolsContentView addSubview:myScroll];
+//    [myScroll addSubview:self.rewardPhotoView];
+//    [myScroll addSubview:redeemRewardButton];
+//    [myScroll addSubview:rewardTextDescription];
 }
 
 - (void)tableView:(UITableView *)tableView willDisplayHeaderView:(UIView *)view forSection:(NSInteger)section
@@ -276,7 +346,11 @@ static CGFloat const MDCSwipeToChooseViewLabelWidth = 95.f;
             return 60;
         }
         case 5:{
-            return 80;
+            if(favoriteTools.count == 0){
+                return 0;
+            }
+            else
+                return 80;
         }
         default:
             break;

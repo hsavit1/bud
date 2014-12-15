@@ -29,7 +29,8 @@
 @property (weak, nonatomic) IBOutlet UILabel *favoriteStrains;
 @property (weak, nonatomic) IBOutlet UILabel *toolsIUseLabel;
 @property (weak, nonatomic) IBOutlet UILabel *educationLabel;
-@property (weak, nonatomic) IBOutlet UILabel *userLocationLabel;
+
+@property (weak, nonatomic) IBOutlet UIView *favoriteToolsContentView;
 
 /*!
  * The "liked" view, which fades in when the like button is pressed
