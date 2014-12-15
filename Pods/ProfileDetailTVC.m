@@ -174,14 +174,14 @@ static CGFloat const MDCSwipeToChooseViewLabelWidth = 95.f;
     }
     myScroll.backgroundColor = [UIColor clearColor];
     myScroll.frame = CGRectMake(0, 0, self.favoriteToolsContentView.frame.size.width, 80);
-    myScroll.contentSize = CGSizeMake(trueVal * 100, 80);
+    myScroll.contentSize = CGSizeMake(trueVal * 80, 80);
     //now all you have to do is add the items to the scrollView
     
     int position = 0;
     for(int i = 0; i < favoriteTools.count; i++){
         if ([favoriteTools[i] integerValue] == 1) {
             
-            UIImageView *imageView = [[UIImageView alloc]initWithFrame:CGRectMake(8 + position*80, 12, 35, 35)];
+            UIImageView *imageView = [[UIImageView alloc]initWithFrame:CGRectMake(8 + position*70, 12, 35, 35)];
             [myScroll addSubview:imageView];
             //test_tube-48.png
             switch (i) {

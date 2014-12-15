@@ -13,7 +13,7 @@
 #import <Parse/Parse.h> 
 #import <MessageUI/MessageUI.h>
 
-@interface SettingsTableViewController ()<UITextFieldDelegate, MFMessageComposeViewControllerDelegate>
+@interface SettingsTableViewController ()<UITextFieldDelegate, MFMessageComposeViewControllerDelegate, UIAlertViewDelegate>
 
 @end
 
@@ -198,14 +198,31 @@
                 [self.tabBarController setSelectedIndex:0];
                 LoginUser(self);
             }
-            else{
-                
+            else if(indexPath.row == 0){
+                UIAlertView *deleteView = [[UIAlertView alloc]initWithTitle:@"Are you sure you want to permanently delete your account?"
+                                                                    message:@"This cannot be revoked"
+                                                                   delegate:self
+                                                          cancelButtonTitle:@"No"
+                                                          otherButtonTitles:@"Yes, delete it", nil];
+                [deleteView show];
             }
                 
             break;
 
         default:
             break;
+    }
+}
+
+
+-(void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex{
+    
+    if(buttonIndex == 1){
+        //delete account
+    }
+    else{
+        NSIndexPath *myIP = [NSIndexPath indexPathForRow:0 inSection:6];
+        [self.tableView deselectRowAtIndexPath:myIP animated:NO];
     }
 }
 
@@ -217,7 +234,12 @@
             
         case MessageComposeResultFailed:
         {
-            UIAlertView *warningAlert = [[UIAlertView alloc] initWithTitle:@"Error" message:@"Failed to send SMS!" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+            UIAlertView *warningAlert = [[UIAlertView alloc]
+                                         initWithTitle:@"Error"
+                                         message:@"Failed to send SMS!"
+                                         delegate:nil
+                                         cancelButtonTitle:@"OK"
+                                         otherButtonTitles:nil];
             [warningAlert show];
             break;
         }
