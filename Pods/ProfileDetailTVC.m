@@ -30,12 +30,12 @@ static CGFloat const MDCSwipeToChooseViewTopPadding = 20.f + 50;
 static CGFloat const MDCSwipeToChooseViewLabelWidth = 95.f;
 
 @interface ProfileDetailTVC ()<GMCPagingScrollViewDataSource, ASFSharedViewTransitionDataSource, UIActionSheetDelegate>{
-    NSMutableArray *profilePics;
     NSMutableArray *favoriteTools;
 }
 
 @property (nonatomic, strong) GMCPagingScrollView *pagingScrollView;
 @property (nonatomic, strong) UIPageControl *pageControl;
+@property (nonatomic, strong) NSMutableArray *profilePics;
 
 @property (nonatomic, strong) MDCSwipeToChooseViewOptions *options;
 @property (weak, nonatomic) IBOutlet PFImageView *strainOfChoice;
@@ -47,7 +47,8 @@ static CGFloat const MDCSwipeToChooseViewLabelWidth = 95.f;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
+    self.profilePics = [[NSMutableArray alloc]init];
+
     if([self.navigationController.viewControllers[0] class] == [self class]){
         UIBarButtonItem *edit = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemEdit target:self action:@selector(editButtonPressed:)];
         self.navigationItem.rightBarButtonItem = edit;
@@ -129,7 +130,7 @@ static CGFloat const MDCSwipeToChooseViewLabelWidth = 95.f;
         if (objects.count != 0) {
             for (int i = 0; i < objects.count; i++) {
                 PFFile *file = objects[i][@"photo"];
-                [profilePics addObject:file];
+                [self.profilePics addObject:file];
             }
             dispatch_async(dispatch_get_main_queue(), ^ {
                 [self.tableView reloadData];
@@ -235,9 +236,11 @@ static CGFloat const MDCSwipeToChooseViewLabelWidth = 95.f;
 }
 
 - (NSUInteger)numberOfPagesInPagingScrollView:(GMCPagingScrollView *)pagingScrollView {
+    NSInteger numPages = [self.user[@"numProfilePics"] integerValue];
     //self.pageControl.numberOfPages = profilePics.count;
-    //return profilePics.count;
-    return 5;
+    self.pageControl.numberOfPages = numPages;
+    return numPages;
+//    return 4;
 }
 
 - (UIView *)pagingScrollView:(GMCPagingScrollView *)pagingScrollView pageForIndex:(NSUInteger)index {
@@ -245,30 +248,42 @@ static CGFloat const MDCSwipeToChooseViewLabelWidth = 95.f;
     float width = self.view.bounds.size.width;
     CGRect backgroundRect = CGRectMake(0, 0, width, width);
 
-    for(int i = 0; i < profilePics.count; i++){
-        if(i == index){
-            PFImageView *backgroundImageView = [[PFImageView alloc] initWithFrame:backgroundRect];
-            backgroundImageView.file = profilePics[i];
-            [backgroundImageView loadInBackground];
-            page = backgroundImageView;
-            
-            [self.pageControl setCurrentPage:i];
+    if(index == 0){
+        PFImageView *backgroundImageView = [[PFImageView alloc] initWithFrame:backgroundRect];
+        backgroundImageView.file = self.user[@"picture"];
+        [backgroundImageView loadInBackground];
+        page = backgroundImageView;
+        
+        [self.pageControl setCurrentPage:0];
+    }
+    else{
+        for(int i = 0; i < self.profilePics.count; i++){
+            if(i == index){
+                PFImageView *backgroundImageView = [[PFImageView alloc] initWithFrame:backgroundRect];
+                backgroundImageView.file = self.profilePics[i];
+                [backgroundImageView loadInBackground];
+                page = backgroundImageView;
+                
+                [self.pageControl setCurrentPage:i];
+            }
         }
     }
-    
     return page;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     
     //[self findUserInfo];
-    
+    ////////
     switch (indexPath.section) {
         case 0:{
+            return 320;
+        }
+        case 1:{
             return 70;
             break;
         }
-        case 1:{
+        case 2:{
             self.personalBioLabel.textAlignment = NSTextAlignmentLeft;
             self.personalBioLabel.lineBreakMode = NSLineBreakByWordWrapping;
             if (IS_IPHONE_5) {
@@ -301,16 +316,16 @@ static CGFloat const MDCSwipeToChooseViewLabelWidth = 95.f;
                 return MAX(60, expectedSize.height + 10);
             }
         }
-        case 2:{
+        case 3:{
             
             return 60;
         }
             break;
-        case 3:{
+        case 4:{
             [self constructInterestsImageLabelView];
             return 60;
         }
-        case 4:{
+        case 5:{
             if (self.educationLabel.text.length != 0){
                 
                 if (IS_IPHONE_5) {
@@ -348,7 +363,7 @@ static CGFloat const MDCSwipeToChooseViewLabelWidth = 95.f;
                 return 0;
             }
         }
-        case 5:{
+        case 6:{
             if(favoriteTools.count == 0){
                 return 0;
             }

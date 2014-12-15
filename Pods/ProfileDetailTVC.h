@@ -12,7 +12,7 @@
 @interface ProfileDetailTVC : UITableViewController
 
 @property (weak, nonatomic) IBOutlet UIView *headerView;
-@property (weak, nonatomic) PFUser *user;
+@property (strong, nonatomic) PFUser *user;
 
 //in the "about me" cell
 @property (weak, nonatomic) IBOutlet UILabel *firstNameLabel;

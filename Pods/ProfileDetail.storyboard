@@ -15,18 +15,24 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <color key="separatorColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <view key="tableHeaderView" contentMode="scaleToFill" id="m9N-Ud-Umu">
-                            <rect key="frame" x="0.0" y="0.0" width="320" height="320"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            <subviews>
-                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="w2W-ay-e6p" customClass="PFImageView">
-                                    <rect key="frame" x="267" y="267" width="45" height="45"/>
-                                </imageView>
-                            </subviews>
-                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        </view>
                         <sections>
                             <tableViewSection id="x42-by-gzn">
+                                <cells>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="320" id="iqD-MM-VIB">
+                                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="iqD-MM-VIB" id="S6v-AQ-Rnz">
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="w2W-ay-e6p" customClass="PFImageView">
+                                                    <rect key="frame" x="267" y="266" width="45" height="45"/>
+                                                </imageView>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </cells>
+                            </tableViewSection>
+                            <tableViewSection id="mXZ-wk-HPO">
                                 <cells>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="mainInfo" rowHeight="70" id="dr8-ZK-JMk">
                                         <autoresizingMask key="autoresizingMask"/>
@@ -296,7 +302,7 @@
                         <outlet property="favoriteStrains" destination="KMa-aC-msa" id="QA6-XY-0aP"/>
                         <outlet property="favoriteToolsContentView" destination="9RJ-pC-QDo" id="sNR-b9-HMy"/>
                         <outlet property="firstNameLabel" destination="IaT-C1-fDU" id="6zy-3C-SuW"/>
-                        <outlet property="headerView" destination="m9N-Ud-Umu" id="ZLQ-G8-Nnk"/>
+                        <outlet property="headerView" destination="S6v-AQ-Rnz" id="4Ff-Tb-EAP"/>
                         <outlet property="lastActiveLabel" destination="vHq-fd-EBF" id="EWG-P4-CuH"/>
                         <outlet property="numMutualFriendsLabel" destination="ndF-0L-9Oz" id="zNF-ub-Dxb"/>
                         <outlet property="personalBioLabel" destination="xOG-8c-mfl" id="Fpd-qc-XsA"/>
