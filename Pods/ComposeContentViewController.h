@@ -14,5 +14,6 @@
 @property (weak, nonatomic) IBOutlet HSTextView *textArea;
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *saveButton;
 @property (weak, nonatomic) NSNumber *senderCellNumber;
+@property (weak, nonatomic) NSString *placeholderString;
 
 @end

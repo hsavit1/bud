@@ -53,14 +53,14 @@
     
     PFUser *user = [PFUser currentUser];
     if ([self.senderCellNumber integerValue] == 1){
-        NSString *string = user[@"bioDescription"];
+        NSString *string = self.placeholderString;
         if (string.length == 0)
             self.textArea.placeholder = NSLocalizedString(@"Say something about yourself here", nil);
         else
             self.textArea.text = string;
     }
     else if ([self.senderCellNumber integerValue] == 5){
-        NSString *string = user[@"education"];
+        NSString *string = self.placeholderString;
         if (string.length == 0)
             self.textArea.placeholder = NSLocalizedString(@"Where did you go to school? What did you study?", nil);
         else

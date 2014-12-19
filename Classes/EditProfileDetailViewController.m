@@ -736,13 +736,15 @@
                  sender:(id)sender {
     if ([segue.identifier isEqualToString:@"one"]) {
         ((ComposeContentViewController *)segue.destinationViewController).senderCellNumber = [NSNumber numberWithInt:1];
+        ((ComposeContentViewController *)segue.destinationViewController).placeholderString = self.personalBioLabel.text;
     }
     else if ([segue.identifier isEqualToString:@"education"]) {
         ((ComposeContentViewController *)segue.destinationViewController).senderCellNumber = [NSNumber numberWithInt:5];
+        ((ComposeContentViewController *)segue.destinationViewController).placeholderString = self.educationLabel.text;
     }
-    else if ([segue.identifier isEqualToString:@"location"]) {
-        ((ComposeContentViewController *)segue.destinationViewController).senderCellNumber = [NSNumber numberWithInt:6];
-    }
+//    else if ([segue.identifier isEqualToString:@"location"]) {
+//        ((ComposeContentViewController *)segue.destinationViewController).senderCellNumber = [NSNumber numberWithInt:6];
+//    }
     
 }
 

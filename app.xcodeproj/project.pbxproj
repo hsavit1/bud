@@ -544,6 +544,15 @@
 		5C77792019F224310063DA08 /* list.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C77791819F224310063DA08 /* list.png */; };
 		5C77792119F224310063DA08 /* list@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C77791919F224310063DA08 /* list@2x.png */; };
 		5C77792719F231340063DA08 /* MessagesView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5C77792619F231340063DA08 /* MessagesView.xib */; };
+		5C8CCCB01A3F8C16005A8C16 /* SwipeView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C8CCCAF1A3F8C16005A8C16 /* SwipeView.m */; };
+		5C8CCCB21A439DA5005A8C16 /* outline_geo_fence-50.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C8CCCB11A439DA5005A8C16 /* outline_geo_fence-50.png */; };
+		5C9D77351A3943DA00F0BB35 /* 2-disposable_lighter_pink.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C9D772E1A3943DA00F0BB35 /* 2-disposable_lighter_pink.png */; };
+		5C9D77361A3943DA00F0BB35 /* hybrid.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 5C9D772F1A3943DA00F0BB35 /* hybrid.jpg */; };
+		5C9D77371A3943DA00F0BB35 /* images copy.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 5C9D77301A3943DA00F0BB35 /* images copy.jpg */; };
+		5C9D77381A3943DA00F0BB35 /* images.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 5C9D77311A3943DA00F0BB35 /* images.jpg */; };
+		5C9D77391A3943DA00F0BB35 /* imgres.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 5C9D77321A3943DA00F0BB35 /* imgres.jpg */; };
+		5C9D773A1A3943DA00F0BB35 /* k1325611.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 5C9D77331A3943DA00F0BB35 /* k1325611.jpg */; };
+		5C9D773B1A3943DA00F0BB35 /* lighter2.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C9D77341A3943DA00F0BB35 /* lighter2.png */; };
 		5CA284F719FD78CD0045728F /* MessagesView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5CA284F619FD78CD0045728F /* MessagesView.storyboard */; };
 		5CA2893D19FDAB1E0045728F /* UIView+MDCBorderedLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CA2893C19FDAB1E0045728F /* UIView+MDCBorderedLabel.m */; };
 		5CA2894E19FE9B120045728F /* geo_fence-26.png in Resources */ = {isa = PBXBuildFile; fileRef = 5CA2894619FE9B120045728F /* geo_fence-26.png */; };
@@ -1309,6 +1318,16 @@
 		5C77791819F224310063DA08 /* list.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = list.png; sourceTree = "<group>"; };
 		5C77791919F224310063DA08 /* list@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "list@2x.png"; sourceTree = "<group>"; };
 		5C77792619F231340063DA08 /* MessagesView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MessagesView.xib; sourceTree = "<group>"; };
+		5C8CCCAE1A3F8C16005A8C16 /* SwipeView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SwipeView.h; sourceTree = "<group>"; };
+		5C8CCCAF1A3F8C16005A8C16 /* SwipeView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SwipeView.m; sourceTree = "<group>"; };
+		5C8CCCB11A439DA5005A8C16 /* outline_geo_fence-50.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "outline_geo_fence-50.png"; sourceTree = SOURCE_ROOT; };
+		5C9D772E1A3943DA00F0BB35 /* 2-disposable_lighter_pink.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "2-disposable_lighter_pink.png"; sourceTree = "<group>"; };
+		5C9D772F1A3943DA00F0BB35 /* hybrid.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = hybrid.jpg; sourceTree = "<group>"; };
+		5C9D77301A3943DA00F0BB35 /* images copy.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "images copy.jpg"; sourceTree = "<group>"; };
+		5C9D77311A3943DA00F0BB35 /* images.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = images.jpg; sourceTree = "<group>"; };
+		5C9D77321A3943DA00F0BB35 /* imgres.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = imgres.jpg; sourceTree = "<group>"; };
+		5C9D77331A3943DA00F0BB35 /* k1325611.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = k1325611.jpg; sourceTree = "<group>"; };
+		5C9D77341A3943DA00F0BB35 /* lighter2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = lighter2.png; sourceTree = "<group>"; };
 		5CA284F619FD78CD0045728F /* MessagesView.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = MessagesView.storyboard; sourceTree = "<group>"; };
 		5CA2893919FDAA800045728F /* MDCViewState.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MDCViewState.h; sourceTree = "<group>"; };
 		5CA2893C19FDAB1E0045728F /* UIView+MDCBorderedLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+MDCBorderedLabel.m"; sourceTree = "<group>"; };
@@ -1449,6 +1468,7 @@
 		2930F7F619E94E01000F7799 /* Externals */ = {
 			isa = PBXGroup;
 			children = (
+				5C8CCCAD1A3F8C09005A8C16 /* SwipeView */,
 				5CD95A441A0802FD00619885 /* SpinKit */,
 				5CD95A401A0801F700619885 /* MBProgressHUD */,
 				5CD95A371A02C50D00619885 /* TurnupLogin */,
@@ -3530,6 +3550,7 @@
 		5C7772F319EFA9270063DA08 /* icons8 */ = {
 			isa = PBXGroup;
 			children = (
+				5C8CCCB11A439DA5005A8C16 /* outline_geo_fence-50.png */,
 				5C30DFFC1A014A4E003F3D3A /* orange */,
 				5C30DFDA1A0088EA003F3D3A /* partly_Cloudy */,
 				5CA2897119FE9C840045728F /* friends */,
@@ -4254,6 +4275,29 @@
 			path = swipeCellImages;
 			sourceTree = SOURCE_ROOT;
 		};
+		5C8CCCAD1A3F8C09005A8C16 /* SwipeView */ = {
+			isa = PBXGroup;
+			children = (
+				5C8CCCAE1A3F8C16005A8C16 /* SwipeView.h */,
+				5C8CCCAF1A3F8C16005A8C16 /* SwipeView.m */,
+			);
+			name = SwipeView;
+			sourceTree = "<group>";
+		};
+		5C9D772D1A3943DA00F0BB35 /* maryjane_pics */ = {
+			isa = PBXGroup;
+			children = (
+				5C9D772E1A3943DA00F0BB35 /* 2-disposable_lighter_pink.png */,
+				5C9D772F1A3943DA00F0BB35 /* hybrid.jpg */,
+				5C9D77301A3943DA00F0BB35 /* images copy.jpg */,
+				5C9D77311A3943DA00F0BB35 /* images.jpg */,
+				5C9D77321A3943DA00F0BB35 /* imgres.jpg */,
+				5C9D77331A3943DA00F0BB35 /* k1325611.jpg */,
+				5C9D77341A3943DA00F0BB35 /* lighter2.png */,
+			);
+			path = maryjane_pics;
+			sourceTree = SOURCE_ROOT;
+		};
 		5CA2894419FE9B120045728F /* geofence */ = {
 			isa = PBXGroup;
 			children = (
@@ -4399,6 +4443,7 @@
 		5CA2898419FEC48B0045728F /* images */ = {
 			isa = PBXGroup;
 			children = (
+				5C9D772D1A3943DA00F0BB35 /* maryjane_pics */,
 				5C30DF1C1A0043E5003F3D3A /* strains */,
 				5CC628B219FA9A52003526FC /* blunt_texture.jpg */,
 				5C7772F319EFA9270063DA08 /* icons8 */,
@@ -4909,7 +4954,6 @@
 				TargetAttributes = {
 					29EB240419E9292500D7AA97 = {
 						CreatedOnToolsVersion = 6.0.1;
-						DevelopmentTeam = 63T5BCMH45;
 					};
 				};
 			};
@@ -4953,6 +4997,7 @@
 				5C77727119EF84200063DA08 /* readme.txt in Resources */,
 				5CC628AC19FA902F003526FC /* fire_element-50_outline.png in Resources */,
 				2930F8B019E94E01000F7799 /* bubble@2x.png in Resources */,
+				5C9D773B1A3943DA00F0BB35 /* lighter2.png in Resources */,
 				5C03241919F28FED00D5D480 /* bfa_plus-square_simple-aqua_16x16.png in Resources */,
 				5C77727019EF84200063DA08 /* aiga_smoking_flat-circle-white-on-green-gradient_96x96.png in Resources */,
 				5C7772E919EF84200063DA08 /* raphael_question-mark-circle_simple-yellow_48x48.png in Resources */,
@@ -5071,6 +5116,7 @@
 				5C03240019F27A2400D5D480 /* marker-32.png in Resources */,
 				5C03238019F2786F00D5D480 /* ankh-26.png in Resources */,
 				5C77733B19EFA9270063DA08 /* chat-48.png in Resources */,
+				5C9D77391A3943DA00F0BB35 /* imgres.jpg in Resources */,
 				5C03242F19F2910800D5D480 /* bfa_arrow-left_simple-aqua.svg in Resources */,
 				5C77733A19EFA9270063DA08 /* chat_gray_32.png in Resources */,
 				5C03243719F2910800D5D480 /* bfa_arrow-left_simple-aqua_512x512.png in Resources */,
@@ -5080,6 +5126,7 @@
 				5C77792719F231340063DA08 /* MessagesView.xib in Resources */,
 				5C7773A719EFD6020063DA08 /* ocha_damage-not-affected_simple-aqua_1024x1024.png in Resources */,
 				5CC6290319FAE868003526FC /* settings_filled-50.png in Resources */,
+				5C9D77371A3943DA00F0BB35 /* images copy.jpg in Resources */,
 				5C03233B19F2786900D5D480 /* heart_monitor-26.png in Resources */,
 				5C77727519EF84200063DA08 /* classica_fire_flat-circle-white-on-green-gradient_128x128.png in Resources */,
 				5C7772E819EF84200063DA08 /* raphael_question-mark-circle_simple-yellow_32x32.png in Resources */,
@@ -5157,6 +5204,7 @@
 				5C03245019F2917500D5D480 /* bfa_plus-square_simple-green_512x512.png in Resources */,
 				5C7772A119EF84200063DA08 /* classica_fire_simple-green-gradient.svg in Resources */,
 				5C03239B19F2786F00D5D480 /* license.txt in Resources */,
+				5C8CCCB21A439DA5005A8C16 /* outline_geo_fence-50.png in Resources */,
 				5C03247719F298DE00D5D480 /* alarm_clock-24.png in Resources */,
 				5C0323D819F2787B00D5D480 /* home-48.png in Resources */,
 				5C03247819F298DE00D5D480 /* alarm_clock-32.png in Resources */,
@@ -5273,6 +5321,7 @@
 				5C30E00C1A014A4E003F3D3A /* filled_flag-36.png in Resources */,
 				5C77727B19EF84200063DA08 /* classica_fire_flat-circle-white-on-green-gradient_96x96.png in Resources */,
 				5C30DF221A0043E5003F3D3A /* sativa.png in Resources */,
+				5C9D77361A3943DA00F0BB35 /* hybrid.jpg in Resources */,
 				5C7772C219EF84200063DA08 /* ocha_damage-destroyed_simple-red-gradient_48x48.png in Resources */,
 				5C77725D19EF84200063DA08 /* aiga_no-smoking_simple-red-gradient_128x128.png in Resources */,
 				5C77791C19F224310063DA08 /* clock.png in Resources */,
@@ -5361,6 +5410,7 @@
 				5C0323DB19F2787B00D5D480 /* idea-32.png in Resources */,
 				5C7772DE19EF84200063DA08 /* ocha_disaster-fire_simple-red-gradient_64x64.png in Resources */,
 				5C77726319EF84200063DA08 /* aiga_no-smoking_simple-red-gradient_512x512.png in Resources */,
+				5C9D77351A3943DA00F0BB35 /* 2-disposable_lighter_pink.png in Resources */,
 				5C77734019EFA9270063DA08 /* license.txt in Resources */,
 				2930F8BB19E94E01000F7799 /* clip.png in Resources */,
 				5C77744019F20A9B0063DA08 /* bongFunny.png in Resources */,
@@ -5369,6 +5419,7 @@
 				2930F8B619E94E01000F7799 /* bubble_stroked@2x.png in Resources */,
 				5C03248019F298DE00D5D480 /* like-26.png in Resources */,
 				5C77725B19EF84200063DA08 /* aiga_no-smoking_simple-red-gradient.svg in Resources */,
+				5C9D77381A3943DA00F0BB35 /* images.jpg in Resources */,
 				2930F8B319E94E01000F7799 /* bubble_min_tailless.png in Resources */,
 				5C77729519EF84200063DA08 /* classica_fire_simple-aqua_1024x1024.png in Resources */,
 				5C03247E19F298DE00D5D480 /* about-48.png in Resources */,
@@ -5395,6 +5446,7 @@
 				5C30DF211A0043E5003F3D3A /* indica_burned.png in Resources */,
 				2930F8C219E94E01000F7799 /* message_sent.aiff in Resources */,
 				2930F92B19E96C5C000F7799 /* ProfileView.xib in Resources */,
+				5C9D773A1A3943DA00F0BB35 /* k1325611.jpg in Resources */,
 				5C7772C519EF84200063DA08 /* ocha_damage-destroyed_simple-red-gradient_96x96.png in Resources */,
 				5C03234519F2786900D5D480 /* statistics-48.png in Resources */,
 				5C03241C19F28FED00D5D480 /* bfa_plus-square_simple-aqua_32x32.png in Resources */,
@@ -5433,6 +5485,7 @@
 				2930F8AE19E94E01000F7799 /* UIWebView+AFNetworking.m in Sources */,
 				2930F89F19E94E01000F7799 /* AFHTTPRequestOperationManager.m in Sources */,
 				2930F92C19E96C5C000F7799 /* LoginView.m in Sources */,
+				5C8CCCB01A3F8C16005A8C16 /* SwipeView.m in Sources */,
 				5C40B60019FBBC6A003DDE19 /* pushnotification.m in Sources */,
 				5C7771B919EF4D0C0063DA08 /* ICGViewController.m in Sources */,
 				2930F8C619E94E01000F7799 /* UIImage+JSQMessages.m in Sources */,
@@ -5670,6 +5723,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = "";
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Frameworks",
@@ -5685,6 +5739,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = "";
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Frameworks",
