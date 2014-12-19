@@ -37,6 +37,7 @@ static CGFloat const MDCSwipeToChooseViewLabelWidth = 95.f;
 @property (nonatomic, strong) UIPageControl *pageControl;
 @property (nonatomic, strong) NSMutableArray *profilePics;
 @property (nonatomic, strong) NSMutableArray *sixPeople;
+@property (nonatomic, strong) UIScrollView *myScroll;
 
 @property (nonatomic, strong) MDCSwipeToChooseViewOptions *options;
 @property (weak, nonatomic) IBOutlet PFImageView *strainOfChoice;
@@ -50,6 +51,7 @@ static CGFloat const MDCSwipeToChooseViewLabelWidth = 95.f;
     [super viewDidLoad];
     self.profilePics = [[NSMutableArray alloc]init];
     self.sixPeople = [[NSMutableArray alloc]initWithObjects:@"", @"", @"", @"", @"", @"", @"", nil];
+    self.myScroll = [[UIScrollView alloc] init];
     
     if([self.navigationController.viewControllers[0] class] == [self class]){
         UIBarButtonItem *edit = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemEdit target:self action:@selector(editButtonPressed:)];
@@ -179,16 +181,16 @@ static CGFloat const MDCSwipeToChooseViewLabelWidth = 95.f;
 
 -(void)makeScrollView{
     
-    UIScrollView *myScroll = [[UIScrollView alloc] init];
+    //_myScroll = [[UIScrollView alloc] init];
     int trueVal = 0;
     for(int i = 0; i < favoriteTools.count; i++){
         if ([favoriteTools[i] integerValue] == 1) {
             trueVal++;
         }
     }
-    myScroll.backgroundColor = [UIColor clearColor];
-    myScroll.frame = CGRectMake(0, 0, self.favoriteToolsContentView.frame.size.width, 80);
-    myScroll.contentSize = CGSizeMake(trueVal * 80, 80);
+    _myScroll.backgroundColor = [UIColor clearColor];
+    _myScroll.frame = CGRectMake(0, 0, self.favoriteToolsContentView.frame.size.width, 80);
+    _myScroll.contentSize = CGSizeMake(trueVal * 80, 80);
     //now all you have to do is add the items to the scrollView
     
     int position = 0;
@@ -196,7 +198,7 @@ static CGFloat const MDCSwipeToChooseViewLabelWidth = 95.f;
         if ([favoriteTools[i] integerValue] == 1) {
             
             UIImageView *imageView = [[UIImageView alloc]initWithFrame:CGRectMake(8 + position*70, 12, 35, 35)];
-            [myScroll addSubview:imageView];
+            [_myScroll addSubview:imageView];
             //test_tube-48.png
             switch (i) {
                 case 0:
@@ -234,12 +236,12 @@ static CGFloat const MDCSwipeToChooseViewLabelWidth = 95.f;
         }
     }
     
-    [myScroll setContentOffset:CGPointMake(0, 0)];
-    myScroll.showsHorizontalScrollIndicator = YES;
-    myScroll.scrollEnabled = YES;
+    [_myScroll setContentOffset:CGPointMake(0, 0)];
+    _myScroll.showsHorizontalScrollIndicator = YES;
+    _myScroll.scrollEnabled = YES;
     self.automaticallyAdjustsScrollViewInsets = NO;
     
-    [self.favoriteToolsContentView addSubview:myScroll];
+    [self.favoriteToolsContentView addSubview:_myScroll];
 }
 
 - (void)tableView:(UITableView *)tableView willDisplayHeaderView:(UIView *)view forSection:(NSInteger)section
