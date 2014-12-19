@@ -33,8 +33,8 @@
                     objectId:(NSString *)objid
                        image:(PFFile *)image
                          age:(NSUInteger)age
-       numberOfSharedFriends:(NSUInteger)numberOfSharedFriends
-              strainOfChoice:(NSUInteger)strainOfChoice{
+       numberOfSharedFriends:(NSUInteger)numberOfSharedFriends{
+//strainOfChoice:(NSUInteger)strainOfChoice{
     self = [super init];
     if (self) {
         _name = name;
@@ -42,7 +42,7 @@
         _image = image;
         _age = age;
         _numberOfSharedFriends = numberOfSharedFriends;
-        _strainOfChoice = strainOfChoice;
+        //_strainOfChoice = strainOfChoice;
     }
     return self;
 }
@@ -57,7 +57,7 @@
         _image = obj[@"picture"];
         _age = [obj[@"age"] intValue];
         _numberOfSharedFriends = [obj[@"shared"] intValue];
-        _strainOfChoice = [obj[@"strainOfChoice"] intValue];
+        //   _strainOfChoice = [obj[@"strainOfChoice"] intValue];
     }
     NSLog(@"hihi");
     return self;

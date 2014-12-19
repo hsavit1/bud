@@ -213,8 +213,8 @@ static const CGFloat ChoosePersonButtonVerticalPadding = -10;
                                            objectId:nil
                                               image:nil
                                                 age:nil
-                              numberOfSharedFriends:nil
-                                     strainOfChoice:nil];
+                              numberOfSharedFriends:nil];
+                        //strainOfChoice:nil];
         
         ChoosePersonView *personView = [[ChoosePersonView alloc] initWithFrame:frame
                                                                         person:load

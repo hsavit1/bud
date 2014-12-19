@@ -42,8 +42,8 @@
                     objectId:(NSString *)objid
                        image:(PFFile *)image
                          age:(NSUInteger)age
-       numberOfSharedFriends:(NSUInteger)numberOfSharedFriends
-              strainOfChoice:(NSUInteger)strainOfChoice;
+       numberOfSharedFriends:(NSUInteger)numberOfSharedFriends;
+// strainOfChoice:(NSUInteger)strainOfChoice;
 
 
 //used
