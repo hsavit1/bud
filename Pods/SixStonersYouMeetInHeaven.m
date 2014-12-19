@@ -9,32 +9,46 @@
 #import "SixStonersYouMeetInHeaven.h"
 #import "EditProfileDetailViewController.h"
 #import "ProgressHUD.h"
+@interface SixStonersYouMeetInHeaven(){
+    //NSMutableArray *sixPeople;
+}
+
+@end
 
 @implementation SixStonersYouMeetInHeaven
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
     [self.view setBackgroundColor:[UIColor colorWithRed:242/255. green:242/255. blue:246/255. alpha:1.0]];
 
     self.user = [PFUser currentUser];
-    
+    [self fillInStuff];
 }
+
+-(void)fillInStuff{
+    PFQuery *userQuery = [PFQuery queryWithClassName:@"UserProfile"];
+    [userQuery whereKey:@"user" equalTo:[PFUser currentUser]];
+    userQuery.limit = 1;
+    [userQuery findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *err){
+        if (objects.count != 0) {
+            NSArray *ppl = objects[0][@"sixPeopleArray"];
+            self.person0.text = ppl[0];
+            self.person1.text = ppl[1];
+            self.person2.text = ppl[2];
+            self.person3.text = ppl[3];
+            self.person4.text = ppl[4];
+            self.person5.text = ppl[5];
+        }
+    }];
+
+}
+
 
 - (IBAction)saveButton:(id)sender {
 
     [ProgressHUD show:@"Please wait..."];
-    
-//    NSString *field0 = [NSString stringWithFormat:@"1. %@", self.person0.text];
-//    NSString *field1 = [NSString stringWithFormat:@"2. %@", self.person2.text];
-//    NSString *field2 = [NSString stringWithFormat:@"3. %@", self.person3.text];
-//    NSString *field3 = [NSString stringWithFormat:@"4. %@", self.person4.text];
-//    NSString *field4 = [NSString stringWithFormat:@"5. %@", self.person1.text];
-//    NSString *field5 = [NSString stringWithFormat:@"6. %@", self.person5.text];
-//    
-//
-    
+
     PFQuery *userQuery = [PFQuery queryWithClassName:@"UserProfile"];
     [userQuery whereKey:@"user" equalTo:self.user];
     userQuery.limit = 1;
