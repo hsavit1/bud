@@ -337,7 +337,7 @@ static CGFloat const MDCSwipeToChooseViewLabelWidth = 95.f;
                                                                             attributes:@{NSFontAttributeName:
                                                                                              self.personalBioLabel.font}
                                                                                context:nil].size;
-                return MAX(60, expectedSize.height + 10);
+                return MAX(60, expectedSize.height + 20);
                 
             }
             else if (IS_IPHONE_6){
@@ -347,7 +347,7 @@ static CGFloat const MDCSwipeToChooseViewLabelWidth = 95.f;
                                                                             attributes:@{NSFontAttributeName:
                                                                                              self.personalBioLabel.font}
                                                                                context:nil].size;
-                return MAX(60, expectedSize.height + 10);
+                return MAX(60, expectedSize.height + 20);
                 
             }
             else if (IS_IPHONE_6_PLUS){
@@ -357,7 +357,7 @@ static CGFloat const MDCSwipeToChooseViewLabelWidth = 95.f;
                                                                             attributes:@{NSFontAttributeName:
                                                                                              self.personalBioLabel.font}
                                                                                context:nil].size;
-                return MAX(60, expectedSize.height + 10);
+                return MAX(60, expectedSize.height + 20);
             }
         }
         case 4:{
@@ -426,7 +426,7 @@ static CGFloat const MDCSwipeToChooseViewLabelWidth = 95.f;
                                                                               attributes:@{NSFontAttributeName:
                                                                                                self.educationLabel.font}
                                                                                  context:nil].size;
-                    return MAX(60, expectedSize.height + 10);
+                    return MAX(60, expectedSize.height + 20);
                     
                 }
                 else if (IS_IPHONE_6){
@@ -436,7 +436,7 @@ static CGFloat const MDCSwipeToChooseViewLabelWidth = 95.f;
                                                                               attributes:@{NSFontAttributeName:
                                                                                                self.educationLabel.font}
                                                                                  context:nil].size;
-                    return MAX(60, expectedSize.height + 10);
+                    return MAX(60, expectedSize.height + 20);
                     
                 }
                 else if (IS_IPHONE_6_PLUS){
@@ -446,7 +446,7 @@ static CGFloat const MDCSwipeToChooseViewLabelWidth = 95.f;
                                                                                  attributes:@{NSFontAttributeName:
                                                                                                   self.educationLabel.font}
                                                                                     context:nil].size;
-                    return MAX(60, expectedSize.height + 10);
+                    return MAX(60, expectedSize.height + 20);
                     
                 }
             }
