@@ -152,9 +152,10 @@ static CGFloat const MDCSwipeToChooseViewLabelWidth = 95.f;
 }
 
 -(void)fillInUserInfo{
-    self.distanceLabel.text = @"20 miles";
-    self.numMutualFriendsLabel.text = @"50";
-    NSDate *update = self.user.updatedAt;
+    self.distanceLabel.text = @"20 miles"; //cloud function
+    self.numMutualFriendsLabel.text = @"50"; //this should come from a cloud function
+    
+    NSDate *update = self.user.updatedAt; //really should query for the user's last activity in the "Match" class
     NSDate *currentDate = [NSDate date];
     NSTimeInterval distanceBetweenDates = [currentDate timeIntervalSinceDate:update];
     
@@ -162,6 +163,7 @@ static CGFloat const MDCSwipeToChooseViewLabelWidth = 95.f;
     NSInteger hours = distanceBetweenDates / 3600;
     NSInteger days = distanceBetweenDates / (3600*24);
     NSInteger weeks = distanceBetweenDates / (3600*24*7);
+    
     
     NSString *dateString;
     if (distanceBetweenDates < 60) {
