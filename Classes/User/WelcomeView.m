@@ -74,7 +74,7 @@
 {
     [ProgressHUD show:@"Signing in..." Interaction:NO];
     
-    [PFFacebookUtils logInWithPermissions:@[@"public_profile", @"email", @"user_friends", @"user_photos"] block:^(PFUser *user, NSError *error)
+    [PFFacebookUtils logInWithPermissions:@[@"public_profile", @"email", @"user_friends"] block:^(PFUser *user, NSError *error)
      {
          if (user)
          {

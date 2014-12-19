@@ -100,14 +100,14 @@ static const CGFloat ChoosePersonButtonVerticalPadding = -10;
 //      [UIFont fontWithName:@"SnellRoundhand-Black" size:40], //HoeflerText-BlackItalic
 //      NSFontAttributeName, nil]];
     
-    UILabel *loveBudsLabel = [[UILabel alloc]initWithFrame:CGRectMake(self.view.bounds.size.width / 2 - 70, 50, 140, 30)];
-    loveBudsLabel.text = @"LoveBuds";
-    loveBudsLabel.font = [UIFont fontWithName:@"SnellRoundhand-Black" size:28];
-    [self.view addSubview:loveBudsLabel];
+//    UILabel *loveBudsLabel = [[UILabel alloc]initWithFrame:CGRectMake(self.view.bounds.size.width / 2 - 70, 50, 140, 30)];
+//    loveBudsLabel.text = @"LoveBuds";
+//    loveBudsLabel.font = [UIFont fontWithName:@"SnellRoundhand-Black" size:28];
+//    [self.view addSubview:loveBudsLabel];
     
     ADBannerView *adView = [[ADBannerView alloc] initWithFrame:CGRectZero];
     adView.currentContentSizeIdentifier = ADBannerContentSizeIdentifierPortrait;
-    [self.view addSubview:adView];
+    [self.navigationController.navigationBar addSubview:adView];
 
 }
 
