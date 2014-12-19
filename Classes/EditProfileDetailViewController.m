@@ -88,14 +88,44 @@
             
             for (int i = 0; i < objects.count; i++) {
                 if(!objects[i][@"photo"]){
-                    //[self.photoCellContentView viewWithTag:(i + 1000)].hidden = YES;
                 }
                 else{
                     ((PFImageView*)[self.photoCellContentView viewWithTag:(i+111)]).layer.cornerRadius = 9;
                     ((PFImageView*)[self.photoCellContentView viewWithTag:(i+111)]).layer.masksToBounds = YES;
                     ((UIImageView *)[self.photoCellContentView viewWithTag:(i+111)]).contentMode = UIViewContentModeScaleAspectFill;
-                    ((PFImageView*)[self.photoCellContentView viewWithTag:(i+111)]).file = objects[i][@"photo"];
-                    [((PFImageView*)[self.photoCellContentView viewWithTag:(i+111)]) loadInBackground];
+                    
+//                    ((PFImageView*)[self.photoCellContentView viewWithTag:(i+111)]).file = objects[i][@"photo"];
+//                    [((PFImageView*)[self.photoCellContentView viewWithTag:(i+111)]) loadInBackground];
+                    
+                        switch (i) {
+                            case 0:
+                                self.addImage0.file = objects[i][@"photo"];
+                                [self.addImage0 loadInBackground];
+                                break;
+                            case 1:
+                                self.addImage1.file = objects[i][@"photo"];
+                                [self.addImage1 loadInBackground];
+                                break;
+                            case 2:
+                                self.addImage2.file = objects[i][@"photo"];
+                                [self.addImage2 loadInBackground];
+                                break;
+                            case 3:
+                                self.addImage3.file = objects[i][@"photo"];
+                                [self.addImage3 loadInBackground];
+                                break;
+                            case 4:
+                                self.addImage4.file = objects[i][@"photo"];
+                                [self.addImage4 loadInBackground];
+                                break;
+                            case 5:
+                                self.addImage5.file = objects[i][@"photo"];
+                                [self.addImage5 loadInBackground];
+                                break;
+                            default:
+                                break;
+                        }
+                    
                     [self.photoCellContentView viewWithTag:(i + 1000)].hidden = NO;
                     //[profilePicsArray addObject:((PFImageView*)[self.photoCellContentView viewWithTag:(i+111)])];
 
@@ -107,35 +137,35 @@
         }
     }];
     
-    int strain = [[PFUser currentUser][@"favoriteStrain"] intValue];
-    switch (strain) {
-            //save a number when done to the db (0 -> 3, indicating your choice)
-        case 0:
-            self.favoriteStrainImage.image = [UIImage imageNamed:@"indica_burned.png"];
-            self.favoriteTypeLabel.text = @"Indica";
-            self.favoriteTypeLabel.text = @"Indica: You're someone who likes to chill. The full body effects of the indica are relaxing for you after a full day's worth of work.";
-            [self saveFavoriteStrain:0];
-            break;
-        case 1:
-            self.favoriteStrainImage.image = [UIImage imageNamed:@"rsz_1rsz_1sativa.png"];
-            self.favoriteTypeLabel.text = @"Sativa: You're someone who likes to be active and in the moment. You embrace the uplifing elements of the strain and you like to feel the creative juices flow.";
-            [self saveFavoriteStrain:1];
-            break;
-        case 2:
-            self.favoriteStrainImage.image = [UIImage imageNamed:@"hybrid_burned.png"];
-            self.favoriteTypeLabel.text = @"Hybrid";
-            self.favoriteTypeLabel.text = @"Hybrid: You're a bit of a scientist. You experiement with different strains until you're satisfied with a perfect balance of indica and sativa.";
-            [self saveFavoriteStrain:2];
-            break;
-        case 3:
-            self.favoriteTypeLabel.text = @"Whatever my friends have: You'll fill your bowl with anything you can find. Any weed is good weed for you";
-            [self saveFavoriteStrain:3];
-            break;
-        case 4:
-            
-        default:
-            break;
-    }
+//    int strain = [[PFUser currentUser][@"favoriteStrain"] intValue];
+//    switch (strain) {
+//            //save a number when done to the db (0 -> 3, indicating your choice)
+//        case 0:
+//            self.favoriteStrainImage.image = [UIImage imageNamed:@"indica_burned.png"];
+//            self.favoriteTypeLabel.text = @"Indica";
+//            self.favoriteTypeLabel.text = @"Indica: You're someone who likes to chill. The full body effects of the indica are relaxing for you after a full day's worth of work.";
+//            [self saveFavoriteStrain:0];
+//            break;
+//        case 1:
+//            self.favoriteStrainImage.image = [UIImage imageNamed:@"rsz_1rsz_1sativa.png"];
+//            self.favoriteTypeLabel.text = @"Sativa: You're someone who likes to be active and in the moment. You embrace the uplifing elements of the strain and you like to feel the creative juices flow.";
+//            [self saveFavoriteStrain:1];
+//            break;
+//        case 2:
+//            self.favoriteStrainImage.image = [UIImage imageNamed:@"hybrid_burned.png"];
+//            self.favoriteTypeLabel.text = @"Hybrid";
+//            self.favoriteTypeLabel.text = @"Hybrid: You're a bit of a scientist. You experiement with different strains until you're satisfied with a perfect balance of indica and sativa.";
+//            [self saveFavoriteStrain:2];
+//            break;
+//        case 3:
+//            self.favoriteTypeLabel.text = @"Whatever my friends have: You'll fill your bowl with anything you can find. Any weed is good weed for you";
+//            [self saveFavoriteStrain:3];
+//            break;
+//        case 4:
+//            
+//        default:
+//            break;
+//    }
 
 }
 
@@ -149,11 +179,11 @@
         if (objects.count != 0) {
             self.personalBioLabel.text = objects[0][@"bio"];
             self.educationLabel.text = objects[0][@"education"];
-            favoriteTools = objects[0][@"favoriteTools"];
+//            favoriteTools = objects[0][@"favoriteTools"];
             NSArray *ppl = objects[0][@"sixPeopleArray"];
             //NSArray *myWords = [ppl componentsSeparatedByString:@" "];
             sixPeople = ppl;
-            [self fillInFavoriteTools];
+//            [self fillInFavoriteTools];
             dispatch_async(dispatch_get_main_queue(), ^ {
                 [self.tableView reloadData];
             });
@@ -161,15 +191,15 @@
     }];
 }
 
-//fill in favoriteTools table
--(void)fillInFavoriteTools{
-    for (int i = 1; i < 9; i++) {
-        if([favoriteTools[i-1] intValue] == 1){
-            [self.toolsContentView viewWithTag:i].alpha = 1;
-            [self.toolsContentView viewWithTag:(i*11)].alpha = 1;
-        }
-    }
-}
+////fill in favoriteTools table
+//-(void)fillInFavoriteTools{
+//    for (int i = 1; i < 9; i++) {
+//        if([favoriteTools[i-1] intValue] == 1){
+//            [self.toolsContentView viewWithTag:i].alpha = 1;
+//            [self.toolsContentView viewWithTag:(i*11)].alpha = 1;
+//        }
+//    }
+//}
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     switch (indexPath.section) {
@@ -212,7 +242,7 @@
             break;
             
             //fav strain
-        case 4:{
+        case 3:{
             NSString *field0 = [NSString stringWithFormat:@"1. %@", sixPeople[0]];
             NSString *field1 = [NSString stringWithFormat:@"2. %@", sixPeople[1]];
             NSString *field2 = [NSString stringWithFormat:@"3. %@", sixPeople[2]];
@@ -260,10 +290,10 @@
         }
             break;
     
+//        case 2:{
+//
+//        }
         case 2:{
-
-        }
-        case 3:{
             if (IS_IPHONE_5) {
                 [self.educationLabel setPreferredMaxLayoutWidth:230];
                 CGSize expectedSize = [self.educationLabel.text boundingRectWithSize:CGSizeMake(230, 10000)
@@ -296,9 +326,9 @@
             }
             return 60;
         }
-        case 5:{
-            return 260;
-        }
+//        case 4:{
+//            return 260;
+//        }
             
         default:
             return 60;
@@ -315,26 +345,193 @@
     isPageEdited = YES;
     
     long i = sender.tag - 1000;
-    if (((PFImageView*)[self.photoCellContentView viewWithTag:(i + 111)]).file != nil) {
+    //if (((PFImageView*)[self.photoCellContentView viewWithTag:(i + 111)]).file != nil) {
     
-        ((PFImageView*)[self.photoCellContentView viewWithTag:(i + 111)]).file = nil;
-        //now we want to left shift all of the images (if there are any after the one we jsut removed) by 1
-        for(int j = (int)i + 111 ; j < 117; j++){
-            if(((PFImageView*)[self.photoCellContentView viewWithTag:(j)]).file != nil){
-                
-                ((PFImageView*)[self.photoCellContentView viewWithTag:(j)]).file = ((PFImageView*)[self.photoCellContentView viewWithTag:(j+1)]).file;
-                [((PFImageView*)[self.photoCellContentView viewWithTag:(j)]) loadInBackground];
-                ((PFImageView*)[self.photoCellContentView viewWithTag:(j+1)]).file = nil;
-                ((PFImageView*)[self.photoCellContentView viewWithTag:(j+1)]).image = [UIImage imageNamed:@"bfa_plus-square_simple-green_128x128.png"];
-                [self.photoCellContentView viewWithTag:(j - 111 + 1000)].hidden = NO;
-                
-            }
-            else{
-                ((PFImageView*)[self.photoCellContentView viewWithTag:(i + 111)]).image = [UIImage imageNamed:@"bfa_plus-square_simple-green_128x128.png"];
-                sender.hidden = YES;
-            }
-        }
+    switch (i) {
+        case 0:
+            self.addImage0.file = nil;
+            self.addImage0.image = [UIImage imageNamed:@"bfa_plus-square_simple-green_128x128.png"];
+            break;
+        case 1:
+            self.addImage1.file = nil;
+            self.addImage1.image = [UIImage imageNamed:@"bfa_plus-square_simple-green_128x128.png"];
+            break;
+        case 2:
+            self.addImage2.file = nil;
+            self.addImage2.image = [UIImage imageNamed:@"bfa_plus-square_simple-green_128x128.png"];
+            break;
+        case 3:
+            self.addImage3.file = nil;
+            self.addImage3.image = [UIImage imageNamed:@"bfa_plus-square_simple-green_128x128.png"];
+            break;
+        case 4:
+            self.addImage4.file = nil;
+            self.addImage4.image = [UIImage imageNamed:@"bfa_plus-square_simple-green_128x128.png"];
+            break;
+        case 5:
+            self.addImage5.file = nil;
+            self.addImage5.image = [UIImage imageNamed:@"bfa_plus-square_simple-green_128x128.png"];
+            break;
+        default:
+            break;
     }
+    
+    for (int x = 0; x < 6; x++) {
+        switch (x) {
+            case 0:{
+                PFFile* imageFile = self.addImage0.file;
+                    //    [imageFile saveInBackground];
+                [imageFile saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+                    if (succeeded) {
+                        NSLog(@"good");
+                    }
+                }];
+                break;
+            }
+            case 1:{
+                PFFile* imageFile = self.addImage1.file;
+                //    [imageFile saveInBackground];
+                [imageFile saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+                    if (succeeded) {
+                        NSLog(@"good");
+                    }
+                }];
+                break;
+                    }
+                case 2:{
+                        PFFile* imageFile = self.addImage2.file;
+                        //    [imageFile saveInBackground];
+                    [imageFile saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+                        if (succeeded) {
+                            NSLog(@"good");
+                        }
+                    }];
+                    break;
+                            }
+                        case 3:{
+                                PFFile* imageFile = self.addImage3.file;
+                                //    [imageFile saveInBackground];
+                            [imageFile saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+                                if (succeeded) {
+                                    NSLog(@"good");
+                                }
+                            }];
+                            break;
+                                    }
+                                case 4:{
+                                        PFFile* imageFile = self.addImage4.file;
+                                        //    [imageFile saveInBackground];
+                                    [imageFile saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+                                        if (succeeded) {
+                                            NSLog(@"good");
+                                        }
+                                    }];
+                                    break;
+                                            }
+                                        case 5:{
+                                                PFFile* imageFile = self.addImage5.file;
+                                                //    [imageFile saveInBackground];
+                                            [imageFile saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+                                                if (succeeded) {
+                                                    NSLog(@"good");
+                                                }
+                                            }];
+                                            break;
+                                                    }
+            default:
+                break;
+    }
+    }
+    
+        //((PFImageView*)[self.photoCellContentView viewWithTag:(i + 111)]).file = nil;
+        //now we want to left shift all of the images (if there are any after the one we jsut removed) by 1
+        
+//        NSArray *photosArray = [[NSArray alloc]initWithObjects:self.addImage0, self.addImage1, self.addImage2, self.addImage3, self.addImage4, self.addImage5, nil];
+//        PFFile *img;
+//        NSMutableArray *newArray = [[NSMutableArray alloc]initWithObjects:img, img, img, img, img, img, nil];
+//        
+//        //int place = 0;
+//        //for (PFImageView* imageView in photosArray) {
+//            for (int z = 0; z < photosArray.count; z++) {
+//                if (((PFImageView*)photosArray[z]).file != nil) {
+//                    [newArray replaceObjectAtIndex:z withObject:((PFImageView*)photosArray[z]).file];
+//                }
+//            }
+//        //    place++;
+//        //}
+//        
+//        for (int x = 0; x < 6; x++) {
+//            switch (x) {
+//                case 0:
+//                    if (newArray[x] != nil) {
+//                        self.addImage0.file = newArray[x];
+//                    }
+//                    else{
+//                        self.addImage0.file = nil;
+//                    }
+//                    break;
+//                case 1:
+//                    if (newArray[x] != nil) {
+//                        self.addImage1.file = newArray[x];
+//                    }
+//                    else{
+//                        self.addImage1.file = nil;
+//                    }
+//                    break;
+//                case 2:
+//                    if (newArray[x] != nil) {
+//                        self.addImage2.file = newArray[x];
+//                    }
+//                    else{
+//                        self.addImage2.file = nil;
+//                    }
+//                    break;
+//                case 3:
+//                    if (newArray[x] != nil) {
+//                        self.addImage3.file = newArray[x];
+//                    }
+//                    else{
+//                        self.addImage3.file = nil;
+//                    }
+//                    break;
+//                case 4:
+//                    if (newArray[x] != nil) {
+//                        self.addImage4.file = newArray[x];
+//                    }
+//                    else{
+//                        self.addImage4.file = nil;
+//                    }
+//                    break;
+//                case 5:
+//                    if (newArray[x] != nil) {
+//                        self.addImage5.file = newArray[x];
+//                    }
+//                    else{
+//                        self.addImage5.file = nil;
+//                    }
+//                    break;
+//                default:
+//                    break;
+//            }
+//        }
+        
+//        for(int j = (int)i + 111 ; j < 117; j++){
+//            if(((PFImageView*)[self.photoCellContentView viewWithTag:(j)]).file != nil){
+//                
+//                ((PFImageView*)[self.photoCellContentView viewWithTag:(j)]).file = ((PFImageView*)[self.photoCellContentView viewWithTag:(j+1)]).file;
+//                [((PFImageView*)[self.photoCellContentView viewWithTag:(j)]) loadInBackground];
+//                ((PFImageView*)[self.photoCellContentView viewWithTag:(j+1)]).file = nil;
+//                ((PFImageView*)[self.photoCellContentView viewWithTag:(j+1)]).image = [UIImage imageNamed:@"bfa_plus-square_simple-green_128x128.png"];
+//                [self.photoCellContentView viewWithTag:(j - 111 + 1000)].hidden = NO;
+//                
+//            }
+//            else{
+//                ((PFImageView*)[self.photoCellContentView viewWithTag:(i + 111)]).image = [UIImage imageNamed:@"bfa_plus-square_simple-green_128x128.png"];
+//                sender.hidden = YES;
+//            }
+//        }
+
+    //}
 }
 
 -(IBAction)addImagePressed:(UIButton*)sender{
@@ -357,21 +554,100 @@
         if (editedImage) {
             imageToSave = editedImage;
             PFFile* imageFile = [PFFile fileWithName:@"profilePic" data:UIImagePNGRepresentation(imageToSave)];
-            [imageFile saveInBackground];
-            
-            //now cycle through all of your image tags and save the image to the first open tag
-            for(int i = 111; i < 117; i++){
-                
-                //this should set the photo
-                if(((PFImageView*)[self.photoCellContentView viewWithTag:i]).file == nil){
-                    ((PFImageView*)[self.photoCellContentView viewWithTag:i]).file = imageFile;
-                    [((PFImageView*)[self.photoCellContentView viewWithTag:i]) loadInBackground];
-                    [ProgressHUD showSuccess:@"Saved."];
-                    [self.imagePick popToRootViewControllerAnimated:NO];
-                    [self.imagePick dismissViewControllerAnimated:NO completion:nil];
-                    break;
+            //    [imageFile saveInBackground];
+            [imageFile saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+                if (succeeded) {
+                    
+                BOOL breakOut = NO;
+                for (int i = 0; i < 6; i++) {
+                    switch (i) {
+                        case 0:
+                            if(self.addImage0.file == nil && breakOut == NO){
+                                self.addImage0.file = imageFile;
+                                [self.addImage0 loadInBackground];
+                                [ProgressHUD showSuccess:@"Saved."];
+                                [self.imagePick popToRootViewControllerAnimated:NO];
+                                [self.imagePick dismissViewControllerAnimated:NO completion:nil];
+                                breakOut = YES;
+                            }
+                            break;
+                        case 1:
+                            if(self.addImage1.file == nil && breakOut == NO){
+                                self.addImage1.file = imageFile;
+                                [self.addImage1 loadInBackground];
+                                [ProgressHUD showSuccess:@"Saved."];
+                                [self.imagePick popToRootViewControllerAnimated:NO];
+                                [self.imagePick dismissViewControllerAnimated:NO completion:nil];
+                                breakOut = YES;
+                            }
+                            break;
+                        case 2:
+                            if(self.addImage2.file == nil && breakOut == NO){
+                                self.addImage2.file = imageFile;
+                                [self.addImage2 loadInBackground];
+                                [ProgressHUD showSuccess:@"Saved."];
+                                [self.imagePick popToRootViewControllerAnimated:NO];
+                                [self.imagePick dismissViewControllerAnimated:NO completion:nil];
+                                breakOut = YES;
+                            }
+                            break;
+                        case 3:
+                            if(self.addImage3.file == nil && breakOut == NO){
+                                self.addImage3.file = imageFile;
+                                [self.addImage3 loadInBackground];
+                                [ProgressHUD showSuccess:@"Saved."];
+                                [self.imagePick popToRootViewControllerAnimated:NO];
+                                [self.imagePick dismissViewControllerAnimated:NO completion:nil];
+                                breakOut = YES;
+                            }
+                            break;
+                        case 4:
+                            if(self.addImage4.file == nil && breakOut == NO){
+                                self.addImage4.file = imageFile;
+                                [self.addImage4 loadInBackground];
+                                [ProgressHUD showSuccess:@"Saved."];
+                                [self.imagePick popToRootViewControllerAnimated:NO];
+                                [self.imagePick dismissViewControllerAnimated:NO completion:nil];
+                                breakOut = YES;
+                            }
+                            break;
+                        case 5:
+                            if(self.addImage5.file == nil && breakOut == NO){
+                                self.addImage5.file = imageFile;
+                                [self.addImage5 loadInBackground];
+                                [ProgressHUD showSuccess:@"Saved."];
+                                [self.imagePick popToRootViewControllerAnimated:NO];
+                                [self.imagePick dismissViewControllerAnimated:NO completion:nil];
+                                breakOut = YES;
+                                break;
+                            }
+                        default:
+                            break;
+                    }
                 }
-            }
+             
+                }
+                else{
+                    [ProgressHUD showError:@"Could not save"];
+                }
+            }];
+             //progressBlock:<#^(int percentDone)progressBlock#>
+            
+            
+//            NSArray *photosArray = [[NSArray alloc]initWithObjects:self.addImage0, self.addImage1, self.addImage2, self.addImage3, self.addImage4, self.addImage5, nil];
+//            for (PFImageView* imageView in photosArray) {
+//                if (imageView.file == nil) {
+//                    imageView.image = nil;
+//                    imageView.file = imageFile;
+//                    [imageView loadInBackground];
+//                    [ProgressHUD showSuccess:@"Saved."];
+//                    [self.imagePick popToRootViewControllerAnimated:NO];
+//                    [self.imagePick dismissViewControllerAnimated:NO completion:nil];
+//                    break;
+//                }
+//            }
+            
+            
         }
         else{
             [ProgressHUD showError:@"Could not save"];
@@ -420,80 +696,80 @@
     }
 }
 
-- (IBAction)favoriteWaysToMedicateButtonToggled:(UIButton*)sender {
-    isPageEdited = YES;
-
-    if(sender.alpha == .5){
-        sender.alpha = 1;
-        for (int i = 1; i < 9; i++) {
-            if(sender.tag == i){
-                [self.toolsContentView viewWithTag:(i*11)].alpha = 1;
-                [favoriteTools replaceObjectAtIndex:i withObject:@YES];
-            }
-        }
-    }
-    else{
-        sender.alpha = .5;
-        for (int i = 1; i < 9; i++) {
-            if(sender.tag == i){
-                [self.toolsContentView viewWithTag:(i*11)].alpha = .5;
-                [favoriteTools replaceObjectAtIndex:i withObject:@NO];
-            }
-        }
-    }
-}
-
--(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-    if(indexPath.section == 2){
-        NSLog(@"cell selected");
-        
-        DoActionSheet *vActionSheet = [[DoActionSheet alloc] init];
-        vActionSheet.nAnimationType = 2;
-        vActionSheet.dButtonRound = 0;
-        vActionSheet.nContentMode = 2;
-        vActionSheet.doBackColor = [UIColor clearColor];
-        vActionSheet.doButtonColor = [UIColor colorWithRed:0.086 green:0.627 blue:0.522 alpha:1];
-        
-        [vActionSheet showC:nil//@"Select your favorite strain of weed"
-                     cancel:@"Cancel"
-                    buttons:@[@"Indica", @"Sativa", @"Hybrid", @"Don't Care"]
-                     result:^(int nResult) {
-                         
-                         NSLog(@"---------------> result : %d", nResult);
-                         
-                         switch (nResult) {
-                                 //save a number when done to the db (0 -> 3, indicating your choice)
-                             case 0:
-                                 self.favoriteStrainImage.image = [UIImage imageNamed:@"indica_burned.png"];
-                                 self.favoriteTypeLabel.text = @"Indica";
-                                 self.favoriteTypeLabel.text = @"Indica: You're someone who likes to chill. The full body effects of the indica are relaxing for you after a full day's worth of work.";
-                                 [self saveFavoriteStrain:0];
-                                 break;
-                             case 1:
-                                 self.favoriteStrainImage.image = [UIImage imageNamed:@"rsz_1rsz_1sativa.png"];
-                                 self.favoriteTypeLabel.text = @"Sativa: You're someone who likes to be active and in the moment. You embrace the uplifing elements of the strain and you like to feel the creative juices flow.";
-                                 [self saveFavoriteStrain:1];
-                                 break;
-                             case 2:
-                                 self.favoriteStrainImage.image = [UIImage imageNamed:@"hybrid_burned.png"];
-                                 self.favoriteTypeLabel.text = @"Hybrid";
-                                 self.favoriteTypeLabel.text = @"Hybrid: You're a bit of a scientist. You experiement with different strains until you're satisfied with a perfect balance of indica and sativa.";
-                                 [self saveFavoriteStrain:2];
-                                 break;
-                             case 3:
-                                 self.favoriteTypeLabel.text = @"Whatever my friends have: You'll fill your bowl with anything you can find. Any weed is good weed for you";
-                                 [self saveFavoriteStrain:3];
-                                 break;
-                             case 4:
-                                 
-                             default:
-                                 break;
-                         }
-                         [self.tableView deselectRowAtIndexPath:indexPath animated:YES];
-                     }];
-    }
-    
-}
+//- (IBAction)favoriteWaysToMedicateButtonToggled:(UIButton*)sender {
+//    isPageEdited = YES;
+//
+//    if(sender.alpha == .5){
+//        sender.alpha = 1;
+//        for (int i = 1; i < 9; i++) {
+//            if(sender.tag == i){
+//                [self.toolsContentView viewWithTag:(i*11)].alpha = 1;
+//                [favoriteTools replaceObjectAtIndex:i withObject:@YES];
+//            }
+//        }
+//    }
+//    else{
+//        sender.alpha = .5;
+//        for (int i = 1; i < 9; i++) {
+//            if(sender.tag == i){
+//                [self.toolsContentView viewWithTag:(i*11)].alpha = .5;
+//                [favoriteTools replaceObjectAtIndex:i withObject:@NO];
+//            }
+//        }
+//    }
+//}
+//
+//-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+//    if(indexPath.section == 2){
+//        NSLog(@"cell selected");
+//        
+//        DoActionSheet *vActionSheet = [[DoActionSheet alloc] init];
+//        vActionSheet.nAnimationType = 2;
+//        vActionSheet.dButtonRound = 0;
+//        vActionSheet.nContentMode = 2;
+//        vActionSheet.doBackColor = [UIColor clearColor];
+//        vActionSheet.doButtonColor = [UIColor colorWithRed:0.086 green:0.627 blue:0.522 alpha:1];
+//        
+//        [vActionSheet showC:nil//@"Select your favorite strain of weed"
+//                     cancel:@"Cancel"
+//                    buttons:@[@"Indica", @"Sativa", @"Hybrid", @"Don't Care"]
+//                     result:^(int nResult) {
+//                         
+//                         NSLog(@"---------------> result : %d", nResult);
+//                         
+//                         switch (nResult) {
+//                                 //save a number when done to the db (0 -> 3, indicating your choice)
+//                             case 0:
+//                                 self.favoriteStrainImage.image = [UIImage imageNamed:@"indica_burned.png"];
+//                                 self.favoriteTypeLabel.text = @"Indica";
+//                                 self.favoriteTypeLabel.text = @"Indica: You're someone who likes to chill. The full body effects of the indica are relaxing for you after a full day's worth of work.";
+//                                 [self saveFavoriteStrain:0];
+//                                 break;
+//                             case 1:
+//                                 self.favoriteStrainImage.image = [UIImage imageNamed:@"rsz_1rsz_1sativa.png"];
+//                                 self.favoriteTypeLabel.text = @"Sativa: You're someone who likes to be active and in the moment. You embrace the uplifing elements of the strain and you like to feel the creative juices flow.";
+//                                 [self saveFavoriteStrain:1];
+//                                 break;
+//                             case 2:
+//                                 self.favoriteStrainImage.image = [UIImage imageNamed:@"hybrid_burned.png"];
+//                                 self.favoriteTypeLabel.text = @"Hybrid";
+//                                 self.favoriteTypeLabel.text = @"Hybrid: You're a bit of a scientist. You experiement with different strains until you're satisfied with a perfect balance of indica and sativa.";
+//                                 [self saveFavoriteStrain:2];
+//                                 break;
+//                             case 3:
+//                                 self.favoriteTypeLabel.text = @"Whatever my friends have: You'll fill your bowl with anything you can find. Any weed is good weed for you";
+//                                 [self saveFavoriteStrain:3];
+//                                 break;
+//                             case 4:
+//                                 
+//                             default:
+//                                 break;
+//                         }
+//                         [self.tableView deselectRowAtIndexPath:indexPath animated:YES];
+//                     }];
+//    }
+//    
+//}
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue
                  sender:(id)sender {
@@ -532,7 +808,6 @@
                 }];
             }
         }];
-
 }
 
 -(void)saveFavoriteStrain:(int)strainOfChoice{
@@ -549,12 +824,10 @@
         if(objects.count != 0){
             for (int i = 0; i < objects.count; i++) {
                 if(((PFImageView*)[self.photoCellContentView viewWithTag:(i+111)]).file != nil){
-                    //save image file to parse with the rank
                     PFFile *imageFile = ((PFImageView*)[self.photoCellContentView viewWithTag:(i+111)]).file;
-                    // Save PFFile
                     [imageFile saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
                         if (!error) {
-                            // Create a PFObject around a PFFile and associate it with the current user
+
                             PFObject *userPhoto = [PFObject objectWithClassName:@"Photo"];
                             [userPhoto setObject:imageFile forKey:@"photo"];
                             PFUser *user = [PFUser currentUser];
@@ -580,10 +853,6 @@
                         // Update your progress spinner here. percentDone will be between 0 and 100.
                         HUD.progress = (float)percentDone/100;
                     }];
-                
-                
-                
-                
                 }
                 else{
                     //delete the object from parse
@@ -601,18 +870,18 @@
 //done button pressed
 - (IBAction)saveEverything:(id)sender {
     
-    if(isPageEdited){
-        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"You have some unsaved changed"
-                                                            message:@"Do you want to save them?"
-                                                           delegate:self
-                                                  cancelButtonTitle:@"No"
-                                                  otherButtonTitles:@"Yes", nil];
-        [alertView show];
-    }
-    else{
-        //if page isnt edited, just pop
+//    if(isPageEdited){
+//        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"You have some unsaved changed"
+//                                                            message:@"Do you want to save them?"
+//                                                           delegate:self
+//                                                  cancelButtonTitle:@"No"
+//                                                  otherButtonTitles:@"Yes", nil];
+//        [alertView show];
+//    }
+//    else{
+//        //if page isnt edited, just pop
         [self.navigationController popViewControllerAnimated:YES];
-    }
+//    }
 }
                                   
 -(void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex{

@@ -207,20 +207,6 @@
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
-                            <tableViewSection id="AM0-w3-XMe">
-                                <cells>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="favoriteTools" rowHeight="80" id="5S7-PJ-CZW">
-                                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="5S7-PJ-CZW" id="9RJ-pC-QDo">
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <color key="backgroundColor" red="0.69803921570000005" green="0.84705882349999995" blue="0.69803921570000005" alpha="1" colorSpace="calibratedRGB"/>
-                                        </tableViewCellContentView>
-                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                        <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
-                                    </tableViewCell>
-                                </cells>
-                            </tableViewSection>
                             <tableViewSection id="Adm-yV-EPq" userLabel="More pics">
                                 <cells>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="0.0" rowHeight="27" id="mZO-iA-Ycr">
@@ -290,24 +276,227 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <sections>
                             <tableViewSection id="xbX-O0-W1L">
+                                <cells/>
+                            </tableViewSection>
+                            <tableViewSection id="AM0-w3-XMe">
                                 <cells>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="TlJ-uT-lB0">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="favoriteTools" rowHeight="80" id="5S7-PJ-CZW">
+                                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="TlJ-uT-lB0" id="SVf-wO-T76">
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="5S7-PJ-CZW" id="9RJ-pC-QDo">
                                             <autoresizingMask key="autoresizingMask"/>
+                                            <color key="backgroundColor" red="0.69803921570000005" green="0.84705882349999995" blue="0.69803921570000005" alpha="1" colorSpace="calibratedRGB"/>
                                         </tableViewCellContentView>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                     </tableViewCell>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="o0N-En-G5O">
+                                </cells>
+                            </tableViewSection>
+                            <tableViewSection headerTitle="Preferred Ways to Medicate" id="EaC-Vo-sqF">
+                                <cells>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="favoriteTools" rowHeight="260" id="gGh-Vy-RXQ">
+                                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="o0N-En-G5O" id="7XC-aF-Qiq">
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="gGh-Vy-RXQ" id="BQN-nS-OJU">
                                             <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="test_tube-48.png" translatesAutoresizingMaskIntoConstraints="NO" id="Dsb-qz-0ec">
+                                                    <rect key="frame" x="8" y="12" width="35" height="35"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="35" id="WVO-DU-e0M"/>
+                                                        <constraint firstAttribute="width" constant="35" id="XG5-H3-I04"/>
+                                                    </constraints>
+                                                </imageView>
+                                                <button opaque="NO" alpha="0.5" tag="3" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vSJ-GU-Lvf" userLabel="Joints">
+                                                    <rect key="frame" x="259" y="7" width="45" height="45"/>
+                                                    <color key="backgroundColor" red="0.086274509799999996" green="0.62745098040000002" blue="0.52156862749999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <state key="normal">
+                                                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                                    </state>
+                                                    <connections>
+                                                        <action selector="favoriteWaysToMedicateButtonToggled:" destination="x8h-ed-W9R" eventType="touchUpInside" id="fOF-Dy-4gq"/>
+                                                    </connections>
+                                                </button>
+                                                <button opaque="NO" alpha="0.5" tag="2" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JZH-wa-8Dy" userLabel="Bongs">
+                                                    <rect key="frame" x="172" y="7" width="45" height="45"/>
+                                                    <color key="backgroundColor" red="0.086274509799999996" green="0.62745098040000002" blue="0.52156862749999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <state key="normal">
+                                                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                                    </state>
+                                                    <connections>
+                                                        <action selector="favoriteWaysToMedicateButtonToggled:" destination="x8h-ed-W9R" eventType="touchUpInside" id="zsy-qt-gVj"/>
+                                                    </connections>
+                                                </button>
+                                                <button opaque="NO" alpha="0.49999999999999961" tag="1" contentMode="scaleToFill" fixedFrame="YES" highlighted="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3OG-8Y-vPH" userLabel="Blunts">
+                                                    <rect key="frame" x="83" y="7" width="45" height="45"/>
+                                                    <color key="backgroundColor" red="0.086274509799999996" green="0.62745098040000002" blue="0.52156862749999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <state key="normal">
+                                                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                                    </state>
+                                                    <connections>
+                                                        <action selector="favoriteWaysToMedicateButtonToggled:" destination="x8h-ed-W9R" eventType="touchUpInside" id="uMH-4A-TZR"/>
+                                                    </connections>
+                                                </button>
+                                                <button opaque="NO" alpha="0.5" tag="4" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DdY-0q-Wc2" userLabel="Vaporizers">
+                                                    <rect key="frame" x="83" y="96" width="45" height="45"/>
+                                                    <color key="backgroundColor" red="0.086274509799999996" green="0.62745098040000002" blue="0.52156862749999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <state key="normal">
+                                                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                                    </state>
+                                                    <connections>
+                                                        <action selector="favoriteWaysToMedicateButtonToggled:" destination="x8h-ed-W9R" eventType="touchUpInside" id="2Er-PA-QyE"/>
+                                                    </connections>
+                                                </button>
+                                                <button opaque="NO" alpha="0.5" tag="7" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wRx-hN-gt6" userLabel="Edibles">
+                                                    <rect key="frame" x="83" y="180" width="45" height="45"/>
+                                                    <color key="backgroundColor" red="0.086274509799999996" green="0.62745098040000002" blue="0.52156862749999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <state key="normal">
+                                                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                                    </state>
+                                                    <connections>
+                                                        <action selector="favoriteWaysToMedicateButtonToggled:" destination="x8h-ed-W9R" eventType="touchUpInside" id="9GS-dR-Agr"/>
+                                                    </connections>
+                                                </button>
+                                                <button opaque="NO" alpha="0.5" tag="8" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Aay-I6-gJb" userLabel="Wax">
+                                                    <rect key="frame" x="172" y="180" width="45" height="45"/>
+                                                    <color key="backgroundColor" red="0.086274509799999996" green="0.62745098040000002" blue="0.52156862749999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <state key="normal">
+                                                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                                    </state>
+                                                    <connections>
+                                                        <action selector="favoriteWaysToMedicateButtonToggled:" destination="x8h-ed-W9R" eventType="touchUpInside" id="A3a-2h-fXK"/>
+                                                    </connections>
+                                                </button>
+                                                <button opaque="NO" alpha="0.49999999999999961" tag="5" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="99T-Yi-jnh" userLabel="Shatter">
+                                                    <rect key="frame" x="172" y="96" width="45" height="45"/>
+                                                    <color key="backgroundColor" red="0.086274509799999996" green="0.62745098040000002" blue="0.52156862749999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <state key="normal">
+                                                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                                    </state>
+                                                    <connections>
+                                                        <action selector="favoriteWaysToMedicateButtonToggled:" destination="x8h-ed-W9R" eventType="touchUpInside" id="IgE-Cc-RsL"/>
+                                                    </connections>
+                                                </button>
+                                                <button opaque="NO" alpha="0.5" tag="9" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oWS-hq-prh" userLabel="Hash Oil">
+                                                    <rect key="frame" x="259" y="180" width="45" height="45"/>
+                                                    <color key="backgroundColor" red="0.086274509799999996" green="0.62745098040000002" blue="0.52156862749999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <state key="normal">
+                                                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                                    </state>
+                                                    <connections>
+                                                        <action selector="favoriteWaysToMedicateButtonToggled:" destination="x8h-ed-W9R" eventType="touchUpInside" id="MhJ-At-MKO"/>
+                                                    </connections>
+                                                </button>
+                                                <button opaque="NO" alpha="0.5" tag="6" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ouy-ZH-EkF" userLabel="Topical">
+                                                    <rect key="frame" x="259" y="96" width="45" height="45"/>
+                                                    <color key="backgroundColor" red="0.086274509799999996" green="0.62745098040000002" blue="0.52156862749999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <state key="normal">
+                                                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                                    </state>
+                                                    <connections>
+                                                        <action selector="favoriteWaysToMedicateButtonToggled:" destination="x8h-ed-W9R" eventType="touchUpInside" id="BHG-J3-twY"/>
+                                                    </connections>
+                                                </button>
+                                                <label opaque="NO" userInteractionEnabled="NO" alpha="0.49999999999999961" tag="22" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Bongs" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fc4-eW-B51">
+                                                    <rect key="frame" x="169" y="55" width="50" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" alpha="0.49999999999999961" tag="33" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Blunts" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CQt-7R-ltg">
+                                                    <rect key="frame" x="258" y="55" width="49" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" alpha="0.49999999999999961" tag="66" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Wax" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VAH-RY-Eyj">
+                                                    <rect key="frame" x="265" y="143" width="34" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" alpha="0.49999999999999961" tag="99" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Topical" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Jws-Ks-NCV">
+                                                    <rect key="frame" x="255" y="230" width="54" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" alpha="0.49999999999999961" tag="88" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Hash Oil" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4kT-SL-pj2">
+                                                    <rect key="frame" x="161" y="230" width="66" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" alpha="0.49999999999999961" tag="77" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Bowls" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="72M-7A-tnQ">
+                                                    <rect key="frame" x="79" y="230" width="56" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" alpha="0.49999999999999961" tag="44" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Vaporizers" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bHt-LD-J9E">
+                                                    <rect key="frame" x="67" y="143" width="80" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" alpha="0.49999999999999961" tag="11" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Joints" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oLA-YL-bUT">
+                                                    <rect key="frame" x="83" y="55" width="47" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" alpha="0.49999999999999961" tag="55" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Edibles" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Owo-FZ-o4J">
+                                                    <rect key="frame" x="166" y="143" width="57" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            <constraints>
+                                                <constraint firstItem="Dsb-qz-0ec" firstAttribute="leading" secondItem="BQN-nS-OJU" secondAttribute="leadingMargin" id="IYw-Dx-caJ"/>
+                                                <constraint firstItem="Dsb-qz-0ec" firstAttribute="top" secondItem="BQN-nS-OJU" secondAttribute="topMargin" constant="5" id="U5y-FV-nzl"/>
+                                            </constraints>
                                         </tableViewCellContentView>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                     </tableViewCell>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="dHR-NU-6kY">
+                                </cells>
+                            </tableViewSection>
+                            <tableViewSection headerTitle="Favorite Strain" id="oyB-Fz-YT9">
+                                <cells>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="gray" indentationWidth="10" reuseIdentifier="favoriteType" rowHeight="80" id="VKL-Ag-Gj3" customClass="FavStrainCell">
+                                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="dHR-NU-6kY" id="spq-0C-yrn">
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="VKL-Ag-Gj3" id="PM9-0w-OYf">
                                             <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="like-48.png" translatesAutoresizingMaskIntoConstraints="NO" id="Ph0-tn-fLm">
+                                                    <rect key="frame" x="8" y="13" width="35" height="35"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="35" id="0Rr-Jp-U8w"/>
+                                                        <constraint firstAttribute="width" constant="35" id="vhA-Tb-Fgw"/>
+                                                    </constraints>
+                                                </imageView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2Qa-lZ-oVc">
+                                                    <rect key="frame" x="57" y="13" width="250" height="59"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            <constraints>
+                                                <constraint firstItem="2Qa-lZ-oVc" firstAttribute="leading" secondItem="PM9-0w-OYf" secondAttribute="leadingMargin" constant="49" id="0H9-BO-C8P"/>
+                                                <constraint firstItem="2Qa-lZ-oVc" firstAttribute="bottom" secondItem="PM9-0w-OYf" secondAttribute="bottomMargin" id="1YP-0L-y6Y"/>
+                                                <constraint firstItem="2Qa-lZ-oVc" firstAttribute="top" secondItem="PM9-0w-OYf" secondAttribute="topMargin" constant="5" id="9Iq-0s-6RH"/>
+                                                <constraint firstItem="Ph0-tn-fLm" firstAttribute="top" secondItem="PM9-0w-OYf" secondAttribute="topMargin" constant="5" id="Cv5-QE-RXU"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="2Qa-lZ-oVc" secondAttribute="trailing" constant="5" id="IIn-iR-Cgw"/>
+                                                <constraint firstItem="Ph0-tn-fLm" firstAttribute="leading" secondItem="PM9-0w-OYf" secondAttribute="leadingMargin" id="iQX-4q-1jI"/>
+                                            </constraints>
                                         </tableViewCellContentView>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
@@ -344,9 +533,6 @@
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
-                                        <connections>
-                                            <segue destination="pF5-T5-8o5" kind="push" identifier="location" id="hSi-Kr-t07"/>
-                                        </connections>
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
@@ -431,7 +617,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mfL-Ar-SxF" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1471" y="862"/>
+            <point key="canvasLocation" x="682" y="802"/>
         </scene>
         <!--Six Stoners You Meet In Heaven-->
         <scene sceneID="lmb-uX-f5k">
@@ -894,43 +1080,6 @@
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
-                            <tableViewSection headerTitle="Favorite Strain" id="oyB-Fz-YT9">
-                                <cells>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="gray" indentationWidth="10" reuseIdentifier="favoriteType" rowHeight="80" id="VKL-Ag-Gj3" customClass="FavStrainCell">
-                                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="VKL-Ag-Gj3" id="PM9-0w-OYf">
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="like-48.png" translatesAutoresizingMaskIntoConstraints="NO" id="Ph0-tn-fLm">
-                                                    <rect key="frame" x="8" y="13" width="35" height="35"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="height" constant="35" id="0Rr-Jp-U8w"/>
-                                                        <constraint firstAttribute="width" constant="35" id="vhA-Tb-Fgw"/>
-                                                    </constraints>
-                                                </imageView>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2Qa-lZ-oVc">
-                                                    <rect key="frame" x="57" y="13" width="250" height="59"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                            </subviews>
-                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                            <constraints>
-                                                <constraint firstItem="2Qa-lZ-oVc" firstAttribute="leading" secondItem="PM9-0w-OYf" secondAttribute="leadingMargin" constant="49" id="0H9-BO-C8P"/>
-                                                <constraint firstItem="2Qa-lZ-oVc" firstAttribute="bottom" secondItem="PM9-0w-OYf" secondAttribute="bottomMargin" id="1YP-0L-y6Y"/>
-                                                <constraint firstItem="2Qa-lZ-oVc" firstAttribute="top" secondItem="PM9-0w-OYf" secondAttribute="topMargin" constant="5" id="9Iq-0s-6RH"/>
-                                                <constraint firstItem="Ph0-tn-fLm" firstAttribute="top" secondItem="PM9-0w-OYf" secondAttribute="topMargin" constant="5" id="Cv5-QE-RXU"/>
-                                                <constraint firstAttribute="trailingMargin" secondItem="2Qa-lZ-oVc" secondAttribute="trailing" constant="5" id="IIn-iR-Cgw"/>
-                                                <constraint firstItem="Ph0-tn-fLm" firstAttribute="leading" secondItem="PM9-0w-OYf" secondAttribute="leadingMargin" id="iQX-4q-1jI"/>
-                                            </constraints>
-                                        </tableViewCellContentView>
-                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                        <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
-                                    </tableViewCell>
-                                </cells>
-                            </tableViewSection>
                             <tableViewSection headerTitle="Education and Passion" id="1LH-MD-Eeh">
                                 <cells>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="0.0" reuseIdentifier="Cell" rowHeight="60" id="jRK-yT-Pqp">
@@ -1004,177 +1153,6 @@
                                         <connections>
                                             <segue destination="6gA-2t-FSe" kind="push" id="DMg-A2-bld"/>
                                         </connections>
-                                    </tableViewCell>
-                                </cells>
-                            </tableViewSection>
-                            <tableViewSection headerTitle="Preferred Ways to Medicate" id="EaC-Vo-sqF">
-                                <cells>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="favoriteTools" rowHeight="260" id="gGh-Vy-RXQ">
-                                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="gGh-Vy-RXQ" id="BQN-nS-OJU">
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="test_tube-48.png" translatesAutoresizingMaskIntoConstraints="NO" id="Dsb-qz-0ec">
-                                                    <rect key="frame" x="8" y="12" width="35" height="35"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="height" constant="35" id="WVO-DU-e0M"/>
-                                                        <constraint firstAttribute="width" constant="35" id="XG5-H3-I04"/>
-                                                    </constraints>
-                                                </imageView>
-                                                <button opaque="NO" alpha="0.5" tag="3" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vSJ-GU-Lvf" userLabel="Joints">
-                                                    <rect key="frame" x="259" y="7" width="45" height="45"/>
-                                                    <color key="backgroundColor" red="0.086274509799999996" green="0.62745098040000002" blue="0.52156862749999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                    <state key="normal">
-                                                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                                    </state>
-                                                    <connections>
-                                                        <action selector="favoriteWaysToMedicateButtonToggled:" destination="x8h-ed-W9R" eventType="touchUpInside" id="fOF-Dy-4gq"/>
-                                                    </connections>
-                                                </button>
-                                                <button opaque="NO" alpha="0.5" tag="2" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JZH-wa-8Dy" userLabel="Bongs">
-                                                    <rect key="frame" x="172" y="7" width="45" height="45"/>
-                                                    <color key="backgroundColor" red="0.086274509799999996" green="0.62745098040000002" blue="0.52156862749999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                    <state key="normal">
-                                                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                                    </state>
-                                                    <connections>
-                                                        <action selector="favoriteWaysToMedicateButtonToggled:" destination="x8h-ed-W9R" eventType="touchUpInside" id="zsy-qt-gVj"/>
-                                                    </connections>
-                                                </button>
-                                                <button opaque="NO" alpha="0.49999999999999961" tag="1" contentMode="scaleToFill" fixedFrame="YES" highlighted="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3OG-8Y-vPH" userLabel="Blunts">
-                                                    <rect key="frame" x="83" y="7" width="45" height="45"/>
-                                                    <color key="backgroundColor" red="0.086274509799999996" green="0.62745098040000002" blue="0.52156862749999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                    <state key="normal">
-                                                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                                    </state>
-                                                    <connections>
-                                                        <action selector="favoriteWaysToMedicateButtonToggled:" destination="x8h-ed-W9R" eventType="touchUpInside" id="uMH-4A-TZR"/>
-                                                    </connections>
-                                                </button>
-                                                <button opaque="NO" alpha="0.5" tag="4" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DdY-0q-Wc2" userLabel="Vaporizers">
-                                                    <rect key="frame" x="83" y="96" width="45" height="45"/>
-                                                    <color key="backgroundColor" red="0.086274509799999996" green="0.62745098040000002" blue="0.52156862749999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                    <state key="normal">
-                                                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                                    </state>
-                                                    <connections>
-                                                        <action selector="favoriteWaysToMedicateButtonToggled:" destination="x8h-ed-W9R" eventType="touchUpInside" id="2Er-PA-QyE"/>
-                                                    </connections>
-                                                </button>
-                                                <button opaque="NO" alpha="0.5" tag="7" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wRx-hN-gt6" userLabel="Edibles">
-                                                    <rect key="frame" x="83" y="180" width="45" height="45"/>
-                                                    <color key="backgroundColor" red="0.086274509799999996" green="0.62745098040000002" blue="0.52156862749999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                    <state key="normal">
-                                                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                                    </state>
-                                                    <connections>
-                                                        <action selector="favoriteWaysToMedicateButtonToggled:" destination="x8h-ed-W9R" eventType="touchUpInside" id="9GS-dR-Agr"/>
-                                                    </connections>
-                                                </button>
-                                                <button opaque="NO" alpha="0.5" tag="8" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Aay-I6-gJb" userLabel="Wax">
-                                                    <rect key="frame" x="172" y="180" width="45" height="45"/>
-                                                    <color key="backgroundColor" red="0.086274509799999996" green="0.62745098040000002" blue="0.52156862749999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                    <state key="normal">
-                                                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                                    </state>
-                                                    <connections>
-                                                        <action selector="favoriteWaysToMedicateButtonToggled:" destination="x8h-ed-W9R" eventType="touchUpInside" id="A3a-2h-fXK"/>
-                                                    </connections>
-                                                </button>
-                                                <button opaque="NO" alpha="0.49999999999999961" tag="5" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="99T-Yi-jnh" userLabel="Shatter">
-                                                    <rect key="frame" x="172" y="96" width="45" height="45"/>
-                                                    <color key="backgroundColor" red="0.086274509799999996" green="0.62745098040000002" blue="0.52156862749999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                    <state key="normal">
-                                                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                                    </state>
-                                                    <connections>
-                                                        <action selector="favoriteWaysToMedicateButtonToggled:" destination="x8h-ed-W9R" eventType="touchUpInside" id="IgE-Cc-RsL"/>
-                                                    </connections>
-                                                </button>
-                                                <button opaque="NO" alpha="0.5" tag="9" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oWS-hq-prh" userLabel="Hash Oil">
-                                                    <rect key="frame" x="259" y="180" width="45" height="45"/>
-                                                    <color key="backgroundColor" red="0.086274509799999996" green="0.62745098040000002" blue="0.52156862749999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                    <state key="normal">
-                                                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                                    </state>
-                                                    <connections>
-                                                        <action selector="favoriteWaysToMedicateButtonToggled:" destination="x8h-ed-W9R" eventType="touchUpInside" id="MhJ-At-MKO"/>
-                                                    </connections>
-                                                </button>
-                                                <button opaque="NO" alpha="0.5" tag="6" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ouy-ZH-EkF" userLabel="Topical">
-                                                    <rect key="frame" x="259" y="96" width="45" height="45"/>
-                                                    <color key="backgroundColor" red="0.086274509799999996" green="0.62745098040000002" blue="0.52156862749999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                    <state key="normal">
-                                                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                                    </state>
-                                                    <connections>
-                                                        <action selector="favoriteWaysToMedicateButtonToggled:" destination="x8h-ed-W9R" eventType="touchUpInside" id="BHG-J3-twY"/>
-                                                    </connections>
-                                                </button>
-                                                <label opaque="NO" userInteractionEnabled="NO" alpha="0.49999999999999961" tag="22" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Bongs" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fc4-eW-B51">
-                                                    <rect key="frame" x="169" y="55" width="50" height="21"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="13"/>
-                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" alpha="0.49999999999999961" tag="33" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Blunts" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CQt-7R-ltg">
-                                                    <rect key="frame" x="258" y="55" width="49" height="21"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="13"/>
-                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" alpha="0.49999999999999961" tag="66" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Wax" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VAH-RY-Eyj">
-                                                    <rect key="frame" x="265" y="143" width="34" height="21"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="13"/>
-                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" alpha="0.49999999999999961" tag="99" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Topical" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Jws-Ks-NCV">
-                                                    <rect key="frame" x="255" y="230" width="54" height="21"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="13"/>
-                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" alpha="0.49999999999999961" tag="88" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Hash Oil" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4kT-SL-pj2">
-                                                    <rect key="frame" x="161" y="230" width="66" height="21"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="13"/>
-                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" alpha="0.49999999999999961" tag="77" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Bowls" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="72M-7A-tnQ">
-                                                    <rect key="frame" x="79" y="230" width="56" height="21"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="13"/>
-                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" alpha="0.49999999999999961" tag="44" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Vaporizers" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bHt-LD-J9E">
-                                                    <rect key="frame" x="67" y="143" width="80" height="21"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="13"/>
-                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" alpha="0.49999999999999961" tag="11" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Joints" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oLA-YL-bUT">
-                                                    <rect key="frame" x="83" y="55" width="47" height="21"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="13"/>
-                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" alpha="0.49999999999999961" tag="55" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Edibles" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Owo-FZ-o4J">
-                                                    <rect key="frame" x="166" y="143" width="57" height="21"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="13"/>
-                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                            </subviews>
-                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                            <constraints>
-                                                <constraint firstItem="Dsb-qz-0ec" firstAttribute="leading" secondItem="BQN-nS-OJU" secondAttribute="leadingMargin" id="IYw-Dx-caJ"/>
-                                                <constraint firstItem="Dsb-qz-0ec" firstAttribute="top" secondItem="BQN-nS-OJU" secondAttribute="topMargin" constant="5" id="U5y-FV-nzl"/>
-                                            </constraints>
-                                        </tableViewCellContentView>
-                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                        <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>

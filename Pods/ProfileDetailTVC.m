@@ -166,12 +166,12 @@ static CGFloat const MDCSwipeToChooseViewLabelWidth = 95.f;
         if (objects.count != 0) {
             //for (int i = 0; i < objects.count; i++) {
             self.personalBioLabel.text = objects[0][@"bio"];
-            favoriteTools = objects[0][@"favoriteTools"];
+//            favoriteTools = objects[0][@"favoriteTools"];
             self.educationLabel.text = objects[0][@"education"];
             NSMutableArray *ppl = objects[0][@"sixPeopleArray"];
             self.sixPeople = ppl;
             
-            [self makeScrollView];
+//            [self makeScrollView];
             dispatch_async(dispatch_get_main_queue(), ^ {
                 [self.tableView reloadData];
             });
@@ -179,70 +179,70 @@ static CGFloat const MDCSwipeToChooseViewLabelWidth = 95.f;
     }];
 }
 
--(void)makeScrollView{
-    
-    //_myScroll = [[UIScrollView alloc] init];
-    int trueVal = 0;
-    for(int i = 0; i < favoriteTools.count; i++){
-        if ([favoriteTools[i] integerValue] == 1) {
-            trueVal++;
-        }
-    }
-    _myScroll.backgroundColor = [UIColor clearColor];
-    _myScroll.frame = CGRectMake(0, 0, self.favoriteToolsContentView.frame.size.width, 80);
-    _myScroll.contentSize = CGSizeMake(trueVal * 80, 80);
-    //now all you have to do is add the items to the scrollView
-    
-    int position = 0;
-    for(int i = 0; i < favoriteTools.count; i++){
-        if ([favoriteTools[i] integerValue] == 1) {
-            
-            UIImageView *imageView = [[UIImageView alloc]initWithFrame:CGRectMake(8 + position*70, 12, 35, 35)];
-            [_myScroll addSubview:imageView];
-            //test_tube-48.png
-            switch (i) {
-                case 0:
-                    imageView.image = [UIImage imageNamed:@"test_tube-48.png"];
-                    break;
-                case 1:
-                    imageView.image = [UIImage imageNamed:@"filled_flag-32.png"];
-                    break;
-                case 2:
-                    imageView.image = [UIImage imageNamed:@"filled_flag-32.png"];
-                    break;
-                case 3:
-                    imageView.image = [UIImage imageNamed:@"filled_flag-32.png"];
-                    break;
-                case 4:
-                    imageView.image = [UIImage imageNamed:@"filled_flag-32.png"];
-                    break;
-                case 5:
-                    imageView.image = [UIImage imageNamed:@"filled_flag-32.png"];
-                    break;
-                case 6:
-                    imageView.image = [UIImage imageNamed:@"filled_flag-32.png"];
-                    break;
-                case 7:
-                    imageView.image = [UIImage imageNamed:@"filled_flag-32.png"];
-                    break;
-                case 8:
-                    imageView.image = [UIImage imageNamed:@"filled_flag-32.png"];
-                    break;
-                default:
-                    break;
-            }
-            
-            position++;
-        }
-    }
-    
-    [_myScroll setContentOffset:CGPointMake(0, 0)];
-    _myScroll.showsHorizontalScrollIndicator = YES;
-    _myScroll.scrollEnabled = YES;
-    self.automaticallyAdjustsScrollViewInsets = NO;
-    
-    [self.favoriteToolsContentView addSubview:_myScroll];
-}
+//-(void)makeScrollView{
+//    
+//    //_myScroll = [[UIScrollView alloc] init];
+//    int trueVal = 0;
+//    for(int i = 0; i < favoriteTools.count; i++){
+//        if ([favoriteTools[i] integerValue] == 1) {
+//            trueVal++;
+//        }
+//    }
+//    _myScroll.backgroundColor = [UIColor clearColor];
+//    _myScroll.frame = CGRectMake(0, 0, self.favoriteToolsContentView.frame.size.width, 80);
+//    _myScroll.contentSize = CGSizeMake(trueVal * 80, 80);
+//    //now all you have to do is add the items to the scrollView
+//    
+//    int position = 0;
+//    for(int i = 0; i < favoriteTools.count; i++){
+//        if ([favoriteTools[i] integerValue] == 1) {
+//            
+//            UIImageView *imageView = [[UIImageView alloc]initWithFrame:CGRectMake(8 + position*70, 12, 35, 35)];
+//            [_myScroll addSubview:imageView];
+//            //test_tube-48.png
+//            switch (i) {
+//                case 0:
+//                    imageView.image = [UIImage imageNamed:@"test_tube-48.png"];
+//                    break;
+//                case 1:
+//                    imageView.image = [UIImage imageNamed:@"filled_flag-32.png"];
+//                    break;
+//                case 2:
+//                    imageView.image = [UIImage imageNamed:@"filled_flag-32.png"];
+//                    break;
+//                case 3:
+//                    imageView.image = [UIImage imageNamed:@"filled_flag-32.png"];
+//                    break;
+//                case 4:
+//                    imageView.image = [UIImage imageNamed:@"filled_flag-32.png"];
+//                    break;
+//                case 5:
+//                    imageView.image = [UIImage imageNamed:@"filled_flag-32.png"];
+//                    break;
+//                case 6:
+//                    imageView.image = [UIImage imageNamed:@"filled_flag-32.png"];
+//                    break;
+//                case 7:
+//                    imageView.image = [UIImage imageNamed:@"filled_flag-32.png"];
+//                    break;
+//                case 8:
+//                    imageView.image = [UIImage imageNamed:@"filled_flag-32.png"];
+//                    break;
+//                default:
+//                    break;
+//            }
+//            
+//            position++;
+//        }
+//    }
+//    
+//    [_myScroll setContentOffset:CGPointMake(0, 0)];
+//    _myScroll.showsHorizontalScrollIndicator = YES;
+//    _myScroll.scrollEnabled = YES;
+//    self.automaticallyAdjustsScrollViewInsets = NO;
+//    
+//    [self.favoriteToolsContentView addSubview:_myScroll];
+//}
 
 - (void)tableView:(UITableView *)tableView willDisplayHeaderView:(UIView *)view forSection:(NSInteger)section
 {
@@ -431,13 +431,13 @@ static CGFloat const MDCSwipeToChooseViewLabelWidth = 95.f;
                 return 0;
             }
         }
-        case 5:{
-            if(favoriteTools.count == 0){
-                return 0;
-            }
-            else
-                return 60;
-        }
+//        case 5:{
+//            if(favoriteTools.count == 0){
+//                return 0;
+//            }
+//            else
+//                return 60;
+//        }
         default:
             break;
     }
