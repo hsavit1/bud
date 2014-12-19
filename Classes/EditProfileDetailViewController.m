@@ -376,76 +376,79 @@
             break;
     }
     
+    BOOL breakOut = NO;
+    PFFile* imageFile;
     for (int x = 0; x < 6; x++) {
         switch (x) {
             case 0:{
-                PFFile* imageFile = self.addImage0.file;
-                    //    [imageFile saveInBackground];
-                [imageFile saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
-                    if (succeeded) {
-                        NSLog(@"good");
-                    }
-                }];
-                break;
+                if (breakOut == NO) {
+                    imageFile = self.addImage0.file;
+                    breakOut = YES;
+                    break;
+                }
             }
             case 1:{
-                PFFile* imageFile = self.addImage1.file;
-                //    [imageFile saveInBackground];
-                [imageFile saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
-                    if (succeeded) {
-                        NSLog(@"good");
-                    }
-                }];
-                break;
-                    }
-                case 2:{
-                        PFFile* imageFile = self.addImage2.file;
-                        //    [imageFile saveInBackground];
-                    [imageFile saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
-                        if (succeeded) {
-                            NSLog(@"good");
-                        }
-                    }];
+                if (breakOut == NO) {
+                    imageFile = self.addImage1.file;
+                    breakOut = YES;
                     break;
-                            }
-                        case 3:{
-                                PFFile* imageFile = self.addImage3.file;
-                                //    [imageFile saveInBackground];
-                            [imageFile saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
-                                if (succeeded) {
-                                    NSLog(@"good");
-                                }
-                            }];
-                            break;
-                                    }
-                                case 4:{
-                                        PFFile* imageFile = self.addImage4.file;
-                                        //    [imageFile saveInBackground];
-                                    [imageFile saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
-                                        if (succeeded) {
-                                            NSLog(@"good");
-                                        }
-                                    }];
-                                    break;
-                                            }
-                                        case 5:{
-                                                PFFile* imageFile = self.addImage5.file;
-                                                //    [imageFile saveInBackground];
-                                            [imageFile saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
-                                                if (succeeded) {
-                                                    NSLog(@"good");
-                                                }
-                                            }];
-                                            break;
-                                                    }
+                }
+            }
+            case 2:{
+                if (breakOut == NO) {
+                    imageFile = self.addImage2.file;
+                    breakOut = YES;
+                    break;
+                }
+            }
+            case 3:{
+                if (breakOut == NO) {
+                    imageFile = self.addImage3.file;
+                    breakOut = YES;
+                    break;
+                }
+            }
+            case 4:{
+                if (breakOut == NO) {
+                    imageFile = self.addImage4.file;
+                    breakOut = YES;
+                    break;
+                }
+                break;
+            }
+            case 5:{
+                if (breakOut == NO) {
+                    imageFile = self.addImage5.file;
+                    breakOut = YES;
+                    break;
+                }
+                break;
+            }
             default:
                 break;
-    }
+        }
     }
     
+    PFUser *user = [PFUser currentUser];
+    PFQuery *imageQuery = [PFQuery queryWithClassName:@"Photo"];
+    [imageQuery whereKey:@"user" equalTo:user];
+    [imageQuery whereKey:@"photo" equalTo:[imageFile name]];
+    [imageQuery orderByAscending:@"rank"];
+    [imageQuery findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *err){
+        if (objects.count != 0) {
+            
+            for (PFObject *images in objects) {
+                [images deleteInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+                    if(succeeded){
+                        NSLog(@"anything");
+                    }
+                }];
+            }
+        }
+    }];
         //((PFImageView*)[self.photoCellContentView viewWithTag:(i + 111)]).file = nil;
         //now we want to left shift all of the images (if there are any after the one we jsut removed) by 1
-        
+    
 //        NSArray *photosArray = [[NSArray alloc]initWithObjects:self.addImage0, self.addImage1, self.addImage2, self.addImage3, self.addImage4, self.addImage5, nil];
 //        PFFile *img;
 //        NSMutableArray *newArray = [[NSMutableArray alloc]initWithObjects:img, img, img, img, img, img, nil];
@@ -553,9 +556,14 @@
     
         if (editedImage) {
             imageToSave = editedImage;
-            PFFile* imageFile = [PFFile fileWithName:@"profilePic" data:UIImagePNGRepresentation(imageToSave)];
-            //    [imageFile saveInBackground];
-            [imageFile saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+            PFFile* imageFile = [PFFile fileWithName:[self randomStringWithLength:10] data:UIImagePNGRepresentation(imageToSave)];
+            PFObject *userPhoto = [PFObject objectWithClassName:@"Photo"];
+            [userPhoto setObject:imageFile forKey:@"photo"];
+            PFUser *user = [PFUser currentUser];
+            [userPhoto setObject:user forKey:@"user"];
+            //userPhoto[@"rank"] = i;
+            
+            [userPhoto saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
                 if (succeeded) {
                     
                 BOOL breakOut = NO;
@@ -788,84 +796,97 @@
 ///////////////////////////////////////////////////////////////////// STUFF WITH SAVING ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
--(void)saveFavoriteWaysToGetHigh{
+//-(void)saveFavoriteWaysToGetHigh{
+//    
+//    PFQuery *userQuery = [PFQuery queryWithClassName:@"UserProfile"];
+//    [userQuery whereKey:@"user" equalTo:[PFUser currentUser]];
+//    userQuery.limit = 1;
+//    [userQuery findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *err){
+//        if (objects.count != 0) {
+//                PFObject *userObj = objects[0];
+//                userObj[@"favoriteTools"] = favoriteTools;
+//                [userObj saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+//                    if (!error) {
+//                        [ProgressHUD showSuccess:@"Saved."];
+//                    }
+//                    else{
+//                        // Log details of the failure
+//                        NSLog(@"Error: %@ %@", error, [error userInfo]);
+//                    }
+//                }];
+//            }
+//        }];
+//}
+
+//-(void)saveFavoriteStrain:(int)strainOfChoice{
+//
+//    [PFUser currentUser][@"favoriteStrain"] = @(strainOfChoice);
+//    [[PFUser currentUser] saveInBackground];
+//}
+
+
+-(NSString *) randomStringWithLength: (int) len {
     
-    PFQuery *userQuery = [PFQuery queryWithClassName:@"UserProfile"];
-    [userQuery whereKey:@"user" equalTo:[PFUser currentUser]];
-    userQuery.limit = 1;
-    [userQuery findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *err){
-        if (objects.count != 0) {
-                PFObject *userObj = objects[0];
-                userObj[@"favoriteTools"] = favoriteTools;
-                [userObj saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
-                    if (!error) {
-                        [ProgressHUD showSuccess:@"Saved."];
-                    }
-                    else{
-                        // Log details of the failure
-                        NSLog(@"Error: %@ %@", error, [error userInfo]);
-                    }
-                }];
-            }
-        }];
+    NSMutableString *randomString = [NSMutableString stringWithCapacity: len];
+    NSString *letters = @"abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+
+    for (int i=0; i<len; i++) {
+        [randomString appendFormat: @"%C", [letters characterAtIndex: arc4random_uniform([letters length])]];
+    }
+    
+    return randomString;
 }
 
--(void)saveFavoriteStrain:(int)strainOfChoice{
-
-    [PFUser currentUser][@"favoriteStrain"] = @(strainOfChoice);
-    [[PFUser currentUser] saveInBackground];
-}
-
--(void)savePhotos{
-    PFQuery *userQuery = [PFQuery queryWithClassName:@"Photo"];
-    [userQuery whereKey:@"user" equalTo:[PFUser currentUser]];
-    [userQuery orderByAscending:@"rank"];
-    [userQuery findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
-        if(objects.count != 0){
-            for (int i = 0; i < objects.count; i++) {
-                if(((PFImageView*)[self.photoCellContentView viewWithTag:(i+111)]).file != nil){
-                    PFFile *imageFile = ((PFImageView*)[self.photoCellContentView viewWithTag:(i+111)]).file;
-                    [imageFile saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
-                        if (!error) {
-
-                            PFObject *userPhoto = [PFObject objectWithClassName:@"Photo"];
-                            [userPhoto setObject:imageFile forKey:@"photo"];
-                            PFUser *user = [PFUser currentUser];
-                            [userPhoto setObject:user forKey:@"user"];
-                            //userPhoto[@"rank"] = i;
-                            
-                            [userPhoto saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
-                                if (!error) {
-                                }
-                                else{
-                                    // Log details of the failure
-                                    NSLog(@"Error: %@ %@", error, [error userInfo]);
-                                }
-                            }];
-                        }
-                        else{
-                            [HUD hide:YES];
-                            // Log details of the failure
-                            NSLog(@"Error: %@ %@", error, [error userInfo]);
-                        }
-                    }
-                    progressBlock:^(int percentDone) {
-                        // Update your progress spinner here. percentDone will be between 0 and 100.
-                        HUD.progress = (float)percentDone/100;
-                    }];
-                }
-                else{
-                    //delete the object from parse
-                    //https://parse.com/questions/how-can-i-delete-a-file
-//                    // After this, the photo field will be empty
-//                    [query removeObjectForKey:@"photo"];
-//                    // Saves the field deletion to the Parse Cloud
-//                    [query saveInBackground];
-                }
-            }
-        }
-    }];
-}
+//-(void)savePhotos{
+//    PFQuery *userQuery = [PFQuery queryWithClassName:@"Photo"];
+//    [userQuery whereKey:@"user" equalTo:[PFUser currentUser]];
+//    [userQuery orderByAscending:@"rank"];
+//    [userQuery findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+//        if(objects.count != 0){
+//            for (int i = 0; i < objects.count; i++) {
+//                if(((PFImageView*)[self.photoCellContentView viewWithTag:(i+111)]).file != nil){
+//                    PFFile *imageFile = ((PFImageView*)[self.photoCellContentView viewWithTag:(i+111)]).file;
+//                    [imageFile saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+//                        if (!error) {
+//
+//                            PFObject *userPhoto = [PFObject objectWithClassName:@"Photo"];
+//                            [userPhoto setObject:imageFile forKey:@"photo"];
+//                            PFUser *user = [PFUser currentUser];
+//                            [userPhoto setObject:user forKey:@"user"];
+//                            //userPhoto[@"rank"] = i;
+//                            
+//                            [userPhoto saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+//                                if (!error) {
+//                                }
+//                                else{
+//                                    // Log details of the failure
+//                                    NSLog(@"Error: %@ %@", error, [error userInfo]);
+//                                }
+//                            }];
+//                        }
+//                        else{
+//                            [HUD hide:YES];
+//                            // Log details of the failure
+//                            NSLog(@"Error: %@ %@", error, [error userInfo]);
+//                        }
+//                    }
+//                    progressBlock:^(int percentDone) {
+//                        // Update your progress spinner here. percentDone will be between 0 and 100.
+//                        HUD.progress = (float)percentDone/100;
+//                    }];
+//                }
+//                else{
+//                    //delete the object from parse
+//                    //https://parse.com/questions/how-can-i-delete-a-file
+////                    // After this, the photo field will be empty
+////                    [query removeObjectForKey:@"photo"];
+////                    // Saves the field deletion to the Parse Cloud
+////                    [query saveInBackground];
+//                }
+//            }
+//        }
+//    }];
+//}
 
 //done button pressed
 - (IBAction)saveEverything:(id)sender {
@@ -887,15 +908,15 @@
 -(void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex{
     
     if(buttonIndex == 1){
-        //save favWaysToGetHigh
-        [self saveFavoriteWaysToGetHigh];
-        
-        //save favoriteStrain
-
-        //save photos
-        [self savePhotos];
-        
-        //you dont have to worry about saving all of the descriptions. those will be saved when the user clicks on the "Save" button on each of those pages, respectively
+//        //save favWaysToGetHigh
+//        [self saveFavoriteWaysToGetHigh];
+//        
+//        //save favoriteStrain
+//
+//        //save photos
+//        [self savePhotos];
+//        
+//        //you dont have to worry about saving all of the descriptions. those will be saved when the user clicks on the "Save" button on each of those pages, respectively
         [self.navigationController popViewControllerAnimated:YES];
     }
     else{
