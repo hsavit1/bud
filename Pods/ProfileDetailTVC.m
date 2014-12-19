@@ -49,7 +49,8 @@ static CGFloat const MDCSwipeToChooseViewLabelWidth = 95.f;
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.profilePics = [[NSMutableArray alloc]init];
-
+    self.sixPeople = [[NSMutableArray alloc]initWithObjects:@"", @"", @"", @"", @"", @"", @"", nil];
+    
     if([self.navigationController.viewControllers[0] class] == [self class]){
         UIBarButtonItem *edit = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemEdit target:self action:@selector(editButtonPressed:)];
         self.navigationItem.rightBarButtonItem = edit;
@@ -165,6 +166,9 @@ static CGFloat const MDCSwipeToChooseViewLabelWidth = 95.f;
             self.personalBioLabel.text = objects[0][@"bio"];
             favoriteTools = objects[0][@"favoriteTools"];
             self.educationLabel.text = objects[0][@"education"];
+            NSMutableArray *ppl = objects[0][@"sixPeopleArray"];
+            self.sixPeople = ppl;
+            
             [self makeScrollView];
             dispatch_async(dispatch_get_main_queue(), ^ {
                 [self.tableView reloadData];
@@ -331,15 +335,51 @@ static CGFloat const MDCSwipeToChooseViewLabelWidth = 95.f;
             }
         }
         case 3:{
+            NSString *field0 = [NSString stringWithFormat:@"1. %@", self.sixPeople[0]];
+            NSString *field1 = [NSString stringWithFormat:@"2. %@", self.sixPeople[1]];
+            NSString *field2 = [NSString stringWithFormat:@"3. %@", self.sixPeople[2]];
+            NSString *field3 = [NSString stringWithFormat:@"4. %@", self.sixPeople[3]];
+            NSString *field4 = [NSString stringWithFormat:@"5. %@", self.sixPeople[4]];
+            NSString *field5 = [NSString stringWithFormat:@"6. %@", self.sixPeople[5]];
+            NSArray *stringsArray = [[NSArray alloc] initWithObjects:field0, field1, field2, field3, field4, field5, nil];
+            NSString *joinedString = [stringsArray componentsJoinedByString:@" \r\n"];
             
+            self.sixStonersInHeaven.text = joinedString;
+            [self.sixStonersInHeaven setPreferredMaxLayoutWidth:230];
+            if(IS_IPHONE_5){
+                CGSize expectedSize = [self.sixStonersInHeaven.text boundingRectWithSize:CGSizeMake(230, 10000)
+                                                                                 options:(NSStringDrawingUsesLineFragmentOrigin)
+                                                                              attributes:@{NSFontAttributeName:
+                                                                                               self.sixStonersInHeaven.font}
+                                                                                 context:nil].size;
+                return MAX(60, expectedSize.height + 10);
+                
+            }
+            else if (IS_IPHONE_6){
+                [self.sixStonersInHeaven setPreferredMaxLayoutWidth:230 + 55];
+                CGSize expectedSize = [self.sixStonersInHeaven.text boundingRectWithSize:CGSizeMake(230 + 45, 10000)
+                                                                                 options:(NSStringDrawingUsesLineFragmentOrigin)
+                                                                              attributes:@{NSFontAttributeName:
+                                                                                               self.sixStonersInHeaven.font}
+                                                                                 context:nil].size;
+                return MAX(60, expectedSize.height + 10);
+                
+            }
+            else if (IS_IPHONE_6_PLUS){
+                [self.sixStonersInHeaven setPreferredMaxLayoutWidth:230 + 95];
+                CGSize expectedSize = [self.sixStonersInHeaven.text boundingRectWithSize:CGSizeMake(230 + 94, 10000)
+                                                                                 options:(NSStringDrawingUsesLineFragmentOrigin)
+                                                                              attributes:@{NSFontAttributeName:
+                                                                                               self.sixStonersInHeaven.font}
+                                                                                 context:nil].size;
+                return MAX(60, expectedSize.height + 10);
+                
+            }
             return 60;
+            
         }
             break;
         case 4:{
-            [self constructInterestsImageLabelView];
-            return 60;
-        }
-        case 5:{
             if (self.educationLabel.text.length != 0){
                 
                 if (IS_IPHONE_5) {
@@ -377,7 +417,7 @@ static CGFloat const MDCSwipeToChooseViewLabelWidth = 95.f;
                 return 0;
             }
         }
-        case 6:{
+        case 5:{
             if(favoriteTools.count == 0){
                 return 0;
             }

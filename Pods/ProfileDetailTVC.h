@@ -27,7 +27,7 @@
 
 @property (weak, nonatomic) IBOutlet UILabel *personalBioLabel;
 @property (weak, nonatomic) IBOutlet UILabel *favoriteStrains;
-@property (weak, nonatomic) IBOutlet UILabel *toolsIUseLabel;
+@property (weak, nonatomic) IBOutlet UILabel *sixStonersInHeaven;
 @property (weak, nonatomic) IBOutlet UILabel *educationLabel;
 
 @property (weak, nonatomic) IBOutlet UIView *favoriteToolsContentView;
