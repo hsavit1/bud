@@ -41,16 +41,18 @@
     [userQuery findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
         if(objects.count != 0){
             NSArray *stringsArray = [[NSArray alloc] initWithObjects:self.person0.text, self.person1.text, self.person2.text, self.person3.text, self.person4.text, self.person5.text, nil];
-            NSString *joinedString = [stringsArray componentsJoinedByString:@" "];
+            //NSString *joinedString = [stringsArray componentsJoinedByString:@" "];
             PFObject *userObj = objects[0];
-            userObj[@"sixPeople"] = joinedString;
+            userObj[@"sixPeopleArray"] = stringsArray;
             [userObj saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
                 if (!error) {
                     [ProgressHUD showSuccess:@"Saved."];
+                    [self.navigationController popViewControllerAnimated:YES];
                 }
                 else{
                     // Log details of the failure
                     NSLog(@"Error: %@ %@", error, [error userInfo]);
+                    [ProgressHUD showError:@"Network Error"];
                 }
             }];
         }

@@ -33,6 +33,7 @@
     NSMutableArray *profilePicsArray;
     NSArray *removeButtons;
     NSMutableArray *favoriteTools;
+    NSMutableArray *sixPeople;
     BOOL isPageEdited;
     MBProgressHUD *HUD;
     MBProgressHUD *refreshHUD;
@@ -60,6 +61,7 @@
     self.navigationController.navigationItem.hidesBackButton = YES;
     
     favoriteTools = [[NSMutableArray alloc]initWithObjects:@NO, @NO, @NO, @NO, @NO, @NO, @NO, @NO, @NO, nil];
+    sixPeople = [[NSMutableArray alloc]initWithObjects:@"", @"", @"", @"", @"", @"", nil];
     
     //these are the add image buttons
     for (int i = 100; i < 106; i++) {
@@ -148,6 +150,9 @@
             self.personalBioLabel.text = objects[0][@"bio"];
             self.educationLabel.text = objects[0][@"education"];
             favoriteTools = objects[0][@"favoriteTools"];
+            NSArray *ppl = objects[0][@"sixPeopleArray"];
+            //NSArray *myWords = [ppl componentsSeparatedByString:@" "];
+            sixPeople = ppl;
             [self fillInFavoriteTools];
             dispatch_async(dispatch_get_main_queue(), ^ {
                 [self.tableView reloadData];
@@ -208,18 +213,18 @@
             
             //fav strain
         case 4:{
-//            NSString *field0 = [NSString stringWithFormat:@"1. %@", [PFUser currentUser][@"SixPeople"][@"person0"]];
-//            NSString *field1 = [NSString stringWithFormat:@"2. %@", [PFUser currentUser][@"SixPeople"][@"person1"]];
-//            NSString *field2 = [NSString stringWithFormat:@"3. %@", [PFUser currentUser][@"SixPeople"][@"person2"]];
-//            NSString *field3 = [NSString stringWithFormat:@"4. %@", [PFUser currentUser][@"SixPeople"][@"person3"]];
-//            NSString *field4 = [NSString stringWithFormat:@"5. %@", [PFUser currentUser][@"SixPeople"][@"person4"]];
-//            NSString *field5 = [NSString stringWithFormat:@"6. %@", [PFUser currentUser][@"SixPeople"][@"person5"]];
-//            
-//            
-//            NSArray *stringsArray = [[NSArray alloc] initWithObjects:field0, field1, field2, field3, field4, field5, nil];
-//            NSString *joinedString = [stringsArray componentsJoinedByString:@" \r\n"];
-//
-//            self.sixStonersInHeaven.text = joinedString;
+            NSString *field0 = [NSString stringWithFormat:@"1. %@", sixPeople[0]];
+            NSString *field1 = [NSString stringWithFormat:@"2. %@", sixPeople[1]];
+            NSString *field2 = [NSString stringWithFormat:@"3. %@", sixPeople[2]];
+            NSString *field3 = [NSString stringWithFormat:@"4. %@", sixPeople[3]];
+            NSString *field4 = [NSString stringWithFormat:@"5. %@", sixPeople[4]];
+            NSString *field5 = [NSString stringWithFormat:@"6. %@", sixPeople[5]];
+
+            
+            NSArray *stringsArray = [[NSArray alloc] initWithObjects:field0, field1, field2, field3, field4, field5, nil];
+            NSString *joinedString = [stringsArray componentsJoinedByString:@" \r\n"];
+
+            self.sixStonersInHeaven.text = joinedString;
             [self.sixStonersInHeaven setPreferredMaxLayoutWidth:230];
         if(IS_IPHONE_5){
             CGSize expectedSize = [self.sixStonersInHeaven.text boundingRectWithSize:CGSizeMake(230, 10000)
