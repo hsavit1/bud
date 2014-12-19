@@ -154,7 +154,29 @@ static CGFloat const MDCSwipeToChooseViewLabelWidth = 95.f;
 -(void)fillInUserInfo{
     self.distanceLabel.text = @"20 miles";
     self.numMutualFriendsLabel.text = @"50";
-    self.lastActiveLabel.text = @"30 minutes ago";
+    NSDate *update = self.user.updatedAt;
+    NSDate *currentDate = [NSDate date];
+    NSTimeInterval distanceBetweenDates = [currentDate timeIntervalSinceDate:update];
+    
+    NSInteger minutes = distanceBetweenDates / 60;
+    NSInteger hours = distanceBetweenDates / 3600;
+    NSInteger days = distanceBetweenDates / (3600*24);
+    NSInteger weeks = distanceBetweenDates / (3600*24*7);
+    
+    NSString *dateString;
+    if (distanceBetweenDates < 60) {
+        dateString = [NSString stringWithFormat:@" %f seconds ago", distanceBetweenDates];
+    }
+    else if (hours < 24) {
+        dateString = [NSString stringWithFormat:@" %i hours ago", hours];
+    }
+    else if (days < 7) {
+        dateString = [NSString stringWithFormat:@" %i days ago", days];
+    }
+    else{
+        dateString = [NSString stringWithFormat:@" %i weeks ago", weeks];
+    }
+    self.lastActiveLabel.text = dateString;
     
     self.firstNameLabel.text = self.user[@"fullname"];
     self.strainValue = [self.user[@"strainOfChoice"] intValue];
