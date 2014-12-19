@@ -45,7 +45,6 @@
 @property (weak, nonatomic) IBOutlet UIView *photoCellContentView;
 @property (weak, nonatomic) IBOutlet UIView *toolsContentView;
 
-
 @end
 
 @implementation EditProfileDetailViewController
@@ -343,7 +342,7 @@
 //
 -(IBAction)removeImage:(UIButton*)sender{
     isPageEdited = YES;
-    
+    [self.photoCellContentView viewWithTag:sender.tag].hidden = YES;
     long i = sender.tag - 1000;
     //if (((PFImageView*)[self.photoCellContentView viewWithTag:(i + 111)]).file != nil) {
     
@@ -448,76 +447,6 @@
     }];
         //((PFImageView*)[self.photoCellContentView viewWithTag:(i + 111)]).file = nil;
         //now we want to left shift all of the images (if there are any after the one we jsut removed) by 1
-    
-//        NSArray *photosArray = [[NSArray alloc]initWithObjects:self.addImage0, self.addImage1, self.addImage2, self.addImage3, self.addImage4, self.addImage5, nil];
-//        PFFile *img;
-//        NSMutableArray *newArray = [[NSMutableArray alloc]initWithObjects:img, img, img, img, img, img, nil];
-//        
-//        //int place = 0;
-//        //for (PFImageView* imageView in photosArray) {
-//            for (int z = 0; z < photosArray.count; z++) {
-//                if (((PFImageView*)photosArray[z]).file != nil) {
-//                    [newArray replaceObjectAtIndex:z withObject:((PFImageView*)photosArray[z]).file];
-//                }
-//            }
-//        //    place++;
-//        //}
-//        
-//        for (int x = 0; x < 6; x++) {
-//            switch (x) {
-//                case 0:
-//                    if (newArray[x] != nil) {
-//                        self.addImage0.file = newArray[x];
-//                    }
-//                    else{
-//                        self.addImage0.file = nil;
-//                    }
-//                    break;
-//                case 1:
-//                    if (newArray[x] != nil) {
-//                        self.addImage1.file = newArray[x];
-//                    }
-//                    else{
-//                        self.addImage1.file = nil;
-//                    }
-//                    break;
-//                case 2:
-//                    if (newArray[x] != nil) {
-//                        self.addImage2.file = newArray[x];
-//                    }
-//                    else{
-//                        self.addImage2.file = nil;
-//                    }
-//                    break;
-//                case 3:
-//                    if (newArray[x] != nil) {
-//                        self.addImage3.file = newArray[x];
-//                    }
-//                    else{
-//                        self.addImage3.file = nil;
-//                    }
-//                    break;
-//                case 4:
-//                    if (newArray[x] != nil) {
-//                        self.addImage4.file = newArray[x];
-//                    }
-//                    else{
-//                        self.addImage4.file = nil;
-//                    }
-//                    break;
-//                case 5:
-//                    if (newArray[x] != nil) {
-//                        self.addImage5.file = newArray[x];
-//                    }
-//                    else{
-//                        self.addImage5.file = nil;
-//                    }
-//                    break;
-//                default:
-//                    break;
-//            }
-//        }
-        
 //        for(int j = (int)i + 111 ; j < 117; j++){
 //            if(((PFImageView*)[self.photoCellContentView viewWithTag:(j)]).file != nil){
 //                
@@ -561,8 +490,14 @@
             [userPhoto setObject:imageFile forKey:@"photo"];
             PFUser *user = [PFUser currentUser];
             [userPhoto setObject:user forKey:@"user"];
-            //userPhoto[@"rank"] = i;
             
+            for (int button = 1000; button < 1006; button++) {
+                if ([self.photoCellContentView viewWithTag:button].hidden == YES) {
+                    [userPhoto setObject:@((button-999)) forKey:@"rank"];
+                    break;
+                }
+            }
+        
             [userPhoto saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
                 if (succeeded) {
                     
@@ -572,60 +507,78 @@
                         case 0:
                             if(self.addImage0.file == nil && breakOut == NO){
                                 self.addImage0.file = imageFile;
+                                self.addImage0.layer.cornerRadius = 8;
+                                self.addImage0.layer.masksToBounds = YES;
                                 [self.addImage0 loadInBackground];
                                 [ProgressHUD showSuccess:@"Saved."];
                                 [self.imagePick popToRootViewControllerAnimated:NO];
                                 [self.imagePick dismissViewControllerAnimated:NO completion:nil];
+                                [self.photoCellContentView viewWithTag:1000].hidden = NO;
                                 breakOut = YES;
                             }
                             break;
                         case 1:
                             if(self.addImage1.file == nil && breakOut == NO){
                                 self.addImage1.file = imageFile;
+                                self.addImage1.layer.cornerRadius = 8;
+                                self.addImage1.layer.masksToBounds = YES;
                                 [self.addImage1 loadInBackground];
                                 [ProgressHUD showSuccess:@"Saved."];
                                 [self.imagePick popToRootViewControllerAnimated:NO];
                                 [self.imagePick dismissViewControllerAnimated:NO completion:nil];
+                                [self.photoCellContentView viewWithTag:1001].hidden = NO;
                                 breakOut = YES;
                             }
                             break;
                         case 2:
                             if(self.addImage2.file == nil && breakOut == NO){
                                 self.addImage2.file = imageFile;
+                                self.addImage2.layer.cornerRadius = 8;
+                                self.addImage2.layer.masksToBounds = YES;
                                 [self.addImage2 loadInBackground];
                                 [ProgressHUD showSuccess:@"Saved."];
                                 [self.imagePick popToRootViewControllerAnimated:NO];
                                 [self.imagePick dismissViewControllerAnimated:NO completion:nil];
+                                [self.photoCellContentView viewWithTag:1002].hidden = NO;
                                 breakOut = YES;
                             }
                             break;
                         case 3:
                             if(self.addImage3.file == nil && breakOut == NO){
                                 self.addImage3.file = imageFile;
+                                self.addImage3.layer.cornerRadius = 8;
+                                self.addImage3.layer.masksToBounds = YES;
                                 [self.addImage3 loadInBackground];
                                 [ProgressHUD showSuccess:@"Saved."];
                                 [self.imagePick popToRootViewControllerAnimated:NO];
                                 [self.imagePick dismissViewControllerAnimated:NO completion:nil];
+                                [self.photoCellContentView viewWithTag:1003].hidden = NO;
                                 breakOut = YES;
                             }
                             break;
                         case 4:
                             if(self.addImage4.file == nil && breakOut == NO){
                                 self.addImage4.file = imageFile;
+                                self.addImage4.layer.cornerRadius = 8;
+                                self.addImage4.layer.masksToBounds = YES;
                                 [self.addImage4 loadInBackground];
                                 [ProgressHUD showSuccess:@"Saved."];
                                 [self.imagePick popToRootViewControllerAnimated:NO];
                                 [self.imagePick dismissViewControllerAnimated:NO completion:nil];
+                                [self.photoCellContentView viewWithTag:1004].hidden = NO;
                                 breakOut = YES;
                             }
                             break;
                         case 5:
                             if(self.addImage5.file == nil && breakOut == NO){
                                 self.addImage5.file = imageFile;
+                                self.addImage5.layer.cornerRadius = 8;
+                                self.addImage5.layer.masksToBounds = YES;
                                 [self.addImage5 loadInBackground];
                                 [ProgressHUD showSuccess:@"Saved."];
                                 [self.imagePick popToRootViewControllerAnimated:NO];
                                 [self.imagePick dismissViewControllerAnimated:NO completion:nil];
+                                [self.photoCellContentView viewWithTag:1005].hidden = NO;
                                 breakOut = YES;
                                 break;
                             }
@@ -836,57 +789,6 @@
     
     return randomString;
 }
-
-//-(void)savePhotos{
-//    PFQuery *userQuery = [PFQuery queryWithClassName:@"Photo"];
-//    [userQuery whereKey:@"user" equalTo:[PFUser currentUser]];
-//    [userQuery orderByAscending:@"rank"];
-//    [userQuery findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
-//        if(objects.count != 0){
-//            for (int i = 0; i < objects.count; i++) {
-//                if(((PFImageView*)[self.photoCellContentView viewWithTag:(i+111)]).file != nil){
-//                    PFFile *imageFile = ((PFImageView*)[self.photoCellContentView viewWithTag:(i+111)]).file;
-//                    [imageFile saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
-//                        if (!error) {
-//
-//                            PFObject *userPhoto = [PFObject objectWithClassName:@"Photo"];
-//                            [userPhoto setObject:imageFile forKey:@"photo"];
-//                            PFUser *user = [PFUser currentUser];
-//                            [userPhoto setObject:user forKey:@"user"];
-//                            //userPhoto[@"rank"] = i;
-//                            
-//                            [userPhoto saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
-//                                if (!error) {
-//                                }
-//                                else{
-//                                    // Log details of the failure
-//                                    NSLog(@"Error: %@ %@", error, [error userInfo]);
-//                                }
-//                            }];
-//                        }
-//                        else{
-//                            [HUD hide:YES];
-//                            // Log details of the failure
-//                            NSLog(@"Error: %@ %@", error, [error userInfo]);
-//                        }
-//                    }
-//                    progressBlock:^(int percentDone) {
-//                        // Update your progress spinner here. percentDone will be between 0 and 100.
-//                        HUD.progress = (float)percentDone/100;
-//                    }];
-//                }
-//                else{
-//                    //delete the object from parse
-//                    //https://parse.com/questions/how-can-i-delete-a-file
-////                    // After this, the photo field will be empty
-////                    [query removeObjectForKey:@"photo"];
-////                    // Saves the field deletion to the Parse Cloud
-////                    [query saveInBackground];
-//                }
-//            }
-//        }
-//    }];
-//}
 
 //done button pressed
 - (IBAction)saveEverything:(id)sender {
