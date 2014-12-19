@@ -262,6 +262,7 @@
                     <navigationItem key="navigationItem" id="2Zx-16-YF7"/>
                     <connections>
                         <outlet property="distanceLabel" destination="V0g-4e-xZK" id="Ik6-a5-1wb"/>
+                        <outlet property="educationImageVIew" destination="kO9-ac-XC6" id="z50-1L-9PZ"/>
                         <outlet property="educationLabel" destination="dKR-uJ-INx" id="1X9-bA-1K8"/>
                         <outlet property="favoriteStrains" destination="KMa-aC-msa" id="QA6-XY-0aP"/>
                         <outlet property="favoriteToolsContentView" destination="9RJ-pC-QDo" id="sNR-b9-HMy"/>
@@ -270,6 +271,7 @@
                         <outlet property="lastActiveLabel" destination="vHq-fd-EBF" id="EWG-P4-CuH"/>
                         <outlet property="numMutualFriendsLabel" destination="ndF-0L-9Oz" id="zNF-ub-Dxb"/>
                         <outlet property="personalBioLabel" destination="xOG-8c-mfl" id="Fpd-qc-XsA"/>
+                        <outlet property="sixPeopleImageView" destination="cGT-Wr-u00" id="FM7-kC-s2P"/>
                         <outlet property="sixStonersInHeaven" destination="xhb-DI-5eg" id="c8r-uv-8eg"/>
                         <outlet property="strainOfChoice" destination="w2W-ay-e6p" id="nhO-HG-vMw"/>
                     </connections>

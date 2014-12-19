@@ -346,42 +346,52 @@ static CGFloat const MDCSwipeToChooseViewLabelWidth = 95.f;
             
             self.sixStonersInHeaven.text = joinedString;
             [self.sixStonersInHeaven setPreferredMaxLayoutWidth:248];
-            if(IS_IPHONE_5){
-                CGSize expectedSize = [self.sixStonersInHeaven.text boundingRectWithSize:CGSizeMake(248, 10000)
-                                                                                 options:(NSStringDrawingUsesLineFragmentOrigin)
-                                                                              attributes:@{NSFontAttributeName:
-                                                                                               self.sixStonersInHeaven.font}
-                                                                                 context:nil].size;
-                return MAX(60, expectedSize.height + 20);
+            
+            if(![field0 isEqualToString:@"1. "] && ![field0 isEqualToString:@"1. (null)"]){
+            
+                self.sixPeopleImageView.image = [UIImage imageNamed:@"partly_cloudy_day-48.png"];
                 
+                if(IS_IPHONE_5){
+                    CGSize expectedSize = [self.sixStonersInHeaven.text boundingRectWithSize:CGSizeMake(248, 10000)
+                                                                                     options:(NSStringDrawingUsesLineFragmentOrigin)
+                                                                                  attributes:@{NSFontAttributeName:
+                                                                                                   self.sixStonersInHeaven.font}
+                                                                                     context:nil].size;
+                    return MAX(60, expectedSize.height + 20);
+                    
+                }
+                else if (IS_IPHONE_6){
+                    [self.sixStonersInHeaven setPreferredMaxLayoutWidth:248 + 55];
+                    CGSize expectedSize = [self.sixStonersInHeaven.text boundingRectWithSize:CGSizeMake(248 + 45, 10000)
+                                                                                     options:(NSStringDrawingUsesLineFragmentOrigin)
+                                                                                  attributes:@{NSFontAttributeName:
+                                                                                                   self.sixStonersInHeaven.font}
+                                                                                     context:nil].size;
+                    return MAX(60, expectedSize.height + 20);
+                    
+                }
+                else if (IS_IPHONE_6_PLUS){
+                    [self.sixStonersInHeaven setPreferredMaxLayoutWidth:248 + 95];
+                    CGSize expectedSize = [self.sixStonersInHeaven.text boundingRectWithSize:CGSizeMake(248 + 94, 10000)
+                                                                                     options:(NSStringDrawingUsesLineFragmentOrigin)
+                                                                                  attributes:@{NSFontAttributeName:
+                                                                                                   self.sixStonersInHeaven.font}
+                                                                                     context:nil].size;
+                    return MAX(60, expectedSize.height + 20);
+                    
+                }
             }
-            else if (IS_IPHONE_6){
-                [self.sixStonersInHeaven setPreferredMaxLayoutWidth:248 + 55];
-                CGSize expectedSize = [self.sixStonersInHeaven.text boundingRectWithSize:CGSizeMake(248 + 45, 10000)
-                                                                                 options:(NSStringDrawingUsesLineFragmentOrigin)
-                                                                              attributes:@{NSFontAttributeName:
-                                                                                               self.sixStonersInHeaven.font}
-                                                                                 context:nil].size;
-                return MAX(60, expectedSize.height + 20);
-                
-            }
-            else if (IS_IPHONE_6_PLUS){
-                [self.sixStonersInHeaven setPreferredMaxLayoutWidth:248 + 95];
-                CGSize expectedSize = [self.sixStonersInHeaven.text boundingRectWithSize:CGSizeMake(248 + 94, 10000)
-                                                                                 options:(NSStringDrawingUsesLineFragmentOrigin)
-                                                                              attributes:@{NSFontAttributeName:
-                                                                                               self.sixStonersInHeaven.font}
-                                                                                 context:nil].size;
-                return MAX(60, expectedSize.height + 20);
-                
+            else{
+                self.sixPeopleImageView.image = nil;
+                return 0;
             }
             return 60;
-            
         }
         break;
             
         case 4:{
             if (self.educationLabel.text.length != 0){
+                self.educationImageVIew.image = [UIImage imageNamed:@"university-48.png"];
                 
                 if (IS_IPHONE_5) {
                     [self.educationLabel setPreferredMaxLayoutWidth:248];
@@ -415,6 +425,7 @@ static CGFloat const MDCSwipeToChooseViewLabelWidth = 95.f;
                 }
             }
             else{
+                self.educationImageVIew.image = nil;
                 return 0;
             }
         }
