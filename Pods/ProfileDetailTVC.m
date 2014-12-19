@@ -345,40 +345,41 @@ static CGFloat const MDCSwipeToChooseViewLabelWidth = 95.f;
             NSString *joinedString = [stringsArray componentsJoinedByString:@" \r\n"];
             
             self.sixStonersInHeaven.text = joinedString;
-            [self.sixStonersInHeaven setPreferredMaxLayoutWidth:230];
+            [self.sixStonersInHeaven setPreferredMaxLayoutWidth:248];
             if(IS_IPHONE_5){
-                CGSize expectedSize = [self.sixStonersInHeaven.text boundingRectWithSize:CGSizeMake(230, 10000)
+                CGSize expectedSize = [self.sixStonersInHeaven.text boundingRectWithSize:CGSizeMake(248, 10000)
                                                                                  options:(NSStringDrawingUsesLineFragmentOrigin)
                                                                               attributes:@{NSFontAttributeName:
                                                                                                self.sixStonersInHeaven.font}
                                                                                  context:nil].size;
-                return MAX(60, expectedSize.height + 10);
+                return MAX(60, expectedSize.height + 20);
                 
             }
             else if (IS_IPHONE_6){
-                [self.sixStonersInHeaven setPreferredMaxLayoutWidth:230 + 55];
-                CGSize expectedSize = [self.sixStonersInHeaven.text boundingRectWithSize:CGSizeMake(230 + 45, 10000)
+                [self.sixStonersInHeaven setPreferredMaxLayoutWidth:248 + 55];
+                CGSize expectedSize = [self.sixStonersInHeaven.text boundingRectWithSize:CGSizeMake(248 + 45, 10000)
                                                                                  options:(NSStringDrawingUsesLineFragmentOrigin)
                                                                               attributes:@{NSFontAttributeName:
                                                                                                self.sixStonersInHeaven.font}
                                                                                  context:nil].size;
-                return MAX(60, expectedSize.height + 10);
+                return MAX(60, expectedSize.height + 20);
                 
             }
             else if (IS_IPHONE_6_PLUS){
-                [self.sixStonersInHeaven setPreferredMaxLayoutWidth:230 + 95];
-                CGSize expectedSize = [self.sixStonersInHeaven.text boundingRectWithSize:CGSizeMake(230 + 94, 10000)
+                [self.sixStonersInHeaven setPreferredMaxLayoutWidth:248 + 95];
+                CGSize expectedSize = [self.sixStonersInHeaven.text boundingRectWithSize:CGSizeMake(248 + 94, 10000)
                                                                                  options:(NSStringDrawingUsesLineFragmentOrigin)
                                                                               attributes:@{NSFontAttributeName:
                                                                                                self.sixStonersInHeaven.font}
                                                                                  context:nil].size;
-                return MAX(60, expectedSize.height + 10);
+                return MAX(60, expectedSize.height + 20);
                 
             }
             return 60;
             
         }
-            break;
+        break;
+            
         case 4:{
             if (self.educationLabel.text.length != 0){
                 
@@ -428,43 +429,6 @@ static CGFloat const MDCSwipeToChooseViewLabelWidth = 95.f;
             break;
     }
     return 30;
-}
-
-- (void)constructInterestsImageLabelView {
-//    UIImage *image;
-//    if(self.strainValue == 0){//hybrid
-//        image = [UIImage imageNamed:@"hybrid_burned.png"];
-//        CGSize newSize = CGSizeMake(45.0f, 35.0f);
-//        UIGraphicsBeginImageContext(newSize);
-//        [image drawInRect:CGRectMake(0,0,newSize.width,newSize.height)];
-//        UIImage* newImage = UIGraphicsGetImageFromCurrentImageContext();
-//        UIGraphicsEndImageContext();
-//        image = newImage;
-//    }
-//    else if (self.strainValue == 1){//indica
-//        image = [UIImage imageNamed:@"indica_burned.png"];
-//        CGSize newSize = CGSizeMake(45.0f, 35.0f);
-//        UIGraphicsBeginImageContext(newSize);
-//        [image drawInRect:CGRectMake(0,0,newSize.width,newSize.height)];
-//        UIImage* newImage = UIGraphicsGetImageFromCurrentImageContext();
-//        UIGraphicsEndImageContext();
-//        image = newImage;
-//    }
-//    else if (self.strainValue == 2){//sativa
-//        image = [UIImage imageNamed:@"rsz_1rsz_1sativa.png"];
-//    }
-//    else if(self.strainValue == 3){//dont care
-//        image = [UIImage imageNamed:@"lighter2.png"];
-//        CGSize newSize = CGSizeMake(25.0f, 35.0f);
-//        UIGraphicsBeginImageContext(newSize);
-//        [image drawInRect:CGRectMake(5,0,newSize.width,newSize.height)];
-//        UIImage* newImage = UIGraphicsGetImageFromCurrentImageContext();
-//        UIGraphicsEndImageContext();
-//        image = newImage;
-//    }
-//    self.strainOfChoice.frame = CGRectMake(self.view.frame.size.width - (image.size.width + 15), self.view.frame.size.width - (image.size.width + 15), image.size.width, image.size.height);
-//    self.strainOfChoice.image = image;
-//    [self.view bringSubviewToFront:self.strainOfChoice];
 }
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
