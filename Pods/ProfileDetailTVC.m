@@ -336,7 +336,7 @@ static CGFloat const MDCSwipeToChooseViewLabelWidth = 95.f;
                 return MAX(60, expectedSize.height + 10);
             }
         }
-        case 3:{
+        case 4:{
             NSString *field0 = [NSString stringWithFormat:@"1. %@", self.sixPeople[0]];
             NSString *field1 = [NSString stringWithFormat:@"2. %@", self.sixPeople[1]];
             NSString *field2 = [NSString stringWithFormat:@"3. %@", self.sixPeople[2]];
@@ -391,7 +391,7 @@ static CGFloat const MDCSwipeToChooseViewLabelWidth = 95.f;
         }
         break;
             
-        case 4:{
+        case 3:{
             if (self.educationLabel.text.length != 0){
                 self.educationImageVIew.image = [UIImage imageNamed:@"university-48.png"];
                 
@@ -502,8 +502,8 @@ static CGFloat const MDCSwipeToChooseViewLabelWidth = 95.f;
                      animations:^{
                          self.likedView.alpha = 1.f;
                      } completion:^(BOOL animated){
-//                         [self.navigationController popViewControllerAnimated:YES];
-//                         [((ChoosePersonViewController*)self.navigationController.viewControllers[0]) likeFrontCardView];
+                         [self.navigationController popViewControllerAnimated:YES];
+                         [((ChoosePersonViewController*)self.navigationController.viewControllers[0]) likeFrontCardView];
                      }];
     
 }
@@ -516,8 +516,8 @@ static CGFloat const MDCSwipeToChooseViewLabelWidth = 95.f;
                      animations:^{
                          self.nopeView.alpha = 1.f;
                      } completion:^(BOOL animated){
-//                         [self.navigationController popViewControllerAnimated:YES];
-//                         [((ChoosePersonViewController*)self.navigationController.viewControllers[0]) nopeFrontCardView];
+                         [self.navigationController popViewControllerAnimated:YES];
+                         [((ChoosePersonViewController*)self.navigationController.viewControllers[0]) nopeFrontCardView];
                      }];
 }
 

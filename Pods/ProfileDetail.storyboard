@@ -135,41 +135,6 @@
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
-                            <tableViewSection id="o5F-4r-yvk" userLabel="Medicated">
-                                <cells>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" rowHeight="64" id="2jo-jV-PYd">
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="2jo-jV-PYd" id="9pC-tV-W4M">
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xhb-DI-5eg">
-                                                    <rect key="frame" x="61" y="21" width="246" height="21"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="partly_cloudy_day-48.png" translatesAutoresizingMaskIntoConstraints="NO" id="cGT-Wr-u00">
-                                                    <rect key="frame" x="8" y="8" width="35" height="38"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="width" constant="35" id="SNY-ES-7le"/>
-                                                        <constraint firstAttribute="height" constant="35" id="bqn-4a-G6E"/>
-                                                    </constraints>
-                                                </imageView>
-                                            </subviews>
-                                            <color key="backgroundColor" red="0.69803921570000005" green="0.84705882349999995" blue="0.69803921570000005" alpha="1" colorSpace="calibratedRGB"/>
-                                            <constraints>
-                                                <constraint firstItem="xhb-DI-5eg" firstAttribute="leading" secondItem="9pC-tV-W4M" secondAttribute="leadingMargin" constant="53" id="LrB-gy-t2f"/>
-                                                <constraint firstItem="xhb-DI-5eg" firstAttribute="top" secondItem="9pC-tV-W4M" secondAttribute="topMargin" id="Q0P-wC-Abv"/>
-                                                <constraint firstItem="cGT-Wr-u00" firstAttribute="leading" secondItem="9pC-tV-W4M" secondAttribute="leadingMargin" id="Vbp-as-00b"/>
-                                                <constraint firstItem="cGT-Wr-u00" firstAttribute="top" secondItem="9pC-tV-W4M" secondAttribute="topMargin" id="X4J-FP-gsl"/>
-                                                <constraint firstAttribute="bottomMargin" secondItem="xhb-DI-5eg" secondAttribute="bottom" id="m3M-jW-kFa"/>
-                                            </constraints>
-                                        </tableViewCellContentView>
-                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                        <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
-                                    </tableViewCell>
-                                </cells>
-                            </tableViewSection>
                             <tableViewSection id="LCD-ev-Vyd">
                                 <cells>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="0.0" reuseIdentifier="Cell" rowHeight="60" id="SWb-Qj-HFc">
@@ -200,6 +165,41 @@
                                                 <constraint firstItem="kO9-ac-XC6" firstAttribute="top" secondItem="YAH-Q2-Pd6" secondAttribute="topMargin" constant="5" id="en1-h1-dED"/>
                                                 <constraint firstItem="dKR-uJ-INx" firstAttribute="top" secondItem="YAH-Q2-Pd6" secondAttribute="topMargin" id="gtQ-B8-dRR"/>
                                                 <constraint firstItem="dKR-uJ-INx" firstAttribute="bottom" secondItem="YAH-Q2-Pd6" secondAttribute="bottomMargin" id="rqg-jU-czl"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                    </tableViewCell>
+                                </cells>
+                            </tableViewSection>
+                            <tableViewSection id="o5F-4r-yvk" userLabel="Medicated">
+                                <cells>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" rowHeight="64" id="2jo-jV-PYd">
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="2jo-jV-PYd" id="9pC-tV-W4M">
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xhb-DI-5eg">
+                                                    <rect key="frame" x="61" y="21" width="246" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="partly_cloudy_day-48.png" translatesAutoresizingMaskIntoConstraints="NO" id="cGT-Wr-u00">
+                                                    <rect key="frame" x="8" y="8" width="35" height="38"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="35" id="SNY-ES-7le"/>
+                                                        <constraint firstAttribute="height" constant="35" id="bqn-4a-G6E"/>
+                                                    </constraints>
+                                                </imageView>
+                                            </subviews>
+                                            <color key="backgroundColor" red="0.69803921570000005" green="0.84705882349999995" blue="0.69803921570000005" alpha="1" colorSpace="calibratedRGB"/>
+                                            <constraints>
+                                                <constraint firstItem="xhb-DI-5eg" firstAttribute="leading" secondItem="9pC-tV-W4M" secondAttribute="leadingMargin" constant="53" id="LrB-gy-t2f"/>
+                                                <constraint firstItem="xhb-DI-5eg" firstAttribute="top" secondItem="9pC-tV-W4M" secondAttribute="topMargin" id="Q0P-wC-Abv"/>
+                                                <constraint firstItem="cGT-Wr-u00" firstAttribute="leading" secondItem="9pC-tV-W4M" secondAttribute="leadingMargin" id="Vbp-as-00b"/>
+                                                <constraint firstItem="cGT-Wr-u00" firstAttribute="top" secondItem="9pC-tV-W4M" secondAttribute="topMargin" id="X4J-FP-gsl"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="xhb-DI-5eg" secondAttribute="bottom" id="m3M-jW-kFa"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>

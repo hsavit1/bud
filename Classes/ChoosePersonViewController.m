@@ -272,10 +272,6 @@ static const CGFloat ChoosePersonButtonVerticalPadding = -10;
                       CGRectGetHeight(frontFrame));
 }
 
-
-
-
-
 //////////////////////////Construction bottom buttons///////////////////////////////////////////////////////////////////////////
 
 

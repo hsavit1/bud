@@ -628,7 +628,7 @@
                                                              delegate:self
                                                     cancelButtonTitle:@"Cancel"
                                                destructiveButtonTitle:nil
-                                                    otherButtonTitles:@"Take Photo", @"Photo Library", nil];
+                                                    otherButtonTitles:@"Take Photo", @"Photo Library", @"Add from Facebook", nil];
     
     [actionSheet showInView:self.view];
 }
@@ -651,6 +651,9 @@
             self.imagePick.delegate = self;
             [self presentViewController:self.imagePick animated:YES completion:nil];
             break;
+        }
+        case 2:{
+            
         }
         default:
             break;

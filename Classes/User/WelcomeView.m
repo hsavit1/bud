@@ -74,7 +74,7 @@
 {
     [ProgressHUD show:@"Signing in..." Interaction:NO];
     
-    [PFFacebookUtils logInWithPermissions:@[@"public_profile", @"email", @"user_friends"] block:^(PFUser *user, NSError *error)
+    [PFFacebookUtils logInWithPermissions:@[@"public_profile", @"email", @"user_friends", @"user_photos"] block:^(PFUser *user, NSError *error)
      {
          if (user)
          {
@@ -130,7 +130,7 @@
          //-----------------------------------------------------------------------------------------------------------------------------------------
          if (image.size.width > 140) image = ResizeImage(image, 140, 140);
          //-----------------------------------------------------------------------------------------------------------------------------------------
-         PFFile *filePicture = [PFFile fileWithName:@"picture.jpg" data:UIImageJPEGRepresentation(image, 0.6)];
+         PFFile *filePicture = [PFFile fileWithName:@"picture.jpg" data:UIImageJPEGRepresentation(image, 1.0)];
          [filePicture saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error)
           {
               if (error != nil) [ProgressHUD showError:error.userInfo[@"error"]];
@@ -138,7 +138,7 @@
          //-----------------------------------------------------------------------------------------------------------------------------------------
          if (image.size.width > 34) image = ResizeImage(image, 30, 30);
          //-----------------------------------------------------------------------------------------------------------------------------------------
-         PFFile *fileThumbnail = [PFFile fileWithName:@"thumbnail.jpg" data:UIImageJPEGRepresentation(image, 0.6)];
+         PFFile *fileThumbnail = [PFFile fileWithName:@"thumbnail.jpg" data:UIImageJPEGRepresentation(image, 0.5)];
          [fileThumbnail saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error)
           {
               if (error != nil) [ProgressHUD showError:error.userInfo[@"error"]];
@@ -150,6 +150,15 @@
          user[PF_USER_FACEBOOKID] = userData[@"id"];
          user[@"email"] = userData[@"email"];
          user[PF_USER_PICTURE] = filePicture;
+         
+         PFObject *userPhoto = [PFObject objectWithClassName:@"Photo"];
+         [userPhoto setObject:filePicture forKey:@"photo"];
+         PFUser *user = [PFUser currentUser];
+         [userPhoto setObject:user forKey:@"user"];
+         [userPhoto setObject:@(1) forKey:@"rank"];
+         [userPhoto saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+         }];
+         
          user[PF_USER_THUMBNAIL] = fileThumbnail;
          [user saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error)
           {
@@ -173,6 +182,19 @@
     //---------------------------------------------------------------------------------------------------------------------------------------------
     [[NSOperationQueue mainQueue] addOperation:operation];
 }
+
+-(NSString *) randomStringWithLength: (int) len {
+    
+    NSMutableString *randomString = [NSMutableString stringWithCapacity: len];
+    NSString *letters = @"abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+    
+    for (int i=0; i<len; i++) {
+        [randomString appendFormat: @"%C", [letters characterAtIndex: arc4random_uniform([letters length])]];
+    }
+    
+    return randomString;
+}
+
 
 //-------------------------------------------------------------------------------------------------------------------------------------------------
 - (void)userLoggedIn:(PFUser *)user

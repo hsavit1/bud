@@ -41,9 +41,7 @@
             self.person5.text = ppl[5];
         }
     }];
-
 }
-
 
 - (IBAction)saveButton:(id)sender {
 

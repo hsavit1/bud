@@ -219,6 +219,8 @@
     
     if(buttonIndex == 1){
         //delete account
+        [PFUser logOut];
+        [[PFUser currentUser] deleteInBackground];
     }
     else{
         NSIndexPath *myIP = [NSIndexPath indexPathForRow:0 inSection:6];
