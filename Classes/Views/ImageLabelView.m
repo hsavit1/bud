@@ -52,6 +52,9 @@
                               image.size.height);
     self.imageView = [[UIImageView alloc] initWithFrame:frame];
     self.imageView.image = image;
+//    self.imageView.backgroundColor = [UIColor whiteColor];
+//    self.imageView.layer.cornerRadius = self.imageView.frame.size.width / 2;
+//    self.imageView.alpha = .5;
     [self addSubview:self.imageView];
 }
 

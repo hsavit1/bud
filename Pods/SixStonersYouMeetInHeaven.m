@@ -42,8 +42,17 @@
         if(objects.count != 0){
             NSArray *stringsArray = [[NSArray alloc] initWithObjects:self.person0.text, self.person1.text, self.person2.text, self.person3.text, self.person4.text, self.person5.text, nil];
             NSString *joinedString = [stringsArray componentsJoinedByString:@" "];
-            objects[0][@"sixPeople"] = joinedString;
-            [ProgressHUD showSuccess:@"Saved."];
+            PFObject *userObj = objects[0];
+            userObj[@"sixPeople"] = joinedString;
+            [userObj saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+                if (!error) {
+                    [ProgressHUD showSuccess:@"Saved."];
+                }
+                else{
+                    // Log details of the failure
+                    NSLog(@"Error: %@ %@", error, [error userInfo]);
+                }
+            }];
         }
         else{
             //no user

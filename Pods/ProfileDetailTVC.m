@@ -36,6 +36,7 @@ static CGFloat const MDCSwipeToChooseViewLabelWidth = 95.f;
 @property (nonatomic, strong) GMCPagingScrollView *pagingScrollView;
 @property (nonatomic, strong) UIPageControl *pageControl;
 @property (nonatomic, strong) NSMutableArray *profilePics;
+@property (nonatomic, strong) NSMutableArray *sixPeople;
 
 @property (nonatomic, strong) MDCSwipeToChooseViewOptions *options;
 @property (weak, nonatomic) IBOutlet PFImageView *strainOfChoice;
@@ -77,13 +78,17 @@ static CGFloat const MDCSwipeToChooseViewLabelWidth = 95.f;
         [self constructNopeImageView];
     }
     
+    
         self.view.backgroundColor = [UIColor colorWithRed:0.698 green:0.847 blue:0.698 alpha:1] /*#b2d8b2*/;
-        UIBarButtonItem *btn = [[UIBarButtonItem alloc] initWithTitle:@"Back"
-                                                                style:UIBarButtonItemStyleBordered
-                                                               target:nil
-                                                               action:nil];
-        [[self navigationItem] setBackBarButtonItem:btn];
-        
+//        UIBarButtonItem *btn = [[UIBarButtonItem alloc] initWithTitle:@"Back"
+//                                                                style:UIBarButtonItemStyleBordered
+//                                                               target:nil
+//                                                               action:nil];
+//        [[self navigationItem] setBackBarButtonItem:btn];
+        self.navigationController.navigationBar.barTintColor = [UIColor colorWithRed:0.698 green:0.847 blue:0.698 alpha:1] /*#b2d8b2*/;
+        self.navigationController.navigationItem.hidesBackButton = YES;
+    
+    
         float width = self.view.bounds.size.width;
         self.headerView.frame = CGRectMake(0, 0, width, width);
         CGRect backgroundRect = CGRectMake(0, 0, width, width);
@@ -106,6 +111,7 @@ static CGFloat const MDCSwipeToChooseViewLabelWidth = 95.f;
         self.pageControl.currentPageIndicatorTintColor = [UIColor colorWithRed:0.086 green:0.627 blue:0.522 alpha:1] /*#16a085*/;
         [self.navigationController.navigationBar addSubview:self.pageControl];
         self.pageControl.alpha = 1;
+        [self.headerView bringSubviewToFront:self.strainOfChoice];
 }
 
 -(void)viewWillAppear:(BOOL)animated{
@@ -137,6 +143,9 @@ static CGFloat const MDCSwipeToChooseViewLabelWidth = 95.f;
             });
         }
     }];
+    [self.pagingScrollView bringSubviewToFront:self.strainOfChoice];
+    [self.pagingScrollView bringSubviewToFront:self.likedView];
+    [self.pagingScrollView bringSubviewToFront:self.nopeView];
 }
 
 -(void)fillInUserInfo{
@@ -250,6 +259,7 @@ static CGFloat const MDCSwipeToChooseViewLabelWidth = 95.f;
 
     if(index == 0){
         PFImageView *backgroundImageView = [[PFImageView alloc] initWithFrame:backgroundRect];
+        ((UIImageView *)backgroundImageView).contentMode = UIViewContentModeScaleAspectFill;
         backgroundImageView.file = self.user[@"picture"];
         [backgroundImageView loadInBackground];
         page = backgroundImageView;
@@ -260,6 +270,7 @@ static CGFloat const MDCSwipeToChooseViewLabelWidth = 95.f;
         for(int i = 0; i < self.profilePics.count; i++){
             if(i == index){
                 PFImageView *backgroundImageView = [[PFImageView alloc] initWithFrame:backgroundRect];
+                ((UIImageView *)backgroundImageView).contentMode = UIViewContentModeScaleAspectFill;
                 backgroundImageView.file = self.profilePics[i];
                 [backgroundImageView loadInBackground];
                 page = backgroundImageView;
@@ -268,6 +279,9 @@ static CGFloat const MDCSwipeToChooseViewLabelWidth = 95.f;
             }
         }
     }
+    [self.pagingScrollView bringSubviewToFront:self.strainOfChoice];
+    [self.pagingScrollView bringSubviewToFront:self.likedView];
+    [self.pagingScrollView bringSubviewToFront:self.nopeView];
     return page;
 }
 
@@ -471,8 +485,8 @@ static CGFloat const MDCSwipeToChooseViewLabelWidth = 95.f;
                      animations:^{
                          self.likedView.alpha = 1.f;
                      } completion:^(BOOL animated){
-                         [self.navigationController popViewControllerAnimated:YES];
-                         [((ChoosePersonViewController*)self.navigationController.viewControllers[0]) likeFrontCardView];
+//                         [self.navigationController popViewControllerAnimated:YES];
+//                         [((ChoosePersonViewController*)self.navigationController.viewControllers[0]) likeFrontCardView];
                      }];
     
 }
@@ -485,8 +499,8 @@ static CGFloat const MDCSwipeToChooseViewLabelWidth = 95.f;
                      animations:^{
                          self.nopeView.alpha = 1.f;
                      } completion:^(BOOL animated){
-                         [self.navigationController popViewControllerAnimated:YES];
-                         [((ChoosePersonViewController*)self.navigationController.viewControllers[0]) nopeFrontCardView];
+//                         [self.navigationController popViewControllerAnimated:YES];
+//                         [((ChoosePersonViewController*)self.navigationController.viewControllers[0]) nopeFrontCardView];
                      }];
 }
 

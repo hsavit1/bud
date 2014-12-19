@@ -103,40 +103,48 @@ static const CGFloat ChoosePersonViewImageLabelWidth = 42.f;
     CGFloat rightPadding = 60.f;
     
     UIImage *image;
-    if(_person.strainOfChoice == 0){//hybrid
-        image = [UIImage imageNamed:@"hybrid_burned.png"];
-        CGSize newSize = CGSizeMake(45.0f, 35.0f);
-        UIGraphicsBeginImageContext(newSize);
-        [image drawInRect:CGRectMake(0,0,newSize.width,newSize.height)];
-        UIImage* newImage = UIGraphicsGetImageFromCurrentImageContext();
-        UIGraphicsEndImageContext();
-        image = newImage;
-    }
-    else if (_person.strainOfChoice == 1){//indica
-        image = [UIImage imageNamed:@"indica_burned.png"];
-        CGSize newSize = CGSizeMake(45.0f, 35.0f);
-        UIGraphicsBeginImageContext(newSize);
-        [image drawInRect:CGRectMake(0,0,newSize.width,newSize.height)];
-        UIImage* newImage = UIGraphicsGetImageFromCurrentImageContext();
-        UIGraphicsEndImageContext();
-        image = newImage;
-    }
-    else if (_person.strainOfChoice == 2){//sativa
-        image = [UIImage imageNamed:@"rsz_1rsz_1sativa.png"];
-    }
-    else if(_person.strainOfChoice == 3){//dont care
-        image = [UIImage imageNamed:@"lighter2.png"];
-        CGSize newSize = CGSizeMake(25.0f, 35.0f);
-        UIGraphicsBeginImageContext(newSize);
-        [image drawInRect:CGRectMake(5,0,newSize.width,newSize.height)];
-        UIImage* newImage = UIGraphicsGetImageFromCurrentImageContext();
-        UIGraphicsEndImageContext();
-        image = newImage;
-    }
+    image = [UIImage imageNamed:@"outline_geo_fence-50.png"];
+    CGSize newSize = CGSizeMake(25.0f, 25.0f);
+    UIGraphicsBeginImageContext(newSize);
+    [image drawInRect:CGRectMake(0,0,newSize.width,newSize.height )];
+    UIImage* newImage = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    image = newImage;
     
+//    if(_person.strainOfChoice == 0){//hybrid
+//        image = [UIImage imageNamed:@"hybrid_burned.png"];
+//        CGSize newSize = CGSizeMake(45.0f, 35.0f);
+//        UIGraphicsBeginImageContext(newSize);
+//        [image drawInRect:CGRectMake(0,0,newSize.width,newSize.height)];
+//        UIImage* newImage = UIGraphicsGetImageFromCurrentImageContext();
+//        UIGraphicsEndImageContext();
+//        image = newImage;
+//    }
+//    else if (_person.strainOfChoice == 1){//indica
+//        image = [UIImage imageNamed:@"indica_burned.png"];
+//        CGSize newSize = CGSizeMake(45.0f, 35.0f);
+//        UIGraphicsBeginImageContext(newSize);
+//        [image drawInRect:CGRectMake(0,0,newSize.width,newSize.height)];
+//        UIImage* newImage = UIGraphicsGetImageFromCurrentImageContext();
+//        UIGraphicsEndImageContext();
+//        image = newImage;
+//    }
+//    else if (_person.strainOfChoice == 2){//sativa
+//        image = [UIImage imageNamed:@"rsz_1rsz_1sativa.png"];
+//    }
+//    else if(_person.strainOfChoice == 3){//dont care
+//        image = [UIImage imageNamed:@"lighter2.png"];
+//        CGSize newSize = CGSizeMake(25.0f, 35.0f);
+//        UIGraphicsBeginImageContext(newSize);
+//        [image drawInRect:CGRectMake(5,0,newSize.width,newSize.height)];
+//        UIImage* newImage = UIGraphicsGetImageFromCurrentImageContext();
+//        UIGraphicsEndImageContext();
+//        image = newImage;
+//    }
+//    
     _interestsImageLabelView = [self buildImageLabelViewLeftOf:CGRectGetWidth(_informationView.bounds) - rightPadding
                                                          image:image
-                                                          text:nil];//[@(@) stringValue]];
+                                                          text:@"5 min"];//[@(@) stringValue]];
     [_informationView addSubview:_interestsImageLabelView];
 }
 
