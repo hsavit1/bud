@@ -35,6 +35,8 @@
 #import <Parse/Parse.h>
 #import <ParseFacebookUtils/PFFacebookUtils.h>
 
+#import <iAd/iAd.h>
+
 static const CGFloat ChoosePersonButtonHorizontalPadding = 80.f;
 static const CGFloat ChoosePersonButtonVerticalPadding = -10;
 
@@ -74,12 +76,6 @@ static const CGFloat ChoosePersonButtonVerticalPadding = -10;
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    self.navigationController.navigationBar.topItem.title = @"LoveBuds";
-    [self.navigationController.navigationBar setTitleTextAttributes:
-     [NSDictionary dictionaryWithObjectsAndKeys:
-      [UIFont fontWithName:@"SnellRoundhand-Black" size:40], //HoeflerText-BlackItalic
-      NSFontAttributeName, nil]];
-    
     [self.navigationController.navigationBar setBackgroundImage:[[UIImage alloc] init]
                                                  forBarPosition:UIBarPositionAny
                                                      barMetrics:UIBarMetricsDefault];
@@ -97,6 +93,22 @@ static const CGFloat ChoosePersonButtonVerticalPadding = -10;
     [self constructNopeButton];
     [self constructLikedButton];
     [self constructInfoButton];
+    
+//    self.navigationController.navigationBar.topItem.title = @"LoveBuds";
+//    [self.navigationController.navigationBar setTitleTextAttributes:
+//     [NSDictionary dictionaryWithObjectsAndKeys:
+//      [UIFont fontWithName:@"SnellRoundhand-Black" size:40], //HoeflerText-BlackItalic
+//      NSFontAttributeName, nil]];
+    
+    UILabel *loveBudsLabel = [[UILabel alloc]initWithFrame:CGRectMake(self.view.bounds.size.width / 2 - 70, 50, 140, 30)];
+    loveBudsLabel.text = @"LoveBuds";
+    loveBudsLabel.font = [UIFont fontWithName:@"SnellRoundhand-Black" size:28];
+    [self.view addSubview:loveBudsLabel];
+    
+    ADBannerView *adView = [[ADBannerView alloc] initWithFrame:CGRectZero];
+    adView.currentContentSizeIdentifier = ADBannerContentSizeIdentifierPortrait;
+    [self.view addSubview:adView];
+
 }
 
 #pragma mark - MDCSwipeToChooseDelegate Protocol Methods
