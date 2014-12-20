@@ -91,7 +91,6 @@ static CGFloat const MDCSwipeToChooseViewLabelWidth = 95.f;
         self.navigationController.navigationBar.barTintColor = [UIColor colorWithRed:0.698 green:0.847 blue:0.698 alpha:1] /*#b2d8b2*/;
         self.navigationController.navigationItem.hidesBackButton = YES;
     
-    
         float width = self.view.bounds.size.width;
         self.headerView.frame = CGRectMake(0, 0, width, width);
         CGRect backgroundRect = CGRectMake(0, 0, width, width);

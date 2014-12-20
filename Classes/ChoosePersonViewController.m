@@ -94,20 +94,20 @@ static const CGFloat ChoosePersonButtonVerticalPadding = -10;
     [self constructLikedButton];
     [self constructInfoButton];
     
-//    self.navigationController.navigationBar.topItem.title = @"LoveBuds";
-//    [self.navigationController.navigationBar setTitleTextAttributes:
-//     [NSDictionary dictionaryWithObjectsAndKeys:
-//      [UIFont fontWithName:@"SnellRoundhand-Black" size:40], //HoeflerText-BlackItalic
-//      NSFontAttributeName, nil]];
+    self.navigationController.navigationBar.topItem.title = @"LoveBuds";
+    [self.navigationController.navigationBar setTitleTextAttributes:
+     [NSDictionary dictionaryWithObjectsAndKeys:
+      [UIFont fontWithName:@"SnellRoundhand-Black" size:40], //HoeflerText-BlackItalic
+      NSFontAttributeName, nil]];
     
 //    UILabel *loveBudsLabel = [[UILabel alloc]initWithFrame:CGRectMake(self.view.bounds.size.width / 2 - 70, 50, 140, 30)];
 //    loveBudsLabel.text = @"LoveBuds";
 //    loveBudsLabel.font = [UIFont fontWithName:@"SnellRoundhand-Black" size:28];
 //    [self.view addSubview:loveBudsLabel];
     
-    ADBannerView *adView = [[ADBannerView alloc] initWithFrame:CGRectZero];
-    adView.currentContentSizeIdentifier = ADBannerContentSizeIdentifierPortrait;
-    [self.navigationController.navigationBar addSubview:adView];
+//    ADBannerView *adView = [[ADBannerView alloc] initWithFrame:CGRectZero];
+//    adView.currentContentSizeIdentifier = ADBannerContentSizeIdentifierPortrait;
+//    [self.navigationController.navigationBar addSubview:adView];
 
 }
 
@@ -120,13 +120,12 @@ static const CGFloat ChoosePersonButtonVerticalPadding = -10;
         options.delegate = self;
         options.threshold = 100.f;
         options.onPan = ^(MDCPanState *state){
-    
-        CGRect frame = [self backCardViewFrame];
-        self.backCardView.frame = CGRectMake(frame.origin.x,
-                                             frame.origin.y + (state.thresholdRatio * 10.f),
-                                             CGRectGetWidth(frame),
-                                             CGRectGetHeight(frame));
-        NSLog(@"You couldn't decide on %@.", self.currentPerson.name);
+            CGRect frame = [self backCardViewFrame];
+            self.backCardView.frame = CGRectMake(frame.origin.x,
+                                                 frame.origin.y + (state.thresholdRatio * 10.f),
+                                                 CGRectGetWidth(frame),
+                                                 CGRectGetHeight(frame));
+            NSLog(@"You couldn't decide on %@.", self.currentPerson.name);
         };
 }
 
@@ -140,23 +139,22 @@ static const CGFloat ChoosePersonButtonVerticalPadding = -10;
         NSLog(@"You liked %@.", self.currentPerson.name);
     }
     
-    
     [PFCloud callFunctionInBackground:@"match"
                       withParameters:@{
                                        @"touser" : self.currentPerson.objectId == nil ? @"":self.currentPerson.objectId,
                                        @"match" : @(direction == MDCSwipeDirectionRight)
                                        }
                                 block: ^(id obj, NSError* err){
+                                    
                                     //if swipes match, call match screen
                                     if(![obj isKindOfClass:[NSNull class]]){
-                                        UIStoryboard *matchSB = [UIStoryboard storyboardWithName:@"MatchView" bundle:nil];
-                                        ItsAMatchViewController *matchView = [matchSB instantiateViewControllerWithIdentifier:@"mv"];
-                                        matchView.personImageFile = self.currentPerson.image;
-                                        matchView.likedPersonNameLabel.text = self.currentPerson.name;
-                                        [self presentViewController:matchView animated:YES completion:nil];
+//                                        UIStoryboard *matchSB = [UIStoryboard storyboardWithName:@"MatchView" bundle:nil];
+//                                        ItsAMatchViewController *matchView = [matchSB instantiateViewControllerWithIdentifier:@"mv"];
+//                                        matchView.personImageFile = self.currentPerson.image;
+//                                        matchView.likedPersonNameLabel.text = self.currentPerson.name;
+//                                        [self presentViewController:matchView animated:YES completion:nil];
                                     }
                                     //if no match, do nothing
-                                    
                                 }];
     
     self.frontCardView = self.backCardView;
@@ -199,8 +197,8 @@ static const CGFloat ChoosePersonButtonVerticalPadding = -10;
         CGRect frame = [self backCardViewFrame];
         self.backCardView.frame = CGRectMake(frame.origin.x,
                                              frame.origin.y - (state.thresholdRatio * 10.f),
-                                             CGRectGetWidth(frame),
-                                             CGRectGetHeight(frame));
+                                             CGRectGetWidth(frame) ,
+                                             CGRectGetHeight(frame) );
     };
     
     if ([self.people count] != 0) {
@@ -234,12 +232,7 @@ static const CGFloat ChoosePersonButtonVerticalPadding = -10;
         [self.stonersLoadingLabel setLineBreakMode:NSLineBreakByWordWrapping];
         self.stonersLoadingLabel.textAlignment = NSTextAlignmentCenter;
         [personView addSubview:self.stonersLoadingLabel];
-        
-        
         [self addMorePeople:5];
-        
-        //set up an NSTIMER
-        
         return personView;
     }
 }
